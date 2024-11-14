@@ -1,3 +1,24 @@
 {
-  "extends": "next/core-web-vitals"
+  "extends": [
+    "wesbos"
+  ],
+  "rules": {
+    "react/no-unescaped-entities": "off",
+    "@next/next/no-page-custom-font": "off",
+    "jsx-a11y/click-events-have-key-events": "off",
+    "jsx-a11y/interactive-supports-focus": "off",
+    "jsx-a11y/no-static-element-interactions": "off",
+    "react/prop-types": 0,
+    "jsx-a11y/no-noninteractive-element-interactions": "off",
+    "react/jsx-no-constructed-context-values": "off",
+    "no-shadow": "off",
+    "react/jsx-no-useless-fragment": "off",
+    "react/no-unknown-property": "off",
+    "no-irregular-whitespace": "off",
+    "import/no-unresolved": "off",
+    "react/no-this-in-sfc": "off",
+    "react/no-unstable-nested-components": "off",
+    "jsx-a11y/control-has-associated-label": "off",
+    "react/destructuring-assignment": "off"
+  }
 }
