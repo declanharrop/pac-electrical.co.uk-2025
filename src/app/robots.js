@@ -11,6 +11,6 @@ export default function robots() {
         allow: ['/'],
       },
     ],
-    sitemap: 'https://neweradistribution.uk/sitemap.xml',
+    sitemap: 'https://pac-electrical.co.uk/sitemap.xml',
   };
 }
