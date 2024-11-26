@@ -1,0 +1,109 @@
+.HeaderBar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  color: #fff;
+  height: 100px;
+  width: 100%;
+}
+
+.HeaderBar_Container {
+  position: relative;
+  max-width: 1600px;
+  padding: 0 20px;
+  margin: 0 auto;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.HeaderBar_Container_Left {
+  position: relative;
+  z-index: 1001;
+}
+
+.HeaderBar_Container_Logo_Placer {
+  position: absolute;
+  top: 20px;
+  left: 0;
+  height: 60px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.HeaderBar_Container_Logo {
+  height: 100%;
+}
+
+.HeaderBar_Container_Right {
+  position: relative;
+  z-index: 1001;
+}
+
+/* 
+//
+//
+//
+//
+//
+//// Left Navigation
+//
+//
+//
+//
+//
+*/
+
+.LeftNav {
+  position: relative;
+}
+
+.LeftNav_UL {
+  position: relative;
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  padding-left: 20px;
+}
+
+.LeftNav_LI {
+  position: relative;
+}
+
+/* 
+//
+//
+//
+//
+//
+//// Right Navigation
+//
+//
+//
+//
+//
+*/
+
+.RightNav {
+  position: relative;
+}
+
+.RightNav_UL {
+  position: relative;
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  padding-right: 20px;
+}
+
+.RightNav_LI {
+  position: relative;
+}

@@ -1,0 +1,46 @@
+.VideoHero {
+  position: relative;
+  overflow: hidden;
+  max-height: 2000px;
+  min-height: 500px;
+}
+
+.VideoHero_VideoContainer {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  background: lightblue
+}
+
+.VideoHero_Video {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+.VideoHero_Overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: radial-gradient(circle at 80% 20%, rgba(27, 24, 25, 0.1) 0%, rgba(27, 24, 25, 1) 40%, rgba(27, 24, 25, 1) 100%);
+  ;
+  height: 100%;
+  width: 100%;
+}
+
+.VideoHero_Overlay_Container {
+  position: relative;
+  max-width: 1600px;
+  height: 100%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-end;
+}
+
+.VideoHero_Overlay_Container_Content {
+  padding: 0 20px;
+  text-align: left;
+}

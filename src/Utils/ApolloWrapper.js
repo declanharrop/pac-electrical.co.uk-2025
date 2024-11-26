@@ -3,10 +3,9 @@
 import { ApolloLink, HttpLink } from '@apollo/client';
 import {
   ApolloNextAppProvider,
-  NextSSRInMemoryCache,
-  SSRMultipartLink,
-  NextSSRApolloClient,
-} from '@apollo/experimental-nextjs-app-support/';
+  ApolloClient,
+  InMemoryCache,
+} from '@apollo/experimental-nextjs-app-support';
 
 function makeClient() {
   const httpLink = new HttpLink({
@@ -16,17 +15,10 @@ function makeClient() {
     },
   });
 
-  return new NextSSRApolloClient({
-    cache: new NextSSRInMemoryCache(),
-    link:
-      typeof window === 'undefined'
-        ? ApolloLink.from([
-            new SSRMultipartLink({
-              stripDefer: true,
-            }),
-            httpLink,
-          ])
-        : httpLink,
+  return new ApolloClient({
+    // use the `InMemoryCache` from "@apollo/experimental-nextjs-app-support"
+    cache: new InMemoryCache(),
+    link: httpLink,
   });
 }
 
