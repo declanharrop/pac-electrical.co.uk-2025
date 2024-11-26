@@ -8,9 +8,6 @@
 
 // const URL = 'https://pac-electrical.co.uk';
 
-export default function sitemap() {
-  return null;
-}
 // export default async function sitemap() {
 //   const client = getClient();
 //   const { data: articlePages } = await client.query({
