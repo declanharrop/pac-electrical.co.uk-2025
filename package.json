@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev --turbopack --port 5555",
+    "dev": "next dev --port 5555",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
@@ -11,22 +11,25 @@
   "dependencies": {
     "@apollo/client": "^3.11.10",
     "@apollo/experimental-nextjs-app-support": "^0.11.6",
-    "framer-motion": "^11.11.15",
+    "framer-motion": "^11.11.17",
     "graphql": "^16.9.0",
     "hamburger-react": "^2.5.1",
-    "next": "^15.0.3",
+    "next": "14.2.11",
+    "next-auth": "^4.24.10",
     "next-nprogress-bar": "^2.3.15",
     "next-sitemap": "^4.2.3",
     "nextjs-toploader": "^3.7.15",
-    "react": "^18.3.1",
+    "react": "^18",
     "react-div-100vh": "^0.7.0",
-    "react-dom": "^18.3.1",
+    "react-dom": "^18",
     "react-loader-spinner": "^6.1.6",
-    "styled-jsx": "^5.1.6"
+    "react-spinners": "^0.14.1",
+    "styled-jsx": "^5.1.6",
+    "swiper": "^11.1.14"
   },
   "devDependencies": {
     "eslint": "^8.57.1",
-    "eslint-config-next": "^15.0.3",
+    "eslint-config-next": "15.0.3",
     "eslint-config-wesbos": "^4.3.2",
     "prettier": "^3.3.3",
     "typescript": "^5.6.3"
