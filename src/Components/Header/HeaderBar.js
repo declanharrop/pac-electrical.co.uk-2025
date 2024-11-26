@@ -11,11 +11,13 @@ export default function HeaderBar() {
           <LeftNav />
         </div>
         <div className={Styles.HeaderBar_Container_Logo_Placer}>
-          <img
-            className={Styles.HeaderBar_Container_Logo}
-            src="/logo/pac-logo-plain.svg"
-            alt="PAC Electrical Logo"
-          />
+          <Link href="/">
+            <img
+              className={Styles.HeaderBar_Container_Logo}
+              src="/logo/pac-logo-plain.svg"
+              alt="PAC Electrical Logo"
+            />
+          </Link>
         </div>
         <div className={Styles.HeaderBar_Container_Right}>
           <RightNav />

@@ -7,47 +7,17 @@ export default function LeftNav() {
     <nav className={Styles.LeftNav}>
       <ul className={Styles.LeftNav_UL}>
         <li className={Styles.LeftNav_LI}>
-          <TopMenuButton
-            title="SOLAR"
-            color="var(--green)"
-            dropdownOptions={[
-              {
-                name: 'Explore Solar',
-                link: '/solar',
-              },
-              {
-                name: 'Our Installs',
-                link: '/solar/case-studies',
-              },
-              {
-                name: 'Get a Quote',
-                link: '/solar/quote',
-              },
-            ]}
-          />
-        </li>
-        <li className={Styles.LeftNav_LI}>
-          <TopMenuButton title="ELECTRICAL" color="var(--navy)" />
+          <TopMenuButton title="SOLAR" color="var(--green)" link="/solar" />
         </li>
         <li className={Styles.LeftNav_LI}>
           <TopMenuButton
-            title="EV CHARGING"
-            color="var(--neon)"
-            dropdownOptions={[
-              {
-                name: 'Learn More',
-                link: '/ev',
-              },
-              {
-                name: 'Our Installs',
-                link: '/ev/case-studies',
-              },
-              {
-                name: 'Get a Quote',
-                link: '/ev/quote',
-              },
-            ]}
+            title="ELECTRICAL"
+            color="var(--navy)"
+            link="/electrical"
           />
+        </li>
+        <li className={Styles.LeftNav_LI}>
+          <TopMenuButton title="EV CHARGING" color="var(--neon)" link="/ev" />
         </li>
       </ul>
     </nav>

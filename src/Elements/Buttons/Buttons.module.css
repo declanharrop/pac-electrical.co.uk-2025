@@ -4,59 +4,8 @@
   color: white;
   padding: 0;
   margin: 0;
-  font-size: 1.8rem;
+  font-size: 1.9rem;
   letter-spacing: 0.2rem;
-  font-weight: 400;
+  font-weight: 600;
   border-radius: 0;
-}
-
-.TopMenuButton_Active {
-  position: relative;
-  background: none;
-  color: white;
-  padding: 0;
-  margin: 0;
-  font-size: 1.8rem;
-  letter-spacing: 0.2rem;
-  font-weight: 400;
-  border-top: 3px solid white;
-  transition: 0.1s ease;
-  border-radius: 0;
-}
-
-.TopMenuButton_Dropdown {
-  position: absolute;
-  top: 50px;
-  background: white;
-  overflow: hidden;
-  left: 0;
-}
-
-.TopMenuButton_Dropdown_Right {
-  position: absolute;
-  top: 50px;
-  background: white;
-  overflow: hidden;
-  right: 0;
-}
-
-.TopMenuButton_Dropdown_UL {
-  list-style: none;
-  padding: 30px 14px;
-  margin: 0;
-  min-width: 180px;
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  align-items: flex-start;
-  text-align: left;
-}
-
-.TopMenuButton_Dropdown_LI {}
-
-.TopMenuButton_Dropdown_LI_Link {
-  font-weight: 400;
-  color: var(--black);
-  text-transform: uppercase;
-
 }

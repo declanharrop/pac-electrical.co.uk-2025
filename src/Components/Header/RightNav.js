@@ -7,37 +7,7 @@ export default function RightNav() {
     <nav className={Styles.RightNav}>
       <ul className={Styles.RightNav_UL}>
         <li className={Styles.RightNav_LI}>
-          <TopMenuButton
-            right
-            title="US"
-            color="var(--green)"
-            dropdownOptions={[
-              {
-                name: 'Our Team',
-                link: '/us/team',
-              },
-              {
-                name: 'News',
-                link: '/news',
-              },
-              {
-                name: 'Case Studies',
-                link: '/case-studies',
-              },
-              {
-                name: 'About Us',
-                link: '/us',
-              },
-              {
-                name: 'Recruitment',
-                link: '/us/recruitment',
-              },
-              {
-                name: 'Reviews',
-                link: '/us/reviews',
-              },
-            ]}
-          />
+          <TopMenuButton title="US" color="var(--navy)" link="/us" />
         </li>
       </ul>
     </nav>

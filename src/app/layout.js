@@ -83,12 +83,12 @@ export default async function RootLayout({ children }) {
         <StyledJsxRegistry>
           <HeaderProvider>
             <HeaderBar />
+            <ApolloWrapper>
+              <ProgressBarProviders>
+                <main>{children}</main>
+              </ProgressBarProviders>
+            </ApolloWrapper>
           </HeaderProvider>
-          <ApolloWrapper>
-            <ProgressBarProviders>
-              <main>{children}</main>
-            </ProgressBarProviders>
-          </ApolloWrapper>
         </StyledJsxRegistry>
       </body>
     </html>
