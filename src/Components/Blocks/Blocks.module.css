@@ -1,0 +1,64 @@
+.BrandsBlock {
+  padding: 140px 10px;
+}
+
+.BrandsBlock_Container {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+
+
+.ThreeItemBlock {
+  padding: 140px 20px;
+}
+
+.ThreeItemBlock_Container {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+
+}
+
+.ThreeItemBlock_Container_Item {
+  min-height: 400px;
+  height: 100%;
+  border: 5px solid white;
+  border-radius: 20px;
+  transition: all 0.3s ease-in-out;
+  padding: 40px;
+}
+
+.ThreeItemBlock_Container_Item:Hover {
+  transform: scale(1.03);
+}
+
+.ThreeItemBlock_Container_Item_Icon {
+  margin-bottom: 40px;
+  height: 180px;
+}
+
+.ThreeItemBlock_Container_Item_Title {
+  font-size: 3rem;
+  margin-bottom: 10px;
+  line-height: 1.4;
+  color: white;
+}
+
+.ThreeItemBlock_Container_Item_Text {
+  font-size: 1.8rem;
+  color: white;
+}
+
+
+
+.SimpleHeaderTextBlock {
+  padding: 0 20px;
+}
+
+.SimpleHeaderTextBlock_Container {
+  max-width: 1000px;
+  margin: 0 auto;
+}

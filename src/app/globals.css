@@ -177,6 +177,10 @@ input {
   margin: 6px 0 0 -20px;
 }
 
+.dark-divider {
+  background: var(--black);
+  height: 2px;
+}
 
 /* 
 /

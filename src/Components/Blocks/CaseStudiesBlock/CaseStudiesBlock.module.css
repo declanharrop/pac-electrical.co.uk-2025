@@ -1,0 +1,92 @@
+.CaseStudiesBlock {
+  padding: 0px 20px;
+}
+
+.CaseStudiesBlock_Container {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.CaseStudiesBlock_Container_Grid {
+  display: grid;
+  margin-top: 40px;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.CaseStudiesBlock_Container_Grid_Section {
+  border: 5px solid white;
+  border-radius: 20px;
+  padding: 20px;
+}
+
+.CaseStudiesBlock_Container_Grid_Section_Title {
+  font-size: 3rem;
+  margin: 10px 0 30px;
+  text-transform: uppercase;
+  line-height: 1.4;
+  letter-spacing: 0.3rem;
+  font-weight: 600;
+  color: white;
+}
+
+.CaseStudiesBlock_Container_Grid_Section_Inner {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.CaseStudiesBlock_Study {
+  background: white;
+  color: var(--black);
+  overflow: hidden;
+  border-radius: 10px;
+  transition: all 0.3s ease-in-out;
+  height: 100%;
+}
+
+.CaseStudiesBlock_Study:Hover {
+  transform: scale(1.02);
+}
+
+.CaseStudiesBlock_Study_Image {
+  position: relative;
+  min-height: 300px;
+}
+
+.CaseStudiesBlock_Study_Content {
+  padding: 20px;
+  text-align: left;
+}
+
+.CaseStudiesBlock_Study_Content_Title {
+  font-size: 2rem;
+  letter-spacing: 0.1rem;
+  margin-bottom: 10px;
+  line-height: 1.4;
+  font-weight: 600;
+  text-transform: unset;
+}
+
+.CaseStudiesBlock_Study_Content_Text {
+
+  letter-spacing: 0.1rem;
+  margin-top: 10px;
+  line-height: 1.4;
+  font-weight: 300;
+}
+
+.CaseStudiesBlock_Container_Grid_Section_Inner_Lower {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.CaseStudiesBlock_Study_Content_Title_Lower {
+  font-size: 1.8rem;
+  letter-spacing: 0.1rem;
+  margin-bottom: 10px;
+  line-height: 1.4;
+  font-weight: 600;
+  text-transform: unset;
+}

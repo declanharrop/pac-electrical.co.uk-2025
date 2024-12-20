@@ -37,22 +37,6 @@ export default function UsLayout({ children }) {
             name: 'Reviews',
             link: '/us/reviews',
           },
-          {
-            name: '',
-            link: '/us',
-          },
-          {
-            name: '',
-            link: '/us',
-          },
-          {
-            name: '',
-            link: '/us',
-          },
-          {
-            name: '',
-            link: '/us',
-          },
         ]}
       />
       {children}

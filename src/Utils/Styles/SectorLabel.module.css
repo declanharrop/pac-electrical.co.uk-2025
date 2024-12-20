@@ -1,0 +1,14 @@
+.SectorLabel_Container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 10px 0;
+}
+
+.SectorLabel_Container_Item {
+  font-weight: 600;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  padding: 4px 6px;
+  border-radius: 4px;
+}

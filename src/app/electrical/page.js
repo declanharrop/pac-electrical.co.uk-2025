@@ -1,3 +1,12 @@
+import VideoHero from '@/Components/Hero/VideoHero';
+
 export default function ElectricalPage() {
-  return <div>{/* <h1>Explore Solar</h1> */}</div>;
+  return (
+    <div>
+      <VideoHero margin height="70vh">
+        <h1>Electrical</h1>
+        <h3>ENERGISE YOUR SUCCESS</h3>
+      </VideoHero>
+    </div>
+  );
 }

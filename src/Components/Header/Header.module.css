@@ -1,11 +1,12 @@
 .HeaderBar {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   z-index: 1000;
   color: #fff;
   height: 80px;
   width: 100%;
+  background: var(--black);
 }
 
 .HeaderBar_Container {
@@ -36,7 +37,7 @@
 }
 
 .HeaderBar_Container_Logo {
-  height: 60px;
+  height: 40px;
 
 }
 
@@ -91,7 +92,10 @@
 //
 */
 
-.RightNav {}
+.RightNav {
+  display: flex;
+  gap: 40px;
+}
 
 .RightNav_UL {
   list-style: none;
@@ -103,6 +107,46 @@
 }
 
 .RightNav_LI {}
+
+.RightNav_Socials {
+  display: flex;
+  gap: 6px;
+  justify-content: center;
+  align-items: center;
+}
+
+.RightNav_Socials_Link {
+  margin: 0;
+  padding: 0;
+  height: auto;
+  width: auto;
+
+}
+
+.RightNav_Socials_Icon {
+  height: 30px;
+  width: 30px;
+}
+
+.RightNav_Contact {
+  display: flex;
+  gap: 6px;
+  justify-content: center;
+  align-items: center;
+}
+
+.RightNav_Contact_Link {
+  margin: 0;
+  padding: 0;
+  height: auto;
+  width: auto;
+
+}
+
+.RightNav_Contact_Icon {
+  height: 40px;
+  width: 40px;
+}
 
 /* 
 //
@@ -119,9 +163,10 @@
 */
 
 .LowerHeaderBar {
-  position: absolute;
+  position: fixed;
   top: 80px;
   width: 100%;
+  z-index: 800;
   padding: 10px 0;
 }
 
@@ -164,6 +209,7 @@
 
 .LowerHeaderBar_Dropdown {
   position: absolute;
+  overflow: hidden;
   top: 10px;
   right: 20px;
   background: white;

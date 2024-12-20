@@ -1,0 +1,21 @@
+.BrandsBlock {
+  padding: 40px 20px;
+  background: white;
+  color: var(--black);
+  text-align: center;
+}
+
+.BrandsBlock_Container {
+  max-width: 1600px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.BrandsBlock_Brands {
+  position: relative;
+  width: 100px;
+}
