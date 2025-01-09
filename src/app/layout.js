@@ -6,6 +6,7 @@ import { ApolloWrapper } from '@/Utils/ApolloWrapper';
 import ProgressBarProviders from '@/Utils/ProgressBarProvider';
 import HeaderBar from '@/Components/Header/HeaderBar';
 import { HeaderProvider } from '@/Context/HeaderContext';
+import MobileNavDock from '@/Components/Header/MobileNavDock';
 
 const GoodTimes = localFont({
   src: [
@@ -87,6 +88,7 @@ export default async function RootLayout({ children }) {
               <ProgressBarProviders>
                 <main>{children}</main>
               </ProgressBarProviders>
+              {/* <MobileNavDock /> */}
             </ApolloWrapper>
           </HeaderProvider>
         </StyledJsxRegistry>

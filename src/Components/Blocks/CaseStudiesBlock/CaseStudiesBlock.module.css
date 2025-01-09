@@ -90,3 +90,15 @@
   font-weight: 600;
   text-transform: unset;
 }
+
+@media screen and (max-width: 850px) {
+  .CaseStudiesBlock_Container_Grid {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .CaseStudiesBlock_Container_Grid_Section_Inner_Lower {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}

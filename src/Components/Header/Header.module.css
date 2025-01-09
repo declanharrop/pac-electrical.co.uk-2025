@@ -154,6 +154,31 @@
 //
 //
 //
+//// Right Navigation Mobile
+//
+//
+//
+//
+//
+*/
+
+.RightNavMobile {
+  display: flex;
+  gap: 0px;
+  flex-direction: column;
+}
+
+.RightNav_Socials_Icon_Mobile {
+  height: 24px;
+  width: 24px;
+}
+
+/* 
+//
+//
+//
+//
+//
 //// Lower Header Bar
 //
 //
@@ -237,4 +262,85 @@
 .LowerHeaderBar_Dropdown_LI_Link:hover {
 
   font-weight: 600;
+}
+
+.LowerHeaderBar_Select {
+  font-family: var(--font-urbanist);
+  font-weight: 500;
+  font-size: 1.6rem;
+  letter-spacing: 0.15rem;
+  text-transform: uppercase;
+  padding: 6px 20px;
+  margin: -8px -20px;
+  border-radius: 20px;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  border: none;
+  background: var(--black);
+  color: white;
+  text-align: right;
+}
+
+/* 
+//
+//
+//
+//
+//
+//// Mobile Nav Dock
+//
+//
+//
+//
+//
+*/
+
+.BaseBar {
+  position: fixed;
+  bottom: 10px;
+  left: 10px;
+  height: 60px;
+  width: calc(100vw - 20px);
+  /* max-width: 1000px; */
+  /* border-top: 1px solid var(--primary-500); */
+  box-shadow: 0px 0px 50px 0px rgba(0, 0, 0, 0.1);
+  border-radius: 20px;
+  background: white;
+  z-index: 2000;
+  overflow: hidden;
+}
+
+.BaseBar__Nav {
+  height: 60px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  width: 100%;
+}
+
+.BaseBar__Nav__Li {
+  list-style-type: none;
+  padding: 6px 0 0;
+}
+
+.BaseBar__Nav__Item__Text {
+  font-size: 1rem;
+  font-weight: 800;
+  margin-top: 0px;
+}
+
+.BaseBar__Nav__Item__Text__InActive {
+  font-size: 1rem;
+  font-weight: 500;
+  margin-top: 0px;
+  color: #959595;
+  letter-spacing: 0.1rem;
+}
+
+.BaseBar__Nav__Item__NewEraLogo {
+  animation: heartbeat 4s infinite ease-in-out;
+  -webkit-animation: heartbeat 4s infinite ease-in-out;
+  -moz-animation: heartbeat 4s infinite ease-in-out;
+  -o-animation: heartbeat 4s infinite ease-in-out;
+  -ms-animation: heartbeat 4s infinite ease-in-out;
 }

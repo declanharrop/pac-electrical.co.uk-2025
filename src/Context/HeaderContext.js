@@ -6,9 +6,23 @@ export const HeaderContext = createContext();
 
 export const HeaderProvider = ({ children }) => {
   const [activeDropdown, setActiveDropdown] = useState(null);
+  const [windowWidth, setWindowWidth] = useState();
+
+  useEffect(() => {
+    function handleResize() {
+      setWindowWidth(window.innerWidth);
+    }
+    window.addEventListener('resize', handleResize);
+    handleResize();
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
 
   return (
-    <HeaderContext.Provider value={{ activeDropdown, setActiveDropdown }}>
+    <HeaderContext.Provider
+      value={{ activeDropdown, setActiveDropdown, windowWidth }}
+    >
       {children}
     </HeaderContext.Provider>
   );

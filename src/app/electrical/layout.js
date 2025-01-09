@@ -13,7 +13,7 @@ export default function ElectricalLayout({ children }) {
           },
           {
             name: 'Our Work',
-            link: '/electrical/case-studies',
+            link: '/case-studies/electrical',
           },
           {
             name: 'More',

@@ -28,7 +28,7 @@
   border: 5px solid white;
   border-radius: 20px;
   transition: all 0.3s ease-in-out;
-  padding: 40px;
+  padding: 40px 40px;
 }
 
 .ThreeItemBlock_Container_Item:Hover {
@@ -61,4 +61,48 @@
 .SimpleHeaderTextBlock_Container {
   max-width: 1000px;
   margin: 0 auto;
+}
+
+@media screen and (max-width: 1200px) {
+  .ThreeItemBlock_Container_Item_Icon {
+    height: 140px;
+  }
+
+  .ThreeItemBlock_Container_Item_Title {
+    font-size: 2.5rem;
+  }
+
+  .ThreeItemBlock_Container_Item {
+    padding: 40px 20px;
+    min-height: 380px;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .ThreeItemBlock_Container_Item_Icon {
+    height: 140px;
+  }
+
+  .ThreeItemBlock_Container_Item_Title {
+    font-size: 2rem;
+  }
+
+  .ThreeItemBlock_Container_Item {
+    padding: 40px 20px;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .ThreeItemBlock_Container {
+    grid-template-columns: 1fr;
+  }
+
+  .ThreeItemBlock_Container_Item_Icon {
+    height: 160px;
+  }
+
+  .ThreeItemBlock_Container_Item {
+    padding: 40px 20px;
+    min-height: 340px;
+  }
 }

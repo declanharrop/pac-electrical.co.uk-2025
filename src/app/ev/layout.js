@@ -17,7 +17,7 @@ export default function EVLayout({ children }) {
           },
           {
             name: 'Our Work',
-            link: '/ev/case-studies',
+            link: '/case-studies/ev',
           },
           {
             name: 'More',

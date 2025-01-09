@@ -13,7 +13,7 @@ export default function UsLayout({ children }) {
           },
           {
             name: 'Our Work',
-            link: '/us/case-studies',
+            link: '/case-studies/electrical',
           },
           {
             name: 'Our Team',

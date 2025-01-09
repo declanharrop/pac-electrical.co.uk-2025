@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import { useContext } from 'react';
+import { useRouter } from 'next/navigation';
 import Styles from './Header.module.css';
 import HeaderDropdown from './HeaderDropdown';
 import { HeaderContext } from '@/Context/HeaderContext';
@@ -9,6 +10,7 @@ import { HeaderContext } from '@/Context/HeaderContext';
 export default function LowerHeaderBar({
   title = 'Solar',
   color = 'var(--green)',
+  selectOptions = false,
   links = [
     {
       name: 'Get a Quote',
@@ -16,7 +18,7 @@ export default function LowerHeaderBar({
     },
     {
       name: 'Our Installs',
-      link: '/solar/installs',
+      link: '/case-studies/solar',
     },
     {
       name: 'Brands',
@@ -60,6 +62,12 @@ export default function LowerHeaderBar({
 }) {
   const { activeDropdown, setActiveDropdown } = useContext(HeaderContext);
 
+  const router = useRouter();
+
+  function handleChange(e) {
+    router.push(`/case-studies/${e.target.value}`);
+  }
+
   return (
     <>
       <div
@@ -70,32 +78,45 @@ export default function LowerHeaderBar({
           <div className={Styles.LowerHeaderBar_Container_Left}>
             <h2 style={{ fontSize: '2.2rem' }}>{title}</h2>
           </div>
-          <div className={Styles.LowerHeaderBar_Container_Left}>
-            <ul className={Styles.LowerHeaderBar_UL}>
-              {links.map((link) => (
-                <>
-                  {link.dropdown ? (
-                    <li
-                      key={link.name}
-                      className={Styles.LowerHeaderBar_LI}
-                      onMouseEnter={() => setActiveDropdown(title)}
-                    >
-                      {link.name}
-                    </li>
-                  ) : (
-                    <li key={link.name} className={Styles.LowerHeaderBar_LI}>
-                      <Link
-                        className={Styles.LowerHeaderBar_LI_Link}
-                        href={link.link}
+          {selectOptions ? (
+            <div className={Styles.LowerHeaderBar_Container_Right}>
+              <select
+                onChange={handleChange}
+                className={Styles.LowerHeaderBar_Select}
+              >
+                <option value="solar">Solar</option>
+                <option value="electrical">Electrical</option>
+                <option value="ev">EV</option>
+              </select>
+            </div>
+          ) : (
+            <div className={Styles.LowerHeaderBar_Container_Left}>
+              <ul className={Styles.LowerHeaderBar_UL}>
+                {links.map((link) => (
+                  <>
+                    {link.dropdown ? (
+                      <li
+                        key={link.name}
+                        className={Styles.LowerHeaderBar_LI}
+                        onMouseEnter={() => setActiveDropdown(title)}
                       >
                         {link.name}
-                      </Link>
-                    </li>
-                  )}
-                </>
-              ))}
-            </ul>
-          </div>
+                      </li>
+                    ) : (
+                      <li key={link.name} className={Styles.LowerHeaderBar_LI}>
+                        <Link
+                          className={Styles.LowerHeaderBar_LI_Link}
+                          href={link.link}
+                        >
+                          {link.name}
+                        </Link>
+                      </li>
+                    )}
+                  </>
+                ))}
+              </ul>
+            </div>
+          )}
         </div>
         <div className={Styles.Dropdown_Container}>
           <HeaderDropdown
