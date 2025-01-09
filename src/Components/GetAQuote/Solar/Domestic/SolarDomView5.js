@@ -1,18 +1,18 @@
 import { useContext } from 'react';
 import { GetAQuoteContext } from '@/Context/GetAQuoteContext';
 
-export default function SolarDomView4() {
+export default function SolarDomView5() {
   const { addUserDetails, submitOption } = useContext(GetAQuoteContext);
 
   return (
     <>
-      <h4>Great, Enter your Anual Electricity Usage</h4>
-      <form onSubmit={(e) => submitOption(e, '/get-a-quote/solar/dom/5')}>
+      <h4>Can we take your name?</h4>
+      <form onSubmit={(e) => submitOption(e, '/get-a-quote/solar/dom/6')}>
         <input
           type="text"
           required
-          onChange={(e) => addUserDetails({ elecUsage: e.target.value })}
-          placeholder="Your Anual Electricity Usage"
+          onChange={(e) => addUserDetails({ name: e.target.value })}
+          placeholder="Full Name"
         />
         <button
           type="submit"

@@ -11,28 +11,19 @@ export default function SolarDomView2() {
         className="button-alt"
         type="button"
         onClick={() =>
-          chooseOption({ elecUsage: '10000kWh' }, '/get-a-quote/solar/dom/3')
+          chooseOption({ elecUsage: '' }, '/get-a-quote/solar/dom/3')
         }
       >
-        10,000kWh
+        I'm not sure
       </button>
       <button
         className="button-alt"
         type="button"
         onClick={() =>
-          chooseOption({ elecUsage: '12000kWh' }, '/get-a-quote/solar/dom/3')
+          chooseOption({ elecUsage: '' }, '/get-a-quote/solar/dom/4')
         }
       >
-        12,000kWh
-      </button>
-      <button
-        className="button-alt"
-        type="button"
-        onClick={() =>
-          chooseOption({ elecUsage: '14000kWh+' }, '/get-a-quote/solar/dom/3')
-        }
-      >
-        14,000kWh or More
+        Yes
       </button>
     </>
   );

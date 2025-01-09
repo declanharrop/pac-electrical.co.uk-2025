@@ -14,6 +14,11 @@ export const GetAQuoteProvider = ({ children }) => {
     email: '',
     phone: '',
     details: '',
+    address: '',
+    postcode: '',
+    elecUsage: '',
+    solarType: '',
+    homeSize: '',
   });
 
   const addUserDetails = (data) => {
@@ -47,9 +52,14 @@ export const GetAQuoteProvider = ({ children }) => {
     const formData = {
       service: userDetails.service,
       sector: userDetails.sector,
+      solarType: userDetails.solarType,
       name: userDetails.name,
       email: userDetails.email,
       phone: userDetails.phone,
+      address: userDetails.address,
+      postcode: userDetails.postcode,
+      elecUsage: userDetails.elecUsage,
+      homeSize: userDetails.homeSize,
       details: userDetails.details,
     };
 
