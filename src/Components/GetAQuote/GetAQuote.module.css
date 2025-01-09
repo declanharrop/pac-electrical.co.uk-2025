@@ -1,0 +1,89 @@
+/* 
+//
+//
+//
+//
+//  SOLAR STYLES
+//
+//
+//
+//
+//
+*/
+
+.Solar__GAQ {
+  padding: 30px 20px 0px;
+  /* background: blue; */
+}
+
+.Solar__GAQ__Header {
+  height: 80px;
+}
+
+.Solar__GAQ__Container {
+  height: calc(100% - 90px);
+  /* background: red; */
+}
+
+.GetAQuotePage__Button {
+  background: white;
+  height: 100%;
+  width: 100%;
+  color: var(--black);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  box-shadow: 0 0px 20px rgba(255, 255, 255, 0.3);
+}
+
+.GetAQuotePage__Button_Icon {
+  max-height: 80px;
+  margin-bottom: 20px;
+}
+
+.GetAQuotePage__Button_Text {
+  font-size: 2.6rem;
+  line-height: 1.4;
+}
+
+.Solar__GAQ__Sector__Container {
+  height: 100%;
+  display: grid;
+  gap: 20px;
+  grid-template-rows: 1fr 1fr;
+}
+
+@media screen and (min-width: 800px) {
+
+  .Solar__GAQ__Sector__Container {
+    grid-template-rows: 1fr;
+    grid-template-columns: 1fr 1fr;
+    height: auto;
+  }
+
+  .Solar__GAQ__Container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .GetAQuotePage__Button {
+    height: 400px;
+  }
+
+  .GetAQuotePage__Button_Icon {
+    max-height: 120px;
+    margin-bottom: 40px;
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  .Solar__GAQ__Sector__Container {
+    gap: 40px;
+  }
+
+  .GetAQuotePage__Button_Text {
+    font-size: 3.6rem;
+  }
+}

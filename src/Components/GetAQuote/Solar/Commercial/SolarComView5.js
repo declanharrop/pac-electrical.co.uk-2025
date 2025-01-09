@@ -1,0 +1,27 @@
+import { useContext } from 'react';
+import { GetAQuoteContext } from '@/Context/GetAQuoteContext';
+
+export default function SolarComView5() {
+  const { addUserDetails, submitOption } = useContext(GetAQuoteContext);
+
+  return (
+    <>
+      <h4>Can we take your name?</h4>
+      <form onSubmit={(e) => submitOption(e, '/get-a-quote/solar/com/6')}>
+        <input
+          type="text"
+          required
+          onChange={(e) => addUserDetails({ name: e.target.value })}
+          placeholder="Full Name"
+        />
+        <button
+          type="submit"
+          className="button-alt"
+          style={{ marginTop: '30px' }}
+        >
+          NEXT <span>→</span>
+        </button>
+      </form>
+    </>
+  );
+}

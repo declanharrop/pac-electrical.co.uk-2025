@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import { useContext } from 'react';
+import { usePathname } from 'next/navigation';
 import Styles from './Header.module.css';
 import LeftNav from './LeftNav';
 import RightNav from './RightNav';
@@ -12,7 +13,7 @@ import GetAQuoteButton from '@/Elements/Buttons/GetAQuoteButton';
 
 export default function HeaderBar() {
   const { windowWidth } = useContext(HeaderContext);
-  console.log(windowWidth);
+  const pathname = usePathname();
   return (
     <>
       {windowWidth && (
@@ -56,30 +57,36 @@ export default function HeaderBar() {
           </div>
           {windowWidth < 1090 && (
             <>
-              <div
-                style={{
-                  position: 'fixed',
-                  zIndex: '1000',
-                  bottom: '70px',
-                  right: '10px',
-                }}
-              >
-                <GetAQuoteButton />
-              </div>
+              {pathname.includes('get-a-quote') ? null : (
+                <div
+                  style={{
+                    position: 'fixed',
+                    zIndex: '1000',
+                    bottom: '70px',
+                    right: '10px',
+                  }}
+                >
+                  <GetAQuoteButton />
+                </div>
+              )}
               <MobileNavDock />
             </>
           )}
           {windowWidth > 1090 && (
-            <div
-              style={{
-                position: 'fixed',
-                zIndex: '1000',
-                bottom: '0px',
-                right: '10px',
-              }}
-            >
-              <GetAQuoteButton />
-            </div>
+            <>
+              {pathname.includes('get-a-quote') ? null : (
+                <div
+                  style={{
+                    position: 'fixed',
+                    zIndex: '1000',
+                    bottom: '0px',
+                    right: '10px',
+                  }}
+                >
+                  <GetAQuoteButton />
+                </div>
+              )}
+            </>
           )}
         </>
       )}

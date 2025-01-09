@@ -1,40 +1,72 @@
 'use client';
 
 import { useContext } from 'react';
+import { use100vh } from 'react-div-100vh';
 import { GetAQuoteContext } from '@/Context/GetAQuoteContext';
+import Styles from '@/Styles/Pages/GetAQuote.module.css';
 
 export default function GetAQuotePage() {
   const { chooseOption } = useContext(GetAQuoteContext);
-
-  return (
-    <div>
-      <button
-        className="button-alt"
-        type="button"
-        onClick={() =>
-          chooseOption({ service: 'Solar' }, '/get-a-quote/solar/1')
-        }
+  const height = use100vh();
+  if (height) {
+    return (
+      <div
+        className={Styles.GetAQuotePage}
+        style={{ height: `calc(${height}px - 160px)` }}
       >
-        Solar
-      </button>
-      <button
-        className="button-alt"
-        type="button"
-        onClick={() =>
-          chooseOption({ service: 'EV Charging' }, '/get-a-quote/ev/1')
-        }
-      >
-        EV Charging
-      </button>
-      <button
-        className="button-alt"
-        type="button"
-        onClick={() =>
-          chooseOption({ service: 'Electrical' }, '/get-a-quote/electrical/1')
-        }
-      >
-        Electrical
-      </button>
-    </div>
-  );
+        <div className={Styles.GetAQuotePage__Container}>
+          <button
+            className={Styles.GetAQuotePage__Button}
+            type="button"
+            onClick={() =>
+              chooseOption({ service: 'Solar' }, '/get-a-quote/solar/1')
+            }
+          >
+            <div>
+              <img
+                className={Styles.GetAQuotePage__Button_Icon}
+                src="/icons/solar-alt.svg"
+                alt="Solar Icon"
+              />
+              <h5>GET A QUOTE</h5>
+              <h2 className={Styles.GetAQuotePage__Button_Text}>SOLAR</h2>
+            </div>
+          </button>
+          <button
+            className={Styles.GetAQuotePage__Button}
+            type="button"
+            onClick={() =>
+              chooseOption(
+                { service: 'Electrical' },
+                '/get-a-quote/electrical/1',
+              )
+            }
+          >
+            <img
+              className={Styles.GetAQuotePage__Button_Icon}
+              src="/icons/electrical-alt.svg"
+              alt="Solar Icon"
+            />
+            <h5>GET A QUOTE</h5>
+            <h2 className={Styles.GetAQuotePage__Button_Text}>ELECTRICAL</h2>
+          </button>
+          <button
+            className={Styles.GetAQuotePage__Button}
+            type="button"
+            onClick={() =>
+              chooseOption({ service: 'EV Charging' }, '/get-a-quote/ev/1')
+            }
+          >
+            <img
+              className={Styles.GetAQuotePage__Button_Icon}
+              src="/icons/ev-charging-alt.svg"
+              alt="Solar Icon"
+            />
+            <h5>GET A QUOTE</h5>
+            <h2 className={Styles.GetAQuotePage__Button_Text}>EV Charging</h2>
+          </button>
+        </div>
+      </div>
+    );
+  }
 }
