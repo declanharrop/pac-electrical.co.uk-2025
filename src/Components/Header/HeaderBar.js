@@ -8,6 +8,7 @@ import RightNav from './RightNav';
 import { HeaderContext } from '@/Context/HeaderContext';
 import RightNavMobile from './RightNavMobile';
 import MobileNavDock from './MobileNavDock';
+import GetAQuoteButton from '@/Elements/Buttons/GetAQuoteButton';
 
 export default function HeaderBar() {
   const { windowWidth } = useContext(HeaderContext);
@@ -53,7 +54,33 @@ export default function HeaderBar() {
               </div>
             )}
           </div>
-          {windowWidth < 1090 && <MobileNavDock />}
+          {windowWidth < 1090 && (
+            <>
+              <div
+                style={{
+                  position: 'fixed',
+                  zIndex: '1000',
+                  bottom: '70px',
+                  right: '10px',
+                }}
+              >
+                <GetAQuoteButton />
+              </div>
+              <MobileNavDock />
+            </>
+          )}
+          {windowWidth > 1090 && (
+            <div
+              style={{
+                position: 'fixed',
+                zIndex: '1000',
+                bottom: '0px',
+                right: '10px',
+              }}
+            >
+              <GetAQuoteButton />
+            </div>
+          )}
         </>
       )}
     </>

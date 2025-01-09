@@ -19,9 +19,12 @@ export const HeaderProvider = ({ children }) => {
     };
   }, []);
 
+  const closeMenu = () => {
+    setActiveDropdown(null);
+  };
   return (
     <HeaderContext.Provider
-      value={{ activeDropdown, setActiveDropdown, windowWidth }}
+      value={{ activeDropdown, setActiveDropdown, windowWidth, closeMenu }}
     >
       {children}
     </HeaderContext.Provider>

@@ -13,10 +13,6 @@ export default function LowerHeaderBar({
   selectOptions = false,
   links = [
     {
-      name: 'Get a Quote',
-      link: '/solar/quote',
-    },
-    {
       name: 'Our Installs',
       link: '/case-studies/solar',
     },
@@ -76,7 +72,12 @@ export default function LowerHeaderBar({
       >
         <div className={Styles.LowerHeaderBar_Container}>
           <div className={Styles.LowerHeaderBar_Container_Left}>
-            <h2 style={{ fontSize: '2.2rem' }}>{title}</h2>
+            <h2
+              className={Styles.LowerHeaderBar_Container_Left_Title}
+              style={{ fontSize: '2.2rem' }}
+            >
+              {title}
+            </h2>
           </div>
           {selectOptions ? (
             <div className={Styles.LowerHeaderBar_Container_Right}>

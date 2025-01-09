@@ -1,9 +1,23 @@
 import { AnimatePresence, motion } from 'framer-motion';
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import Styles from './Header.module.css';
 import { HeaderContext } from '@/Context/HeaderContext';
 
+function useOutsideAlerter(ref) {
+  const { closeMenu } = useContext(HeaderContext);
+  useEffect(() => {
+    function handleClickOutside(event) {
+      if (ref.current && !ref.current.contains(event.target)) {
+        closeMenu();
+      }
+    }
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [ref, closeMenu]);
+}
 export default function HeaderDropdown({
   title,
   color = 'var(--green)',
@@ -30,6 +44,10 @@ export default function HeaderDropdown({
   const transition = {
     height: { ease: 'easeOut', duration: 0.6 },
   };
+
+  const wrapperRef = useRef(null);
+  useOutsideAlerter(wrapperRef);
+
   return (
     <>
       <AnimatePresence>
@@ -42,6 +60,7 @@ export default function HeaderDropdown({
             style={{ borderTop: `5px solid ${color}` }}
             className={Styles.LowerHeaderBar_Dropdown}
             onMouseLeave={() => setActiveDropdown(null)}
+            ref={wrapperRef}
           >
             <ul className={Styles.LowerHeaderBar_Dropdown_UL}>
               {dropdownOptions.map((option) => (

@@ -8,10 +8,6 @@ export default function EVLayout({ children }) {
         title="EV Charge Points"
         links={[
           {
-            name: 'Get a Quote',
-            link: '/ev/quote',
-          },
-          {
             name: 'Charge Points',
             link: '/ev/chargers',
           },

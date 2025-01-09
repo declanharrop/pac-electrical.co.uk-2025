@@ -16,10 +16,6 @@ export default function UsLayout({ children }) {
             link: '/case-studies/electrical',
           },
           {
-            name: 'Our Team',
-            link: '/us/our-team',
-          },
-          {
             name: 'News',
             link: '/us/news',
           },
@@ -29,6 +25,10 @@ export default function UsLayout({ children }) {
           },
         ]}
         dropdownOptions={[
+          {
+            name: 'Our Team',
+            link: '/us/our-team',
+          },
           {
             name: 'Recruitment',
             link: '/us/recruitment',
