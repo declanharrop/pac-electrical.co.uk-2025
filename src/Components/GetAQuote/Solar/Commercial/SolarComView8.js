@@ -1,10 +1,11 @@
 import { useContext } from 'react';
 import { GetAQuoteContext } from '@/Context/GetAQuoteContext';
+import Styles from '../../GetAQuote.module.css';
 
 export default function SolarComView8() {
   const { addUserDetails, submitOption } = useContext(GetAQuoteContext);
   return (
-    <>
+    <div className={Styles.Solar__GAQ__FormView__Container}>
       <h4>We just need your address now...</h4>
       <form onSubmit={(e) => submitOption(e, '/get-a-quote/solar/com/9')}>
         <input
@@ -27,6 +28,6 @@ export default function SolarComView8() {
           NEXT <span>→</span>
         </button>
       </form>
-    </>
+    </div>
   );
 }

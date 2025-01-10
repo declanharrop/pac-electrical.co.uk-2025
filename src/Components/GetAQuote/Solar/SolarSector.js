@@ -16,7 +16,7 @@ export default function SolarSector() {
       >
         <img
           className={Styles.GetAQuotePage__Button_Icon}
-          src="/icons/electrical-alt.svg"
+          src="/icons/home-alt.svg"
           alt="Solar Icon"
         />
         <h5>Solar</h5>
@@ -32,7 +32,7 @@ export default function SolarSector() {
       >
         <img
           className={Styles.GetAQuotePage__Button_Icon}
-          src="/icons/electrical-alt.svg"
+          src="/icons/commercial-alt.svg"
           alt="Solar Icon"
         />
         <h5>Solar</h5>

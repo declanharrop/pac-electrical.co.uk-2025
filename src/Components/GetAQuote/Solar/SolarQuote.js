@@ -42,7 +42,7 @@ export default function SolarQuote({ step, sector }) {
           <h5 style={{ marginBottom: '10px' }}>Get a Quote</h5>
           <h2>Solar</h2>
         </div>
-        <div className={Styles.Solar__GAQ__Container}>
+        <div style={{ height: '100%' }}>
           {userDetails.sector.length === 0 && <SolarSector />}
           {sector === 'dom' && (
             <>

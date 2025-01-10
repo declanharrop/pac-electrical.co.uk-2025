@@ -47,11 +47,50 @@
   line-height: 1.4;
 }
 
+.GetAQuotePage__Button_Text_SM {
+  font-size: 1.6rem;
+  line-height: 1.4;
+}
+
 .Solar__GAQ__Sector__Container {
-  height: 100%;
+  height: calc(100% - 90px);
   display: grid;
   gap: 20px;
   grid-template-rows: 1fr 1fr;
+}
+
+.Solar__GAQ__View1__Container {
+  height: calc(100% - 130px);
+  margin-top: 20px;
+  display: grid;
+  gap: 20px;
+  grid-template-rows: 1fr 1fr 1fr;
+}
+
+.Solar__GAQ__View2__Container {
+  height: calc(100% - 130px);
+  margin-top: 20px;
+  display: grid;
+  gap: 20px;
+  grid-template-rows: 1fr 1fr;
+}
+
+.Solar__GAQ__View4__Container {
+  height: calc(100% - 130px);
+  margin-top: 20px;
+  display: grid;
+  gap: 20px;
+  grid-template-rows: 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
+}
+
+.Solar__GAQ__FormView__Container {
+  height: calc(100% - 100px);
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
 @media screen and (min-width: 800px) {
@@ -59,12 +98,31 @@
   .Solar__GAQ__Sector__Container {
     grid-template-rows: 1fr;
     grid-template-columns: 1fr 1fr;
-    height: auto;
+    height: calc(100% -90px);
+    align-items: center;
   }
 
   .Solar__GAQ__Container {
     display: flex;
     justify-content: center;
+    align-items: center;
+  }
+
+  .Solar__GAQ__View1__Container {
+    margin-top: 20px;
+    display: grid;
+    gap: 20px;
+    grid-template-rows: 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
+    align-items: center;
+  }
+
+  .Solar__GAQ__View2__Container {
+    margin-top: 20px;
+    display: grid;
+    gap: 20px;
+    grid-template-rows: 1fr;
+    grid-template-columns: 1fr 1fr;
     align-items: center;
   }
 

@@ -191,7 +191,7 @@ label {
 }
 
 input {
-  font-family: 'urbanist';
+  font-family: var(--font-urbanist);
   background: white;
   font-size: 1.6rem;
   font-weight: 400;
@@ -205,7 +205,7 @@ input {
 }
 
 textarea {
-  font-family: 'urbanist';
+  font-family: var(--font-urbanist);
   background: white;
   font-size: 1.6rem;
   font-weight: 400;

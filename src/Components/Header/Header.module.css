@@ -332,19 +332,19 @@
 
 .BaseBar__Nav__Li {
   list-style-type: none;
-  padding: 6px 0 0;
+  padding: 8px 0 0;
 }
 
 .BaseBar__Nav__Item__Text {
   font-size: 1rem;
   font-weight: 800;
-  margin-top: 0px;
+  margin-top: 2px;
 }
 
 .BaseBar__Nav__Item__Text__InActive {
   font-size: 1rem;
   font-weight: 500;
-  margin-top: 0px;
+  margin-top: 2px;
   color: #959595;
   letter-spacing: 0.1rem;
 }
