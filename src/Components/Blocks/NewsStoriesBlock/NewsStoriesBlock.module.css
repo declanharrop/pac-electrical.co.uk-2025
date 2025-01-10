@@ -103,6 +103,10 @@
 }
 
 @media screen and (max-width: 500px) {
+  .NewsStoriesBlock {
+    padding: 10px;
+  }
+
   .NewsStoriesBlock_Container_Lower {
     padding: 0px;
   }
