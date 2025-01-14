@@ -12,7 +12,6 @@ export default function CaseStudiesHero({ data }) {
   const height = use100vh();
 
   const featuredStudy = data[0];
-  console.log(featuredStudy);
 
   useEffect(() => {
     if (height) {

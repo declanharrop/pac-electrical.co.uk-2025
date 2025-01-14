@@ -208,6 +208,10 @@
   align-items: center;
 }
 
+.LowerHeaderBar_Container_Left_Title {
+  font-size: 2rem;
+}
+
 .LowerHeaderBar_UL {
   list-style: none;
   display: flex;
@@ -299,7 +303,8 @@
 
 @media screen and (max-width: 700px) {
   .LowerHeaderBar_Container_Left_Title {
-    display: none;
+    font-size: 1.6rem;
+    margin-left: -20px;
   }
 }
 

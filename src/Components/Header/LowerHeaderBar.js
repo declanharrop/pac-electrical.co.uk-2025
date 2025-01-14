@@ -74,10 +74,7 @@ export default function LowerHeaderBar({
       >
         <div className={Styles.LowerHeaderBar_Container}>
           <div className={Styles.LowerHeaderBar_Container_Left}>
-            <h2
-              className={Styles.LowerHeaderBar_Container_Left_Title}
-              style={{ fontSize: '2.2rem' }}
-            >
+            <h2 className={Styles.LowerHeaderBar_Container_Left_Title}>
               {title}
             </h2>
           </div>
