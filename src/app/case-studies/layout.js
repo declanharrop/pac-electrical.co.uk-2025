@@ -6,33 +6,31 @@ import { CaseStudiesProvider } from '@/Context/CaseStudiesContext';
 
 export default function CaseStudyLayout({ children }) {
   return (
-    <CaseStudiesProvider>
-      <div>
-        <LowerHeaderBar
-          color="var(--navy)"
-          title="Our Work"
-          selectOptions={[
-            {
-              name: 'All',
-              value: 'all',
-            },
-            {
-              name: 'Electrical',
-              value: 'electrical',
-            },
-            {
-              name: 'Solar',
-              value: 'solar',
-            },
-            {
-              name: 'EV',
-              value: 'ev',
-            },
-          ]}
-          selectedValue="electrical"
-        />
-        {children}
-      </div>
-    </CaseStudiesProvider>
+    <div>
+      <LowerHeaderBar
+        color="var(--navy)"
+        title="Our Work"
+        selectOptions={[
+          {
+            name: 'All',
+            value: 'all',
+          },
+          {
+            name: 'Electrical',
+            value: 'electrical',
+          },
+          {
+            name: 'Solar',
+            value: 'solar',
+          },
+          {
+            name: 'EV',
+            value: 'ev',
+          },
+        ]}
+        selectedValue="electrical"
+      />
+      {children}
+    </div>
   );
 }

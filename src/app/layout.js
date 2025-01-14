@@ -7,6 +7,7 @@ import ProgressBarProviders from '@/Utils/ProgressBarProvider';
 import HeaderBar from '@/Components/Header/HeaderBar';
 import { HeaderProvider } from '@/Context/HeaderContext';
 import MobileNavDock from '@/Components/Header/MobileNavDock';
+import { CaseStudiesProvider } from '@/Context/CaseStudiesContext';
 
 const GoodTimes = localFont({
   src: [
@@ -86,7 +87,9 @@ export default async function RootLayout({ children }) {
             <HeaderBar />
             <ApolloWrapper>
               <ProgressBarProviders>
-                <main>{children}</main>
+                <CaseStudiesProvider>
+                  <main>{children}</main>
+                </CaseStudiesProvider>
               </ProgressBarProviders>
               {/* <MobileNavDock /> */}
             </ApolloWrapper>
