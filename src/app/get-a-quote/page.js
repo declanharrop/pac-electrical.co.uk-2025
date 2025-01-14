@@ -26,7 +26,7 @@ export default function GetAQuotePage() {
             <div>
               <div style={{ position: 'relative' }}>
                 <Image
-                  style={{ marginBottom: '40px' }}
+                  style={{ marginBottom: '20px' }}
                   width={120}
                   height={120}
                   src="/icons/solar-alt.svg"
@@ -49,7 +49,7 @@ export default function GetAQuotePage() {
           >
             <div style={{ position: 'relative' }}>
               <Image
-                style={{ marginBottom: '40px' }}
+                style={{ marginBottom: '20px' }}
                 width={120}
                 height={120}
                 src="/icons/electrical-alt.svg"
@@ -68,7 +68,7 @@ export default function GetAQuotePage() {
           >
             <div style={{ position: 'relative' }}>
               <Image
-                style={{ marginBottom: '40px' }}
+                style={{ marginBottom: '20px' }}
                 width={120}
                 height={120}
                 src="/icons/ev-charging-alt.svg"

@@ -219,9 +219,26 @@ textarea {
   min-height: 200px;
 }
 
+select {
+
+  /* styling */
+
+  /* reset */
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
 .dark-divider {
   background: var(--black);
   height: 2px;
+}
+
+.light-divider {
+  background: var(--grey);
+  height: 1px;
 }
 
 

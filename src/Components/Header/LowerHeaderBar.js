@@ -6,6 +6,7 @@ import { useRouter } from 'next/navigation';
 import Styles from './Header.module.css';
 import HeaderDropdown from './HeaderDropdown';
 import { HeaderContext } from '@/Context/HeaderContext';
+import { CaseStudiesContext } from '@/Context/CaseStudiesContext';
 
 export default function LowerHeaderBar({
   title = 'Solar',
@@ -60,10 +61,11 @@ export default function LowerHeaderBar({
 
   const router = useRouter();
 
-  function handleChange(e) {
-    router.push(`/case-studies/${e.target.value}`);
-  }
+  const { selectedValue } = useContext(CaseStudiesContext);
 
+  function handleChange(e) {
+    router.push(`/case-studies${e.target.value}`);
+  }
   return (
     <>
       <div
@@ -84,10 +86,12 @@ export default function LowerHeaderBar({
               <select
                 onChange={handleChange}
                 className={Styles.LowerHeaderBar_Select}
+                value={`/${selectedValue}`}
               >
-                <option value="solar">Solar</option>
-                <option value="electrical">Electrical</option>
-                <option value="ev">EV</option>
+                <option value="/all">All</option>
+                <option value="/solar">Solar</option>
+                <option value="/electrical">Electrical</option>
+                <option value="/ev">EV</option>
               </select>
             </div>
           ) : (

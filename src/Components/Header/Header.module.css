@@ -271,19 +271,28 @@
 .LowerHeaderBar_Select {
   font-family: var(--font-urbanist);
   font-weight: 500;
-  font-size: 1.6rem;
+  font-size: 1.4rem;
+  text-align: left;
   letter-spacing: 0.15rem;
   text-transform: uppercase;
-  padding: 6px 20px;
+  padding: 9px 44px 9px 20px;
   margin: -8px -20px;
   border-radius: 20px;
-  appearance: none;
-  -webkit-appearance: none;
-  -moz-appearance: none;
   border: none;
-  background: var(--black);
-  color: white;
-  text-align: right;
+  background: white;
+  background-image:
+    linear-gradient(45deg, transparent 50%, gray 50%),
+    linear-gradient(135deg, gray 50%, transparent 50%),
+    linear-gradient(to right, #ccc, #ccc);
+  background-position:
+    calc(100% - 20px) calc(1em + 2px),
+    calc(100% - 15px) calc(1em + 2px),
+    calc(100% - 2.5em) 0.5em;
+  background-size:
+    5px 5px,
+    5px 5px,
+    1px 1.5em;
+  background-repeat: no-repeat;
 }
 
 @media screen and (max-width: 1000px) {}

@@ -15,6 +15,21 @@ export const LATEST_STUDIES_QUERY = gql`
     }
   }
 `;
+export const STUDIES_QUERY = gql`
+  query {
+    caseStudies(orderBy: date_DESC) {
+      id
+      date
+      hero {
+        url(transformation: { document: { output: { format: webp } } })
+      }
+      studySectors
+      title
+      slug
+      introduction
+    }
+  }
+`;
 
 export const LATEST_NEWS_QUERY = gql`
   query {
