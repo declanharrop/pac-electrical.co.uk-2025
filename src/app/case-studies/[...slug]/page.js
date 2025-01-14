@@ -7,6 +7,17 @@ import CaseStudiesFrame from '@/Frames/CaseStudiesFrame';
 export default function CaseStudies(params) {
   const { data } = useQuery(STUDIES_QUERY);
 
+  const caseStudies = data?.caseStudies;
+  const electricalStudies = data?.caseStudies.filter((study) =>
+    study.studySectors.includes('electrical'),
+  );
+  const solarStudies = data?.caseStudies.filter((study) =>
+    study.studySectors.includes('solar'),
+  );
+  const evStudies = data?.caseStudies.filter((study) =>
+    study.studySectors.includes('evCharging'),
+  );
+
   if (params) {
     if (data) {
       if (params.params.slug[0] === 'study') {
@@ -17,27 +28,27 @@ export default function CaseStudies(params) {
         );
       }
       if (params.params.slug[0] === 'all') {
-        return <CaseStudiesFrame data={data} title="All Case Studies" />;
+        return <CaseStudiesFrame data={caseStudies} title="All Case Studies" />;
       }
       if (params.params.slug[0] === 'electrical') {
         return (
-          <div style={{ marginTop: '100px' }}>
-            <h1>Case Studies Electrical</h1>
-          </div>
+          <CaseStudiesFrame
+            data={electricalStudies}
+            title="Electrical Case Studies"
+          />
         );
       }
       if (params.params.slug[0] === 'solar') {
         return (
-          <div style={{ marginTop: '100px' }}>
-            <h1>Case Studies Solar</h1>
-          </div>
+          <CaseStudiesFrame
+            data={solarStudies}
+            title="Electrical Case Studies"
+          />
         );
       }
       if (params.params.slug[0] === 'ev') {
         return (
-          <div style={{ marginTop: '100px' }}>
-            <h1>Case Studies EV</h1>
-          </div>
+          <CaseStudiesFrame data={evStudies} title="Electrical Case Studies" />
         );
       }
     }

@@ -8,11 +8,11 @@ import { HeaderContext } from '@/Context/HeaderContext';
 export default function CaseStudiesHero({ data }) {
   const { windowWidth } = useContext(HeaderContext);
   const [displayHeight, setDisplayHeight] = useState();
+  const [otherStudies, setOtherStudies] = useState();
   const height = use100vh();
 
   const featuredStudy = data[0];
   console.log(featuredStudy);
-  const otherStudies = data.slice(1);
 
   useEffect(() => {
     if (height) {
@@ -25,7 +25,13 @@ export default function CaseStudiesHero({ data }) {
         setDisplayHeight('auto');
       }
     }
-  }, [height, windowWidth]);
+    if (data.length > 3) {
+      setOtherStudies(data.slice(1, 4));
+    }
+    if (data.length === 3) {
+      setOtherStudies(data.slice(1, 3));
+    }
+  }, [height, windowWidth, data]);
 
   if (displayHeight) {
     return (
