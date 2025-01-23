@@ -19,6 +19,7 @@ export const GetAQuoteProvider = ({ children }) => {
     elecUsage: '',
     solarType: '',
     homeSize: '',
+    heardFrom: '',
   });
 
   const addUserDetails = (data) => {
@@ -61,6 +62,7 @@ export const GetAQuoteProvider = ({ children }) => {
       elecUsage: userDetails.elecUsage,
       homeSize: userDetails.homeSize,
       details: userDetails.details,
+      heardFrom: userDetails.heardFrom,
     };
 
     const JSONData = JSON.stringify(formData);

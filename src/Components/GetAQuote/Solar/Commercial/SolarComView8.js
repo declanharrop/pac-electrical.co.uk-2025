@@ -7,7 +7,7 @@ export default function SolarComView8() {
   return (
     <div className={Styles.Solar__GAQ__FormView__Container}>
       <h4>We just need your address now...</h4>
-      <form onSubmit={(e) => submitOption(e, '/get-a-quote/solar/com/9')}>
+      <form onSubmit={(e) => submitOption(e, '/get-a-quote/solar/com/10')}>
         <input
           type="text"
           required

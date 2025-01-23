@@ -11,7 +11,7 @@ export default function SolarSector() {
         className={Styles.GetAQuotePage__Button}
         type="button"
         onClick={() =>
-          chooseOption({ sector: 'domestic' }, '/get-a-quote/solar/dom/1')
+          chooseOption({ sector: 'Domestic' }, '/get-a-quote/solar/dom/1')
         }
       >
         <img
@@ -27,7 +27,7 @@ export default function SolarSector() {
         className={Styles.GetAQuotePage__Button}
         type="button"
         onClick={() =>
-          chooseOption({ sector: 'commercial' }, '/get-a-quote/solar/com/1')
+          chooseOption({ sector: 'Commercial' }, '/get-a-quote/solar/com/1')
         }
       >
         <img

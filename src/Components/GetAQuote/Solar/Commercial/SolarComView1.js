@@ -31,7 +31,7 @@ export default function SolarComView1() {
           type="button"
           onClick={() =>
             chooseOption(
-              { solarType: 'Solar Only' },
+              { solarType: 'Solar & Battery' },
               '/get-a-quote/solar/com/2',
             )
           }
@@ -50,7 +50,7 @@ export default function SolarComView1() {
           type="button"
           onClick={() =>
             chooseOption(
-              { solarType: 'Solar Only' },
+              { solarType: 'Solar, Battery & EV' },
               '/get-a-quote/solar/com/2',
             )
           }

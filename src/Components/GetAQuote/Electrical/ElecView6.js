@@ -2,18 +2,23 @@ import { useContext } from 'react';
 import { GetAQuoteContext } from '@/Context/GetAQuoteContext';
 import Styles from '../GetAQuote.module.css';
 
-export default function ElecVeiw1() {
+export default function SolarComView8() {
   const { addUserDetails, submitOption } = useContext(GetAQuoteContext);
-
   return (
     <div className={Styles.Solar__GAQ__FormView__Container}>
-      <h4>First lets get your name...</h4>
-      <form onSubmit={(e) => submitOption(e, '/get-a-quote/electrical/2')}>
+      <h4>We just need your address now...</h4>
+      <form onSubmit={(e) => submitOption(e, '/get-a-quote/electrical/5')}>
         <input
           type="text"
           required
-          onChange={(e) => addUserDetails({ name: e.target.value })}
-          placeholder="Full Name"
+          onChange={(e) => addUserDetails({ address: e.target.value })}
+          placeholder="First Line of Address"
+        />
+        <input
+          type="text"
+          required
+          onChange={(e) => addUserDetails({ postcode: e.target.value })}
+          placeholder="Postcode"
         />
         <button
           type="submit"

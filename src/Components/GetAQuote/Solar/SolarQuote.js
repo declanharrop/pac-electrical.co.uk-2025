@@ -1,5 +1,5 @@
 import { useRouter } from 'next/navigation';
-import { use, useContext, useEffect } from 'react';
+import { useContext, useEffect } from 'react';
 import { use100vh } from 'react-div-100vh';
 import { GetAQuoteContext } from '@/Context/GetAQuoteContext';
 import Styles from '../GetAQuote.module.css';
@@ -21,6 +21,8 @@ import SolarComView6 from './Commercial/SolarComView6';
 import SolarComView7 from './Commercial/SolarComView7';
 import SolarComView8 from './Commercial/SolarComView8';
 import SolarComView9 from './Commercial/SolarComView9';
+import SolarComView10 from './Commercial/SolarComView10';
+import SolarDomView10 from './Domestic/SolarDomView10';
 
 export default function SolarQuote({ step, sector }) {
   const { userDetails } = useContext(GetAQuoteContext);
@@ -54,6 +56,7 @@ export default function SolarQuote({ step, sector }) {
               {step === '6' && <SolarDomView6 />}
               {step === '7' && <SolarDomView7 />}
               {step === '8' && <SolarDomView8 />}
+              {step === '10' && <SolarDomView10 />}
               {step === '9' && <SolarDomView9 />}
             </>
           )}
@@ -66,6 +69,7 @@ export default function SolarQuote({ step, sector }) {
               {step === '6' && <SolarComView6 />}
               {step === '7' && <SolarComView7 />}
               {step === '8' && <SolarComView8 />}
+              {step === '10' && <SolarComView10 />}
               {step === '9' && <SolarComView9 />}
             </>
           )}

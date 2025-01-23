@@ -8,6 +8,7 @@ import HeaderBar from '@/Components/Header/HeaderBar';
 import { HeaderProvider } from '@/Context/HeaderContext';
 import MobileNavDock from '@/Components/Header/MobileNavDock';
 import { CaseStudiesProvider } from '@/Context/CaseStudiesContext';
+import Footer from '@/Components/Footer/Footer';
 
 const GoodTimes = localFont({
   src: [
@@ -89,6 +90,7 @@ export default async function RootLayout({ children }) {
               <ProgressBarProviders>
                 <CaseStudiesProvider>
                   <main>{children}</main>
+                  <Footer />
                 </CaseStudiesProvider>
               </ProgressBarProviders>
               {/* <MobileNavDock /> */}

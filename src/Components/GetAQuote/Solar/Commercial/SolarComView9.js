@@ -1,4 +1,4 @@
-import { useContext, useEffect } from 'react';
+import { useContext } from 'react';
 import { GetAQuoteContext } from '@/Context/GetAQuoteContext';
 import Styles from '../../GetAQuote.module.css';
 

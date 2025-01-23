@@ -1,12 +1,13 @@
 import { useContext } from 'react';
 import { GetAQuoteContext } from '@/Context/GetAQuoteContext';
+import Styles from '../GetAQuote.module.css';
 
 export default function ElecVeiw3() {
   const { addUserDetails, submitOption } = useContext(GetAQuoteContext);
   return (
-    <>
+    <div className={Styles.Solar__GAQ__FormView__Container}>
       <h4>What's your Phone Number?</h4>
-      <form onSubmit={(e) => submitOption(e, '/get-a-quote/electrical/4')}>
+      <form onSubmit={(e) => submitOption(e, '/get-a-quote/electrical/6')}>
         <input
           type="phone"
           required
@@ -21,6 +22,6 @@ export default function ElecVeiw3() {
           NEXT <span>→</span>
         </button>
       </form>
-    </>
+    </div>
   );
 }

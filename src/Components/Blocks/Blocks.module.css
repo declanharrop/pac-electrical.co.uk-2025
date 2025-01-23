@@ -63,6 +63,40 @@
   margin: 0 auto;
 }
 
+.SmoothScrollLogosBlock {
+  -webkit-transition-timing-function: linear !important;
+  -o-transition-timing-function: linear !important;
+  transition-timing-function: linear !important;
+  margin: 80px 0;
+  padding: 20px 0;
+  background: white;
+}
+
+.SmoothScrollLogosBlock_Brand {
+  width: 100%;
+  max-width: 100px;
+  margin: 0 auto;
+}
+
+.VideoBlock {
+  margin: 80px 0;
+  padding: 10px;
+}
+
+.VideoBlock__Container {
+  position: relative;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.VideoBlock__Container__Video {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  width: 100% !important;
+  max-width: 800px;
+  margin: 60px 0 20px 0;
+}
+
 @media screen and (max-width: 1200px) {
   .ThreeItemBlock_Container_Item_Icon {
     height: 140px;
@@ -104,5 +138,14 @@
   .ThreeItemBlock_Container_Item {
     padding: 40px 20px;
     min-height: 340px;
+  }
+
+  .VideoBlock__Container__Video {
+    margin: 20px 0 20px 0;
+  }
+
+  .VideoBlock {
+    margin: 40px 0;
+    padding: 10px;
   }
 }
