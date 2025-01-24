@@ -5,12 +5,8 @@ export default function UsLayout({ children }) {
     <div>
       <LowerHeaderBar
         color="var(--navy)"
-        title="Power & Control"
+        title="About Us"
         links={[
-          {
-            name: 'Contact Us',
-            link: '/us/contact',
-          },
           {
             name: 'Our Work',
             link: '/case-studies/electrical',
@@ -25,6 +21,10 @@ export default function UsLayout({ children }) {
           },
         ]}
         dropdownOptions={[
+          {
+            name: 'Contact Us',
+            link: '/us/contact',
+          },
           {
             name: 'Our Team',
             link: '/us/our-team',
