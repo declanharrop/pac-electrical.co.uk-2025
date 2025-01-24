@@ -46,3 +46,23 @@ export const LATEST_NEWS_QUERY = gql`
     }
   }
 `;
+
+export const LATEST_SECTOR_STUDIES_QUERY = gql`
+  query ($sector: Sector!) {
+    caseStudies(
+      orderBy: date_DESC
+      where: { studySectors_contains_all: [$sector] }
+      first: 2
+    ) {
+      id
+      date
+      hero {
+        url(transformation: { document: { output: { format: webp } } })
+      }
+      studySectors
+      title
+      slug
+      introduction
+    }
+  }
+`;
