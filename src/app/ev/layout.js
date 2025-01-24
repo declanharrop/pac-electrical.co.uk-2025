@@ -5,15 +5,11 @@ export default function EVLayout({ children }) {
     <div>
       <LowerHeaderBar
         color="var(--neon)"
-        title="EV Charge Points"
+        title="EV Charging"
         links={[
           {
             name: 'Charge Points',
             link: '/ev/chargers',
-          },
-          {
-            name: 'Our Work',
-            link: '/case-studies/ev',
           },
           {
             name: 'More',
@@ -21,6 +17,10 @@ export default function EVLayout({ children }) {
           },
         ]}
         dropdownOptions={[
+          {
+            name: 'Our Work',
+            link: '/case-studies/ev',
+          },
           {
             name: 'Our Installation Process',
             link: '/ev/installation',

@@ -8,10 +8,6 @@ export default function ElectricalLayout({ children }) {
         title="Electrical"
         links={[
           {
-            name: 'Contact Us',
-            link: '/electrical/contact',
-          },
-          {
             name: 'Our Work',
             link: '/case-studies/electrical',
           },
