@@ -94,18 +94,18 @@ export default function LowerHeaderBar({
           ) : (
             <div className={Styles.LowerHeaderBar_Container_Left}>
               <ul className={Styles.LowerHeaderBar_UL}>
-                {links.map((link) => (
-                  <>
+                {links.map((link, i) => (
+                  <div key={i}>
                     {link.dropdown ? (
                       <li
-                        key={link.name}
+                        key={i}
                         className={Styles.LowerHeaderBar_LI}
                         onMouseEnter={() => setActiveDropdown(title)}
                       >
                         {link.name}
                       </li>
                     ) : (
-                      <li key={link.name} className={Styles.LowerHeaderBar_LI}>
+                      <li key={i} className={Styles.LowerHeaderBar_LI}>
                         <Link
                           className={Styles.LowerHeaderBar_LI_Link}
                           href={link.link}
@@ -114,7 +114,7 @@ export default function LowerHeaderBar({
                         </Link>
                       </li>
                     )}
-                  </>
+                  </div>
                 ))}
               </ul>
             </div>

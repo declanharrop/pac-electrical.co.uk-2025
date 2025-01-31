@@ -66,3 +66,60 @@ export const LATEST_SECTOR_STUDIES_QUERY = gql`
     }
   }
 `;
+
+export const STANDARD_PAGE_QUERY = gql`
+  query StandardPageQuery($id: ID!) {
+    page(where: { id: $id }) {
+      id
+      pageTitle
+      heroImage {
+        image {
+          url(transformation: { document: { output: { format: webp } } })
+        }
+        title
+        subtitle
+      }
+      pageSections {
+        ... on BlocksSection {
+          id
+          contentBlock {
+            text
+            title
+            image {
+              url(transformation: { document: { output: { format: webp } } })
+            }
+            moreInfo
+          }
+          title
+        }
+        ... on FaQsSection {
+          id
+          title
+          subtitle
+          frequentlyAskedQuestion {
+            id
+            question
+            answer
+          }
+        }
+        ... on ImageSection {
+          id
+          image {
+            url(transformation: { document: { output: { format: webp } } })
+          }
+          title
+          subtitle
+        }
+        ... on ImageTextSection {
+          id
+          image {
+            url(transformation: { document: { output: { format: webp } } })
+          }
+          title
+          text
+          textLeft
+        }
+      }
+    }
+  }
+`;

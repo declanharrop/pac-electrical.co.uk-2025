@@ -16,9 +16,9 @@ export default function HeaderBar() {
   const pathname = usePathname();
   return (
     <>
-      {windowWidth && (
-        <>
-          <div className={Styles.HeaderBar}>
+      <div className={Styles.HeaderBar}>
+        {windowWidth && (
+          <>
             {windowWidth < 1090 ? (
               <div className={Styles.HeaderBar_Container}>
                 <div className={Styles.HeaderBar_Container_Left}>
@@ -54,39 +54,39 @@ export default function HeaderBar() {
                 </div>
               </div>
             )}
-          </div>
-          {windowWidth < 1090 && (
-            <>
-              {pathname.includes('get-a-quote') ? null : (
-                <div
-                  style={{
-                    position: 'fixed',
-                    zIndex: '1000',
-                    bottom: '70px',
-                    right: '10px',
-                  }}
-                >
-                  <GetAQuoteButton />
-                </div>
-              )}
-              <MobileNavDock />
-            </>
+          </>
+        )}
+      </div>
+      {windowWidth < 1090 && (
+        <>
+          {pathname.includes('get-a-quote') ? null : (
+            <div
+              style={{
+                position: 'fixed',
+                zIndex: '1000',
+                bottom: '70px',
+                right: '10px',
+              }}
+            >
+              <GetAQuoteButton />
+            </div>
           )}
-          {windowWidth > 1090 && (
-            <>
-              {pathname.includes('get-a-quote') ? null : (
-                <div
-                  style={{
-                    position: 'fixed',
-                    zIndex: '1000',
-                    bottom: '0px',
-                    right: '10px',
-                  }}
-                >
-                  <GetAQuoteButton />
-                </div>
-              )}
-            </>
+          <MobileNavDock />
+        </>
+      )}
+      {windowWidth > 1090 && (
+        <>
+          {pathname.includes('get-a-quote') ? null : (
+            <div
+              style={{
+                position: 'fixed',
+                zIndex: '1000',
+                bottom: '0px',
+                right: '10px',
+              }}
+            >
+              <GetAQuoteButton />
+            </div>
           )}
         </>
       )}

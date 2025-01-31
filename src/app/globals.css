@@ -266,6 +266,11 @@ select {
   height: 1px;
 }
 
+.white-divider {
+  background: white;
+  height: 1px;
+}
+
 
 /* 
 /
