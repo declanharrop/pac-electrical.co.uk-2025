@@ -1,3 +1,31 @@
 .Footer {
-  margin: 40px auto;
+  margin: 60px auto;
+  padding: 20px;
+}
+
+.Footer_Container h4 {
+  color: var(--black);
+  margin-bottom: 10px;
+}
+
+.Footer_Container_Contact {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 20px;
+  margin: 30px auto;
+  max-width: 1000px;
+}
+
+.Footer_Container_Contact_Add {
+  background: white;
+  padding: 40px 20px;
+  text-align: left;
+  color: var(--black);
+}
+
+.Footer_Container_Contact_GIT {
+  background: white;
+  padding: 40px 20px;
+  text-align: left;
+  color: var(--black);
 }

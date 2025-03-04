@@ -86,8 +86,30 @@ export default function Footer() {
         </svg>
       </div>
       <div className={Styles.Footer}>
-        <div className={Styles.Footer__Container}>
-          <h3>Footer</h3>
+        <div className={Styles.Footer_Container}>
+          <h2>Power & Control Ltd</h2>
+          <div className={Styles.Footer_Container_Contact}>
+            <div className={Styles.Footer_Container_Contact_Add}>
+              <h4>Unit 2, Colemans Yard,</h4>
+              <h4>Alfreton Road,</h4>
+              <h4>Derby,</h4>
+              <h4>DE21 4AL</h4>
+            </div>
+            <div className={Styles.Footer_Container_Contact_GIT}>
+              <h4>
+                <b>Phone:</b>
+              </h4>
+              <a href="tel:01332552320">
+                <h4 style={{ marginBottom: '20px' }}>01332 552 320</h4>
+              </a>
+              <h4>
+                <b>Email:</b>
+              </h4>
+              <a href="mailto:enquiries@pac-electrical.co.uk">
+                <h4>enquiries@pac-electrical.co.uk</h4>
+              </a>
+            </div>
+          </div>
         </div>
       </div>
     </>

@@ -7,7 +7,7 @@ export default function RightNav() {
     <nav className={Styles.RightNav}>
       <ul className={Styles.RightNav_UL}>
         <li className={Styles.RightNav_LI}>
-          <TopMenuButton title="US" color="var(--navy)" link="/us" />
+          <TopMenuButton title="ABOUT" color="var(--navy)" link="/us" />
         </li>
       </ul>
       <div className={Styles.RightNav_Socials}>
