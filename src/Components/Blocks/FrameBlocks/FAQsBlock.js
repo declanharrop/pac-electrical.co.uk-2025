@@ -1,10 +1,10 @@
+'use client';
+
 import { motion, AnimatePresence } from 'framer-motion';
 import { useState } from 'react';
 import styles from './FrameBlocks.module.css';
 
 export default function FAQsBlock({ data }) {
-  console.log(data);
-
   const [isOpen, setIsOpen] = useState(null);
 
   const handleClick = (question) => {

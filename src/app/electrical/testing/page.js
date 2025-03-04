@@ -6,13 +6,13 @@ export async function generateMetadata() {
   const client = getClient();
   const { data } = await client.query({
     query: STANDARD_PAGE_QUERY,
-    variables: { id: 'cm6knvq59bp2i06l63uuo3gva' },
+    variables: { id: 'cm7t7202j76yp07ldfvds9gvo' },
   });
 
   const { page } = data;
 
   const METADATA = {
-    Url: `https://pac-electrical.co.uk/electrical/commercial`,
+    Url: `https://pac-electrical.co.uk/electrical/testing`,
     SiteName: `Power & Control Ltd - ${page.metaTitle}`,
     Description: `${page.metaDescription}`,
   };
@@ -38,12 +38,12 @@ export async function generateMetadata() {
     },
   };
 }
-export default async function DomesticElectricalPage() {
+export default async function TestingPage() {
   const client = getClient();
   const { data } = await client.query({
     query: STANDARD_PAGE_QUERY,
     variables: {
-      id: 'cm6knvq59bp2i06l63uuo3gva',
+      id: 'cm7t7202j76yp07ldfvds9gvo',
     },
   });
 

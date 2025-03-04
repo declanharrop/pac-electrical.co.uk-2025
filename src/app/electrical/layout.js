@@ -30,20 +30,16 @@ export default function ElectricalLayout({ children }) {
             link: '/electrical/led',
           },
           {
-            name: 'Infared Heating Systems',
-            link: '/electrical/infared',
+            name: 'Infrared Heating Systems',
+            link: '/electrical/infrared',
           },
           {
             name: 'Testing & Inspections',
             link: '/electrical/testing',
           },
           {
-            name: 'Fault Finding',
+            name: 'Fault Finding & Maintenance',
             link: '/electrical/fault',
-          },
-          {
-            name: 'Repairs & Maintenance',
-            link: '/electrical/repairs',
           },
           {
             name: 'Data Communication',

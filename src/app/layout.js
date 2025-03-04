@@ -34,49 +34,31 @@ const urbanist = Urbanist({
   display: 'swap',
 });
 
-const APP_NAME = 'Power & Control - Solar Installer & Commercial Electrician';
-const APP_DEFAULT_TITLE =
-  'Power & Control - Solar Installer & Commercial Electrician';
-const APP_TITLE_TEMPLATE =
-  'Power & Control - Solar Installer & Commercial Electrician';
-const APP_DESCRIPTION = 'Derby Solar Installer & Commercial Electrician';
-export const metadata = {
-  applicationName: APP_NAME,
-  title: {
-    default: APP_DEFAULT_TITLE,
-    template: APP_TITLE_TEMPLATE,
-  },
-  description: APP_DESCRIPTION,
-  manifest: '/manifest.json',
-  appleWebApp: {
-    capable: true,
-    statusBarStyle: 'default',
-    title: APP_DEFAULT_TITLE,
-    // startUpImage: [],
-  },
-  formatDetection: {
-    telephone: false,
-  },
-  openGraph: {
-    type: 'website',
-    siteName: APP_NAME,
-    title: {
-      default: APP_DEFAULT_TITLE,
-      template: APP_TITLE_TEMPLATE,
-    },
-    description: APP_DESCRIPTION,
-  },
-  twitter: {
-    card: 'summary',
-    title: {
-      default: APP_DEFAULT_TITLE,
-      template: APP_TITLE_TEMPLATE,
-    },
-    description: APP_DESCRIPTION,
-  },
+const METADATA = {
+  Url: 'https://pac-electrical.co.uk',
+  SiteName: 'Power & Control - Solar Installer & Commercial Electrician',
+  Description: '',
 };
-export const viewport = {
-  themeColor: '#FFFFFF',
+export const metadata = {
+  title: METADATA.SiteName,
+  applicationName: METADATA.SiteName,
+  description: METADATA.Description,
+  referrer: 'origin-when-cross-origin',
+  url: METADATA.Url,
+  openGraph: {
+    title: METADATA.SiteName,
+    description: METADATA.Description,
+    url: METADATA.Url,
+    images: [
+      {
+        url: `${METADATA.Url}/images/sustain1.webp`, // Must be an absolute URL
+        width: 800,
+        height: 600,
+      },
+    ],
+    locale: 'en_GB',
+    type: 'website',
+  },
 };
 
 export default async function RootLayout({ children }) {

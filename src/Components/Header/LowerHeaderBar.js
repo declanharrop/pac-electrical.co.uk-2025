@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { useContext } from 'react';
 import { useRouter } from 'next/navigation';
+import { Sling as Hamburger } from 'hamburger-react';
 import Styles from './Header.module.css';
 import HeaderDropdown from './HeaderDropdown';
 import { HeaderContext } from '@/Context/HeaderContext';
@@ -102,7 +103,8 @@ export default function LowerHeaderBar({
                         className={Styles.LowerHeaderBar_LI}
                         onMouseEnter={() => setActiveDropdown(title)}
                       >
-                        {link.name}
+                        {/* {link.name} */}
+                        <Hamburger toggled={activeDropdown === title} />
                       </li>
                     ) : (
                       <li key={i} className={Styles.LowerHeaderBar_LI}>

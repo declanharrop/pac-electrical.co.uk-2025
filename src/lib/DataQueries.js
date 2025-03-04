@@ -72,6 +72,8 @@ export const STANDARD_PAGE_QUERY = gql`
     page(where: { id: $id }) {
       id
       pageTitle
+      metaTitle
+      metaDescription
       heroImage {
         image {
           url(transformation: { document: { output: { format: webp } } })
@@ -118,6 +120,12 @@ export const STANDARD_PAGE_QUERY = gql`
           title
           text
           textLeft
+        }
+        ... on VideoSection {
+          id
+          subtitle
+          videoTitle
+          video
         }
       }
     }

@@ -4,8 +4,10 @@ import FAQsBlock from '@/Components/Blocks/FrameBlocks/FAQsBlock';
 import ImageBlock from '@/Components/Blocks/FrameBlocks/ImageBlock';
 import BlockBlock from '@/Components/Blocks/FrameBlocks/BlockBlock';
 import ImageTextBlock from '@/Components/Blocks/FrameBlocks/ImageTextBlock';
+import VideoBlock from '@/Components/Blocks/VideoBlock';
+import SmoothScrollLogosBlock from '@/Components/Blocks/SmoothScrollLogosBlock';
 
-export default function StandardPageFrame({ data }) {
+export default function StandardPageFrame({ data, solar = false }) {
   return (
     <div className={styles.StandardPageFrame}>
       <ImageHero
@@ -15,6 +17,7 @@ export default function StandardPageFrame({ data }) {
         subtitle={data.heroImage.subtitle}
         height="60vh"
       />
+      {solar && <SmoothScrollLogosBlock />}
       <div className={styles.content}>
         {data.pageSections.map((section, i) => (
           <div key={i}>
@@ -29,6 +32,9 @@ export default function StandardPageFrame({ data }) {
             )}
             {section.__typename === 'FaQsSection' && (
               <FAQsBlock data={section} />
+            )}
+            {section.__typename === 'VideoSection' && (
+              <VideoBlock data={section} />
             )}
           </div>
         ))}

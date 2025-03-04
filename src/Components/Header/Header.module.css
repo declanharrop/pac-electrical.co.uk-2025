@@ -225,6 +225,10 @@
   font-weight: 400;
   color: white;
   letter-spacing: 0.1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
 }
 
 .LowerHeaderBar_LI_Link {

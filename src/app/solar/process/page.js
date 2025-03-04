@@ -6,14 +6,14 @@ export async function generateMetadata() {
   const client = getClient();
   const { data } = await client.query({
     query: STANDARD_PAGE_QUERY,
-    variables: { id: 'cm6knvq59bp2i06l63uuo3gva' },
+    variables: { id: 'cm7u9aqr8bgm906mjrltgs26f' },
   });
 
   const { page } = data;
 
   const METADATA = {
-    Url: `https://pac-electrical.co.uk/electrical/commercial`,
-    SiteName: `Power & Control Ltd - ${page.metaTitle}`,
+    Url: `https://pac-electrical.co.uk/solar/process`,
+    SiteName: `${page.metaTitle} - Power & Control Ltd`,
     Description: `${page.metaDescription}`,
   };
   return {
@@ -38,16 +38,16 @@ export async function generateMetadata() {
     },
   };
 }
-export default async function DomesticElectricalPage() {
+export default async function SolarProcessPage() {
   const client = getClient();
   const { data } = await client.query({
     query: STANDARD_PAGE_QUERY,
     variables: {
-      id: 'cm6knvq59bp2i06l63uuo3gva',
+      id: 'cm7u9aqr8bgm906mjrltgs26f',
     },
   });
 
   const { page } = data;
 
-  return <StandardPageFrame data={page} />;
+  return <StandardPageFrame data={page} solar />;
 }

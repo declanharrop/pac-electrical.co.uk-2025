@@ -1,3 +1,4 @@
+import BrandsBlock from '@/Components/Blocks/BrandsBlock';
 import LargeImageBlock from '@/Components/Blocks/LargeImageBlock';
 import LatestStudiesBlock from '@/Components/Blocks/LatestStudiesBlock';
 import SmoothScrollLogosBlock from '@/Components/Blocks/SmoothScrollLogosBlock';
@@ -15,6 +16,7 @@ export default function SolarPage() {
       <SmoothScrollLogosBlock />
       <VideoBlock subtitle="Let us show you what an install from Power & Control will look like in your home" />
       <TextWithImageBlock />
+      <BrandsBlock />
       <LatestStudiesBlock title="Solar" query="solar" />
       <LargeImageBlock />
     </div>
