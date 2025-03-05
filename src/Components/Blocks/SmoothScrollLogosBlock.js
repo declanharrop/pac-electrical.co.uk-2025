@@ -1,6 +1,5 @@
 'use client';
 
-import React, { useRef, useState } from 'react';
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay } from 'swiper/modules';
@@ -8,6 +7,7 @@ import Styles from './Blocks.module.css';
 import 'swiper/css';
 
 export default function SmoothScrollLogosBlock({
+  margin = '80px 0',
   brands = [
     { brand: 'Aiko', image: 'solar/Aiko.png' },
     { brand: 'Clenergy', image: 'solar/Clenergy.png' },
@@ -29,7 +29,10 @@ export default function SmoothScrollLogosBlock({
   ],
 }) {
   return (
-    <div className={Styles.SmoothScrollLogosBlock}>
+    <div
+      className={Styles.SmoothScrollLogosBlock}
+      style={{ margin: `${margin}` }}
+    >
       <Swiper
         className={Styles.SmoothScrollLogosBlock__Swiper}
         loop

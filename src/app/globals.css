@@ -163,6 +163,7 @@ p {
 }
 
 a {
+  position: relative;
   font-family: var(--font-urbanist);
   font-size: 1.6rem;
   font-weight: 300;

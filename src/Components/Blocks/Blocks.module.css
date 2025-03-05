@@ -56,7 +56,7 @@
   -webkit-transition-timing-function: linear !important;
   -o-transition-timing-function: linear !important;
   transition-timing-function: linear !important;
-  margin: 80px 0;
+
   padding: 20px 0;
   background: white;
 }
@@ -394,4 +394,66 @@
   .BrandsBlock_Container_Brands {
     grid-template-columns: 1fr;
   }
+}
+
+/* 
+//
+//
+//
+//
+//
+// Services Block
+//
+//
+//
+//
+//
+*/
+
+.ServicesBlock {}
+
+.ServicesBlock_Container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 20px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-top: 50px;
+}
+
+.ServicesBlock_Service {
+  position: relative;
+  background: white;
+  min-height: 200px;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.ServicesBlock_Service_Image {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.ServicesBlock_Service_Content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-start;
+  flex-direction: column;
+  padding: 14px 20px;
+  text-align: center;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0) 40%, rgba(255, 255, 255, 0.7) 80%, rgba(255, 255, 255, 0.9) 100%);
+}
+
+.ServicesBlock_Service_Content h2 {
+  color: var(--black);
+  font-size: 2rem;
+  font-weight: 500;
+  letter-spacing: 0.2rem;
 }

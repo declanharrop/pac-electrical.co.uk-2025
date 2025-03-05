@@ -24,8 +24,8 @@
   position: absolute;
   top: 0;
   left: 0;
-  background: radial-gradient(circle at 70% 20%, rgba(27, 24, 25, 0) 10%, rgba(27, 24, 25, 0.6) 30%, rgba(27, 24, 25, 1) 60%, rgba(27, 24, 25, 1) 100%);
   ;
+  background: radial-gradient(circle at 70% 20%, rgba(27, 24, 25, 0) 10%, rgba(27, 24, 25, 0.6) 30%, rgba(27, 24, 25, 1) 60%, rgba(27, 24, 25, 1) 100%);
   height: 100%;
   width: 100%;
 }
@@ -41,7 +41,7 @@
 }
 
 .VideoHero_Overlay_Container_Content {
-  padding: 0 20px;
+  padding: 40px 20px;
   text-align: left;
 }
 

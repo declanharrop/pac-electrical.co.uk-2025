@@ -13,7 +13,7 @@ export default function SolarPage() {
         <h1>Solar</h1>
         <h3>UNLEASH THE POWER OF THE SUN</h3>
       </VideoHero>
-      <SmoothScrollLogosBlock />
+      <SmoothScrollLogosBlock margin="0 auto 100px" />
       <VideoBlock subtitle="Let us show you what an install from Power & Control will look like in your home" />
       <TextWithImageBlock />
       <BrandsBlock />
