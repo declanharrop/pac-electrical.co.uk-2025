@@ -428,12 +428,18 @@
   min-height: 200px;
   border-radius: 20px;
   overflow: hidden;
+  transition: all 0.3s ease-in-out;
+}
+
+.ServicesBlock_Service:hover {
+  transform: scale(1.01);
 }
 
 .ServicesBlock_Service_Image {
   position: relative;
   width: 100%;
   height: 100%;
+  min-height: 200px;
 }
 
 .ServicesBlock_Service_Content {
