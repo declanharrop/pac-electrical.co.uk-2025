@@ -81,6 +81,52 @@ export const LATEST_NEWS_QUERY = gql`
   }
 `;
 
+export const NEWS_STORY = gql`
+  query Articles($slug: String!) {
+    articles(where: { slug: $slug }) {
+      date
+      id
+      title
+      heroAlt
+      tag
+      ytVideo
+      subtitle
+      metaDescription
+      slug
+      hero {
+        url(transformation: { document: { output: { format: webp } } })
+      }
+      content {
+        html
+      }
+      slideshow {
+        id
+        url(transformation: { document: { output: { format: webp } } })
+      }
+    }
+  }
+`;
+
+export const ALL_NEWS_DATA = gql`
+  query AllNewsData {
+    articles(orderBy: date_DESC, first: 1000) {
+      date
+      id
+      title
+      tag
+      subtitle
+      metaDescription
+      slug
+      hero {
+        url(transformation: { document: { output: { format: webp } } })
+      }
+      content {
+        html
+      }
+    }
+  }
+`;
+
 export const LATEST_SECTOR_STUDIES_QUERY = gql`
   query ($sector: Sector!) {
     caseStudies(

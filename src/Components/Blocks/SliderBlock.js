@@ -14,6 +14,7 @@ import 'swiper/css/effect-coverflow';
 import 'swiper/css/autoplay';
 import 'swiper/css/navigation';
 
+import Image from 'next/image';
 import styles from './Blocks.module.css';
 
 export default function SliderBlock({
@@ -64,7 +65,16 @@ export default function SliderBlock({
       >
         {images.map((slide, i) => (
           <SwiperSlide key={i} className={styles.SwiperSlide}>
-            <img src={slide.url} alt="" />
+            <div
+              style={{ height: '500px', width: '100%', position: 'relative' }}
+            >
+              <Image
+                src={slide.url}
+                alt=""
+                fill
+                style={{ objectFit: 'cover' }}
+              />
+            </div>
           </SwiperSlide>
         ))}
       </Swiper>

@@ -3,7 +3,7 @@ import Link from 'next/link';
 import styles from './FrameComponents.module.css';
 import SectorLabel from '@/Utils/SectorLabel';
 
-export default function CaseStudiesGrid({ title, data }) {
+export default function CaseStudiesGrid({ title, data, article }) {
   const studies = data?.slice(4);
 
   return (
@@ -31,7 +31,7 @@ export default function CaseStudiesGrid({ title, data }) {
                   <h4 className={styles.CaseStudiesGrid_Study_Content_Title}>
                     {study.title}
                   </h4>
-                  <SectorLabel data={study.studySectors} />
+                  {article && <SectorLabel data={study.studySectors} />}
                 </div>
               </div>
             </div>

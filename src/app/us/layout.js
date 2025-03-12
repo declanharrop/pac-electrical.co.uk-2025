@@ -13,7 +13,7 @@ export default function UsLayout({ children }) {
           },
           {
             name: 'News',
-            link: '/us/news',
+            link: '/news',
           },
           {
             name: 'More',
