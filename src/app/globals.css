@@ -177,6 +177,10 @@ a {
   line-height: 1.2;
 }
 
+br {
+  margin-top: 20px;
+}
+
 @media screen and (max-width: 600px) {
   h1 {
     font-size: 3.6rem;

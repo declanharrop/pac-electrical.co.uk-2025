@@ -31,6 +31,40 @@ export const STUDIES_QUERY = gql`
   }
 `;
 
+export const STUDY_QUERY = gql`
+  query caseStudies($slug: String!) {
+    caseStudies(where: { slug: $slug }) {
+      id
+      title
+      slug
+      metaDesc
+      hero {
+        url(transformation: { document: { output: { format: webp } } })
+      }
+      introduction
+      date
+      client
+      sector
+      technology
+      systemSize
+      paybackPeriod
+      savings
+      installed
+      annualOutput
+      ytVideo
+      co2Savings
+      slideshow {
+        id
+        url(transformation: { document: { output: { format: webp } } })
+      }
+      content {
+        html
+      }
+      tag
+    }
+  }
+`;
+
 export const LATEST_NEWS_QUERY = gql`
   query {
     articles(first: 4, orderBy: date_DESC) {

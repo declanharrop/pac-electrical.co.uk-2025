@@ -1,0 +1,45 @@
+.CookieBanner {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  padding: 10px;
+  background-color: #ffffff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  color: #fff;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.CookieBanner p {
+  color: var(--black);
+  font-size: 1.4rem;
+}
+
+.ButtonPlacer {
+  margin-left: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.MiniButton {
+  padding: 4px 10px;
+  height: 30px;
+  font-size: 1.3rem;
+  margin: 0 10px 0 0;
+  background: var(--grey);
+  border: 2px solid var(--grey);
+}
+
+.AcceptButton {
+  margin: 0;
+
+  &:hover {
+    background: var(--green);
+    border: 1px solid var(--green);
+  }
+}

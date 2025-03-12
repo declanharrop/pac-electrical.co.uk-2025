@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import { use100vh } from 'react-div-100vh';
-import { use, useContext, useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import Styles from './FrameComponents.module.css';
 import SectorLabel from '@/Utils/SectorLabel';
 import { HeaderContext } from '@/Context/HeaderContext';

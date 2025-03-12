@@ -463,3 +463,49 @@
   font-weight: 500;
   letter-spacing: 0.2rem;
 }
+
+/* 
+//
+//
+//
+//
+//
+// Services Block
+//
+//
+//
+//
+//
+*/
+
+.SliderBlock {
+  position: relative;
+  /* overflow: hidden; */
+  margin: 50px 0;
+
+}
+
+.SwiperWrapper {
+  position: relative;
+
+
+}
+
+.SwiperSlide {
+  position: relative;
+  width: 100%;
+  max-width: 1400px;
+  height: 100%;
+  padding: 30px;
+
+}
+
+.SwiperSlide img {
+  border-radius: 10px;
+  position: relative;
+  max-height: 60vh;
+  width: 100%;
+  height: 100%;
+  max-width: 1400px;
+  object-fit: cover;
+}
