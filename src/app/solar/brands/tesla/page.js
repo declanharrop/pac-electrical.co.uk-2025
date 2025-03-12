@@ -6,7 +6,7 @@ export async function generateMetadata() {
   const client = getClient();
   const { data } = await client.query({
     query: STANDARD_PAGE_QUERY,
-    variables: { id: 'cm7uj3tns2qci07miqse6wmjq' },
+    variables: { id: 'cm863lju25gr208mm0iodam1a' },
   });
 
   const { page } = data;
@@ -43,7 +43,7 @@ export default async function TeslaPage() {
   const { data } = await client.query({
     query: STANDARD_PAGE_QUERY,
     variables: {
-      id: 'cm7uj3tns2qci07miqse6wmjq',
+      id: 'cm863lju25gr208mm0iodam1a',
     },
   });
 
