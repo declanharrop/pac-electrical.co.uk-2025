@@ -14,9 +14,26 @@ export default function SolarPage() {
         <h3>UNLEASH THE POWER OF THE SUN</h3>
       </VideoHero>
       <SmoothScrollLogosBlock margin="0 auto 100px" />
+      <BrandsBlock
+        title="Sectors"
+        brands={[
+          {
+            link: '/solar/domestic',
+            heroImage: '/images/solar/pac-sol-2.webp',
+            alt: 'Domestic Solar from Power & Control',
+            name: 'Domestic Solar',
+          },
+          {
+            link: '/solar/commercial',
+            heroImage: '/images/solar/comsol1.webp',
+            alt: 'Comercial Solar from Power & Control',
+            name: 'Commercial Solar',
+          },
+        ]}
+      />
       <VideoBlock subtitle="Let us show you what an install from Power & Control will look like in your home" />
-      <TextWithImageBlock />
       <BrandsBlock />
+      <TextWithImageBlock />
       <LatestStudiesBlock title="Solar" query="solar" />
       <LargeImageBlock />
     </div>

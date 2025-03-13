@@ -21,10 +21,15 @@ export default function ServicesBlock({
       title: 'LED Lighting Systems',
       link: '/electrical/led',
     },
+    // {
+    //   image: 'electrical/inf.webp',
+    //   title: 'Infrared Heating Systems',
+    //   link: '/electrical/infrared',
+    // },
     {
-      image: 'electrical/inf.webp',
-      title: 'Infrared Heating Systems',
-      link: '/electrical/infrared',
+      image: 'electrical/data.webp',
+      title: 'Data Communications',
+      link: '/electrical/data',
     },
     {
       image: 'electrical/testing.webp',
@@ -32,14 +37,9 @@ export default function ServicesBlock({
       link: '/electrical/testing',
     },
     {
-      image: 'electrical/',
+      image: 'electrical/faultfinding.webp',
       title: 'Fault Finding & Maintenance',
       link: '/electrical/fault',
-    },
-    {
-      image: 'electrical/',
-      title: 'Data Communications',
-      link: '/electrical/data',
     },
   ],
 }) {

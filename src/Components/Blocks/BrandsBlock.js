@@ -2,6 +2,7 @@ import Image from 'next/image';
 import Styles from './Blocks.module.css';
 
 export default function BrandsBlock({
+  title = 'Explore Solar Brands',
   brands = [
     {
       link: '/solar/brands/tesla',
@@ -22,7 +23,7 @@ export default function BrandsBlock({
   return (
     <div className={Styles.BrandsBlock}>
       <div className={Styles.BrandsBlock_Container}>
-        <h2>Explore Solar Brands</h2>
+        <h2>{title}</h2>
         <div className={Styles.BrandsBlock_Container_Brands}>
           {brands.map((brand, index) => (
             <div className={Styles.BrandsBlock_Brand}>
@@ -37,7 +38,22 @@ export default function BrandsBlock({
                   <div
                     className={Styles.BrandsBlock_Brand_Overlay_Content_Logo}
                   >
-                    <Image src={brand.image} alt={brand.alt} fill />
+                    {brand.image && (
+                      <Image src={brand.image} alt={brand.alt} fill />
+                    )}
+                    {!brand.image && (
+                      <h2
+                        style={{
+                          color: 'var(--black)',
+                          fontSize: '2rem',
+                          fontWeight: '600',
+                          textWrap: 'nowrap',
+                          paddingTop: '12px',
+                        }}
+                      >
+                        {brand.name}
+                      </h2>
+                    )}
                   </div>
                   <div>
                     <a href={brand.link} key={index}>
