@@ -14,6 +14,9 @@ export default function ImageTextBlock({ data }) {
           />
         </div>
         <div className={Styles.ImageTextBlock__Text}>
+          {data.title && (
+            <h2 className={Styles.ImageTextBlock__Text_H2}>{data.title}</h2>
+          )}
           {data.text.map((text, index) => (
             <p className={Styles.ImageTextBlock__Text_P} key={index}>
               {text}

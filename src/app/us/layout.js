@@ -25,18 +25,18 @@ export default function UsLayout({ children }) {
             name: 'Contact Us',
             link: '/us/contact',
           },
-          {
-            name: 'Our Team',
-            link: '/us/our-team',
-          },
-          {
-            name: 'Recruitment',
-            link: '/us/recruitment',
-          },
-          {
-            name: 'Reviews',
-            link: '/us/reviews',
-          },
+          // {
+          //   name: 'Our Team',
+          //   link: '/us/our-team',
+          // },
+          // {
+          //   name: 'Recruitment',
+          //   link: '/us/recruitment',
+          // },
+          // {
+          //   name: 'Reviews',
+          //   link: '/us/reviews',
+          // },
         ]}
       />
       {children}

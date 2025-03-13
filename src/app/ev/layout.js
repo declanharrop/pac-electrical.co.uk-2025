@@ -7,9 +7,13 @@ export default function EVLayout({ children }) {
         color="var(--neon)"
         title="EV Charging"
         links={[
+          // {
+          //   name: 'Charge Points',
+          //   link: '/ev/chargers',
+          // },
           {
-            name: 'Charge Points',
-            link: '/ev/chargers',
+            name: 'Our Work',
+            link: '/case-studies/ev',
           },
           {
             name: 'More',
@@ -17,14 +21,10 @@ export default function EVLayout({ children }) {
           },
         ]}
         dropdownOptions={[
-          {
-            name: 'Our Work',
-            link: '/case-studies/ev',
-          },
-          {
-            name: 'Our Installation Process',
-            link: '/ev/installation',
-          },
+          // {
+          //   name: 'Our Installation Process',
+          //   link: '/ev/installation',
+          // },
           {
             name: 'Home EV Charge Points',
             link: '/ev/',

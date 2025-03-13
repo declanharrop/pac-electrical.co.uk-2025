@@ -35,6 +35,10 @@
   height: 100%;
 }
 
+.ImageTextBlock__Text_H2 {
+  font-size: 2rem;
+}
+
 .ImageTextBlock__Text_P {
   margin: 10px 0;
 }
