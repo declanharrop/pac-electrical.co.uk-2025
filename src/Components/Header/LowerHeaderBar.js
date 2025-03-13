@@ -20,7 +20,7 @@ export default function LowerHeaderBar({
     },
     {
       name: 'Brands',
-      link: '/solar/systems',
+      link: '/solar/brands',
     },
     {
       name: 'More',

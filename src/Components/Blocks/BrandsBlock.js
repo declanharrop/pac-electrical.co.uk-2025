@@ -4,14 +4,14 @@ import Styles from './Blocks.module.css';
 export default function BrandsBlock({
   brands = [
     {
-      link: 'solar/brands/tesla',
+      link: '/solar/brands/tesla',
       image: '/images/solar/tesla.svg',
       heroImage: '/images/solar/Tesla-Hero.webp',
       alt: 'Tesla',
       name: 'Tesla',
     },
     {
-      link: 'solar/brands/ecoflow',
+      link: '/solar/brands/ecoflow',
       image: '/images/solar/ecoflow.svg',
       heroImage: '/images/solar/EcoFlow-Hero.webp',
       alt: 'Tesla',
