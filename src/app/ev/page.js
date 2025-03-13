@@ -1,3 +1,4 @@
+import BrandsBlock from '@/Components/Blocks/BrandsBlock';
 import ServicesBlock from '@/Components/Blocks/ServicesBlock';
 import TextWithImageBlock from '@/Components/Blocks/TextWithImageBlock';
 import VideoHero from '@/Components/Hero/VideoHero';
@@ -89,6 +90,23 @@ export default function EVPage() {
             charger: 'sync-ev.webp',
             description:
               'Sync EV chargers provide discreet, compact, weatherproof chargers for both the home and the workplace.',
+          },
+        ]}
+      />
+      <BrandsBlock
+        title="Sectors"
+        brands={[
+          {
+            link: '/ev/domestic',
+            heroImage: '/images/ev/domev.webp',
+            alt: 'Domestic EV Charge Points from Power & Control',
+            name: 'Domestic',
+          },
+          {
+            link: '/ev/commercial',
+            heroImage: '/images/ev/comev.webp',
+            alt: 'Comercial EV Charge Points from Power & Control',
+            name: 'Commercial',
           },
         ]}
       />
