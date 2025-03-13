@@ -42,9 +42,11 @@ export default function ServicesBlock({
       link: '/electrical/fault',
     },
   ],
+  title,
 }) {
   return (
     <div className={styles.ServicesBlock}>
+      {title && <h2>{title}</h2>}
       <div className={styles.ServicesBlock_Container}>
         {services.map((service, index) => (
           <Link
