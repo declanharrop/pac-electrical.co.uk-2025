@@ -27,11 +27,11 @@ export default function EVLayout({ children }) {
           // },
           {
             name: 'Home EV Charge Points',
-            link: '/ev/',
+            link: '/ev/domestic',
           },
           {
             name: 'Workplace EV Charge Points',
-            link: '/ev/',
+            link: '/ev/commercial',
           },
         ]}
       />

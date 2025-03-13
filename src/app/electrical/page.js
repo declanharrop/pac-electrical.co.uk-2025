@@ -32,8 +32,8 @@ export default function ElectricalPage() {
         image="/images/electrical/com1.webp"
         title="Electrical"
         text={[
-          'With the increase in electric vehicles, many people are looking to install domestic or commercial EV chargers to their properties. All electric vehicles require an EV charger to charge their battery. Installing a charger at your home or workplace will mean owning an electric vehicle is effortless.',
-          'At Power and Control, we specialise in domestic and commercial EV charger installations. We install a wide range of chargers.',
+          'At Power & Control, we are experienced in providing electrical installations, maintenance and repair services in commercial and domestic settings. Whether you’re looking for large-scale LED lighting installations or have a fault in your electrical system that needs fixing, we can help.',
+          'From design to installation, we offer a complete turnkey solution for your project, providing everything you need from start to finish.',
         ]}
       />
       <div style={{ marginTop: '100px' }} />

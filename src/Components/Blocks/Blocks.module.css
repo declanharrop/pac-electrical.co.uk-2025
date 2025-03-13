@@ -458,10 +458,19 @@
 }
 
 .ServicesBlock_Service_Content h2 {
+
   color: var(--black);
   font-size: 2rem;
   font-weight: 500;
   letter-spacing: 0.2rem;
+}
+
+.ServicesBlock_Service_Content_Charger {
+  position: absolute;
+  right: 20px;
+  bottom: 0;
+  height: 100%;
+  width: 140px;
 }
 
 /* 

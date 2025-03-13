@@ -56,16 +56,38 @@ export default function ServicesBlock({
           >
             <div key={index} className={styles.ServicesBlock_Service}>
               <div className={styles.ServicesBlock_Service_Image}>
-                <Image
-                  src={`/images/${service.image}`}
-                  alt={service.title}
-                  fill
-                  style={{ objectFit: 'cover' }}
-                />
+                {service.image && (
+                  <Image
+                    src={`/images/${service.image}`}
+                    alt={service.title}
+                    fill
+                    style={{ objectFit: 'cover' }}
+                  />
+                )}
               </div>
               <div className={styles.ServicesBlock_Service_Content}>
                 <h2>{service.title}</h2>
+                <p
+                  style={{
+                    textAlign: 'left',
+                    paddingRight: '160px',
+                    paddingTop: '10px',
+                  }}
+                >
+                  {service.description}
+                </p>
               </div>
+              {service.charger && (
+                <div className={styles.ServicesBlock_Service_Content_Charger}>
+                  {console.log(service.charger)}
+                  <Image
+                    src={`/images/chargers/${service.charger}`}
+                    alt={service.title}
+                    fill
+                    style={{ objectFit: 'contain' }}
+                  />
+                </div>
+              )}
             </div>
           </Link>
         ))}
