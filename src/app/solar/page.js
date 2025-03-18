@@ -6,6 +6,33 @@ import TextWithImageBlock from '@/Components/Blocks/TextWithImageBlock';
 import VideoBlock from '@/Components/Blocks/VideoBlock';
 import VideoHero from '@/Components/Hero/VideoHero';
 
+const METADATA = {
+  Url: 'https://pac-electrical.co.uk/solar',
+  SiteName: 'Solar PV & Battery Storage - Power & Control',
+  Description:
+    'Power & Control: Maximise your energy savings with our professional solar panel installations. Top-tier systems for homes & businesses across the Midlands & UK. Get your free solar quote!',
+};
+export const metadata = {
+  title: METADATA.SiteName,
+  applicationName: METADATA.SiteName,
+  description: METADATA.Description,
+  referrer: 'origin-when-cross-origin',
+  url: METADATA.Url,
+  openGraph: {
+    title: METADATA.SiteName,
+    description: METADATA.Description,
+    url: METADATA.Url,
+    images: [
+      {
+        url: `${METADATA.Url}/images/sustain1.webp`, // Must be an absolute URL
+        width: 800,
+        height: 600,
+      },
+    ],
+    locale: 'en_GB',
+    type: 'website',
+  },
+};
 export default function SolarPage() {
   return (
     <div>

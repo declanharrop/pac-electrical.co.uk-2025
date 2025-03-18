@@ -3,6 +3,33 @@ import ServicesBlock from '@/Components/Blocks/ServicesBlock';
 import TextWithImageBlock from '@/Components/Blocks/TextWithImageBlock';
 import VideoHero from '@/Components/Hero/VideoHero';
 
+const METADATA = {
+  Url: 'https://pac-electrical.co.uk/ev',
+  SiteName: 'EV Charge Points - Power & Control',
+  Description:
+    'Trusted electrical and renewable energy contractors, Power & Control, serving the Midlands and beyond. Specialising in solar, EV charging, and commercial electrical.',
+};
+export const metadata = {
+  title: METADATA.SiteName,
+  applicationName: METADATA.SiteName,
+  description: METADATA.Description,
+  referrer: 'origin-when-cross-origin',
+  url: METADATA.Url,
+  openGraph: {
+    title: METADATA.SiteName,
+    description: METADATA.Description,
+    url: METADATA.Url,
+    images: [
+      {
+        url: `${METADATA.Url}/images/sustain1.webp`, // Must be an absolute URL
+        width: 800,
+        height: 600,
+      },
+    ],
+    locale: 'en_GB',
+    type: 'website',
+  },
+};
 export default function EVPage() {
   return (
     <div>

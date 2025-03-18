@@ -15,10 +15,10 @@ export default function UsLayout({ children }) {
             name: 'News',
             link: '/news',
           },
-          {
-            name: 'More',
-            dropdown: true,
-          },
+          // {
+          //   name: 'More',
+          //   dropdown: true,
+          // },
         ]}
         dropdownOptions={[
           {

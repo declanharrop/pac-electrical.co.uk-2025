@@ -15,6 +15,7 @@
     "framer-motion": "^11.11.17",
     "graphql": "^16.9.0",
     "hamburger-react": "^2.5.1",
+    "markdown-to-jsx": "^7.7.4",
     "next": "14.2.11",
     "next-auth": "^4.24.10",
     "next-nprogress-bar": "^2.3.15",

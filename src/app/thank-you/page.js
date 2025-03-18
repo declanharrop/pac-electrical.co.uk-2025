@@ -1,10 +1,9 @@
-import { GetAQuoteProvider } from '@/Context/GetAQuoteContext';
+import VideoHero from '@/Components/Hero/VideoHero';
 
 const METADATA = {
-  Url: 'https://pac-electrical.co.uk/get-a-quote',
-  SiteName: 'Get a quote from Power & Control ',
-  Description:
-    'Request a Quote: Power & Control provides professional electrical and renewable energy solutions. Get your personalised quote for solar, EV chargers, or commercial projects.',
+  Url: 'https://pac-electrical.co.uk/thank-you',
+  SiteName: 'Power & Control - Solar Installer & Commercial Electrician',
+  Description: '',
 };
 export const metadata = {
   title: METADATA.SiteName,
@@ -27,10 +26,13 @@ export const metadata = {
     type: 'website',
   },
 };
-export default function GetAQuoteLayout({ children }) {
+export default function ThankYou() {
   return (
-    <div style={{ marginTop: '80px' }}>
-      <GetAQuoteProvider>{children}</GetAQuoteProvider>
+    <div>
+      <VideoHero height="80vh">
+        <h1>Thank You</h1>
+        <h3>You will recieve an email shortly</h3>
+      </VideoHero>
     </div>
   );
 }

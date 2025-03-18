@@ -1,0 +1,36 @@
+.PrivPol {
+  margin: 160px auto;
+  padding: 0 10px;
+  max-width: 1000px;
+}
+
+.markdown {
+  text-align: left;
+}
+
+.markdown ul {
+  list-style-type: disc;
+  margin-top: 20px;
+}
+
+.markdown li {
+  list-style-type: disc;
+  margin-top: 10px;
+  text-transform: none;
+}
+
+.markdown ol {
+  list-style-type: decimal;
+  list-style-position: inside;
+  margin-top: 14px;
+}
+
+
+.markdown h3 {
+  margin: 50px 0 20px 0;
+}
+
+.markdown a {
+  color: var(--green);
+  word-wrap: break-word;
+}

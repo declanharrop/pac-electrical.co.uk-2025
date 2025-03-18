@@ -13,7 +13,7 @@ export async function generateMetadata() {
 
   const METADATA = {
     Url: `https://pac-electrical.co.uk/electrical/fault`,
-    SiteName: `Power & Control Ltd - ${page.metaTitle}`,
+    SiteName: `${page.metaTitle} - Power & Control Ltd`,
     Description: `${page.metaDescription}`,
   };
   return {

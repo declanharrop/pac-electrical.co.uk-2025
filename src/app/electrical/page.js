@@ -4,6 +4,34 @@ import SmoothScrollLogosBlock from '@/Components/Blocks/SmoothScrollLogosBlock';
 import TextWithImageBlock from '@/Components/Blocks/TextWithImageBlock';
 import VideoHero from '@/Components/Hero/VideoHero';
 
+const METADATA = {
+  Url: 'https://pac-electrical.co.uk/electrical',
+  SiteName: 'Commercial Electrical Experts - Power & Control',
+  Description:
+    'Power & Control: Expert commercial electrical services across the Midlands & UK. From installations to maintenance, we deliver reliable solutions for your business. Get a quote',
+};
+export const metadata = {
+  title: METADATA.SiteName,
+  applicationName: METADATA.SiteName,
+  description: METADATA.Description,
+  referrer: 'origin-when-cross-origin',
+  url: METADATA.Url,
+  openGraph: {
+    title: METADATA.SiteName,
+    description: METADATA.Description,
+    url: METADATA.Url,
+    images: [
+      {
+        url: `${METADATA.Url}/images/sustain1.webp`, // Must be an absolute URL
+        width: 800,
+        height: 600,
+      },
+    ],
+    locale: 'en_GB',
+    type: 'website',
+  },
+};
+
 export default function ElectricalPage() {
   return (
     <div>

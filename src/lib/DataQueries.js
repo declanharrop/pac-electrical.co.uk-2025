@@ -17,7 +17,7 @@ export const LATEST_STUDIES_QUERY = gql`
 `;
 export const STUDIES_QUERY = gql`
   query {
-    caseStudies(orderBy: date_DESC) {
+    caseStudies(orderBy: date_DESC, first: 1000) {
       id
       date
       hero {

@@ -17,13 +17,13 @@ export default function CaseStudiesHero({ data, article }) {
   useEffect(() => {
     if (height) {
       if (windowWidth > 1090) {
-        setDisplayHeight(`${height - 120}px`);
+        setDisplayHeight(`${height - 160}px`);
       } else {
-        setDisplayHeight(`${height - 180}px`);
+        setDisplayHeight(`${height - 230}px`);
       }
-      if (windowWidth < 800) {
-        setDisplayHeight('auto');
-      }
+      // if (windowWidth < 800) {
+      //   setDisplayHeight('auto');
+      // }
     }
     if (data.length > 3) {
       setOtherStudies(data.slice(1, 4));
