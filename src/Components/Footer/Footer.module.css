@@ -29,3 +29,13 @@
   text-align: left;
   color: var(--black);
 }
+
+.Footer_Lower {
+  padding: 100px 20px 20px;
+  margin: 0 auto;
+  max-width: 600px;
+}
+
+.Footer_Lower p {
+  font-size: 1.4rem;
+}

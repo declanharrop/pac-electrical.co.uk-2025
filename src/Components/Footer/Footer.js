@@ -111,6 +111,22 @@ export default function Footer() {
             </div>
           </div>
         </div>
+        <div className={Styles.Footer_Lower}>
+          <div className={Styles.Footer_Lower_Container}>
+            <p>
+              © {new Date().getFullYear()} Power and Control Ltd. Use of this
+              site constitutes acceptance of our Privacy Policy. The material on
+              this site may not be reproduced, distributed, transmitted, cached
+              or otherwise used, except with prior written permission of Power
+              and Control Ltd.
+            </p>
+            {/* <div className={Styles.Footer_Lower_Container_dhweb}>
+              <a href="https://dhweb.dev" target="_blank" rel="noreferrer">
+                <img src="/logo/dhwebdev.svg" alt="DH Web Logo" />
+              </a>
+            </div> */}
+          </div>
+        </div>
       </div>
     </>
   );

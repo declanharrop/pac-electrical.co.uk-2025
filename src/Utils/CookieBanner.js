@@ -33,7 +33,12 @@ export default function CookieBanner() {
     <div className={Styles.CookieBanner}>
       <div className="">
         {/* <Link href="/info/cookies"> */}
-        <p>We use cookies on our site.</p>
+        <h4>Our website uses cookies.</h4>
+        <p>
+          By clicking "Yes, I'm happy" you allow cookies that improve your
+          experience on our website, help us analyse our performance and enable
+          us to show you relevant marketing content.
+        </p>
         {/* </Link> */}
       </div>
 
