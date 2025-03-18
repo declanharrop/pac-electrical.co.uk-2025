@@ -1,6 +1,6 @@
 import Script from 'next/script';
 import ImageHero from '@/Components/Hero/ImageHero';
-import style from '@/styles/Information/JobAppPage.module.css';
+import style from '@/Styles/Information/JobAppPage.module.css';
 
 // const JobApplicationStyles = styled.div`
 //   h3 {
