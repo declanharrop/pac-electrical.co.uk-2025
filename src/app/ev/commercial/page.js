@@ -6,7 +6,7 @@ export async function generateMetadata() {
   const client = getClient();
   const { data } = await client.query({
     query: STANDARD_PAGE_QUERY,
-    variables: { id: 'cm6knvq59bp2i06l63uuo3gva' },
+    variables: { id: 'cm8emndzukhm407mlldub82sz' },
   });
 
   const { page } = data;
@@ -43,7 +43,7 @@ export default async function CommericalEVPage() {
   const { data } = await client.query({
     query: STANDARD_PAGE_QUERY,
     variables: {
-      id: 'cm6knvq59bp2i06l63uuo3gva',
+      id: 'cm8emndzukhm407mlldub82sz',
     },
   });
 
