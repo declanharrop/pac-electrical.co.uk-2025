@@ -28,10 +28,10 @@ export default function LowerHeaderBar({
     },
   ],
   dropdownOptions = [
-    {
-      name: 'Our Process',
-      link: '/solar/process',
-    },
+    // {
+    //   name: 'Our Process',
+    //   link: '/solar/process',
+    // },
     {
       name: 'Solar Explained',
       link: '/solar/explained',
@@ -48,14 +48,14 @@ export default function LowerHeaderBar({
       name: 'Commercial Solar',
       link: '/solar/commercial',
     },
-    {
-      name: 'MCS Explained',
-      link: '/solar/mcs',
-    },
-    {
-      name: 'HEIS Explained',
-      link: '/solar/heis',
-    },
+    // {
+    //   name: 'MCS Explained',
+    //   link: '/solar/mcs',
+    // },
+    // {
+    //   name: 'HEIS Explained',
+    //   link: '/solar/heis',
+    // },
   ],
 }) {
   const { activeDropdown, setActiveDropdown } = useContext(HeaderContext);
