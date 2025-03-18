@@ -1,7 +1,7 @@
 .VideoHero {
   position: relative;
   overflow: hidden;
-  max-height: 2000px;
+  max-height: 1400px;
   min-height: 400px;
 }
 
@@ -48,7 +48,7 @@
 .ImageHero {
   position: relative;
   overflow: hidden;
-  max-height: 2000px;
+  max-height: 1400px;
   min-height: 400px;
 }
 
