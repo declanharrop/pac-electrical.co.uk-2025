@@ -473,6 +473,12 @@
   width: 140px;
 }
 
+@media screen and (max-width: 800px) {
+  .ServicesBlock_Container {
+    grid-template-columns: 1fr;
+  }
+}
+
 /* 
 //
 //
