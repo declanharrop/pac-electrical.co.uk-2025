@@ -39,10 +39,10 @@ const urbanist = Urbanist({
 });
 
 const METADATA = {
-  Url: 'https://pac-electrical.co.uk/information/job-applications',
-  SiteName: 'Power & Control - Job Apllications',
+  Url: 'https://pac-electrical.co.uk/',
+  SiteName: 'Power & Control - Commercial Electrical & Solar Experts',
   Description:
-    'Trusted electrical and renewable energy contractors, Power & Control, serving the Midlands and beyond. Specialising in solar, EV charging, and commercial electrical.',
+    'Trusted electrical and renewable energy contractors, Power & Control, serving the Midlands and beyond. Specialising in solar, EV charging, and Commercial Electrical.',
 };
 export const metadata = {
   title: METADATA.SiteName,
