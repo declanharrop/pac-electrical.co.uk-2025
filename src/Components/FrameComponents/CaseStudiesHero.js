@@ -21,9 +21,9 @@ export default function CaseStudiesHero({ data, article }) {
       } else {
         setDisplayHeight(`${height - 230}px`);
       }
-      // if (windowWidth < 800) {
-      //   setDisplayHeight('auto');
-      // }
+      if (windowWidth < 800) {
+        setDisplayHeight('auto');
+      }
     }
     if (data.length > 3) {
       setOtherStudies(data.slice(1, 4));
