@@ -29,35 +29,37 @@ export default function CookieBanner() {
   if (cookieConsent != null) {
     return null;
   }
-  return (
-    <div className={Styles.CookieBanner}>
-      <div className="">
-        {/* <Link href="/info/cookies"> */}
-        <h4>Our website uses cookies.</h4>
-        <p>
-          By clicking "Yes, I'm happy" you allow cookies that improve your
-          experience on our website, help us analyse our performance and enable
-          us to show you relevant marketing content.
-        </p>
-        {/* </Link> */}
-      </div>
+  if (!cookieConsent) {
+    return (
+      <div className={Styles.CookieBanner}>
+        <div className="">
+          {/* <Link href="/info/cookies"> */}
+          <h4>Our website uses cookies.</h4>
+          <p>
+            By clicking "Yes, I'm happy" you allow cookies that improve your
+            experience on our website, help us analyse our performance and
+            enable us to show you relevant marketing content.
+          </p>
+          {/* </Link> */}
+        </div>
 
-      <div className={Styles.ButtonPlacer}>
-        <button
-          type="button"
-          className={Styles.MiniButton}
-          onClick={() => setCookieConsent(false)}
-        >
-          Decline
-        </button>
-        <button
-          type="button"
-          className={Styles.AcceptButton}
-          onClick={() => setCookieConsent(true)}
-        >
-          Allow Cookies
-        </button>
+        <div className={Styles.ButtonPlacer}>
+          <button
+            type="button"
+            className={Styles.MiniButton}
+            onClick={() => setCookieConsent(false)}
+          >
+            Decline
+          </button>
+          <button
+            type="button"
+            className={Styles.AcceptButton}
+            onClick={() => setCookieConsent(true)}
+          >
+            Allow Cookies
+          </button>
+        </div>
       </div>
-    </div>
-  );
+    );
+  }
 }
