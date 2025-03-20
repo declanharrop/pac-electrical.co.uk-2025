@@ -89,7 +89,7 @@ export default async function RootLayout({ children }) {
                 <CaseStudiesProvider>
                   <main>
                     {children}
-                    <GoogleTagManager gtm="GTM-WMTS4F8D" />
+                    <GoogleTagManager gtm="GTM-KG2WZ9N" />
                   </main>
                   <Footer />
                   <CookieBanner />
