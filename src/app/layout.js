@@ -79,7 +79,7 @@ export default async function RootLayout({ children }) {
         })(window,document,'script','dataLayer','GTM-KG2WZ9N');`}
         </Script> */}
         <Suspense>
-          {/* <GoogleAnalytics GA_MEASUREMENT_ID="G-07HW5JDB5D" /> */}
+          <GoogleAnalytics GA_MEASUREMENT_ID="G-07HW5JDB5D" />
         </Suspense>
         <StyledJsxRegistry>
           <HeaderProvider>
@@ -90,10 +90,10 @@ export default async function RootLayout({ children }) {
                   <GoogleTagManager gtm="GTM-KG2WZ9N" />
                   <main>{children}</main>
                   <Footer />
-                  {/* <CookieBanner /> */}
+                  <CookieBanner />
                 </CaseStudiesProvider>
               </ProgressBarProviders>
-              {/* <MobileNavDock /> */}
+              <MobileNavDock />
             </ApolloWrapper>
           </HeaderProvider>
         </StyledJsxRegistry>
