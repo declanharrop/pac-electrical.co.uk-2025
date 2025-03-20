@@ -1,5 +1,6 @@
 'use client';
 
+import { sendGTMEvent } from '@next/third-parties/google';
 import { useRouter } from 'next/navigation';
 import { useEffect, useState, createContext } from 'react';
 
@@ -78,6 +79,7 @@ export const GetAQuoteProvider = ({ children }) => {
     const result = await response.json();
 
     if (result.status === 'success') {
+      sendGTMEvent({ event: 'form_submission', form: 'get_a_quote' });
       router.push('/thank-you');
     }
   };

@@ -2,6 +2,7 @@ import localFont from 'next/font/local';
 import { Urbanist } from 'next/font/google';
 import Script from 'next/script';
 import { Suspense } from 'react';
+import { GoogleTagManager } from '@next/third-parties/google';
 import StyledJsxRegistry from '@/Utils/registry';
 import './globals.css';
 import { ApolloWrapper } from '@/Utils/ApolloWrapper';
@@ -86,7 +87,10 @@ export default async function RootLayout({ children }) {
             <ApolloWrapper>
               <ProgressBarProviders>
                 <CaseStudiesProvider>
-                  <main>{children}</main>
+                  <main>
+                    {children}
+                    <GoogleTagManager gtm="GTM-WMTS4F8D" />
+                  </main>
                   <Footer />
                   <CookieBanner />
                 </CaseStudiesProvider>
