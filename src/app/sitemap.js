@@ -26,10 +26,22 @@ export default async function sitemap() {
     priority: 0.5,
     changeFrequency: 'weekly',
   }));
-
-  const routes = [
+  const topLevelRoutes = [
     '',
     '/electrical',
+    '/solar',
+    '/ev',
+    '/us',
+    '/case-studies',
+    '/news',
+  ].map((route) => ({
+    url: `${URL}${route}`,
+    lastModified: new Date().toISOString(),
+    changeFrequency: 'yearly',
+    priority: 1,
+  }));
+
+  const routes = [
     '/electrical/commercial',
     '/electrical/domestic',
     '/electrical/led',
@@ -37,29 +49,19 @@ export default async function sitemap() {
     '/electrical/testing',
     '/electrical/fault',
     '/electrical/data',
-    '/solar',
     '/solar/battery',
     '/solar/explained',
     '/solar/commercial',
     '/solar/domestic',
-    '/us',
     '/case-studies/solar',
     '/case-studies/all',
     '/case-studies/ev',
     '/case-studies/electrical',
-    '/ev',
     '/ev/domestic',
     '/ev/commercial',
     '/get-a-quote',
-    '/information/job-applications',
     '/information/privacy-policy',
-    '/information/success',
     '/information/terms-and-conditions',
-    '/news',
-    '/recruitment',
-    '/reviews',
-    '/thank-you',
-    '/whats-next',
   ].map((route) => ({
     url: `${URL}${route}`,
     lastModified: new Date().toISOString(),
@@ -67,5 +69,5 @@ export default async function sitemap() {
     priority: 0.8,
   }));
 
-  return [...routes, ...news, ...studies];
+  return [...topLevelRoutes, ...routes, ...news, ...studies];
 }
