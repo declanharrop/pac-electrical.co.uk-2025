@@ -87,13 +87,12 @@ export default async function RootLayout({ children }) {
             <ApolloWrapper>
               <ProgressBarProviders>
                 <CaseStudiesProvider>
-                  <GoogleTagManager gtm="GTM-KG2WZ9N" />
                   <main>{children}</main>
                   <Footer />
                   <CookieBanner />
                 </CaseStudiesProvider>
               </ProgressBarProviders>
-              <MobileNavDock />
+              {/* <MobileNavDock /np> */}
             </ApolloWrapper>
           </HeaderProvider>
         </StyledJsxRegistry>
