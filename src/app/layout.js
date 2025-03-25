@@ -83,7 +83,7 @@ export default async function RootLayout({ children }) {
         </head>
         <body>
           <Suspense>
-            <GoogleAnalytics GA_MEASUREMENT_ID="GTM-KG2WZ9N" />
+            <GoogleAnalytics GA_MEASUREMENT_ID="G-07HW5JDB5D" />
           </Suspense>
           <StyledJsxRegistry>
             <HeaderProvider>
@@ -99,12 +99,6 @@ export default async function RootLayout({ children }) {
               </ApolloWrapper>
             </HeaderProvider>
           </StyledJsxRegistry>
-          <Script
-            afterInteractive
-            dangerouslySetInnerHTML={{
-              __html: `document.getElementById("button").addEventListener("click", function() {  gtag("event", "button_click", {    "button_id": "button"  });});`,
-            }}
-          />
         </body>
       </html>
     </>
