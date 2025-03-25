@@ -69,34 +69,44 @@ export const metadata = {
 
 export default async function RootLayout({ children }) {
   return (
-    <html lang="en" className={`${urbanist.variable} ${GoodTimes.variable}`}>
-      <body>
-        {/* <Script id="gtm" strategy="beforeInteractive">
-          {`(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    <>
+      <html lang="en" className={`${urbanist.variable} ${GoodTimes.variable}`}>
+        <head>
+          <meta charSet="UTF-8" />
+          {/* <Script id="gtm" strategy="beforeInteractive">
+            {`(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
           new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
           j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-        })(window,document,'script','dataLayer','GTM-KG2WZ9N');`}
-        </Script> */}
-        <Suspense>
-          <GoogleAnalytics GA_MEASUREMENT_ID="G-07HW5JDB5D" />
-        </Suspense>
-        <StyledJsxRegistry>
-          <HeaderProvider>
-            <HeaderBar />
-            <ApolloWrapper>
-              <ProgressBarProviders>
-                <CaseStudiesProvider>
-                  <main>{children}</main>
-                  <Footer />
-                  <CookieBanner />
-                </CaseStudiesProvider>
-              </ProgressBarProviders>
-              {/* <MobileNavDock /np> */}
-            </ApolloWrapper>
-          </HeaderProvider>
-        </StyledJsxRegistry>
-      </body>
-    </html>
+          })(window,document,'script','dataLayer','GTM-KG2WZ9N');`}
+          </Script> */}
+        </head>
+        <body>
+          <Suspense>
+            <GoogleAnalytics GA_MEASUREMENT_ID="GTM-KG2WZ9N" />
+          </Suspense>
+          <StyledJsxRegistry>
+            <HeaderProvider>
+              <HeaderBar />
+              <ApolloWrapper>
+                <ProgressBarProviders>
+                  <CaseStudiesProvider>
+                    <main>{children}</main>
+                    <Footer />
+                    <CookieBanner />
+                  </CaseStudiesProvider>
+                </ProgressBarProviders>
+              </ApolloWrapper>
+            </HeaderProvider>
+          </StyledJsxRegistry>
+          <Script
+            afterInteractive
+            dangerouslySetInnerHTML={{
+              __html: `document.getElementById("button").addEventListener("click", function() {  gtag("event", "button_click", {    "button_id": "button"  });});`,
+            }}
+          />
+        </body>
+      </html>
+    </>
   );
 }

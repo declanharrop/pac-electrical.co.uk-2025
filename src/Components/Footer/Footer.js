@@ -1,4 +1,5 @@
 import React from 'react';
+import Script from 'next/script';
 import Styles from './Footer.module.css';
 import SmoothScrollLogosBlock from '../Blocks/SmoothScrollLogosBlock';
 

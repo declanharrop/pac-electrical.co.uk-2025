@@ -18,6 +18,7 @@ export default function RightNav() {
           rel="noreferrer"
         >
           <img
+            id="button"
             className={Styles.RightNav_Socials_Icon}
             src="/icons/instagram.svg"
             alt="Power & Control - Instagram"
@@ -56,9 +57,10 @@ export default function RightNav() {
           rel="noreferrer"
         >
           <img
+            id="button"
             className={Styles.RightNav_Contact_Icon}
             src="/icons/phone.svg"
-            alt="Power & Control - Instagram"
+            alt="Power & Control - Phone Icon"
           />
         </a>
         <a
@@ -68,9 +70,10 @@ export default function RightNav() {
           rel="noreferrer"
         >
           <img
+            id="button"
             className={Styles.RightNav_Contact_Icon}
             src="/icons/email.svg"
-            alt="Power & Control - Facebook"
+            alt="Power & Control - Email Icon"
           />
         </a>
       </div>
