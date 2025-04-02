@@ -7,14 +7,13 @@ export default function SolarComView9() {
 
   return (
     <div className={Styles.Solar__GAQ__FormView__Container}>
-      <h4>Could you tell us some more details about your project?</h4>
+      <h4>Thank you for completing our solar quote form.</h4>
+      <p style={{ marginTop: '20px', maxWidth: '500px' }}>
+        When you click submit you will recieve an email asking for more details.
+        Once you reply to that email with the required details, you will recieve
+        your fully bespoke quote from us.
+      </p>
       <form onSubmit={(e) => handleSubmit(e)}>
-        <textarea
-          type="text"
-          required
-          onChange={(e) => addUserDetails({ details: e.target.value })}
-          placeholder="Project Details"
-        />
         <button
           type="submit"
           className="button-alt"

@@ -64,6 +64,25 @@ export default function SolarComView1() {
             Solar PV, Battery Storage & EV Charger
           </h2>
         </button>
+        <button
+          className={Styles.GetAQuotePage__Button}
+          type="button"
+          onClick={() =>
+            chooseOption(
+              { solarType: 'Solar, Repair' },
+              '/get-a-quote/solar/dom/2',
+            )
+          }
+        >
+          <img
+            className={Styles.GetAQuotePage__Button_Icon}
+            src="/icons/technician.svg"
+            alt="Solar Icon"
+          />
+          <h2 className={Styles.GetAQuotePage__Button_Text_SM}>
+            Solar Repair & Maintenance
+          </h2>
+        </button>
       </div>
     </>
   );

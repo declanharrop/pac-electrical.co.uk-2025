@@ -31,7 +31,7 @@ export default function SolarDomView1() {
           type="button"
           onClick={() =>
             chooseOption(
-              { solarType: 'Solar Only' },
+              { solarType: 'Solar & Battery' },
               '/get-a-quote/solar/dom/2',
             )
           }
@@ -50,7 +50,7 @@ export default function SolarDomView1() {
           type="button"
           onClick={() =>
             chooseOption(
-              { solarType: 'Solar Only' },
+              { solarType: 'Solar, Battery & EV Charger' },
               '/get-a-quote/solar/dom/2',
             )
           }
@@ -62,6 +62,25 @@ export default function SolarDomView1() {
           />
           <h2 className={Styles.GetAQuotePage__Button_Text_SM}>
             Solar PV, Battery Storage & EV Charger
+          </h2>
+        </button>
+        <button
+          className={Styles.GetAQuotePage__Button}
+          type="button"
+          onClick={() =>
+            chooseOption(
+              { solarType: 'Solar, Repair' },
+              '/get-a-quote/solar/dom/2',
+            )
+          }
+        >
+          <img
+            className={Styles.GetAQuotePage__Button_Icon}
+            src="/icons/technician.svg"
+            alt="Solar Icon"
+          />
+          <h2 className={Styles.GetAQuotePage__Button_Text_SM}>
+            Solar Repair & Maintenance
           </h2>
         </button>
       </div>

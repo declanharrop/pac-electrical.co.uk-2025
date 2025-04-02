@@ -13,7 +13,7 @@ export default function GetAQuotePage() {
     return (
       <div
         className={Styles.GetAQuotePage}
-        style={{ height: `calc(${height}px - 160px)` }}
+        style={{ height: `calc(${height}px - 180px)` }}
       >
         <div className={Styles.GetAQuotePage__Container}>
           <button
@@ -27,8 +27,8 @@ export default function GetAQuotePage() {
               <div style={{ position: 'relative' }}>
                 <Image
                   style={{ marginBottom: '20px' }}
-                  width={120}
-                  height={120}
+                  width={100}
+                  height={90}
                   src="/icons/solar-alt.svg"
                   alt="Solar Icon"
                 />
@@ -50,8 +50,8 @@ export default function GetAQuotePage() {
             <div style={{ position: 'relative' }}>
               <Image
                 style={{ marginBottom: '20px' }}
-                width={120}
-                height={120}
+                width={100}
+                height={90}
                 src="/icons/electrical-alt.svg"
                 alt="Solar Icon"
               />
@@ -69,8 +69,8 @@ export default function GetAQuotePage() {
             <div style={{ position: 'relative' }}>
               <Image
                 style={{ marginBottom: '20px' }}
-                width={120}
-                height={120}
+                width={100}
+                height={90}
                 src="/icons/ev-charging-alt.svg"
                 alt="Solar Icon"
               />
