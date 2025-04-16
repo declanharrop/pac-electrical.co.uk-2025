@@ -75,10 +75,6 @@ export default function SolarQuote({ step, sector }) {
             </>
           )}
         </div>
-        <Script
-          src="https://challenges.cloudflare.com/turnstile/v0/api.js"
-          defer
-        />
       </div>
     );
   }

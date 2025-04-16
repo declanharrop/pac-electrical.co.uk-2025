@@ -22,6 +22,8 @@ export const GetAQuoteProvider = ({ children }) => {
     heardFrom: '',
   });
 
+  const [turnstileStatus, setTurnstileStatus] = useState();
+
   const addUserDetails = (data) => {
     setUserDetails({ ...userDetails, ...data });
   };
@@ -48,7 +50,11 @@ export const GetAQuoteProvider = ({ children }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log('userDetails', userDetails);
+
+    if (turnstileStatus !== 'success') {
+      alert('Please complete the security check.');
+      return;
+    }
 
     const formData = {
       service: userDetails.service,
@@ -92,6 +98,7 @@ export const GetAQuoteProvider = ({ children }) => {
         chooseOption,
         ResetForm,
         handleSubmit,
+        setTurnstileStatus,
       }}
     >
       {children}

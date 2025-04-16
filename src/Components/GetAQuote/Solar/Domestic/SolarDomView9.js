@@ -1,9 +1,11 @@
 import { useContext, useEffect } from 'react';
+import { Turnstile } from 'next-turnstile';
 import { GetAQuoteContext } from '@/Context/GetAQuoteContext';
 import Styles from '../../GetAQuote.module.css';
 
 export default function SolarDomView9() {
-  const { addUserDetails, handleSubmit } = useContext(GetAQuoteContext);
+  const { addUserDetails, handleSubmit, setTurnstileStatus } =
+    useContext(GetAQuoteContext);
 
   return (
     <div className={Styles.Solar__GAQ__FormView__Container}>
@@ -14,10 +16,23 @@ export default function SolarDomView9() {
         your fully bespoke quote from us.
       </p>
       <form onSubmit={(e) => handleSubmit(e)}>
-        <div
-          class="cf-turnstile"
-          data-sitekey="0x4AAAAAABMkc_i3HiY8UkFZ"
-          data-callback="javascriptCallback"
+        <Turnstile
+          siteKey={process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY}
+          retry="auto"
+          refreshExpired="auto"
+          sandbox={process.env.NODE_ENV === 'development'}
+          onError={() => {
+            setTurnstileStatus('error');
+          }}
+          onExpire={() => {
+            setTurnstileStatus('expired');
+          }}
+          onLoad={() => {
+            setTurnstileStatus('required');
+          }}
+          onVerify={(token) => {
+            setTurnstileStatus('success');
+          }}
         />
         <button
           type="submit"
