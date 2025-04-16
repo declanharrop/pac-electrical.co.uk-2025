@@ -1,6 +1,7 @@
 import { useRouter } from 'next/navigation';
 import { useContext, useEffect } from 'react';
 import { use100vh } from 'react-div-100vh';
+import Script from 'next/script';
 import { GetAQuoteContext } from '@/Context/GetAQuoteContext';
 import Styles from '../GetAQuote.module.css';
 import SolarSector from './SolarSector';
@@ -74,6 +75,10 @@ export default function SolarQuote({ step, sector }) {
             </>
           )}
         </div>
+        <Script
+          src="https://challenges.cloudflare.com/turnstile/v0/api.js"
+          defer
+        />
       </div>
     );
   }
