@@ -23,6 +23,10 @@ export const GetAQuoteProvider = ({ children }) => {
   });
 
   const [turnstileStatus, setTurnstileStatus] = useState();
+  const handleVerify = (token) => {
+    console.log('Turnstile token:', token);
+    setTurnstileStatus('success');
+  };
 
   const addUserDetails = (data) => {
     setUserDetails({ ...userDetails, ...data });
@@ -56,35 +60,36 @@ export const GetAQuoteProvider = ({ children }) => {
       return;
     }
 
-    const formData = {
-      service: userDetails.service,
-      sector: userDetails.sector,
-      solarType: userDetails.solarType,
-      name: userDetails.name,
-      email: userDetails.email,
-      phone: userDetails.phone,
-      address: userDetails.address,
-      postcode: userDetails.postcode,
-      elecUsage: userDetails.elecUsage,
-      homeSize: userDetails.homeSize,
-      details: userDetails.details,
-      heardFrom: userDetails.heardFrom,
-    };
+    if (turnstileStatus === 'success') {
+      const formData = {
+        service: userDetails.service,
+        sector: userDetails.sector,
+        solarType: userDetails.solarType,
+        name: userDetails.name,
+        email: userDetails.email,
+        phone: userDetails.phone,
+        address: userDetails.address,
+        postcode: userDetails.postcode,
+        elecUsage: userDetails.elecUsage,
+        homeSize: userDetails.homeSize,
+        details: userDetails.details,
+        heardFrom: userDetails.heardFrom,
+      };
 
-    const JSONData = JSON.stringify(formData);
+      const JSONData = JSON.stringify(formData);
 
-    const endpoint = 'https://hooks.zapier.com/hooks/catch/11615843/2z5b76r/';
+      const endpoint = 'https://hooks.zapier.com/hooks/catch/11615843/2z5b76r/';
 
-    const options = {
-      method: 'POST',
-      body: JSONData,
-    };
-    const response = await fetch(endpoint, options);
+      const options = {
+        method: 'POST',
+        body: JSONData,
+      };
+      const response = await fetch(endpoint, options);
 
-    const result = await response.json();
-
-    if (result.status === 'success') {
-      router.push('/thank-you');
+      const result = await response.json();
+      if (result.status === 'success') {
+        router.push('/thank-you');
+      }
     }
   };
 
@@ -98,7 +103,7 @@ export const GetAQuoteProvider = ({ children }) => {
         chooseOption,
         ResetForm,
         handleSubmit,
-        setTurnstileStatus,
+        handleVerify,
       }}
     >
       {children}

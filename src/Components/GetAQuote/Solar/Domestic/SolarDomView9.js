@@ -4,7 +4,7 @@ import { GetAQuoteContext } from '@/Context/GetAQuoteContext';
 import Styles from '../../GetAQuote.module.css';
 
 export default function SolarDomView9() {
-  const { addUserDetails, handleSubmit, setTurnstileStatus } =
+  const { addUserDetails, handleSubmit, handleVerify } =
     useContext(GetAQuoteContext);
 
   return (
@@ -18,21 +18,8 @@ export default function SolarDomView9() {
       <form onSubmit={(e) => handleSubmit(e)}>
         <Turnstile
           siteKey={process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY}
-          retry="auto"
-          refreshExpired="auto"
-          // sandbox={process.env.NODE_ENV === 'development'}
-          onError={() => {
-            setTurnstileStatus('error');
-          }}
-          onExpire={() => {
-            setTurnstileStatus('expired');
-          }}
-          onLoad={() => {
-            setTurnstileStatus('required');
-          }}
-          onVerify={(token) => {
-            setTurnstileStatus('success');
-          }}
+          onVerify={handleVerify}
+          theme="light"
         />
         <button
           type="submit"
