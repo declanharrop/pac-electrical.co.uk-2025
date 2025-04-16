@@ -14,6 +14,11 @@ export default function SolarDomView9() {
         your fully bespoke quote from us.
       </p>
       <form onSubmit={(e) => handleSubmit(e)}>
+        <div
+          class="cf-turnstile"
+          data-sitekey="0x4AAAAAABMkc_i3HiY8UkFZ"
+          data-callback="javascriptCallback"
+        />
         <button
           type="submit"
           className="button-alt"
