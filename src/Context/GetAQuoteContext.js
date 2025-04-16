@@ -24,7 +24,6 @@ export const GetAQuoteProvider = ({ children }) => {
 
   const [turnstileStatus, setTurnstileStatus] = useState();
   const handleVerify = (token) => {
-    console.log('Turnstile token:', token);
     setTurnstileStatus('success');
   };
 
@@ -43,13 +42,11 @@ export const GetAQuoteProvider = ({ children }) => {
   const submitOption = (e, route) => {
     e.preventDefault();
     router.push(route);
-    console.log('userDetails', userDetails);
   };
 
   const chooseOption = (data, route) => {
     setUserDetails({ ...userDetails, ...data });
     router.push(route);
-    console.log('userDetails', userDetails);
   };
 
   const handleSubmit = async (e) => {

@@ -1,9 +1,11 @@
 import { useContext, useEffect } from 'react';
+import { Turnstile } from 'next-turnstile';
 import { GetAQuoteContext } from '@/Context/GetAQuoteContext';
 import Styles from '../GetAQuote.module.css';
 
 export default function EVVeiw4() {
-  const { addUserDetails, handleSubmit } = useContext(GetAQuoteContext);
+  const { addUserDetails, handleSubmit, handleVerify } =
+    useContext(GetAQuoteContext);
 
   return (
     <div className={Styles.Solar__GAQ__FormView__Container}>
@@ -14,6 +16,11 @@ export default function EVVeiw4() {
           required
           onChange={(e) => addUserDetails({ details: e.target.value })}
           placeholder="Project Details"
+        />
+        <Turnstile
+          siteKey={process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY}
+          onVerify={handleVerify}
+          theme="light"
         />
         <button
           type="submit"

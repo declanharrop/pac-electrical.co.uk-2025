@@ -1,9 +1,11 @@
 import { useContext } from 'react';
+import { Turnstile } from 'next-turnstile';
 import { GetAQuoteContext } from '@/Context/GetAQuoteContext';
 import Styles from '../../GetAQuote.module.css';
 
 export default function SolarComView9() {
-  const { addUserDetails, handleSubmit } = useContext(GetAQuoteContext);
+  const { addUserDetails, handleSubmit, handleVerify } =
+    useContext(GetAQuoteContext);
 
   return (
     <div className={Styles.Solar__GAQ__FormView__Container}>
@@ -14,6 +16,11 @@ export default function SolarComView9() {
         your fully bespoke quote from us.
       </p>
       <form onSubmit={(e) => handleSubmit(e)}>
+        <Turnstile
+          siteKey={process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY}
+          onVerify={handleVerify}
+          theme="light"
+        />
         <button
           type="submit"
           className="button-alt"
