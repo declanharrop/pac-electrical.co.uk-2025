@@ -9,6 +9,7 @@ import ElecVeiw5 from './ElecView5';
 import ElecVeiw6 from './ElecView6';
 import { GetAQuoteContext } from '@/Context/GetAQuoteContext';
 import Styles from '../GetAQuote.module.css';
+import ElecSector from './ElecSector';
 
 export default function ElecQuote({ step }) {
   const { userDetails } = useContext(GetAQuoteContext);
@@ -32,12 +33,17 @@ export default function ElecQuote({ step }) {
             <h2>Electrical</h2>
           </div>
           <div style={{ height: '100%' }}>
-            {step === '1' && <ElecVeiw1 />}
-            {step === '2' && <ElecVeiw2 />}
-            {step === '3' && <ElecVeiw3 />}
-            {step === '6' && <ElecVeiw6 />}
-            {step === '5' && <ElecVeiw5 />}
-            {step === '4' && <ElecVeiw4 />}
+            {userDetails.sector.length === 0 && <ElecSector />}
+            {userDetails.sector.length > 0 && (
+              <>
+                {step === '1' && <ElecVeiw1 />}
+                {step === '2' && <ElecVeiw2 />}
+                {step === '3' && <ElecVeiw3 />}
+                {step === '6' && <ElecVeiw6 />}
+                {step === '5' && <ElecVeiw5 />}
+                {step === '4' && <ElecVeiw4 />}
+              </>
+            )}
           </div>
         </div>
       </>

@@ -9,6 +9,7 @@ import EVVeiw4 from './EVView4';
 import EVVeiw3 from './EVView3';
 import EVVeiw2 from './EVView2';
 import EVVeiw1 from './EVView1';
+import EVSector from './EVSector';
 
 export default function EVQuote({ step }) {
   const { userDetails } = useContext(GetAQuoteContext);
@@ -32,12 +33,17 @@ export default function EVQuote({ step }) {
             <h2>EV Charge Point</h2>
           </div>
           <div style={{ height: '100%' }}>
-            {step === '1' && <EVVeiw1 />}
-            {step === '2' && <EVVeiw2 />}
-            {step === '3' && <EVVeiw3 />}
-            {step === '6' && <EVVeiw6 />}
-            {step === '5' && <EVVeiw5 />}
-            {step === '4' && <EVVeiw4 />}
+            {userDetails.sector.length === 0 && <EVSector />}
+            {userDetails.sector.length > 0 && (
+              <>
+                {step === '1' && <EVVeiw1 />}
+                {step === '2' && <EVVeiw2 />}
+                {step === '3' && <EVVeiw3 />}
+                {step === '6' && <EVVeiw6 />}
+                {step === '5' && <EVVeiw5 />}
+                {step === '4' && <EVVeiw4 />}
+              </>
+            )}
           </div>
         </div>
       </>

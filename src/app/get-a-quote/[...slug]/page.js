@@ -1,14 +1,15 @@
 'use client';
 
 import React from 'react';
-import { useRouter } from 'next/navigation';
+import { useRouter, useParams } from 'next/navigation';
 import SolarQuote from '@/Components/GetAQuote/Solar/SolarQuote';
 import EVQuote from '@/Components/GetAQuote/EV/EVQuote';
 import ElecQuote from '@/Components/GetAQuote/Electrical/ElecQuote';
 
-export default function QuoteJourney(params) {
+export default function QuoteJourney() {
   const router = useRouter();
-  const location = params.params.slug;
+  const params = useParams();
+  const location = params.slug;
   const service = location[0];
   const step = location[1];
   const sector = location[1];
