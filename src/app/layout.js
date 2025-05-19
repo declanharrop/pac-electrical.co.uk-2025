@@ -73,13 +73,13 @@ export default async function RootLayout({ children }) {
       <html lang="en" className={`${urbanist.variable} ${GoodTimes.variable}`}>
         <head>
           <meta charSet="UTF-8" />
-          {/* <Script id="gtm" strategy="beforeInteractive">
+          <Script id="gtm" strategy="beforeInteractive">
             {`(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
           new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
           j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
           })(window,document,'script','dataLayer','GTM-KG2WZ9N');`}
-          </Script> */}
+          </Script>
         </head>
         <body>
           <Suspense>
