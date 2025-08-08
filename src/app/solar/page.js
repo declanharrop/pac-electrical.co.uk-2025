@@ -48,13 +48,13 @@ export default function SolarPage() {
             link: '/solar/domestic',
             heroImage: '/images/solar/pac-sol-2.webp',
             alt: 'Domestic Solar from Power & Control',
-            name: 'Domestic Solar',
+            name: 'Domestic',
           },
           {
             link: '/solar/commercial',
             heroImage: '/images/solar/comsol1.webp',
             alt: 'Comercial Solar from Power & Control',
-            name: 'Commercial Solar',
+            name: 'Commercial',
           },
         ]}
       />

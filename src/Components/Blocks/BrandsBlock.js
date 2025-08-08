@@ -12,12 +12,26 @@ export default function BrandsBlock({
       name: 'Tesla',
     },
     {
+      link: '/solar/brands/sigenergy',
+      image: '/images/solar/sigenergy.svg',
+      heroImage: '/images/solar/Sig-Hero.webp',
+      alt: 'Sigenergy',
+      name: 'Sigenergy',
+    },
+    {
       link: '/solar/brands/ecoflow',
       image: '/images/solar/ecoflow.svg',
       heroImage: '/images/solar/EcoFlow-Hero.webp',
       alt: 'Tesla',
       name: 'Tesla',
     },
+    // {
+    //   link: '/solar/brands/fox',
+    //   image: '/images/solar/fox.png',
+    //   heroImage: '/images/solar/Fox-Hero.webp',
+    //   alt: 'Fox Solar',
+    //   name: 'Fox',
+    // },
   ],
 }) {
   return (
@@ -26,7 +40,7 @@ export default function BrandsBlock({
         <h2>{title}</h2>
         <div className={Styles.BrandsBlock_Container_Brands}>
           {brands.map((brand, index) => (
-            <div className={Styles.BrandsBlock_Brand}>
+            <div className={Styles.BrandsBlock_Brand} key={index}>
               <Image
                 src={brand.heroImage}
                 alt={brand.alt}
