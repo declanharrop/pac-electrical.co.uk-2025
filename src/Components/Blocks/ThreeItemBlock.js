@@ -17,7 +17,7 @@ export default function ThreeItemBlock() {
               Commercial Electrical
             </h2>
             <p className={Styles.ThreeItemBlock_Container_Item_Text}>
-              Energise your route to success
+              Setting the commercial quality standard.
             </p>
           </div>
         </Link>
@@ -33,7 +33,7 @@ export default function ThreeItemBlock() {
               Solar PV Installations
             </h2>
             <p className={Styles.ThreeItemBlock_Container_Item_Text}>
-              Unleash the power of the sun
+              Powering your world, your way.
             </p>
           </div>
         </Link>

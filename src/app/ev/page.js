@@ -35,7 +35,7 @@ export default function EVPage() {
     <div>
       <VideoHero margin height="70vh">
         <h1>EV Charging</h1>
-        <h3>POWERING YOUR NEXT ADVENTURE</h3>
+        <h3>Power your next adventure</h3>
       </VideoHero>
       <div style={{ marginTop: '100px' }} />
       <TextWithImageBlock

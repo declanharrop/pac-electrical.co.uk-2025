@@ -65,7 +65,7 @@ export default function RightNav() {
         </a>
         <a
           className={Styles.RightNav_Contact_Link}
-          href="mailto:enquiries@pacelectrical.co.uk"
+          href="mailto:enquiries@pac-electrical.co.uk"
           target="_blank"
           rel="noreferrer"
         >

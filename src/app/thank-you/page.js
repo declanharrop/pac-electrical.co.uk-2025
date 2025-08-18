@@ -29,9 +29,9 @@ export const metadata = {
 export default function ThankYou() {
   return (
     <div>
-      <VideoHero height="80vh">
+      <VideoHero height="70vh">
         <h1>Thank You</h1>
-        <h3>You will recieve an email shortly</h3>
+        <h4>We have received your details and will be in touch via email.</h4>
       </VideoHero>
     </div>
   );

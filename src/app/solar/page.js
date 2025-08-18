@@ -38,7 +38,7 @@ export default function SolarPage() {
     <div>
       <VideoHero margin height="70vh">
         <h1>Solar</h1>
-        <h3>UNLEASH THE POWER OF THE SUN</h3>
+        <h3>Powering your world, your way.</h3>
       </VideoHero>
       <SmoothScrollLogosBlock margin="0 auto 100px" />
       <BrandsBlock

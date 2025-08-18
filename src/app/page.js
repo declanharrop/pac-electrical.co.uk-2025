@@ -13,7 +13,7 @@ export default function HomePage() {
     <div>
       <VideoHero height="80vh">
         <h1>Power & Control</h1>
-        <h3>ENERGISING YOUR WORLD</h3>
+        <h3>Powering homes, businesses, and futures.</h3>
       </VideoHero>
       <ThreeItemBlock />
       <CaseStudiesBlock />

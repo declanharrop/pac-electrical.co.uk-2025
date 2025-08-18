@@ -37,7 +37,7 @@ export default function ElectricalPage() {
     <div>
       <VideoHero margin height="70vh">
         <h1>Electrical</h1>
-        <h3>ENERGISE YOUR SUCCESS</h3>
+        <h3>Energise your success</h3>
       </VideoHero>
       <SmoothScrollLogosBlock
         margin="0 auto 100px"
