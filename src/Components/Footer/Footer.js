@@ -114,6 +114,16 @@ export default function Footer() {
         </div>
         <div className={Styles.Footer_Lower}>
           <div className={Styles.Footer_Lower_Container}>
+            <p style={{ marginBottom: '30px', fontSize: '13px' }}>
+              PowerandControl Ltd is an Introducer Appointed Representative
+              (Financial Services Register No. 975922) of Phoenix Financial
+              Consultants Limited (Phoenix). Phoenix is a credit broker, not a
+              lender. Phoenix is authorised and regulated by the Financial
+              Conduct Authority (FRN: 539195), and offers finance from its panel
+              of lenders. All finance subject to status and credit checks.
+            </p>
+          </div>
+          <div className={Styles.Footer_Lower_Container}>
             <p>
               © {new Date().getFullYear()} Power and Control Ltd. Use of this
               site constitutes acceptance of our Privacy Policy. The material on
