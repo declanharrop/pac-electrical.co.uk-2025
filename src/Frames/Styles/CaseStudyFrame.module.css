@@ -104,3 +104,10 @@
   margin-top: 10px;
   line-height: 1.6;
 }
+
+.CaseStudyFrame_Container_Content_Text_Html img {
+  max-width: 100%;
+  margin: 20px 0;
+  max-height: 500px;
+  object-fit: contain;
+}

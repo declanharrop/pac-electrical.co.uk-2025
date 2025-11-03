@@ -1,6 +1,6 @@
 {
   "name": "pac-electrical.co.uk-2025",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "private": true,
   "scripts": {
     "dev": "next dev --port 5555 --turbopack",

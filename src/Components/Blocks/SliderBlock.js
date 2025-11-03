@@ -66,7 +66,12 @@ export default function SliderBlock({
         {images.map((slide, i) => (
           <SwiperSlide key={i} className={styles.SwiperSlide}>
             <div
-              style={{ height: '500px', width: '100%', position: 'relative' }}
+              style={{
+                minHeight: '600px',
+                width: '85%',
+                position: 'relative',
+                margin: '0 auto',
+              }}
             >
               <Image
                 src={slide.url}
