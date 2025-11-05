@@ -44,6 +44,7 @@ export default function Footer() {
           { brand: 'NICEIC', image: 'accreds/NICEIC.png' },
           { brand: 'Chas', image: 'accreds/CHAS.png' },
           { brand: 'HEIS', image: 'accreds/Heis.png' },
+          { brand: 'TSI', image: 'accreds/tsi.png' },
           { brand: 'MCS', image: 'accreds/MCS.png' },
           { brand: 'Renewable Energy Hub', image: 'accreds/TREH.png' },
           { brand: 'RCP', image: 'accreds/RCPE.png' },
