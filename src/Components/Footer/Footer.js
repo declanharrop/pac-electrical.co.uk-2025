@@ -130,7 +130,7 @@ export default function Footer() {
               site constitutes acceptance of our Privacy Policy. The material on
               this site may not be reproduced, distributed, transmitted, cached
               or otherwise used, except with prior written permission of Power
-              and Control Ltd.
+              and Control Ltd, England. Company registration no: 11865328.
             </p>
             {/* <div className={Styles.Footer_Lower_Container_dhweb}>
               <a href="https://dhweb.dev" target="_blank" rel="noreferrer">
