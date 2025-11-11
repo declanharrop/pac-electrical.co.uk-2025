@@ -11,7 +11,7 @@ export default function VideoHero({
       <div className={Styles.VideoHero} style={{ height: `${height}` }}>
         <div className={Styles.VideoHero_VideoContainer}>
           <video className={Styles.VideoHero_Video} autoPlay loop muted>
-            <source src="/video/pac-home-video-new.mp4" type="video/mp4" />
+            <source src="/video/pac_overview_25Endvf.mp4" type="video/mp4" />
           </video>
         </div>
         <div className={Styles.VideoHero_Overlay}>
