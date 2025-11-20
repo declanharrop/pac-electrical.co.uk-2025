@@ -10,7 +10,7 @@ export default function SolarDomView1() {
       <h4>What are you looking for today?</h4>
       <div className={Styles.Solar__GAQ__View1__Container}>
         <button
-          className={Styles.GetAQuotePage__Button}
+          className={Styles.GetAQuotePage__GAQ__View1__Button}
           type="button"
           onClick={() =>
             chooseOption(
@@ -27,7 +27,26 @@ export default function SolarDomView1() {
           <h2 className={Styles.GetAQuotePage__Button_Text_SM}>SOLAR PV</h2>
         </button>
         <button
-          className={Styles.GetAQuotePage__Button}
+          className={Styles.GetAQuotePage__GAQ__View1__Button}
+          type="button"
+          onClick={() =>
+            chooseOption(
+              { solarType: 'Battery Only' },
+              '/get-a-quote/solar/dom/2',
+            )
+          }
+        >
+          <img
+            className={Styles.GetAQuotePage__Button_Icon}
+            src="/icons/solar-alt.svg"
+            alt="Solar Icon"
+          />
+          <h2 className={Styles.GetAQuotePage__Button_Text_SM}>
+            BATTERY STORAGE
+          </h2>
+        </button>
+        <button
+          className={`${Styles.GetAQuotePage__GAQ__View1__Button_Repair} ${Styles.Middle_L_Button}`}
           type="button"
           onClick={() =>
             chooseOption(
@@ -46,7 +65,7 @@ export default function SolarDomView1() {
           </h2>
         </button>
         <button
-          className={Styles.GetAQuotePage__Button}
+          className={`${Styles.GetAQuotePage__GAQ__View1__Button_Repair} ${Styles.Middle_R_Button}`}
           type="button"
           onClick={() =>
             chooseOption(
@@ -65,7 +84,7 @@ export default function SolarDomView1() {
           </h2>
         </button>
         <button
-          className={Styles.GetAQuotePage__Button}
+          className={`${Styles.GetAQuotePage__GAQ__View1__Button_Repair} ${Styles.Lower_Button}`}
           type="button"
           onClick={() =>
             chooseOption(

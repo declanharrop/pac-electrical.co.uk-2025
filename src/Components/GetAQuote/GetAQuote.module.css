@@ -37,7 +37,7 @@
   box-shadow: 0 0px 20px rgba(255, 255, 255, 0.3);
 }
 
-.GetAQuotePage__Button_V10 {
+.GetAQuotePage__GAQ__View1__Button {
   background: white;
   height: 100%;
   width: 100%;
@@ -47,6 +47,46 @@
   align-items: center;
   flex-direction: column;
   box-shadow: 0 0px 20px rgba(255, 255, 255, 0.3);
+}
+
+.GetAQuotePage__GAQ__View1__Button {
+  background: white;
+  height: 100%;
+  width: 100%;
+  color: var(--black);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  box-shadow: 0 0px 20px rgba(255, 255, 255, 0.3);
+}
+
+.GetAQuotePage__GAQ__View1__Button_Repair {
+  background: white;
+  height: 100%;
+  width: 100%;
+  color: var(--black);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  box-shadow: 0 0px 20px rgba(255, 255, 255, 0.3);
+}
+
+.Upper_Button {
+  grid-area: upper;
+}
+
+.Middle_L_Button {
+  grid-area: middle-left;
+}
+
+.Middle_R_Button {
+  grid-area: middle-right;
+}
+
+.Lower_Button {
+  grid-area: lower;
 }
 
 .GetAQuotePage__Button_Icon {
@@ -80,8 +120,12 @@
   margin-top: 20px;
   display: grid;
   gap: 20px;
-  grid-template-rows: 1fr 1fr;
   grid-template-columns: 1fr 1fr;
+  grid-template-rows: 2fr 2fr 1fr;
+  grid-template-areas:
+    "upper-left upper-right"
+    "middle-left middle-right"
+    "lower lower";
   height: calc(100% - 140px);
 }
 

@@ -11,7 +11,7 @@ import VideoHero from '@/Components/Hero/VideoHero';
 export default function HomePage() {
   return (
     <div>
-      <VideoHero height="80vh">
+      <VideoHero height="75vh">
         <h1>Power & Control</h1>
         <h3>Powering homes, businesses, and futures.</h3>
       </VideoHero>

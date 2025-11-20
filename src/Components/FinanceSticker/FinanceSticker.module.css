@@ -1,0 +1,61 @@
+/* * Styles for the FinanceSticker component 
+ */
+.sticker {
+  /* Positioning */
+  position: fixed;
+  bottom: 140px;
+  right: 10px;
+  z-index: 999;
+  /* Ensures it floats above most other content */
+
+  /* Styling */
+  background-color: #007aff;
+  /* Example color - you should change this to match your brand */
+  color: #ffffff;
+  padding: 14px 16px;
+  border-radius: 50px;
+  /* This gives it the pill/sticker shape */
+  font-size: 1.4rem;
+  font-weight: 600;
+  text-decoration: none;
+
+  /* Effects */
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+  transform: translateY(0);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.sticker:hover {
+  transform: translateY(-3px);
+  /* Lifts the sticker slightly on hover */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Optional: Add a subtle animation for when it loads */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media screen and (min-width: 1090px) {
+  .sticker {
+    top: 130px;
+    left: 20px;
+    right: auto;
+    bottom: auto;
+    font-size: 1.6rem;
+    padding: 12px 14px;
+  }
+}
+
+/* Apply the animation */
+.sticker {
+  animation: fadeIn 0.5s ease-out forwards;
+}

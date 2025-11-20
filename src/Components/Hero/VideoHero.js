@@ -1,7 +1,7 @@
 import Styles from './Hero.module.css';
 
 export default function VideoHero({
-  height = '80vh',
+  height = '70vh',
   children,
   margin = false,
 }) {
@@ -10,7 +10,13 @@ export default function VideoHero({
       {margin && <div style={{ height: '130px' }} />}
       <div className={Styles.VideoHero} style={{ height: `${height}` }}>
         <div className={Styles.VideoHero_VideoContainer}>
-          <video className={Styles.VideoHero_Video} autoPlay loop muted>
+          <video
+            className={Styles.VideoHero_Video}
+            autoPlay
+            loop
+            muted
+            playsInline
+          >
             <source src="/video/pac_overview_25Endvf.mp4" type="video/mp4" />
           </video>
         </div>

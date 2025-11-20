@@ -14,6 +14,7 @@ import { CaseStudiesProvider } from '@/Context/CaseStudiesContext';
 import Footer from '@/Components/Footer/Footer';
 import GoogleAnalytics from '@/Utils/GoogleAnalytics';
 import CookieBanner from '@/Utils/CookieBanner';
+import FinanceSticker from '@/Components/FinanceSticker/FinanceSticker';
 
 const GoodTimes = localFont({
   src: [
@@ -91,6 +92,7 @@ export default async function RootLayout({ children }) {
               <ApolloWrapper>
                 <ProgressBarProviders>
                   <CaseStudiesProvider>
+                    {/* <FinanceSticker /> */}
                     <main>{children}</main>
                     <Footer />
                     <CookieBanner />
