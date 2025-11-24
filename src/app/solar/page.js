@@ -36,28 +36,30 @@ export const metadata = {
 export default function SolarPage() {
   return (
     <div>
-      <VideoHero margin height="70vh">
+      {/* <VideoHero margin height="70vh">
         <h1>Solar</h1>
         <h3>Powering your world, your way.</h3>
-      </VideoHero>
-      <SmoothScrollLogosBlock margin="0 auto 100px" />
-      <BrandsBlock
-        title="Sectors"
-        brands={[
-          {
-            link: '/solar/domestic',
-            heroImage: '/images/solar/pac-sol-2.webp',
-            alt: 'Domestic Solar from Power & Control',
-            name: 'Domestic',
-          },
-          {
-            link: '/solar/commercial',
-            heroImage: '/images/solar/comsol1.webp',
-            alt: 'Comercial Solar from Power & Control',
-            name: 'Commercial',
-          },
-        ]}
-      />
+      </VideoHero> */}
+      <SmoothScrollLogosBlock margin="120px auto 100px" />
+      <div style={{ marginTop: '-140px' }}>
+        <BrandsBlock
+          title=""
+          brands={[
+            {
+              link: '/solar/domestic',
+              heroImage: '/images/solar/pac-sol-2.webp',
+              alt: 'Domestic Solar from Power & Control',
+              name: 'Domestic',
+            },
+            {
+              link: '/solar/commercial',
+              heroImage: '/images/solar/comsol1.webp',
+              alt: 'Comercial Solar from Power & Control',
+              name: 'Commercial',
+            },
+          ]}
+        />
+      </div>
       <VideoBlock subtitle="Let us show you what an install from Power & Control will look like in your home" />
       <BrandsBlock />
       <TextWithImageBlock />

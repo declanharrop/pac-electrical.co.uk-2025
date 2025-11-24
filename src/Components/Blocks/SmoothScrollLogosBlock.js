@@ -56,11 +56,11 @@ export default function SmoothScrollLogosBlock({
             spaceBetween: 20,
           },
           768: {
-            slidesPerView: 6,
+            slidesPerView: 7,
             spaceBetween: 40,
           },
           1024: {
-            slidesPerView: 7,
+            slidesPerView: 8,
             spaceBetween: 50,
           },
         }}
