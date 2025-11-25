@@ -25,13 +25,13 @@ export default function BrandsBlock({
       alt: 'Tesla',
       name: 'Tesla',
     },
-    {
-      link: '/solar/brands/fox',
-      image: '/images/solar/fox.png',
-      heroImage: '/images/solar/Fox-Hero.webp',
-      alt: 'Fox Solar',
-      name: 'Fox',
-    },
+    // {
+    //   link: '/solar/brands/fox',
+    //   image: '/images/solar/fox.png',
+    //   heroImage: '/images/solar/Fox-Hero.webp',
+    //   alt: 'Fox Solar',
+    //   name: 'Fox',
+    // },
   ],
 }) {
   return (
@@ -53,7 +53,12 @@ export default function BrandsBlock({
                     className={Styles.BrandsBlock_Brand_Overlay_Content_Logo}
                   >
                     {brand.image && (
-                      <Image src={brand.image} alt={brand.alt} fill />
+                      <Image
+                        src={brand.image}
+                        alt={brand.alt}
+                        fill
+                        style={{ objectFit: 'contain', objectPosition: 'left' }}
+                      />
                     )}
                     {!brand.image && (
                       <h2
