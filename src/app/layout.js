@@ -92,7 +92,7 @@ export default async function RootLayout({ children }) {
               <ApolloWrapper>
                 <ProgressBarProviders>
                   <CaseStudiesProvider>
-                    {/* <FinanceSticker /> */}
+                    <FinanceSticker />
                     <main>{children}</main>
                     <Footer />
                     <CookieBanner />

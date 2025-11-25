@@ -137,6 +137,18 @@ export default function EVPage() {
           },
         ]}
       />
+      <a
+        target="_blank"
+        rel="noopener noreferrer"
+        href="https://www.phoenix-fc.co.uk/finance_landing?b=C8B8CE9EE290400B&t=2A9C018824984F2CB1EEFAFA"
+        style={{ fontSize: '18px' }}
+      >
+        <img
+          src="/images/finance-banners/ev_banner.png"
+          alt="We offer finance."
+          style={{ width: '100%', marginTop: '10px', maxWidth: '1200px' }}
+        />
+      </a>
     </div>
   );
 }

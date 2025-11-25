@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import BrandsBlock from '@/Components/Blocks/BrandsBlock';
 import LargeImageBlock from '@/Components/Blocks/LargeImageBlock';
 import LatestStudiesBlock from '@/Components/Blocks/LatestStudiesBlock';
@@ -65,6 +66,13 @@ export default function SolarPage() {
       <TextWithImageBlock />
       <LatestStudiesBlock title="Solar" query="solar" />
       <LargeImageBlock />
+      <Link href="/solar/finance" style={{ fontSize: '18px' }}>
+        <img
+          src="/images/finance-banners/Generic_Banner.png"
+          alt="We offer finance."
+          style={{ width: '100%', marginTop: '10px', maxWidth: '1200px' }}
+        />
+      </Link>
     </div>
   );
 }
