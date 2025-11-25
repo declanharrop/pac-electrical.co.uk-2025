@@ -8,7 +8,7 @@ import styles from './FinanceSticker.module.css'; // Import our CSS Module
 const FinanceSticker = () => (
   // Apply the className directly to the <Link> component.
   // No <a> tag is needed inside.
-  <Link href="/finance" className={styles.sticker}>
+  <Link href="/solar/finance" className={styles.sticker}>
     We now offer <strong>Finance!</strong>
   </Link>
 );

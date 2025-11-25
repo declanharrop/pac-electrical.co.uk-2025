@@ -48,6 +48,21 @@ export default async function DomesticSolarPage() {
   });
 
   const { page } = data;
-
-  return <StandardPageFrame data={page} solar />;
+  return (
+    <>
+      <StandardPageFrame data={page} solar />
+      <a
+        target="_blank"
+        rel="noopener noreferrer"
+        href="https://www.phoenix-fc.co.uk/finance_landing?b=4991BD7B1993423F&t=2A9C018824984F2CB1EEFAFA"
+        style={{ fontSize: '18px' }}
+      >
+        <img
+          src="/images/finance-banners/solar_banner.png"
+          alt="We offer finance."
+          style={{ width: '100%', marginTop: '10px', maxWidth: '1200px' }}
+        />
+      </a>
+    </>
+  );
 }

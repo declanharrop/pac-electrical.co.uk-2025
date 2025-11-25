@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { STANDARD_PAGE_QUERY } from '@/lib/DataQueries';
 import StandardPageFrame from '@/Frames/StandardPageFrame';
 import { getClient } from '@/Utils/client';
@@ -49,5 +50,16 @@ export default async function SolarExplainedPage() {
 
   const { page } = data;
 
-  return <StandardPageFrame data={page} solar />;
+  return (
+    <>
+      <StandardPageFrame data={page} solar />
+      <Link href="/solar/finance" style={{ fontSize: '18px' }}>
+        <img
+          src="/images/finance-banners/solar_banner.png"
+          alt="We offer finance."
+          style={{ width: '100%', marginTop: '10px', maxWidth: '1200px' }}
+        />
+      </Link>
+    </>
+  );
 }
