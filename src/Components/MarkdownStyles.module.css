@@ -1,0 +1,62 @@
+/* Container styling */
+.container {
+  padding-top: 120px;
+  max-width: 1000px;
+  margin: 0 auto;
+  font-family: sans-serif;
+  color: white;
+  line-height: 1.5;
+}
+
+/* Typography mapping */
+.heading1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+  color: var(--green);
+}
+
+.heading2 {
+  font-size: 2rem;
+  font-weight: 600;
+  margin-top: 50px;
+  margin-bottom: 10px;
+  color: var(--green);
+}
+
+.paragraph {
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+  color: white;
+}
+
+.codeBlock {
+  padding: 0.2rem 0.4rem;
+  border-radius: 4px;
+  font-family: monospace;
+}
+
+.unorderedList {
+  list-style: disc inside;
+  margin-left: 1.5rem;
+  margin-bottom: 1.5rem;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.orderedList {
+  list-style: decimal inside;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.link {
+  color: var(--green);
+  text-decoration: underline;
+}
