@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/anchor-has-content */
 /* eslint-disable jsx-a11y/heading-has-content */
 import { MDXRemote } from 'next-mdx-remote/rsc';
 import styles from './MarkdownStyles.module.css';
