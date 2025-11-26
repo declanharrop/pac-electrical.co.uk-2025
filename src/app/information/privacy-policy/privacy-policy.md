@@ -38,12 +38,12 @@ To provide efficient services and manage your projects effectively from inquiry 
 ## Tradify
 We use **Tradify** for end-to-end job management, including quoting, invoicing, and scheduling our field staff. This allows us to track your job progress and ensure accurate billing.
 * **Data Processed:** Name, address, phone number, job specifics, and billing details.
-* [View Tradify’s Privacy Policy](https://tradifyhq.com/privacy)
+* [View Tradify’s Privacy Policy](https://www.tradifyhq.com/uk/privacy)
 
 ## ClickUp
 We use **ClickUp** for internal project management and workflow tracking. This ensures your solar or electrical installation progresses smoothly from the initial deposit to final commissioning, keeping our office and field teams in sync.
 * **Data Processed:** Client names, project addresses, installation status, and internal notes.
-* [View ClickUp’s Privacy Policy](https://clickup.com/privacy)
+* [View ClickUp’s Privacy Policy](https://clickup.com/terms/privacy)
 
 ## Zapier
 We use **Zapier** to automate workflows between our different software platforms (for example, automatically transferring your inquiry from our website forms into our project management tools). This ensures your request is handled quickly and prevents data loss.
@@ -53,7 +53,7 @@ We use **Zapier** to automate workflows between our different software platforms
 ## Microsoft 365
 We use **Microsoft 365** (including Outlook, OneDrive, and SharePoint) for secure email communication, document storage, and scheduling. All digital correspondence and project files related to your installation are stored securely within Microsoft's encrypted cloud environment.
 * **Data Processed:** Emails, calendar appointments, digital documents, and site photos.
-* [View Microsoft’s Privacy Policy](https://privacy.microsoft.com/en-gb/privacystatement)
+* [View Microsoft’s Privacy Policy](https://www.microsoft.com/en-gb/privacy/privacystatement)
 
 
 **Note:** We do not sell your personal data to third parties.
