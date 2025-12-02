@@ -10,7 +10,7 @@ export const revalidate = 60;
 // 2. Fetch Data Helper
 async function getPageData() {
   // We fetch the page where the slug exactly matches "solar/domestic"
-  return await client.fetch(PAGE_BUILDER_QUERY, { slug: 'solar/domestic' });
+  return client.fetch(PAGE_BUILDER_QUERY, { slug: 'solar/domestic' });
 }
 
 // 3. Metadata
