@@ -1,0 +1,217 @@
+.AuthorPageFrame {
+  background: #fff;
+  color: var(--black);
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 60px 20px;
+}
+
+/* --- TOP SECTION: GRID --- */
+.contentGrid {
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: 80px;
+  margin-bottom: 20px;
+  /* ADD THIS: Centers the sidebar vertically relative to the text block */
+  align-items: center;
+}
+
+/* Sidebar */
+.sidebar {
+  text-align: center;
+}
+
+.avatarWrapper {
+  position: relative;
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin: 0 auto 20px;
+  border: 4px solid #f5f5f5;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.sidebarName {
+  font-size: 3.2rem;
+  /* 32px */
+  font-weight: 700;
+  margin-bottom: 10px;
+  line-height: 1.1;
+  color: var(--black);
+}
+
+.sidebarRole {
+  font-size: 1.4rem;
+  /* 14px */
+  font-weight: 600;
+  color: var(--green);
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  margin-bottom: 30px;
+  display: block;
+}
+
+.videoButton {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 12px 28px;
+  background: #1a1a1a;
+  color: #fff;
+  border-radius: 40px;
+  font-size: 1.4rem;
+  /* 14px */
+  font-weight: 600;
+  transition: background 0.2s, transform 0.2s;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.videoButton:hover {
+  background: var(--green);
+  transform: translateY(-2px);
+}
+
+/* Bio Section */
+.bioSection {
+  padding-top: 10px;
+}
+
+.sectionTitle {
+  font-size: 2.8rem;
+  /* 28px */
+  font-weight: 700;
+  margin-bottom: 40px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #eee;
+  color: var(--black);
+}
+
+.richText {
+  line-height: 1.8;
+  color: #333;
+}
+
+/* Typography adjusted for 10px base */
+.paragraph {
+  font-size: 1.8rem;
+  /* 18px - Standard readable body size */
+  margin-bottom: 30px;
+  font-weight: 400;
+}
+
+.heading3 {
+  font-size: 2.4rem;
+  /* 24px */
+  font-weight: 600;
+  margin: 50px 0 20px;
+  color: var(--black);
+}
+
+.list {
+  padding-left: 25px;
+  margin-bottom: 30px;
+}
+
+.list li {
+  font-size: 1.8rem;
+  /* 18px */
+  margin-bottom: 10px;
+}
+
+/* --- BOTTOM SECTION: ARTICLES --- */
+.articlesSection {
+  padding-top: 20px;
+  border-top: 1px solid #eee;
+}
+
+.articlesGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  margin-top: 40px;
+}
+
+.articleCard {
+  background: #fff;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  height: 100%;
+  border: 1px solid #f0f0f0;
+}
+
+.articleCard:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+}
+
+.articleImage {
+  position: relative;
+  height: 220px;
+  width: 100%;
+}
+
+.articleContent {
+  padding: 25px;
+}
+
+.articleContent h4 {
+  font-size: 2.0rem;
+  /* 20px */
+  font-weight: 700;
+  margin-bottom: 15px;
+  line-height: 1.3;
+  color: var(--black);
+}
+
+.articleDate {
+  font-size: 1.3rem;
+  /* 13px */
+  color: #888;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Mobile Responsive */
+@media (max-width: 900px) {
+  .contentGrid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .sectionTitle {
+    padding: 0 0 10px;
+  }
+
+  .sidebar {
+    position: static;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 0px;
+  }
+
+  .sidebarName {
+    font-size: 2.8rem;
+    /* 28px on mobile */
+  }
+
+  .sectionTitle {
+    font-size: 2.4rem;
+    /* 24px */
+    text-align: center;
+  }
+
+  .paragraph {
+    font-size: 1.6rem;
+    /* 16px on mobile */
+  }
+
+  .articlesGrid {
+    grid-template-columns: 1fr;
+  }
+}

@@ -8,106 +8,146 @@
 .CaseStudyFrame_Container_Content {
   max-width: 1200px;
   margin: auto;
-  margin-top: 30px;
+  margin-top: 0px;
   padding: 80px 20px;
 }
 
 .CaseStudyFrame_Container_Content_Stats {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 40px 30px;
-}
-
-.CaseStudyFrame_Container_Content_Stats_Detail {
-  min-width: 200px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  padding-bottom: 40px;
+  border-bottom: 1px solid var(--grey);
+  margin-bottom: 60px;
 }
 
 .CaseStudyFrame_Container_Content_Stats_Detail h5 {
-  color: var(--navy);
+  font-size: 1.4rem;
   font-weight: 700;
-  letter-spacing: 0.10rem;
-  margin-bottom: 10px;
-  font-size: 1.5rem;
+  color: var(--green);
+  margin-bottom: 5px;
 }
 
 .CaseStudyFrame_Container_Content_Stats_Detail h6 {
-  font-size: 1.7rem;
+  font-size: 1.6rem;
   font-weight: 400;
-  letter-spacing: 0.10rem;
-  margin-bottom: 10px;
 }
 
 .CaseStudyFrame_Container_Content_Stats_Products {
-  min-width: 200px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  margin-bottom: 40px;
 }
 
 .CaseStudyFrame_Container_Content_Stats_Products h5 {
-  color: var(--navy);
-  margin-top: 30px;
+  font-size: 1.4rem;
   font-weight: 700;
-  letter-spacing: 0.10rem;
-  margin-bottom: 10px;
-  font-size: 1.5rem;
+  color: var(--green);
+  margin-bottom: 5px;
 }
 
 .CaseStudyFrame_Container_Content_Stats_Products h6 {
-  font-size: 1.7rem;
+  font-size: 1.6rem;
   font-weight: 400;
-  letter-spacing: 0.10rem;
-  margin-bottom: 10px;
 }
 
+/* VIDEO */
 .CaseStudyFrame_Container_Content_Video {
-  max-width: 800px;
-  margin: 0 auto;
-  margin-top: 50px;
+  max-width: 1000px;
+  margin: 0 auto 50px;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 }
 
 .CaseStudyFrame_Container_Content_Video iframe {
   width: 100%;
   height: 100%;
   aspect-ratio: 16 / 9;
+  display: block;
 }
 
+/* TEXT CONTENT */
 .CaseStudyFrame_Container_Content_Text {
   max-width: 1000px;
-  margin: 50px auto;
+  margin: 0 auto 60px;
   text-align: left;
 }
 
 .CaseStudyFrame_Container_Content_Text_Date {
-  font-size: 1.6rem;
-  font-weight: 400;
-  letter-spacing: 0.10rem;
-  margin-bottom: 10px;
-  color: var(--grey);
-}
-
-.CaseStudyFrame_Container_Content_Text_Html p {
-  font-size: 1.7rem;
-  font-weight: 400;
-  letter-spacing: 0.10rem;
+  font-size: 1.4rem;
+  font-weight: 600;
+  letter-spacing: 0.1rem;
   margin-bottom: 20px;
-  line-height: 1.6;
+  color: var(--grey);
+  text-transform: uppercase;
 }
 
-.CaseStudyFrame_Container_Content_Text_Html li {
-  font-size: 1.7rem;
-  margin-top: 10px;
-  line-height: 1.6;
+/* --- PORTABLE TEXT STYLES (Scaled to 10px base) --- */
+.richTextContainer {
+  line-height: 1.8;
+  color: #333;
 }
 
-.CaseStudyFrame_Container_Content_Text_Html img {
-  max-width: 100%;
-  margin: 20px 0;
-  max-height: 500px;
-  object-fit: contain;
+.paragraph {
+  font-size: 1.8rem;
+  /* 18px */
+  margin-bottom: 25px;
+  font-weight: 300;
+  /* Matching your previous font-weight */
+  letter-spacing: 0.05rem;
+}
+
+.heading2 {
+  font-size: 3.2rem;
+  font-weight: 600;
+  margin-top: 50px;
+  margin-bottom: 20px;
+  color: var(--black);
+  line-height: 1.2;
+}
+
+.heading3 {
+  font-size: 2.4rem;
+  font-weight: 600;
+  margin-top: 40px;
+  margin-bottom: 15px;
+  color: var(--black);
+}
+
+.heading4 {
+  font-size: 2.0rem;
+  font-weight: 600;
+  margin-top: 30px;
+  margin-bottom: 10px;
+  color: var(--black);
+  text-transform: uppercase;
+  /* Matching your Hygraph headers style */
+}
+
+.list {
+  padding-left: 20px;
+  margin-bottom: 30px;
+}
+
+.listItem {
+  font-size: 1.8rem;
+  margin-bottom: 10px;
+  line-height: 1.6;
+  padding-left: 10px;
+}
+
+/* RESPONSIVE */
+@media screen and (max-width: 1000px) {
+  .CaseStudyFrame_Container_Content_Stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .CaseStudyFrame_Container_Content_Stats {
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  .CaseStudyFrame_Container_Content {
+    padding: 40px 20px;
+  }
 }

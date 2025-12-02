@@ -8,19 +8,11 @@ export default function CaseStudyLayout({ children }) {
   const [color, setColor] = useState('var(--navy)');
   const pathname = usePathname();
 
+  // Simple logic to switch header color based on active section
   useEffect(() => {
-    if (pathname.includes('solar')) {
-      setColor('var(--green)');
-    }
-    if (pathname.includes('ev')) {
-      setColor('var(--neon)');
-    }
-    if (pathname.includes('electrical')) {
-      setColor('var(--navy)');
-    }
-    if (pathname.includes('all')) {
-      setColor('var(--navy)');
-    }
+    if (pathname.includes('/solar')) setColor('var(--green)');
+    else if (pathname.includes('/ev')) setColor('var(--neon)');
+    else setColor('var(--navy)');
   }, [pathname]);
 
   return (
@@ -28,25 +20,15 @@ export default function CaseStudyLayout({ children }) {
       <LowerHeaderBar
         color={color}
         title="Our Work"
+        // Ensure these links match your route structure
         selectOptions={[
-          {
-            name: 'All',
-            value: 'all',
-          },
-          {
-            name: 'Electrical',
-            value: 'electrical',
-          },
-          {
-            name: 'Solar',
-            value: 'solar',
-          },
-          {
-            name: 'EV',
-            value: 'ev',
-          },
+          { name: 'All', value: 'all' }, // Links to /case-studies/all
+          { name: 'Electrical', value: 'electrical' },
+          { name: 'Solar', value: 'solar' },
+          { name: 'EV', value: 'ev' },
         ]}
-        selectedValue="electrical"
+        // We pass the active value to highlight the correct tab
+        selectedValue={pathname.split('/').pop()}
       />
       {children}
     </div>

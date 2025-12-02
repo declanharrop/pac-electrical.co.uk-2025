@@ -1,56 +1,77 @@
-import NewsPageFrame from '@/Frames/NewsPageFrame';
-import { NEWS_STORY } from '@/lib/DataQueries';
-import { getClient } from '@/Utils/client';
+import { groq } from 'next-sanity';
+import { notFound } from 'next/navigation';
+import NewsArticleFrame from '@/Frames/NewsArticleFrame'; // <--- UPDATED IMPORT
+import { blogClient } from '@/sanity/client';
+
+export const revalidate = 60;
+
+// Query to fetch article based on slug
+const POST_QUERY = groq`*[_type == "post" && slug.current == $slug][0]{
+  title,
+  "slug": slug.current,
+  date,
+  "hero": {
+    "url": heroImage.asset->url,
+    "alt": heroImage.alt
+  },
+  "imageUrl": heroImage.asset->url, // Keep for Metadata
+  "metaDescription": metaDescription,
+  "content": content,
+  "ytVideo": youtubeVideo,
+  author->{
+    name,
+    jobTitle,
+    "avatar": profilePhoto.asset->url, // Mapped for Frame
+    "avatarUrl": profilePhoto.asset->url, // Mapped for Metadata
+    "slug": slug.current, 
+    isFormerStaff         
+  }
+}`;
 
 export async function generateMetadata({ params }) {
-  const client = getClient();
-  const path = params.slug;
-  console.log(path);
+  const resolvedParams = await params;
+  const { slug } = resolvedParams;
 
-  const { data: newsArticle } = await client.query({
-    query: NEWS_STORY,
-    variables: {
-      slug: path,
-    },
-  });
+  const article = await blogClient.fetch(POST_QUERY, { slug });
 
-  const article = newsArticle.articles[0];
+  if (!article) {
+    return { title: 'Article Not Found - Power & Control' };
+  }
 
   return {
     title: `${article.title} - Power & Control Ltd`,
     description: article.metaDescription,
-    url: `https://pac-electrical.co.uk/case-studies/${article.slug}`,
-    type: 'article',
-    image: article.hero.url,
     openGraph: {
-      title: `${article.title} - Power & Control Ltd`,
+      title: article.title,
       description: article.metaDescription,
-      url: `https://pac-electrical.co.uk/case-studies/${article.slug}`,
+      url: `https://pac-electrical.co.uk/news/${article.slug}`,
       type: 'article',
-      article: {
-        publishedTime: article.date,
-      },
       images: [
         {
-          url: article.hero.url,
+          url: article.imageUrl,
+          width: 1200,
+          height: 630,
         },
       ],
+      publishedTime: article.date,
     },
   };
 }
 
 export default async function NewsPage({ params }) {
-  const path = params.slug;
-  const client = getClient();
-  const { data: newsArticle } = await client.query({
-    query: NEWS_STORY,
-    variables: {
-      slug: path,
-    },
-  });
+  const resolvedParams = await params;
+  const { slug } = resolvedParams;
+
+  const article = await blogClient.fetch(POST_QUERY, { slug });
+
+  if (!article) {
+    return notFound();
+  }
+
   return (
-    <div>
-      <NewsPageFrame data={newsArticle.articles[0]} />
+    <div style={{ marginTop: '-40px' }}>
+      {/* Use the Correct Frame for Single Articles */}
+      <NewsArticleFrame data={article} />
     </div>
   );
 }

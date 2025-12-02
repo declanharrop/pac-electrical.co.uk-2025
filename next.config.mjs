@@ -16,6 +16,10 @@ const nextConfig = {
         protocol: 'https',
         hostname: 'eu-west-2.graphassets.com',
       },
+      {
+        protocol: 'https',
+        hostname: 'cdn.sanity.io',
+      },
     ],
   },
   env: {

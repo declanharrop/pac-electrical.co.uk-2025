@@ -1,4 +1,6 @@
-.NewsPageFrame {}
+.NewsPageFrame {
+  /* Inherits global styles */
+}
 
 .NewsPageFrame_Container {
   background: white;
@@ -6,70 +8,217 @@
 }
 
 .NewsPageFrame_Container_Content {
-  max-width: 1200px;
+  max-width: 1000px;
   margin: auto;
   margin-top: 0px;
   padding: 80px 20px;
 }
 
+/* --- VIDEO SECTION --- */
 .NewsPageFrame_Container_Content_Video {
   max-width: 800px;
   margin: 0 auto;
   margin-top: 30px;
+  margin-bottom: 50px;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 }
 
 .NewsPageFrame_Container_Content_Video iframe {
   width: 100%;
   height: 100%;
   aspect-ratio: 16 / 9;
+  display: block;
 }
 
+/* --- TEXT CONTENT WRAPPER --- */
 .NewsPageFrame_Container_Content_Text {
-  max-width: 1000px;
-  margin: 50px auto;
+  max-width: 800px;
+  margin: 0 auto;
   text-align: left;
 }
 
 .NewsPageFrame_Container_Content_Text_Date {
+  font-size: 1.4rem;
+  /* 14px */
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.10rem;
+  margin-bottom: 10px;
+  color: var(--green);
+}
+
+/* --- AUTHOR BADGE --- */
+.authorBadge {
+  margin-bottom: 40px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #eee;
+  color: #555;
   font-size: 1.6rem;
-  font-weight: 400;
-  letter-spacing: 0.10rem;
-  margin-bottom: 10px;
-  color: var(--grey);
+  /* 16px */
 }
 
-.NewsPageFrame_Container_Content_Text_Html p {
-  font-size: 1.7rem;
+/* Wrapper to handle both Link and Div versions */
+.authorLink,
+.authorNoLink {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  text-decoration: none;
+  color: inherit;
+  transition: opacity 0.2s;
+}
+
+.authorLink:hover {
+  opacity: 0.7;
+  /* Hover effect only for active staff */
+  cursor: pointer;
+}
+
+.avatarWrapper {
+  position: relative;
+  width: 60px;
+  /* Slightly larger for the article header */
+  height: 60px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 2px solid #f5f5f5;
+  flex-shrink: 0;
+}
+
+.authorText {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.3;
+}
+
+.writtenBy {
+  font-size: 1.3rem;
+  /* 13px */
+  color: #888;
+  font-style: italic;
+  margin: 0;
+}
+
+.authorName {
+  font-size: 1.6rem;
+  /* 16px */
+  color: #555;
+  margin: 0;
+}
+
+.authorName strong {
+  font-weight: 700;
+  color: var(--black);
+}
+
+/* --- PORTABLE TEXT STYLES (Scaled for 10px Base) --- */
+
+.richTextContainer {
+  line-height: 1.8;
+  color: #333;
+}
+
+.paragraph {
+  font-size: 1.8rem;
+  /* 18px - Standard Body Text */
+  margin-bottom: 25px;
   font-weight: 400;
-  letter-spacing: 0.10rem;
+  letter-spacing: 0.02rem;
+}
+
+.heading2 {
+  font-size: 3.2rem;
+  /* 32px */
+  font-weight: 700;
+  margin-top: 50px;
   margin-bottom: 20px;
-  line-height: 1.6;
+  color: var(--black);
+  line-height: 1.2;
 }
 
-.NewsPageFrame_Container_Content_Text_Html ul {
+.heading3 {
+  font-size: 2.4rem;
+  /* 24px */
+  font-weight: 600;
+  margin-top: 40px;
+  margin-bottom: 15px;
+  color: var(--black);
+}
+
+.list {
   padding-left: 20px;
-  font-weight: 400;
-  line-height: 1.7;
-  letter-spacing: 0.10rem;
-  margin-bottom: 10px;
+  margin-bottom: 30px;
 }
 
+.listItem {
+  font-size: 1.8rem;
+  /* 18px */
+  margin-bottom: 10px;
+  line-height: 1.6;
+  padding-left: 10px;
+}
+
+/* --- BACK BUTTON --- */
 .NewsPageFrame_BackButton {
   position: fixed;
   z-index: 1000;
   top: 94px;
-  left: 14px;
-  background: var(--black);
-  color: white;
-  padding: 14px 16px;
-  border-radius: 60px;
+  left: 20px;
+  background: white;
+  color: var(--black);
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  cursor: pointer;
 }
 
 .NewsPageFrame_BackButton:hover {
   background: var(--green);
-  color: white;
+  transform: scale(1.1);
 }
 
 .NewsPageFrame_BackButton svg {
+  width: 20px;
+  height: 20px;
   transform: rotate(90deg);
+  fill: var(--black);
+  transition: fill 0.2s ease;
+}
+
+.NewsPageFrame_BackButton:hover svg {
+  fill: white;
+}
+
+/* --- RESPONSIVE ADJUSTMENTS --- */
+@media screen and (max-width: 800px) {
+  .NewsPageFrame_Container_Content {
+    padding: 40px 20px;
+  }
+
+  .NewsPageFrame_Container_Content_Text_Date {
+    font-size: 1.2rem;
+    /* 12px */
+  }
+
+  .heading2 {
+    font-size: 2.6rem;
+    /* 26px */
+  }
+
+  .paragraph {
+    font-size: 1.6rem;
+    /* 16px */
+  }
+
+  .authorName {
+    font-size: 1.4rem;
+    /* 14px */
+  }
 }

@@ -15,20 +15,20 @@ export default function UsLayout({ children }) {
             name: 'News',
             link: '/news',
           },
-          // {
-          //   name: 'More',
-          //   dropdown: true,
-          // },
+          {
+            name: 'More',
+            dropdown: true,
+          },
         ]}
         dropdownOptions={[
+          {
+            name: 'Our Team',
+            link: '/team',
+          },
           {
             name: 'Contact Us',
             link: '/us/contact',
           },
-          // {
-          //   name: 'Our Team',
-          //   link: '/us/our-team',
-          // },
           // {
           //   name: 'Recruitment',
           //   link: '/us/recruitment',
