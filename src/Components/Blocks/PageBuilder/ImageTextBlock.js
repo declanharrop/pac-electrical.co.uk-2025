@@ -43,7 +43,9 @@ export default function ImageTextBlock({ data }) {
           {/* Button Logic (if you added 'moreInfo' to schema) */}
           {data.moreInfo && (
             <div style={{ marginTop: '20px' }}>
-              <button className="primary-btn">{data.moreInfo}</button>
+              <button type="button" className="primary-btn">
+                {data.moreInfo}
+              </button>
             </div>
           )}
         </div>
