@@ -10,7 +10,7 @@ export default function SlideshowBlock({ data }) {
   // 1. Config: Autoplay is ON, but doesn't stop just because you touch it.
   const [emblaRef, emblaApi] = useEmblaCarousel(
     { loop: true, align: 'start' },
-    [Autoplay({ delay: 4000, stopOnInteraction: false })],
+    [Autoplay({ delay: 8000, stopOnInteraction: false })],
   );
 
   // 2. Interaction Handler: Kills autoplay ONLY when user clicks buttons

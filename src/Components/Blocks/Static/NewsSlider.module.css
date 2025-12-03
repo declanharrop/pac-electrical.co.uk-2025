@@ -1,0 +1,227 @@
+.Wrapper {
+  padding: 10px 0 40px;
+  max-width: 1400px;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.Header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 40px;
+  padding: 0 20px;
+}
+
+.Title {
+  /* Was 2.2rem -> Now 4rem (40px) */
+  font-size: 4rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+/* --- CAROUSEL STRUCTURE --- */
+.Viewport {
+  overflow: hidden;
+  padding: 10px 20px 40px;
+  cursor: grab;
+}
+
+.Viewport:active {
+  cursor: grabbing;
+}
+
+.Container {
+  display: flex;
+  margin-left: -20px;
+}
+
+.Slide {
+  flex: 0 0 33.33%;
+  min-width: 0;
+  padding-left: 20px;
+  position: relative;
+  /* Ensure slide stretches to full height of row */
+  display: flex;
+  height: auto;
+}
+
+/* --- CARD STYLING --- */
+.Card {
+  display: flex;
+  flex-direction: column;
+  /* vital for equal height content */
+  background: white;
+  border-radius: 16px;
+  overflow: hidden;
+  text-decoration: none;
+  color: inherit;
+  width: 100%;
+  /* Fill the slide */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid #f0f0f0;
+}
+
+.Card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+}
+
+.ImageContainer {
+  position: relative;
+  height: 260px;
+  /* Increased slightly for balance */
+  overflow: hidden;
+  background: #f5f5f5;
+  flex-shrink: 0;
+  /* Prevents image from squishing */
+}
+
+.Image {
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+
+.Card:hover .Image {
+  transform: scale(1.05);
+}
+
+.Content {
+  padding: 30px;
+  /* Increased padding */
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  /* Pushes content to fill space */
+  justify-content: space-between;
+}
+
+.Date {
+  /* Was 0.75rem -> Now 1.4rem (14px) */
+  font-size: 1.4rem;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+.CardTitle {
+  /* Was 1.2rem -> Now 2.4rem (24px) */
+  font-size: 2.4rem;
+  font-weight: 700;
+  margin: 0 0 25px 0;
+  line-height: 1.3;
+  color: #111;
+
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* --- AUTHOR & BOTTOM ROW --- */
+.BottomRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid #eee;
+  padding-top: 20px;
+  margin-top: auto;
+}
+
+.Author {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.AuthorImageWrapper {
+  width: 40px;
+  /* Increased from 30px */
+  height: 40px;
+  border-radius: 50%;
+  overflow: hidden;
+  position: relative;
+  border: 1px solid #eee;
+}
+
+.AuthorName {
+  /* Was 0.85rem -> Now 1.5rem (15px) */
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #555;
+}
+
+.ReadMore {
+  /* Was 0.85rem -> Now 1.6rem (16px) */
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--green, #28a745);
+  white-space: nowrap;
+}
+
+/* --- NAV BUTTONS --- */
+.NavButtons {
+  display: flex;
+  gap: 12px;
+}
+
+.NavBtn {
+  width: 54px;
+  /* Slightly larger targets */
+  height: 54px;
+  border-radius: 50%;
+  border: 1px solid #ddd;
+  background: white;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+  color: black;
+}
+
+.NavBtn:hover {
+  background: black;
+  color: white;
+  border-color: black;
+}
+
+/* --- RESPONSIVE --- */
+@media screen and (max-width: 1024px) {
+  .Slide {
+    flex: 0 0 50%;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .Slide {
+    flex: 0 0 85%;
+  }
+
+  .Header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+  }
+
+  .Title {
+    font-size: 3rem;
+    /* 30px mobile title */
+  }
+
+  .NavButtons {
+    display: none;
+  }
+
+  .ImageContainer {
+    height: 220px;
+  }
+
+  .CardTitle {
+    font-size: 2rem;
+    /* 20px mobile card title */
+  }
+}
