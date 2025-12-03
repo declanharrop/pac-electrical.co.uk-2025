@@ -26,7 +26,7 @@ export default function PageBuilderFrame({ data, isSolar = false }) {
           alt={data.hero.imageAlt || data.title}
           title={data.hero.title}
           subtitle={data.hero.subtitle}
-          height="60vh"
+          height="40vh"
         />
       )}
       {/* SOLAR LOGOS (Conditional) */}
