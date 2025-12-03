@@ -1,44 +1,40 @@
 'use client';
 
-import React, { useCallback } from 'react';
+import React, { useCallback, useEffect } from 'react';
 import useEmblaCarousel from 'embla-carousel-react';
 import Autoplay from 'embla-carousel-autoplay';
 import Image from 'next/image';
 import styles from './SlideshowBlock.module.css';
 
 export default function SlideshowBlock({ data }) {
-  // 1. Initialize with Autoplay
+  // 1. Config: Autoplay is ON, but doesn't stop just because you touch it.
   const [emblaRef, emblaApi] = useEmblaCarousel(
     { loop: true, align: 'start' },
-    [
-      Autoplay({
-        delay: 6000,
-        stopOnInteraction: true,
-        stopOnMouseEnter: true,
-      }),
-    ],
+    [Autoplay({ delay: 4000, stopOnInteraction: false })],
   );
 
-  // 2. Button Handlers (Now with Force Stop)
-  const scrollPrev = useCallback(() => {
-    if (emblaApi) {
-      // Force autoplay to stop immediately
-      const autoplay = emblaApi.plugins()?.autoplay;
-      if (autoplay) autoplay.stop();
-
-      emblaApi.scrollPrev();
+  // 2. Interaction Handler: Kills autoplay ONLY when user clicks buttons
+  const stopAutoplay = useCallback(() => {
+    if (!emblaApi) return;
+    const autoplay = emblaApi.plugins()?.autoplay;
+    if (autoplay && autoplay.isPlaying()) {
+      autoplay.stop();
     }
   }, [emblaApi]);
+
+  const scrollPrev = useCallback(() => {
+    if (emblaApi) {
+      stopAutoplay(); // Stop auto-moving
+      emblaApi.scrollPrev();
+    }
+  }, [emblaApi, stopAutoplay]);
 
   const scrollNext = useCallback(() => {
     if (emblaApi) {
-      // Force autoplay to stop immediately
-      const autoplay = emblaApi.plugins()?.autoplay;
-      if (autoplay) autoplay.stop();
-
+      stopAutoplay(); // Stop auto-moving
       emblaApi.scrollNext();
     }
-  }, [emblaApi]);
+  }, [emblaApi, stopAutoplay]);
 
   if (!data.images || data.images.length === 0) return null;
 
@@ -83,7 +79,6 @@ export default function SlideshowBlock({ data }) {
         </div>
       </div>
 
-      {/* The viewport stops on mouse enter thanks to stopOnMouseEnter: true */}
       <div className={styles.Viewport} ref={emblaRef}>
         <div className={styles.Container}>
           {data.images.map((img, index) => (
