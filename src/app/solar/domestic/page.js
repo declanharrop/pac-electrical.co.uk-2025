@@ -40,7 +40,6 @@ export default async function DomesticSolarPage() {
       </div>
     );
   }
-
   return (
     <>
       <PageBuilderFrame data={page} isSolar />

@@ -1,0 +1,131 @@
+.Wrapper {
+  padding: 10px 0;
+  max-width: 1400px;
+  margin: 0 auto;
+  overflow: hidden;
+  /* Hides overflow for slick edge-to-edge look */
+}
+
+.Header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+  margin-bottom: 30px;
+}
+
+.Title {
+  font-size: 2.2rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+/* --- EMBLA STRUCTURE --- */
+.Viewport {
+  overflow: hidden;
+  padding: 10px 20px 40px;
+  /* Padding bottom for shadow space */
+  cursor: grab;
+}
+
+.Viewport:active {
+  cursor: grabbing;
+}
+
+.Container {
+  display: flex;
+  /* Configure the gap between slides here */
+  margin-left: -20px;
+}
+
+.Slide {
+  /* Desktop: Show 3 items (33.33%) */
+  flex: 0 0 33.33%;
+  min-width: 0;
+  padding-left: 20px;
+  /* Must match the negative margin-left above */
+  position: relative;
+}
+
+.SlideInner {
+  position: relative;
+  height: 350px;
+  border-radius: 16px;
+  overflow: hidden;
+  background: #f0f0f0;
+  /* Soft shadow for depth */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease;
+}
+
+.SlideInner:hover {
+  transform: translateY(-5px);
+  /* Subtle lift on hover */
+}
+
+.Image {
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.SlideInner:hover .Image {
+  transform: scale(1.05);
+  /* Slow zoom effect */
+}
+
+/* --- NAVIGATION BUTTONS --- */
+.NavButtons {
+  display: flex;
+  gap: 10px;
+}
+
+.NavBtn {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: 1px solid #e0e0e0;
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  color: var(--black, #000);
+}
+
+.NavBtn:hover {
+  background: var(--black, #000);
+  color: white;
+  border-color: var(--black, #000);
+}
+
+/* --- RESPONSIVE --- */
+@media screen and (max-width: 1024px) {
+  .Slide {
+    flex: 0 0 50%;
+    /* 2 items on tablet */
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .Header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+  }
+
+  .NavButtons {
+    display: none;
+    /* Often cleaner to hide arrows on mobile and just allow swipe */
+  }
+
+  .Slide {
+    flex: 0 0 85%;
+    /* 1 item + peek at next one on mobile */
+  }
+
+  .SlideInner {
+    height: 300px;
+  }
+}

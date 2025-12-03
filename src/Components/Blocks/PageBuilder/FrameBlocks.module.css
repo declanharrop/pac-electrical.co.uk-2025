@@ -82,7 +82,7 @@
 }
 
 
-/* // ==========================================
+/* // =======================================
 // 2. BLOCK BLOCK (Grid of content)
 // ==========================================
 */
@@ -193,6 +193,8 @@
   position: relative;
   width: 100%;
   overflow: hidden;
+  height: 70vh;
+  max-height: 800px;
 }
 
 .ImageBlock__Image {

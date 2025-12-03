@@ -2,6 +2,7 @@ import Image from 'next/image';
 import styles from './FrameBlocks.module.css';
 
 export default function ImageBlock({ data }) {
+  console.log('Image Section Data:', data);
   return (
     <div className={styles.ImageBlock}>
       <div className={styles.ImageBlock__Image}>

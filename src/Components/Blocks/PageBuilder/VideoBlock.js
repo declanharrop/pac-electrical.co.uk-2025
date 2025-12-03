@@ -1,31 +1,56 @@
 import React from 'react';
-import Styles from './FrameBlocks.module.css'; // Uses Blocks.module.css, not FrameBlocks
+import styles from './VideoBlock.module.css';
 
 export default function VideoBlock({ data }) {
-  // Support both direct props (legacy) or Sanity data object
   const title = data.videoTitle || data.title;
   const { subtitle } = data;
-  const videoUrl = data.video;
+  const rawVideoUrl = data.video;
+
+  // HELPER: Convert standard YouTube/Vimeo links to Embed URLs
+  const getEmbedUrl = (url) => {
+    if (!url) return null;
+
+    // Handle standard YouTube links
+    if (url.includes('youtube.com/watch')) {
+      const urlParams = new URLSearchParams(new URL(url).search);
+      return `https://www.youtube.com/embed/${urlParams.get('v')}`;
+    }
+
+    // Handle short YouTube links (youtu.be)
+    if (url.includes('youtu.be')) {
+      const id = url.split('/').pop();
+      return `https://www.youtube.com/embed/${id}`;
+    }
+
+    // Return original if no match (assumes user might have pasted an embed link)
+    return url;
+  };
+
+  const embedUrl = getEmbedUrl(rawVideoUrl);
+
+  if (!embedUrl) return null;
 
   return (
-    <div className={Styles.VideoBlock}>
-      <div className={Styles.VideoBlock__Container}>
-        <h2>{title}</h2>
-        {subtitle && <h4 style={{ margin: '10px 0 20px' }}>{subtitle}</h4>}
+    <section className={styles.VideoBlock}>
+      <div className={styles.Container}>
+        {/* Title Section */}
+        <div className={styles.Header}>
+          {title && <h2 className={styles.Title}>{title}</h2>}
+          {subtitle && <p className={styles.Subtitle}>{subtitle}</p>}
+        </div>
 
-        {/* Ensure we have a valid URL before rendering iframe */}
-        {videoUrl && (
+        {/* Video Wrapper (Maintains Aspect Ratio) */}
+        <div className={styles.VideoWrapper}>
           <iframe
-            className={Styles.VideoBlock__Container__Video}
-            src={videoUrl}
-            title={title}
+            src={embedUrl}
+            title={title || 'Video'}
             frameBorder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            referrerPolicy="strict-origin-when-cross-origin"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen
+            className={styles.Iframe}
           />
-        )}
+        </div>
       </div>
-    </div>
+    </section>
   );
 }
