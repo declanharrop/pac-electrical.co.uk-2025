@@ -1,5 +1,6 @@
 .ThreeItemBlock {
-  padding: 140px 20px;
+  /* Reduced from 140px to 100px for a tighter desktop feel */
+  padding: 100px 20px;
 }
 
 .ThreeItemBlock_Container {
@@ -8,37 +9,122 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 20px;
-
 }
 
 .ThreeItemBlock_Container_Item {
+  /* Desktop: Vertical Stack */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /* Center align looks cleaner for icons */
+  text-align: center;
+
   min-height: 400px;
+  /* Keep height on desktop for presence */
   height: 100%;
-  border: 5px solid white;
+  border: 3px solid white;
+  /* Reduced from 5px for a modern look */
   border-radius: 20px;
   transition: all 0.3s ease-in-out;
-  padding: 40px 40px;
+  padding: 40px;
+  background: rgba(255, 255, 255, 0.05);
+  /* Optional: Slight fill for depth */
 }
 
-.ThreeItemBlock_Container_Item:Hover {
-  transform: scale(1.03);
+.ThreeItemBlock_Container_Item:hover {
+  transform: translateY(-10px);
+  /* Modern "Lift" instead of scale */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  background: rgba(255, 255, 255, 0.1);
 }
 
 .ThreeItemBlock_Container_Item_Icon {
-  margin-bottom: 40px;
-  height: 180px;
+  margin-bottom: 30px;
+  height: 140px;
+  /* Slightly smaller than 180px for balance */
+  width: auto;
+  transition: transform 0.3s ease;
+}
+
+.ThreeItemBlock_Container_Item:hover .ThreeItemBlock_Container_Item_Icon {
+  transform: scale(1.1);
 }
 
 .ThreeItemBlock_Container_Item_Title {
-  font-size: 3rem;
+  font-family: var(--font-good-times);
+  /* Enforcing Global Font */
+  font-size: 2.4rem;
+  /* Reduced from 3rem for better wrapping */
   margin-bottom: 10px;
-  line-height: 1.4;
+  line-height: 1.2;
   color: white;
 }
 
 .ThreeItemBlock_Container_Item_Text {
-  font-size: 1.8rem;
-  color: white;
+  font-family: var(--font-urbanist);
+  font-size: 1.6rem;
+  color: var(--grey);
+  /* Using variable for consistency */
+  line-height: 1.4;
+}
+
+/* --- MOBILE OPTIMIZATION --- */
+@media screen and (max-width: 900px) {
+  .ThreeItemBlock {
+    padding: 60px 20px;
+    /* Drastically reduced vertical space */
+  }
+
+  .ThreeItemBlock_Container {
+    grid-template-columns: 1fr;
+    /* Stack vertically */
+    gap: 15px;
+  }
+
+  .ThreeItemBlock_Container_Item {
+    /* Mobile: Horizontal Row (Side-by-Side) */
+    flex-direction: row;
+    justify-content: flex-start;
+    /* Align left */
+    align-items: center;
+    text-align: left;
+
+    min-height: auto;
+    /* Remove the huge height requirement */
+    padding: 20px;
+    /* Compact padding */
+    border-width: 2px;
+    /* Thinner border */
+  }
+
+  .ThreeItemBlock_Container_Item_Icon {
+    /* Make icon small and place on the left */
+    height: 50px;
+    width: 50px;
+    margin-bottom: 0;
+    margin-right: 20px;
+    /* Space between icon and text */
+    flex-shrink: 0;
+    /* Prevent icon squashing */
+  }
+
+  /* Wrap text in a div for alignment */
+  .ContentWrapper {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .ThreeItemBlock_Container_Item_Title {
+    font-size: 1.6rem;
+    /* Much smaller mobile font */
+    margin-bottom: 4px;
+  }
+
+  .ThreeItemBlock_Container_Item_Text {
+    font-size: 1.4rem;
+    margin: 0;
+  }
 }
 
 
@@ -88,49 +174,7 @@
   margin: 60px 0 20px 0;
 }
 
-@media screen and (max-width: 1200px) {
-  .ThreeItemBlock_Container_Item_Icon {
-    height: 140px;
-  }
-
-  .ThreeItemBlock_Container_Item_Title {
-    font-size: 2.5rem;
-  }
-
-  .ThreeItemBlock_Container_Item {
-    padding: 40px 20px;
-    min-height: 380px;
-  }
-}
-
-@media screen and (max-width: 1000px) {
-  .ThreeItemBlock_Container_Item_Icon {
-    height: 140px;
-  }
-
-  .ThreeItemBlock_Container_Item_Title {
-    font-size: 2rem;
-  }
-
-  .ThreeItemBlock_Container_Item {
-    padding: 40px 20px;
-  }
-}
-
 @media screen and (max-width: 800px) {
-  .ThreeItemBlock_Container {
-    grid-template-columns: 1fr;
-  }
-
-  .ThreeItemBlock_Container_Item_Icon {
-    height: 160px;
-  }
-
-  .ThreeItemBlock_Container_Item {
-    padding: 40px 20px;
-    min-height: 340px;
-  }
-
   .VideoBlock__Container__Video {
     margin: 20px 0 20px 0;
   }

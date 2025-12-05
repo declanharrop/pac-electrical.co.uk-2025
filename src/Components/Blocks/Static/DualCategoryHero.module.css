@@ -1,0 +1,141 @@
+.Section {
+  width: 100%;
+  padding: 20px;
+}
+
+.Container {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  width: 100%;
+}
+
+.Card {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  min-height: 400px;
+  /* Reduced slightly to keep it tight */
+  border-radius: 24px;
+  overflow: hidden;
+  text-decoration: none;
+  isolation: isolate;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.Card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+}
+
+.ImageWrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.Image {
+  transition: transform 0.5s ease;
+}
+
+.Card:hover .Image {
+  transform: scale(1.03);
+}
+
+.Overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 50%;
+  /* Reduced height of gradient to keep image visible */
+  background: linear-gradient(to top,
+      rgba(255, 255, 255, 1) 0%,
+      rgba(255, 255, 255, 0.9) 25%,
+      rgba(255, 255, 255, 0) 100%);
+  z-index: 2;
+  display: flex;
+  align-items: flex-end;
+  padding: 30px;
+}
+
+.Content {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* Aligns center vertical */
+}
+
+.Title {
+  font-family: var(--font-good-times);
+  /* RE-BALANCED: 2.4rem = 24px */
+  font-size: 2.4rem;
+  font-weight: 700;
+  color: var(--black);
+  margin: 0;
+  line-height: 1.1;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.FakeButton {
+  background-color: var(--black);
+  color: #ffffff;
+  padding: 12px 28px;
+  border-radius: 50px;
+  font-family: var(--font-urbanist);
+  /* RE-BALANCED: 1.6rem = 16px (Readable standard size) */
+  font-size: 1.6rem;
+  font-weight: 600;
+  text-transform: capitalize;
+  white-space: nowrap;
+  /* Prevents button text wrapping */
+  transition: background-color 0.3s ease;
+}
+
+.Card:hover .FakeButton {
+  background-color: var(--green);
+}
+
+/* Mobile Responsiveness */
+@media screen and (max-width: 900px) {
+  .Title {
+    font-size: 2rem;
+    /* 20px on tablet */
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .Container {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+
+  .Card {
+    min-height: 280px;
+    border-radius: 16px;
+  }
+
+  .Overlay {
+    padding: 20px;
+  }
+
+  .Title {
+    font-size: 1.8rem;
+    /* 18px on mobile */
+  }
+
+  .FakeButton {
+    padding: 10px 20px;
+    font-size: 1.4rem;
+    /* 14px on mobile */
+  }
+}

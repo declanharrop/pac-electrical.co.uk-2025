@@ -6,6 +6,9 @@ import SmoothScrollLogosBlock from '@/Components/Blocks/SmoothScrollLogosBlock';
 import TextWithImageBlock from '@/Components/Blocks/TextWithImageBlock';
 import VideoBlock from '@/Components/Blocks/VideoBlock';
 import VideoHero from '@/Components/Hero/VideoHero';
+import DualCategoryHero from '@/Components/Blocks/Static/DualCategoryHero';
+import FeatureVideoSection from '@/Components/Blocks/Static/FeatureVideoSection';
+import LatestCaseStudies from '@/Components/Blocks/Dynamic/LatestCaseStudies';
 
 const METADATA = {
   Url: 'https://pac-electrical.co.uk/solar',
@@ -41,30 +44,37 @@ export default function SolarPage() {
         <h1>Solar</h1>
         <h3>Powering your world, your way.</h3>
       </VideoHero> */}
-      <SmoothScrollLogosBlock margin="120px auto 100px" />
-      <div style={{ marginTop: '-140px' }}>
-        <BrandsBlock
-          title=""
-          brands={[
+      <div style={{ marginTop: '160px' }}>
+        <DualCategoryHero
+          items={[
             {
               link: '/solar/domestic',
-              heroImage: '/images/solar/pac-sol-2.webp',
+              image: '/images/solar/pac-sol-2.webp',
               alt: 'Domestic Solar from Power & Control',
-              name: 'Domestic',
+              title: 'Domestic',
             },
             {
               link: '/solar/commercial',
-              heroImage: '/images/solar/comsol1.webp',
-              alt: 'Comercial Solar from Power & Control',
-              name: 'Commercial',
+              image: '/images/solar/comsol1.webp',
+              alt: 'Commercial Solar from Power & Control',
+              title: 'Commercial',
             },
           ]}
         />
       </div>
-      <VideoBlock subtitle="Let us show you what an install from Power & Control will look like in your home" />
+      <SmoothScrollLogosBlock margin="0px auto 0px" />
+      <FeatureVideoSection
+        title="Explore Solar From Power & Control"
+        subtitle="Let us show you what an install from Power & Control will look like in your home"
+        videoUrl="https://www.youtube.com/watch?v=AVxSuKksEmU"
+      />
       <BrandsBlock />
       <TextWithImageBlock />
-      <LatestStudiesBlock title="Solar" query="solar" />
+      <LatestCaseStudies
+        title="Solar"
+        tags={['Solar']}
+        link="/case-studies/solar"
+      />
       <LargeImageBlock />
       <Link href="/solar/finance" style={{ fontSize: '18px' }}>
         <img

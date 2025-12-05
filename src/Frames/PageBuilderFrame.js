@@ -1,9 +1,9 @@
-'use client';
-
+// ❌ REMOVED 'use client' - This must be a Server Component now
 import ImageHero from '@/Components/Hero/ImageHero';
-import Styles from './Styles/StandardPageFrame.module.css'; // Reusing your existing layout styles
+import Styles from './Styles/StandardPageFrame.module.css';
 import SmoothScrollLogosBlock from '@/Components/Blocks/SmoothScrollLogosBlock';
 
+// Blocks
 import ImageTextBlock from '@/Components/Blocks/PageBuilder/ImageTextBlock';
 import FAQsBlock from '@/Components/Blocks/PageBuilder/FAQsBlock';
 import BlockBlock from '@/Components/Blocks/PageBuilder/BlockBlock';
@@ -11,10 +11,13 @@ import ImageBlock from '@/Components/Blocks/PageBuilder/ImageBlock';
 import VideoBlock from '@/Components/Blocks/PageBuilder/VideoBlock';
 import SlideshowBlock from '@/Components/Blocks/PageBuilder/SlideshowBlock';
 
-export default function PageBuilderFrame({ data, isSolar = false }) {
+// Dynamic Server Components
+import LatestCaseStudies from '@/Components/Blocks/Dynamic/LatestCaseStudies';
+
+// Note: We added 'async' because this is now a Server Component
+export default async function PageBuilderFrame({ data, isSolar = false }) {
   if (!data) return null;
 
-  // Handle both naming conventions (just in case)
   const sections = data.pageSections || data.pageBuilder || [];
 
   return (
@@ -29,16 +32,17 @@ export default function PageBuilderFrame({ data, isSolar = false }) {
           height="40vh"
         />
       )}
-      {/* SOLAR LOGOS (Conditional) */}
+
+      {/* SOLAR LOGOS */}
       {isSolar && (
         <div style={{ marginTop: '-80px' }}>
           <SmoothScrollLogosBlock />
         </div>
       )}
+
       {/* PAGE BUILDER LOOP */}
       <div className={Styles.content}>
         {sections.map((block) => {
-          // The '_type' here comes directly from your Sanity Schema names
           switch (block._type) {
             case 'imageTextSection':
               return <ImageTextBlock key={block._key} data={block} />;
@@ -58,12 +62,36 @@ export default function PageBuilderFrame({ data, isSolar = false }) {
             case 'slideshowSection':
               return <SlideshowBlock key={block._key} data={block} />;
 
+            /* NEW CASE STUDY BLOCK 
+               Make sure your Sanity schema uses this _type name (e.g. 'latestStudiesBlock')
+            */
+            case 'latestStudiesBlock':
+              // Or whatever you named it in Sanity Schema
+              return (
+                <LatestCaseStudies
+                  key={block._key}
+                  title={block.title || 'Our Latest Work'}
+                  // Handle if CMS passes a string (e.g. "Solar") or an Array
+                  tags={
+                    Array.isArray(block.query)
+                      ? block.query
+                      : [block.query || 'Solar']
+                  }
+                  link={block.link}
+                />
+              );
+
             default:
               if (process.env.NODE_ENV === 'development') {
                 return (
                   <div
                     key={block._key}
-                    style={{ padding: 20, background: '#fee', color: 'red' }}
+                    style={{
+                      padding: 20,
+                      background: '#fee',
+                      color: 'red',
+                      textAlign: 'center',
+                    }}
                   >
                     Unknown Block Type: <strong>{block._type}</strong>
                   </div>
