@@ -225,3 +225,22 @@
     /* 20px mobile card title */
   }
 }
+
+/* Add this to your existing CSS */
+
+.LabelOverlay {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  z-index: 2;
+  /* Ensures it sits above the image */
+  pointer-events: none;
+  /* Allows clicks to pass through to the card link */
+}
+
+/* Optional: Ensure the ImageContainer handles absolute positioning */
+.ImageContainer {
+  position: relative;
+  /* This must be present */
+  /* ... existing styles ... */
+}
