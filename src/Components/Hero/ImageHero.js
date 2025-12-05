@@ -3,36 +3,34 @@ import Styles from './Hero.module.css';
 
 export default function ImageHero({
   height = '70vh',
-  title = 'Title',
-  subtitle,
-  src = '/ph.webp',
-  alt = 'Hero Image',
+  title = '',
+  subtitle = '',
+  src = '/images/solar/Tesla-Hero.webp', // Default fallback
+  alt = 'Power and Control Hero',
 }) {
   return (
-    <div className={Styles.ImageHero} style={{ height: `${height}` }}>
-      <div className={Styles.ImageHero_Container}>
+    <div className={Styles.HeroWrapper} style={{ height }}>
+      {/* Background Image */}
+      <div className={Styles.ImageContainer}>
         <Image
           priority
           src={src}
           alt={alt}
           fill
+          quality={90}
+          sizes="100vw"
           style={{ objectFit: 'cover' }}
         />
       </div>
-      <div className={Styles.ImageHero_Overlay}>
-        <div className={Styles.ImageHero_Overlay_Container}>
-          <div className={Styles.ImageHero_Overlay_Container_Content}>
-            <h1 className={Styles.ImageHero_Overlay_Container_Content_Title}>
-              {title}
-            </h1>
-            {subtitle && (
-              <h4
-                className={Styles.ImageHero_Overlay_Container_Content_Subtitle}
-              >
-                {subtitle}
-              </h4>
-            )}
-          </div>
+
+      {/* Gradient Overlay & Content */}
+      <div className={Styles.Overlay}>
+        <div className={Styles.ContentWrapper}>
+          {/* Main Title - Bright/White */}
+          {title && <h1 className={Styles.Title}>{title}</h1>}
+
+          {/* Subtitle - Faded/Grey */}
+          {subtitle && <h4 className={Styles.Subtitle}>{subtitle}</h4>}
         </div>
       </div>
     </div>

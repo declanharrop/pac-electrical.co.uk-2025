@@ -30,7 +30,11 @@ export default function PageBuilderFrame({ data, isSolar = false }) {
         />
       )}
       {/* SOLAR LOGOS (Conditional) */}
-      {isSolar && <SmoothScrollLogosBlock />}
+      {isSolar && (
+        <div style={{ marginTop: '-80px' }}>
+          <SmoothScrollLogosBlock />
+        </div>
+      )}
       {/* PAGE BUILDER LOOP */}
       <div className={Styles.content}>
         {sections.map((block) => {

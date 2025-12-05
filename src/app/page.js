@@ -2,7 +2,6 @@ import { Suspense } from 'react';
 import EVBrandsBlock from '@/Components/Blocks/BrandAccredBlocks/EVBrandsBlock';
 import SolarBrandsBlock from '@/Components/Blocks/BrandAccredBlocks/SolarBrandsBlock';
 import CaseStudiesBlock from '@/Components/Blocks/CaseStudiesBlock/CaseStudiesBlock';
-import NewsStoriesBlock from '@/Components/Blocks/NewsStoriesBlock/NewsStoriesBlock';
 import SimpleHeaderTextBlock from '@/Components/Blocks/SimpleHeaderTextBlock';
 import NewsSection from '@/Components/Blocks/Static/NewsSection';
 

@@ -52,39 +52,97 @@
   color: white;
 }
 
-.ImageHero {
+.HeroWrapper {
   position: relative;
   overflow: hidden;
-  max-height: 800px;
+  width: 100%;
   min-height: 400px;
 }
 
-.ImageHero_Container {
+/* --- Image Container --- */
+.ImageContainer {
   position: relative;
-  overflow: hidden;
   width: 100%;
   height: 100%;
 }
 
-.ImageHero_Overlay {
+/* --- Overlay (Gradient) --- */
+.Overlay {
   position: absolute;
   top: 0;
   left: 0;
-  background: linear-gradient(180deg, rgba(27, 24, 25, 0) 0%, rgba(27, 24, 25, 0.6) 60%, rgba(27, 24, 25, 1) 100%);
-
-  height: 100%;
   width: 100%;
+  height: 100%;
+  /* Gradient remains to ensure text is readable */
+  background: linear-gradient(180deg,
+      rgba(27, 24, 25, 0) 0%,
+      rgba(27, 24, 25, 0.4) 60%,
+      rgba(27, 24, 25, 0.9) 100%);
+  z-index: 2;
+  pointer-events: none;
 }
 
-.ImageHero_Overlay_Container {
+/* --- Content Wrapper --- */
+.ContentWrapper {
   position: relative;
   max-width: 1600px;
   height: 100%;
-  padding: 20px;
   margin: 0 auto;
+  /* UPDATED: Reduced bottom padding to match side padding */
+  padding: 0 20px 20px 20px;
   display: flex;
-  justify-content: center;
-  align-items: flex-end;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-start;
+}
+
+/* --- Typography --- */
+.Title {
+  font-family: var(--font-good-times);
+  font-size: 4.6rem;
+  line-height: 1;
+  /* Tighter line height */
+  color: #ffffff;
+
+  /* UPDATED: Removed margin-bottom */
+  margin: 0;
+
+  text-transform: uppercase;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.Subtitle {
+  font-family: var(--font-urbanist);
+  font-size: 1.8rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.7);
+  max-width: 800px;
+  line-height: 1.4;
+
+  /* UPDATED: Added small top margin to separate from Title if needed */
+  margin: 10px 0 0 0;
+}
+
+/* --- Mobile / Tablet --- */
+@media screen and (max-width: 1024px) {
+  .Title {
+    font-size: 3.2rem;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .ContentWrapper {
+    /* Keep it tight on mobile too */
+    padding-bottom: 20px;
+  }
+
+  .Title {
+    font-size: 2.4rem;
+  }
+
+  .Subtitle {
+    font-size: 1.4rem;
+  }
 }
 
 @media screen and (max-width: 768px) {
