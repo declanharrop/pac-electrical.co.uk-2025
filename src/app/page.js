@@ -26,7 +26,7 @@ export default function HomePage() {
         <NewsSection />
       </Suspense>
       <CaseStudiesBlock />
-      <SimpleHeaderTextBlock margin="0px 0 100px 0" />
+      <SimpleHeaderTextBlock margin="100px 0 100px 0" />
       <SolarBrandsBlock />
       <EVBrandsBlock margin="-40px 0 0 0" />
     </div>
