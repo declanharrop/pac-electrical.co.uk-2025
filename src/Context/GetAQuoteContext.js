@@ -73,19 +73,33 @@ export const GetAQuoteProvider = ({ children }) => {
         heardFrom: userDetails.heardFrom,
       };
 
-      const JSONData = JSON.stringify(formData);
-
-      const endpoint = 'https://hooks.zapier.com/hooks/catch/11615843/2z5b76r/';
+      // --- CHANGE START ---
+      // Instead of the external Zapier link, we target our internal route
+      const endpoint = '/api/quote';
+      // --- CHANGE END ---
 
       const options = {
         method: 'POST',
-        body: JSONData,
+        headers: {
+          'Content-Type': 'application/json', // Good practice to add this header
+        },
+        body: JSON.stringify(formData),
       };
-      const response = await fetch(endpoint, options);
 
-      const result = await response.json();
-      if (result.status === 'success') {
-        router.push('/thank-you');
+      try {
+        const response = await fetch(endpoint, options);
+        const result = await response.json();
+
+        if (result.status === 'success') {
+          router.push('/thank-you');
+        } else {
+          // Handle server errors (optional but recommended)
+          console.error('Submission failed:', result.message);
+          alert('Something went wrong. Please try again.');
+        }
+      } catch (error) {
+        console.error('Network error:', error);
+        alert('Network error. Please try again.');
       }
     }
   };
