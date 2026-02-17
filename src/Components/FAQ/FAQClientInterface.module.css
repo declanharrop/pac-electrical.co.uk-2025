@@ -473,6 +473,7 @@
   .CardQuestion {
     font-size: 1.8rem;
     letter-spacing: 0.1rem;
+    line-height:;
     margin: -10px 0 14px;
   }
   .Modal {
@@ -480,5 +481,9 @@
   }
   .ModalContent {
     padding: 20px;
+  }
+  .ModalTitle {
+    font-size: 2rem;
+    margin-bottom: 2rem;
   }
 }
