@@ -1,0 +1,41 @@
+.Main {
+  background-color: #fafafa; /* Very light grey background for the page */
+  min-height: 100vh;
+  padding-bottom: 10rem;
+}
+
+.Header {
+  background-color: var(--black);
+  padding: 12rem 2rem 8rem 2rem; /* Deep padding for hero effect */
+  text-align: center;
+  margin-bottom: -4rem; /* Pulls the content up slightly */
+}
+
+.Title {
+  font-family: var(--font-good-times);
+  font-size: 5rem; /* Large Impact Title */
+  color: white;
+  margin-bottom: 2rem;
+  text-transform: uppercase;
+  line-height: 1.1;
+}
+
+.Subtitle {
+  font-family: var(--font-urbanist);
+  font-size: 2rem;
+  color: var(--light-grey);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+  .Header {
+    padding: 10rem 2rem 6rem 2rem;
+  }
+  .Title {
+    font-size: 3.2rem;
+  }
+  .Subtitle {
+    font-size: 1.6rem;
+  }
+}
