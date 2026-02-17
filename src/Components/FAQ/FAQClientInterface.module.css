@@ -471,7 +471,9 @@
     padding: 2rem;
   }
   .CardQuestion {
-    font-size: 1.6rem;
+    font-size: 1.8rem;
+    letter-spacing: 0.1rem;
+    margin: -10px 0 14px;
   }
   .Modal {
     max-width: 95vw;
