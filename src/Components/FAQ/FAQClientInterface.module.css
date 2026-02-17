@@ -341,6 +341,10 @@
   color: #333;
 }
 
+.PortableText p {
+  margin-bottom: 1.5rem;
+}
+
 .PortableText h3 {
   font-family: var(--font-good-times);
   font-size: 2.2rem;
