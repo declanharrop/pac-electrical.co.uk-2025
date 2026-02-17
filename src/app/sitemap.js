@@ -1,31 +1,50 @@
-import { ALL_NEWS_DATA, STUDIES_QUERY } from '@/lib/DataQueries';
-import { getClient } from '@/Utils/client';
+import { client, blogClient } from '@/sanity/client';
+
+export const revalidate = 3600; // Revalidate every hour
 
 const URL = 'https://pac-electrical.co.uk';
 
 export default async function sitemap() {
-  const client = getClient();
+  // 1. FETCH DATA FROM MAIN CLIENT (FAQs & Case Studies)
+  const faqQuery = `*[_type == "faq"]{ "slug": slug.current, _updatedAt }`;
+  const caseStudyQuery = `*[_type == "caseStudy"]{ "slug": slug.current, releaseDate, _updatedAt }`;
 
-  const { data: newsPages } = await client.query({
-    query: ALL_NEWS_DATA,
-  });
-  const { data: caseStudyPages } = await client.query({
-    query: STUDIES_QUERY,
-  });
+  const [faqsData, caseStudiesData] = await Promise.all([
+    client.fetch(faqQuery),
+    client.fetch(caseStudyQuery),
+  ]);
 
-  const news = newsPages.articles.map((article) => ({
-    url: `${URL}/news/${article.slug}`,
-    lastModified: article.date,
-    priority: 0.5,
+  // 2. FETCH DATA FROM BLOG CLIENT (News Posts)
+  const newsQuery = `*[_type == "post"]{ "slug": slug.current, date, _updatedAt }`;
+  const newsData = await blogClient.fetch(newsQuery);
+
+  // --- MAP DATA TO SITEMAP FORMAT ---
+
+  // News (from Blog Dataset)
+  const news = newsData.map((post) => ({
+    url: `${URL}/news/${post.slug}`,
+    lastModified: post.date || post._updatedAt,
+    priority: 0.6,
     changeFrequency: 'weekly',
   }));
 
-  const studies = caseStudyPages.caseStudies.map((studies) => ({
-    url: `${URL}/case-studies/study/${studies.slug}`,
-    lastModified: studies.date,
-    priority: 0.5,
-    changeFrequency: 'weekly',
+  // Case Studies (from Main Dataset)
+  const studies = caseStudiesData.map((study) => ({
+    url: `${URL}/case-studies/study/${study.slug}`,
+    lastModified: study.releaseDate || study._updatedAt,
+    priority: 0.7,
+    changeFrequency: 'monthly',
   }));
+
+  // FAQs (from Main Dataset)
+  const faqs = faqsData.map((faq) => ({
+    url: `${URL}/faqs/${faq.slug}`,
+    lastModified: faq._updatedAt,
+    priority: 0.6,
+    changeFrequency: 'monthly',
+  }));
+
+  // --- STATIC ROUTES ---
   const topLevelRoutes = [
     '',
     '/electrical',
@@ -34,6 +53,7 @@ export default async function sitemap() {
     '/us',
     '/case-studies',
     '/news',
+    '/faqs',
   ].map((route) => ({
     url: `${URL}${route}`,
     lastModified: new Date().toISOString(),
@@ -41,7 +61,7 @@ export default async function sitemap() {
     priority: 1,
   }));
 
-  const routes = [
+  const subServiceRoutes = [
     '/electrical/commercial',
     '/electrical/domestic',
     '/electrical/led',
@@ -69,5 +89,5 @@ export default async function sitemap() {
     priority: 0.8,
   }));
 
-  return [...topLevelRoutes, ...routes, ...news, ...studies];
+  return [...topLevelRoutes, ...subServiceRoutes, ...news, ...studies, ...faqs];
 }
