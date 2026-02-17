@@ -2,6 +2,7 @@ import { client } from '@/sanity/client';
 import FAQClientInterface from '@/Components/FAQ/FAQClientInterface';
 import styles from './page.module.css';
 
+export const revalidate = 60;
 // Fetch ALL FAQs
 async function getFAQs() {
   const query = `
@@ -17,7 +18,7 @@ async function getFAQs() {
       "related": related[]->{ question, "slug": slug.current }
     }
   `;
-  return await client.fetch(query);
+  return await client.fetch(query, {}, { next: { tags: ['faq'] } });
 }
 
 export const metadata = {
