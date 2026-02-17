@@ -385,7 +385,7 @@
 /* --- NEW: RELATED QUESTIONS SECTION --- */
 .Related {
   margin-top: 4rem;
-  padding: 3rem;
+  padding: 3rem 20px 10px 20px;
   background: #f9f9f9; /* Light grey box */
   border-radius: 1.6rem;
 }
@@ -406,7 +406,7 @@
   text-align: left;
   background: none;
   border: none;
-  border-bottom: 1px solid #e0e0e0;
+  /* border-bottom: 1px solid #e0e0e0; */
   padding: 1.2rem 0;
   font-family: var(--font-urbanist);
   font-size: 1.6rem;
@@ -414,6 +414,7 @@
   color: var(--green);
   cursor: pointer;
   transition: all 0.2s ease;
+  margin-bottom: 18px;
 }
 
 .RelatedLink:last-child {
@@ -438,4 +439,44 @@
   color: var(--grey);
   text-decoration: underline;
   font-weight: 700;
+}
+
+@media (max-width: 768px) {
+  .Categories {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    gap: 1rem;
+    max-width: 100vw;
+    overflow: scroll;
+    padding-left: 20px;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none; /* Hide scrollbar on mobile */
+  }
+  .Controls {
+    gap: 2rem;
+  }
+  .ServiceBtn {
+    padding: 1rem 2rem;
+    font-size: 1.4rem;
+  }
+  .SearchBar input {
+    padding: 1.2rem 1.5rem 1.2rem 4.5rem;
+    font-size: 1.4rem;
+  }
+  .Grid {
+    margin-top: -20px;
+  }
+  .Card {
+    padding: 2rem;
+  }
+  .CardQuestion {
+    font-size: 1.6rem;
+  }
+  .Modal {
+    max-width: 95vw;
+  }
+  .ModalContent {
+    padding: 20px;
+  }
 }
