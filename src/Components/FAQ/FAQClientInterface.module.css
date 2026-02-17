@@ -48,13 +48,13 @@
   box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.08);
 }
 
-/* --- SEARCH BAR FIX --- */
+/* --- SEARCH BAR --- */
 .SearchBar {
   position: relative;
   width: 100%;
-  max-width: 600px; /* Constraints width here */
-  margin: 0 auto; /* Centers the ENTIRE container (icon + input) */
-  display: flex; /* Ensures children align correctly */
+  max-width: 600px;
+  margin: 0 auto;
+  display: flex;
   align-items: center;
 }
 
@@ -65,24 +65,22 @@
   transform: translateY(-50%);
   color: var(--grey);
   z-index: 10;
-  pointer-events: none; /* Let clicks pass through to the input */
-
-  /* Size fix from before */
+  pointer-events: none;
   width: 2rem;
   height: 2rem;
   min-width: 2rem;
 }
 
 .SearchBar input {
-  width: 100%; /* Fills the .SearchBar container */
-  padding: 1.6rem 2rem 1.6rem 5.5rem; /* Padding for the icon */
+  width: 100%;
+  padding: 1.6rem 2rem 1.6rem 5.5rem;
   border-radius: 5rem;
   border: 1px solid #ddd;
   font-size: 1.6rem;
   font-family: var(--font-urbanist);
   box-shadow: 0 0.5rem 2rem rgba(0, 0, 0, 0.05);
   transition: all 0.3s ease;
-  margin: 0; /* Remove any auto margins here */
+  margin: 0;
   max-width: none;
 }
 
@@ -195,7 +193,7 @@
   color: var(--grey);
 }
 
-/* --- MODAL STRUCTURE (THE INTERNAL SCROLL FIX) --- */
+/* --- MODAL STRUCTURE --- */
 .ModalOverlay {
   position: fixed;
   top: 0;
@@ -215,12 +213,12 @@
   background: white;
   width: 100%;
   max-width: 80rem;
-  max-height: 90vh; /* Prevents modal from leaving screen */
+  max-height: 90vh;
   border-radius: 2.4rem;
   box-shadow: 0 2rem 6rem rgba(0, 0, 0, 0.3);
   display: flex;
-  flex-direction: column; /* Stack header and content */
-  overflow: hidden; /* Clips the internal scroll area */
+  flex-direction: column;
+  overflow: hidden;
   text-align: left;
   animation: slideUp 0.3s ease-out;
 }
@@ -237,7 +235,7 @@
 }
 
 .ModalHeader {
-  flex-shrink: 0; /* Header won't squash */
+  flex-shrink: 0;
   padding: 2rem 4rem;
   border-bottom: 1px solid #f0f0f0;
   background: white;
@@ -247,6 +245,26 @@
   z-index: 10;
 }
 
+.ModalBadge {
+  background: var(--black);
+  color: white;
+  padding: 0.6rem 1.4rem;
+  border-radius: 2rem;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.ModalBadgeLight {
+  background: #f4f4f4;
+  color: var(--black);
+  padding: 0.6rem 1.4rem;
+  border-radius: 2rem;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
 .ModalActions {
   display: flex;
   gap: 1rem;
@@ -254,7 +272,7 @@
 
 /* --- BUTTONS & ICONS --- */
 .IconBtn {
-  background: #222; /* Dark buttons as seen in screenshot */
+  background: #222;
   border: none;
   width: 4rem;
   height: 4rem;
@@ -276,15 +294,15 @@
   height: 2.2rem !important;
   min-width: 2.2rem !important;
   flex-shrink: 0;
-  stroke: #ffffff !important; /* Force white icon color */
+  stroke: #ffffff !important;
   stroke-width: 2.5px;
 }
 
 /* --- SCROLLABLE CONTENT --- */
 .ModalContent {
   padding: 4rem;
-  overflow-y: auto; /* Internal scrollbar */
-  flex-grow: 1; /* Fills remaining modal height */
+  overflow-y: auto;
+  flex-grow: 1;
   scrollbar-width: thin;
   scrollbar-color: var(--green) #f0f0f0;
 }
@@ -342,7 +360,8 @@
 }
 
 .PortableText p {
-  margin-bottom: 1.5rem;
+  margin-bottom: 2rem;
+  line-height: 1.55;
 }
 
 .PortableText h3 {
@@ -363,7 +382,52 @@
   margin-bottom: 1rem;
 }
 
+/* --- NEW: RELATED QUESTIONS SECTION --- */
+.Related {
+  margin-top: 4rem;
+  padding: 3rem;
+  background: #f9f9f9; /* Light grey box */
+  border-radius: 1.6rem;
+}
+
+.Related h4 {
+  font-family: var(--font-urbanist);
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--grey);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 1.5rem;
+}
+
+.RelatedLink {
+  display: block;
+  width: 100%;
+  text-align: left;
+  background: none;
+  border: none;
+  border-bottom: 1px solid #e0e0e0;
+  padding: 1.2rem 0;
+  font-family: var(--font-urbanist);
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--green);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.RelatedLink:last-child {
+  border-bottom: none;
+}
+
+.RelatedLink:hover {
+  padding-left: 1rem; /* Nudge effect on hover */
+  color: var(--black);
+}
+
+/* --- FOOTER --- */
 .ModalFooter {
+  margin-top: 20px;
   padding: 3rem 0;
   text-align: center;
   border-top: 1px solid #f0f0f0;

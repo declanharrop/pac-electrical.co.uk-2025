@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useMemo, useEffect } from 'react';
+import { useState, useMemo, useEffect, useRef } from 'react';
 import {
   Search,
   X,
@@ -17,10 +17,12 @@ import styles from './FAQClientInterface.module.css';
 
 export default function FAQClientInterface({ faqs }) {
   const [searchTerm, setSearchTerm] = useState('');
-  // Default is still Solar, but user can switch
   const [selectedService, setSelectedService] = useState('Solar');
   const [selectedCategory, setSelectedCategory] = useState('All');
   const [activeFAQ, setActiveFAQ] = useState(null);
+
+  // Ref to control scrolling inside the modal
+  const modalContentRef = useRef(null);
 
   // 1. Filter by Service
   const serviceFAQs = useMemo(
@@ -52,28 +54,24 @@ export default function FAQClientInterface({ faqs }) {
     [searchTerm, selectedService, selectedCategory, faqs],
   );
 
-  // Inside your component that renders the modal:
+  // Scroll Lock Effect
   useEffect(() => {
-    // 1. When the modal is open, prevent scrolling
     if (activeFAQ) {
       document.body.style.overflow = 'hidden';
-      // Optional: Also target documentElement for full cross-browser support
       document.documentElement.style.overflow = 'hidden';
     }
 
-    // 2. Cleanup function: restore scroll when modal closes or component unmounts
     return () => {
       document.body.style.overflow = 'auto';
       document.documentElement.style.overflow = 'auto';
     };
-  }, [activeFAQ]); // Only re-run if 'activeFAQ' state changes
+  }, [activeFAQ]);
 
   const handleServiceChange = (service) => {
     setSelectedService(service);
     setSelectedCategory('All');
   };
 
-  // UPDATED LINK
   const handleShare = (slug) => {
     const url = `${window.location.origin}/faqs/${slug}`;
     navigator.clipboard.writeText(url);
@@ -191,7 +189,8 @@ export default function FAQClientInterface({ faqs }) {
               </div>
             </div>
 
-            <div className={styles.ModalContent}>
+            {/* Added ref={modalContentRef} here for auto-scrolling */}
+            <div className={styles.ModalContent} ref={modalContentRef}>
               <h2 className={styles.ModalTitle}>{activeFAQ.question}</h2>
 
               {activeFAQ.videoUrl && (
@@ -200,8 +199,8 @@ export default function FAQClientInterface({ faqs }) {
                     src={
                       activeFAQ.videoUrl
                         .replace('watch?v=', 'embed/')
-                        .replace('shorts/', 'embed/') // Added support for Shorts
-                        .split('?')[0] // Cleans off the ?si= tracker
+                        .replace('shorts/', 'embed/')
+                        .split('?')[0]
                     }
                     className={styles.Iframe}
                     title={activeFAQ.question}
@@ -215,24 +214,36 @@ export default function FAQClientInterface({ faqs }) {
                 <PortableText value={activeFAQ.answer} />
               </div>
 
-              {activeFAQ.related && (
+              {/* --- RELATED QUESTIONS SECTION --- */}
+              {activeFAQ.related && activeFAQ.related.length > 0 && (
                 <div className={styles.Related}>
-                  <h4>Related Topics:</h4>
+                  <h4>Related Questions:</h4>
                   {activeFAQ.related.map((rel, i) => (
-                    // UPDATED LINK
-                    <Link
+                    <button
                       key={i}
-                      href={`/faqs/${rel.slug}`}
                       className={styles.RelatedLink}
+                      onClick={() => {
+                        // Find the full FAQ object in our list that matches the related slug
+                        const nextFAQ = faqs.find((f) => f.slug === rel.slug);
+                        if (nextFAQ) {
+                          setActiveFAQ(nextFAQ);
+                          // Auto-scroll to top of the new answer
+                          if (modalContentRef.current) {
+                            modalContentRef.current.scrollTo({
+                              top: 0,
+                              behavior: 'smooth',
+                            });
+                          }
+                        }
+                      }}
                     >
-                      {rel.question}
-                    </Link>
+                      {rel.question} →
+                    </button>
                   ))}
                 </div>
               )}
 
               <div className={styles.ModalFooter}>
-                {/* UPDATED LINK */}
                 <Link
                   href={`/faqs/${activeFAQ.slug}`}
                   className={styles.DirectLink}
