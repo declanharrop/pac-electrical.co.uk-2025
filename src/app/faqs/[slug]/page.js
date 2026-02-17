@@ -101,9 +101,15 @@ export default async function SingleFAQPage({ params }) {
         {faq.videoUrl && (
           <div className={styles.VideoWrapper}>
             <iframe
-              src={faq.videoUrl.replace('watch?v=', 'embed/')}
+              src={
+                faq.videoUrl
+                  .replace('watch?v=', 'embed/')
+                  .replace('shorts/', 'embed/') // Added support for Shorts
+                  .split('?')[0] // Cleans off the ?si= tracker
+              }
               className={styles.Iframe}
               title={faq.question}
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen
             />
           </div>

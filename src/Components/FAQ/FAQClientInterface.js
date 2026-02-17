@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect } from 'react';
 import {
   Search,
   X,
@@ -51,6 +51,22 @@ export default function FAQClientInterface({ faqs }) {
       }),
     [searchTerm, selectedService, selectedCategory, faqs],
   );
+
+  // Inside your component that renders the modal:
+  useEffect(() => {
+    // 1. When the modal is open, prevent scrolling
+    if (activeFAQ) {
+      document.body.style.overflow = 'hidden';
+      // Optional: Also target documentElement for full cross-browser support
+      document.documentElement.style.overflow = 'hidden';
+    }
+
+    // 2. Cleanup function: restore scroll when modal closes or component unmounts
+    return () => {
+      document.body.style.overflow = 'auto';
+      document.documentElement.style.overflow = 'auto';
+    };
+  }, [activeFAQ]); // Only re-run if 'activeFAQ' state changes
 
   const handleServiceChange = (service) => {
     setSelectedService(service);
@@ -181,8 +197,15 @@ export default function FAQClientInterface({ faqs }) {
               {activeFAQ.videoUrl && (
                 <div className={styles.VideoWrapper}>
                   <iframe
-                    src={activeFAQ.videoUrl.replace('watch?v=', 'embed/')}
+                    src={
+                      activeFAQ.videoUrl
+                        .replace('watch?v=', 'embed/')
+                        .replace('shorts/', 'embed/') // Added support for Shorts
+                        .split('?')[0] // Cleans off the ?si= tracker
+                    }
+                    className={styles.Iframe}
                     title={activeFAQ.question}
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                     allowFullScreen
                   />
                 </div>

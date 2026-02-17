@@ -195,7 +195,7 @@
   color: var(--grey);
 }
 
-/* --- MODAL (UPDATED) --- */
+/* --- MODAL STRUCTURE (THE INTERNAL SCROLL FIX) --- */
 .ModalOverlay {
   position: fixed;
   top: 0;
@@ -215,12 +215,14 @@
   background: white;
   width: 100%;
   max-width: 80rem;
-  max-height: 90vh;
+  max-height: 90vh; /* Prevents modal from leaving screen */
   border-radius: 2.4rem;
-  overflow-y: auto;
   box-shadow: 0 2rem 6rem rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column; /* Stack header and content */
+  overflow: hidden; /* Clips the internal scroll area */
+  text-align: left;
   animation: slideUp 0.3s ease-out;
-  text-align: left; /* Force Left Align */
 }
 
 @keyframes slideUp {
@@ -235,35 +237,14 @@
 }
 
 .ModalHeader {
-  position: sticky;
-  top: 0;
-  background: white;
-  padding: 2rem 4rem; /* Matching content padding */
+  flex-shrink: 0; /* Header won't squash */
+  padding: 2rem 4rem;
   border-bottom: 1px solid #f0f0f0;
+  background: white;
   display: flex;
   justify-content: space-between;
   align-items: center;
   z-index: 10;
-}
-
-.ModalBadge {
-  background: var(--black);
-  color: white;
-  padding: 0.6rem 1.4rem;
-  border-radius: 2rem;
-  font-size: 1.2rem;
-  text-transform: uppercase;
-  font-weight: 700;
-}
-
-.ModalBadgeLight {
-  background: #f4f4f4;
-  color: var(--black);
-  padding: 0.6rem 1.4rem;
-  border-radius: 2rem;
-  font-size: 1.2rem;
-  text-transform: uppercase;
-  font-weight: 700;
 }
 
 .ModalActions {
@@ -271,10 +252,10 @@
   gap: 1rem;
 }
 
-/* BUTTONS: High Contrast Fix */
+/* --- BUTTONS & ICONS --- */
 .IconBtn {
-  background: var(--black); /* Solid Black */
-  border: 1px solid var(--black);
+  background: #222; /* Dark buttons as seen in screenshot */
+  border: none;
   width: 4rem;
   height: 4rem;
   border-radius: 50%;
@@ -283,46 +264,55 @@
   justify-content: center;
   cursor: pointer;
   transition: all 0.2s;
-  color: white;
-}
-
-/* Update or Add this block */
-.IconBtn svg {
-  width: 2.4rem !important; /* Desired width */
-  height: 2.4rem !important; /* Desired height */
-  min-width: 2.4rem !important; /* CRITICAL: Stops it shrinking to 0 */
-  flex-shrink: 0; /* CRITICAL: Prevents flex crushing */
-
-  stroke: #ffffff; /* Keep white color */
-  stroke-width: 2px;
-}
-
-.IconBtn:hover svg {
-  stroke: #ffffff !important; /* Keeps them white on hover */
 }
 
 .IconBtn:hover {
   background: var(--green);
-  border-color: var(--green);
   transform: scale(1.05);
 }
 
-.ModalContent {
-  padding: 4rem;
-  text-align: left;
+.IconBtn svg {
+  width: 2.2rem !important;
+  height: 2.2rem !important;
+  min-width: 2.2rem !important;
+  flex-shrink: 0;
+  stroke: #ffffff !important; /* Force white icon color */
+  stroke-width: 2.5px;
 }
 
-/* TITLE: Bolder and bigger */
+/* --- SCROLLABLE CONTENT --- */
+.ModalContent {
+  padding: 4rem;
+  overflow-y: auto; /* Internal scrollbar */
+  flex-grow: 1; /* Fills remaining modal height */
+  scrollbar-width: thin;
+  scrollbar-color: var(--green) #f0f0f0;
+}
+
+/* Chrome/Safari Scrollbar Styling */
+.ModalContent::-webkit-scrollbar {
+  width: 8px;
+}
+.ModalContent::-webkit-scrollbar-track {
+  background: #f9f9f9;
+}
+.ModalContent::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 10px;
+}
+.ModalContent::-webkit-scrollbar-thumb:hover {
+  background: var(--green);
+}
+
+/* --- TYPOGRAPHY --- */
 .ModalTitle {
   font-family: var(--font-good-times);
-  font-size: 3.2rem; /* Increased Size */
-  font-weight: 800; /* Bolder */
+  font-size: 3.2rem;
+  font-weight: 800;
   color: var(--black);
   margin-bottom: 3rem;
   line-height: 1.2;
   text-transform: uppercase;
-  text-align: left;
-  letter-spacing: 0.1rem;
 }
 
 .VideoWrapper {
@@ -334,6 +324,7 @@
   overflow: hidden;
   background: black;
 }
+
 .VideoWrapper iframe {
   position: absolute;
   top: 0;
@@ -343,104 +334,40 @@
   border: 0;
 }
 
-/* --- PORTABLE TEXT (Spacing Fixes) --- */
 .PortableText {
   font-family: var(--font-urbanist);
   font-size: 1.6rem;
   line-height: 1.6;
   color: #333;
-  text-align: left;
 }
 
-.PortableText p {
-  margin-bottom: 2rem;
-  text-align: left;
-}
-
-/* Headers inside content */
 .PortableText h3 {
   font-family: var(--font-good-times);
   font-size: 2.2rem;
-  color: var(--black);
   margin-top: 4rem;
   margin-bottom: 1.5rem;
-  text-align: left;
   text-transform: uppercase;
 }
 
-/* LIST FIXES */
 .PortableText ul {
   padding-left: 2rem;
   margin-bottom: 2rem;
-  list-style-position: outside; /* Clean aligned bullets */
-  text-align: left;
-}
-
-/* Nested List (Capacity Options) */
-.PortableText ul ul {
-  margin-top: 1rem;
-  padding-left: 2rem;
+  list-style-position: outside;
 }
 
 .PortableText li {
   margin-bottom: 1rem;
-  color: #444;
-  padding-left: 0.5rem;
-}
-
-.PortableText strong {
-  color: var(--black);
-  font-weight: 800;
-}
-
-/* --- FOOTER --- */
-.Related {
-  background: #f9f9f9;
-  padding: 3rem;
-  border-radius: 2rem;
-  margin-top: 3rem;
-  margin-bottom: 2rem;
-  text-align: left;
-}
-
-.Related h4 {
-  font-size: 1.4rem;
-  text-transform: uppercase;
-  margin-bottom: 1.5rem;
-  color: var(--grey);
-  font-weight: 700;
-}
-
-.RelatedLink {
-  display: block;
-  font-size: 1.6rem;
-  color: var(--green);
-  text-decoration: none;
-  font-weight: 700;
-  margin-bottom: 1rem;
-}
-.RelatedLink:hover {
-  text-decoration: underline;
 }
 
 .ModalFooter {
+  padding: 3rem 0;
   text-align: center;
-  padding: 3rem 0 1rem 0; /* More space above button */
   border-top: 1px solid #f0f0f0;
-  margin-top: 2rem;
 }
 
 .DirectLink {
-  display: inline-block; /* Allows padding */
   font-size: 1.4rem;
   color: var(--grey);
-  text-decoration: none;
+  text-decoration: underline;
   font-weight: 700;
-  border-bottom: 1px solid transparent;
-  transition: all 0.2s;
-  padding-bottom: 0.2rem;
-}
-.DirectLink:hover {
-  color: var(--green);
-  border-color: var(--green);
 }
