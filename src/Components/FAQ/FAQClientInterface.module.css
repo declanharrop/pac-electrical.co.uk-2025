@@ -16,8 +16,8 @@
 .ServiceTabs {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
-  gap: 1rem;
+  justify-content: space-between;
+  gap: 0;
   background: #f5f5f5;
   padding: 0.6rem;
   border-radius: 5rem;
@@ -48,10 +48,14 @@
   box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.08);
 }
 
+/* --- SEARCH BAR FIX --- */
 .SearchBar {
   position: relative;
   width: 100%;
-  max-width: 600px;
+  max-width: 600px; /* Constraints width here */
+  margin: 0 auto; /* Centers the ENTIRE container (icon + input) */
+  display: flex; /* Ensures children align correctly */
+  align-items: center;
 }
 
 .SearchIcon {
@@ -60,18 +64,28 @@
   top: 50%;
   transform: translateY(-50%);
   color: var(--grey);
+  z-index: 10;
+  pointer-events: none; /* Let clicks pass through to the input */
+
+  /* Size fix from before */
+  width: 2rem;
+  height: 2rem;
+  min-width: 2rem;
 }
 
 .SearchBar input {
-  width: 100%;
-  padding: 1.6rem 2rem 1.6rem 5.5rem;
+  width: 100%; /* Fills the .SearchBar container */
+  padding: 1.6rem 2rem 1.6rem 5.5rem; /* Padding for the icon */
   border-radius: 5rem;
   border: 1px solid #ddd;
   font-size: 1.6rem;
   font-family: var(--font-urbanist);
   box-shadow: 0 0.5rem 2rem rgba(0, 0, 0, 0.05);
   transition: all 0.3s ease;
+  margin: 0; /* Remove any auto margins here */
+  max-width: none;
 }
+
 .SearchBar input:focus {
   outline: none;
   border-color: var(--green);

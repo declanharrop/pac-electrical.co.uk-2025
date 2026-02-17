@@ -75,14 +75,14 @@ export default function FAQClientInterface({ faqs }) {
             className={`${styles.ServiceBtn} ${selectedService === 'Solar' ? styles.ActiveService : ''}`}
             onClick={() => handleServiceChange('Solar')}
           >
-            <Sun size={18} /> Solar & Battery
+            <Sun size={18} /> Solar
           </button>
           <button
             type="button"
             className={`${styles.ServiceBtn} ${selectedService === 'EV' ? styles.ActiveService : ''}`}
             onClick={() => handleServiceChange('EV')}
           >
-            <Car size={18} /> EV Charging
+            <Car size={18} /> EV
           </button>
           <button
             type="button"
