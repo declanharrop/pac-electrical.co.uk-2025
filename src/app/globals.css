@@ -7,10 +7,10 @@
   --navy-75: #25466ebf;
   --navy-50: #25466e7f;
   --navy-25: #25466e3f;
-  --neon: #04D2DF;
-  --neon-75: #04D2DFbf;
-  --neon-50: #04D2DF7f;
-  --neon-25: #04D2DF3f;
+  --neon: #04d2df;
+  --neon-75: #04d2dfbf;
+  --neon-50: #04d2df7f;
+  --neon-25: #04d2df3f;
   --light-green: #61d272;
   --green: #54af61;
   --green-75: #54af61bf;
@@ -177,8 +177,6 @@ a {
   line-height: 1.2;
 }
 
-
-
 @media screen and (max-width: 600px) {
   h1 {
     font-size: 3.6rem;
@@ -255,7 +253,6 @@ textarea {
 }
 
 select {
-
   /* styling */
 
   /* reset */
@@ -280,7 +277,6 @@ select {
   background: white;
   height: 1px;
 }
-
 
 /* 
 /

@@ -108,6 +108,27 @@ export default async function RootLayout({ children }) {
               !function(){var e=document.createElement("script");e.type="text/javascript",e.async=!0,e.src="https://omnisnippet1.com/inshop/launcher-v2.js";var t=document.getElementsByTagName("script")[0];t.parentNode.insertBefore(e,t)}();
             `}
           </Script>
+          {/* <Script
+            id="ze-snippet"
+            src="https://static.zdassets.com/ekr/snippet.js?key=fb32376b-4bf4-403c-a4a8-59bd73feb921"
+            strategy="afterInteractive"
+          />
+          <Script id="zendesk-settings" strategy="afterInteractive">
+            {`
+            window.zESettings = {
+              webWidget: {
+                offset: {
+                  horizontal: '200px',
+                  vertical: '20px',
+                  mobile: {
+                    horizontal: '10px',
+                    vertical: '10px'
+                  }
+                }
+              }
+            };
+          `}
+          </Script> */}
         </body>
       </html>
     </>
