@@ -1,19 +1,17 @@
 'use client';
 
-import React, { useCallback, useEffect } from 'react';
+import React, { useCallback } from 'react';
 import useEmblaCarousel from 'embla-carousel-react';
 import Autoplay from 'embla-carousel-autoplay';
 import Image from 'next/image';
 import styles from './SlideshowBlock.module.css';
 
 export default function SlideshowBlock({ data }) {
-  // 1. Config: Autoplay is ON, but doesn't stop just because you touch it.
   const [emblaRef, emblaApi] = useEmblaCarousel(
     { loop: true, align: 'start' },
     [Autoplay({ delay: 8000, stopOnInteraction: false })],
   );
 
-  // 2. Interaction Handler: Kills autoplay ONLY when user clicks buttons
   const stopAutoplay = useCallback(() => {
     if (!emblaApi) return;
     const autoplay = emblaApi.plugins()?.autoplay;
@@ -24,14 +22,14 @@ export default function SlideshowBlock({ data }) {
 
   const scrollPrev = useCallback(() => {
     if (emblaApi) {
-      stopAutoplay(); // Stop auto-moving
+      stopAutoplay();
       emblaApi.scrollPrev();
     }
   }, [emblaApi, stopAutoplay]);
 
   const scrollNext = useCallback(() => {
     if (emblaApi) {
-      stopAutoplay(); // Stop auto-moving
+      stopAutoplay();
       emblaApi.scrollNext();
     }
   }, [emblaApi, stopAutoplay]);
@@ -39,7 +37,12 @@ export default function SlideshowBlock({ data }) {
   if (!data.images || data.images.length === 0) return null;
 
   return (
-    <section className={styles.Wrapper}>
+    // SEO UPGRADE: Semantic roles help Google understand the content structure
+    <section
+      className={styles.Wrapper}
+      aria-roledescription="carousel"
+      aria-label={data.title || 'Project Gallery'}
+    >
       <div className={styles.Header}>
         {data.title && <h2 className={styles.Title}>{data.title}</h2>}
 
@@ -48,7 +51,7 @@ export default function SlideshowBlock({ data }) {
             type="button"
             onClick={scrollPrev}
             className={styles.NavBtn}
-            aria-label="Previous"
+            aria-label="Previous slide"
           >
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
               <path
@@ -64,7 +67,7 @@ export default function SlideshowBlock({ data }) {
             type="button"
             onClick={scrollNext}
             className={styles.NavBtn}
-            aria-label="Next"
+            aria-label="Next slide"
           >
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
               <path
@@ -82,15 +85,27 @@ export default function SlideshowBlock({ data }) {
       <div className={styles.Viewport} ref={emblaRef}>
         <div className={styles.Container}>
           {data.images.map((img, index) => (
-            <div className={styles.Slide} key={index}>
+            <div
+              className={styles.Slide}
+              key={index}
+              role="group"
+              aria-roledescription="slide"
+            >
               <div className={styles.SlideInner}>
                 {img.url && (
                   <Image
                     src={img.url}
-                    alt={img.alt || `Slide ${index}`}
+                    // SEO UPGRADE: Better fallback alt text
+                    alt={
+                      img.alt ||
+                      `Solar installation gallery image ${index + 1} - Power & Control`
+                    }
                     fill
                     className={styles.Image}
-                    sizes="(max-width: 768px) 100vw, 33vw"
+                    // PERFORMANCE UPGRADE: Only prioritize the first image to keep LCP fast
+                    priority={index === 0}
+                    loading={index === 0 ? 'eager' : 'lazy'}
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                   />
                 )}
               </div>

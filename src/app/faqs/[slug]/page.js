@@ -4,11 +4,11 @@ import Link from 'next/link';
 import { client } from '@/sanity/client';
 import styles from './page.module.css';
 
-// ... (Helper functions remain the same) ...
+// 1. FIXED SEO BUG: Corrected the condition to properly extract text for Schema and Meta
 function toPlainText(blocks = []) {
   return blocks
     .map((b) =>
-      !b._type === 'block' || !b.children
+      b._type !== 'block' || !b.children
         ? ''
         : b.children.map((c) => c.text).join(''),
     )
@@ -47,9 +47,17 @@ export async function generateMetadata({ params }) {
   const faq = await getFAQ(slug);
   if (!faq) return {};
 
+  // 2. SEO UPGRADE: Create a 150-character teaser for the Meta Description
+  const plainTextAnswer = toPlainText(faq.answer);
+  const metaDescription =
+    plainTextAnswer.length > 150
+      ? `${plainTextAnswer.substring(0, 147)}...`
+      : plainTextAnswer;
+
   return {
-    title: `${faq.question} | Power & Control`,
-    description: `Expert answer for ${faq.service}: ${faq.question}`,
+    // 3. SEO UPGRADE: Added Service to Title for better local/niche targeting
+    title: `${faq.question} | ${faq.service} | Power & Control`,
+    description: metaDescription,
     keywords: faq.keywords || [],
   };
 }
@@ -60,6 +68,7 @@ export default async function SingleFAQPage({ params }) {
 
   if (!faq) return notFound();
 
+  // 4. VERIFIED SCHEMA: This will now correctly output the text answer for Google
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'FAQPage',
@@ -76,14 +85,13 @@ export default async function SingleFAQPage({ params }) {
   };
 
   return (
-    // 1. Outer Wrapper: Full Width, White Background
     <main className={styles.PageWrapper}>
+      {/* 5. BEST PRACTICE: Injecting structured data cleanly */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
 
-      {/* 2. Inner Container: Centered, Max-Width 800px */}
       <div className={styles.Container}>
         <Link href="/faqs" className={styles.BackLink}>
           ← Back to FAQs
@@ -104,8 +112,8 @@ export default async function SingleFAQPage({ params }) {
               src={
                 faq.videoUrl
                   .replace('watch?v=', 'embed/')
-                  .replace('shorts/', 'embed/') // Added support for Shorts
-                  .split('?')[0] // Cleans off the ?si= tracker
+                  .replace('shorts/', 'embed/')
+                  .split('?')[0]
               }
               className={styles.Iframe}
               title={faq.question}

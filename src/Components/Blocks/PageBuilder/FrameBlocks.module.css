@@ -50,7 +50,7 @@
 .ImageTextBlock__Text_P {
   font-size: 1.6rem;
   line-height: 1.6;
-  color: #FFF;
+  color: #fff;
 }
 
 .ImageTextBlock__Text_P p {
@@ -81,7 +81,6 @@
   }
 }
 
-
 /* // =======================================
 // 2. BLOCK BLOCK (Grid of content)
 // ==========================================
@@ -90,7 +89,14 @@
 .BlockBlock {
   position: relative;
   /* Retained your gradient */
-  background: linear-gradient(150deg, white 0%, white 55.1%, var(--black) 55.2%, white 55.3%, white 100%);
+  background: linear-gradient(
+    150deg,
+    white 0%,
+    white 55.1%,
+    var(--black) 55.2%,
+    white 55.3%,
+    white 100%
+  );
   color: var(--black);
   padding: 100px 0;
   margin: 0 auto;
@@ -183,7 +189,6 @@
   }
 }
 
-
 /* // ==========================================
 // 3. IMAGE BLOCK (Full width/Banner)
 // ==========================================
@@ -226,7 +231,6 @@
   margin-top: 10px;
 }
 
-
 /* // ==========================================
 // 4. FAQS BLOCK
 // ==========================================
@@ -265,12 +269,12 @@
 }
 
 .FAQsBlock__Container__Item__Q {
-  padding: 25px;
   cursor: pointer;
   display: flex;
   justify-content: space-between;
   align-items: center;
   transition: background 0.2s;
+  color: var(--black);
 }
 
 .FAQsBlock__Container__Item__Q:hover {
@@ -294,7 +298,6 @@
   font-size: 1.6rem;
   line-height: 1.6;
 }
-
 
 /* // ==========================================
 // 5. VIDEO BLOCK 

@@ -6,44 +6,62 @@ export default function VideoBlock({ data }) {
   const { subtitle } = data;
   const rawVideoUrl = data.video;
 
-  // HELPER: Convert standard YouTube/Vimeo links to Embed URLs
+  // SEO & UX UPGRADE: Enhanced helper to handle Shorts and trackers
   const getEmbedUrl = (url) => {
     if (!url) return null;
+    try {
+      const urlObj = new URL(url);
 
-    // Handle standard YouTube links
-    if (url.includes('youtube.com/watch')) {
-      const urlParams = new URLSearchParams(new URL(url).search);
-      return `https://www.youtube.com/embed/${urlParams.get('v')}`;
+      // Handle standard YouTube & Shorts
+      if (url.includes('youtube.com') || url.includes('youtu.be')) {
+        let id = '';
+        if (url.includes('watch?v=')) id = urlObj.searchParams.get('v');
+        else if (url.includes('shorts/'))
+          id = url.split('shorts/')[1].split('?')[0];
+        else id = url.split('/').pop().split('?')[0];
+
+        return `https://www.youtube.com/embed/${id}`;
+      }
+      return url;
+    } catch (e) {
+      return url;
     }
-
-    // Handle short YouTube links (youtu.be)
-    if (url.includes('youtu.be')) {
-      const id = url.split('/').pop();
-      return `https://www.youtube.com/embed/${id}`;
-    }
-
-    // Return original if no match (assumes user might have pasted an embed link)
-    return url;
   };
 
   const embedUrl = getEmbedUrl(rawVideoUrl);
-
   if (!embedUrl) return null;
+
+  // SEO UPGRADE: Basic VideoObject Schema
+  const videoSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'VideoObject',
+    name: title || 'Solar and Electrical Project Video',
+    description: subtitle || 'Project walkthrough by Power & Control Ltd',
+    thumbnailUrl: 'https://pac-electrical.co.uk/images/sustain1.webp', // Fallback thumbnail
+    embedUrl,
+  };
 
   return (
     <section className={styles.VideoBlock}>
+      {/* SEO UPGRADE: Injecting Video Schema */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(videoSchema) }}
+      />
+
       <div className={styles.Container}>
-        {/* Title Section */}
         <div className={styles.Header}>
+          {/* SEO UPGRADE: H2 is correct here as it's a sub-section */}
           {title && <h2 className={styles.Title}>{title}</h2>}
           {subtitle && <p className={styles.Subtitle}>{subtitle}</p>}
         </div>
 
-        {/* Video Wrapper (Maintains Aspect Ratio) */}
         <div className={styles.VideoWrapper}>
           <iframe
             src={embedUrl}
-            title={title || 'Video'}
+            title={title || 'Power & Control Project Video'}
+            // PERFORMANCE UPGRADE: Prevents iframe from slowing down initial page load
+            loading="lazy"
             frameBorder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen

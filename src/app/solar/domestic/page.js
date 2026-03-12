@@ -28,6 +28,24 @@ export async function generateMetadata() {
   };
 }
 
+const domesticServiceSchema = {
+  '@context': 'https://schema.org/',
+  '@type': 'Service',
+  serviceType: 'Domestic Solar Panel Installation',
+  provider: {
+    '@type': 'LocalBusiness',
+    name: 'Power & Control Ltd',
+  },
+  areaServed: [
+    { '@type': 'State', name: 'Derbyshire' },
+    { '@type': 'State', name: 'East Midlands' },
+  ],
+  // Tying it specifically to residential
+  audience: {
+    '@type': 'Audience',
+    audienceType: 'Residential',
+  },
+};
 // 4. Page Component
 export default async function DomesticSolarPage() {
   const page = await getPageData();
@@ -42,18 +60,24 @@ export default async function DomesticSolarPage() {
   }
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(domesticServiceSchema),
+        }}
+      />
       <PageBuilderFrame data={page} isSolar />
 
       {/* Finance Banner (Kept Hardcoded as requested) */}
       <a
         target="_blank"
-        rel="noopener noreferrer"
+        rel="noopener noreferrer nofollow"
         href="https://www.phoenix-fc.co.uk/finance_landing?b=4991BD7B1993423F&t=2A9C018824984F2CB1EEFAFA"
         style={{ display: 'block', maxWidth: '1200px', margin: '20px auto' }}
       >
         <img
           src="/images/finance-banners/solar_banner.png"
-          alt="We offer finance."
+          alt="Flexible finance options for domestic solar panel installations in Derbyshire and the East Midlands"
           style={{ width: '100%', height: 'auto' }}
         />
       </a>

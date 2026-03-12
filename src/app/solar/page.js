@@ -10,15 +10,17 @@ import DualCategoryHero from '@/Components/Blocks/Static/DualCategoryHero';
 import FeatureVideoSection from '@/Components/Blocks/Static/FeatureVideoSection';
 import LatestCaseStudies from '@/Components/Blocks/Dynamic/LatestCaseStudies';
 
+// SEO UPGRADE: Tweaked metadata to reinforce Derbyshire & buyer intent
 const METADATA = {
   Url: 'https://pac-electrical.co.uk/solar',
-  SiteName: 'Solar PV & Battery Storage - Power & Control',
+  SiteName: 'Solar Panel Installers in Derbyshire | Power & Control',
   Description:
-    'Power & Control: Maximise your energy savings with our professional solar panel installations. Top-tier systems for homes & businesses across the Midlands & UK. Get your free solar quote!',
+    'Maximise your energy savings with professional solar PV & battery storage installations. Top-tier domestic and commercial systems across Derbyshire and the Midlands. Get a free quote!',
 };
+
 export const metadata = {
   title: METADATA.SiteName,
-  applicationName: METADATA.SiteName,
+  applicationName: 'Power & Control',
   description: METADATA.Description,
   referrer: 'origin-when-cross-origin',
   url: METADATA.Url,
@@ -28,7 +30,7 @@ export const metadata = {
     url: METADATA.Url,
     images: [
       {
-        url: `${METADATA.Url}/images/sustain1.webp`, // Must be an absolute URL
+        url: `${METADATA.Url}/images/sustain1.webp`,
         width: 800,
         height: 600,
       },
@@ -37,49 +39,120 @@ export const metadata = {
     type: 'website',
   },
 };
+
 export default function SolarPage() {
+  // SEO UPGRADE: Service Schema defining exactly what you sell
+  const serviceSchema = {
+    '@context': 'https://schema.org/',
+    '@type': 'Service',
+    serviceType: 'Solar Panel Installation',
+    provider: {
+      '@type': 'LocalBusiness',
+      name: 'Power & Control Ltd',
+    },
+    areaServed: [
+      { '@type': 'State', name: 'Derbyshire' },
+      { '@type': 'State', name: 'Nottinghamshire' },
+      { '@type': 'State', name: 'Leicestershire' },
+      { '@type': 'State', name: 'Staffordshire' }, // If applicable
+      { '@type': 'Region', name: 'East Midlands' },
+    ],
+    hasOfferCatalog: {
+      '@type': 'OfferCatalog',
+      name: 'Solar Energy Services',
+      itemListElement: [
+        {
+          '@type': 'Offer',
+          itemOffered: {
+            '@type': 'Service',
+            name: 'Domestic Solar PV & Battery Storage',
+          },
+        },
+        {
+          '@type': 'Offer',
+          itemOffered: {
+            '@type': 'Service',
+            name: 'Commercial Solar Panel Systems',
+          },
+        },
+      ],
+    },
+  };
+
   return (
     <div>
-      {/* <VideoHero margin height="70vh">
-        <h1>Solar</h1>
-        <h3>Powering your world, your way.</h3>
-      </VideoHero> */}
-      <div style={{ marginTop: '160px' }}>
+      {/* SEO UPGRADE: Injecting Service Schema */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }}
+      />
+
+      {/* SEO EMERGENCY FIXED: Adding the H1 back in for Google */}
+      <div
+        style={{ marginTop: '140px', textAlign: 'center', padding: '0 20px' }}
+      >
+        <h1 style={{ marginBottom: '10px' }}>
+          Solar Panel Installation in Derbyshire
+        </h1>
+        <p
+          style={{
+            fontSize: '1.6rem',
+            color: '#555',
+            maxWidth: '800px',
+            margin: '0 auto 40px auto',
+          }}
+        >
+          Professional Solar PV and Battery Storage solutions for homes and
+          businesses.
+        </p>
+      </div>
+
+      <div>
         <DualCategoryHero
           items={[
             {
               link: '/solar/domestic',
               image: '/images/solar/pac-sol-2.webp',
-              alt: 'Domestic Solar from Power & Control',
+              alt: 'Domestic Solar Panel Installation from Power & Control',
               title: 'Domestic',
             },
             {
               link: '/solar/commercial',
               image: '/images/solar/comsol1.webp',
-              alt: 'Commercial Solar from Power & Control',
+              alt: 'Commercial Solar Panel Systems from Power & Control',
               title: 'Commercial',
             },
           ]}
         />
       </div>
+
       <SmoothScrollLogosBlock margin="0px auto 0px" />
+
       <FeatureVideoSection
         title="Explore Solar From Power & Control"
         subtitle="Let us show you what an install from Power & Control will look like in your home"
         videoUrl="https://www.youtube.com/watch?v=AVxSuKksEmU"
       />
+
       <BrandsBlock />
       <TextWithImageBlock />
+
       <LatestCaseStudies
         title="Solar"
         tags={['Solar']}
         link="/case-studies/solar"
       />
+
       <LargeImageBlock />
-      <Link href="/solar/finance" style={{ fontSize: '18px' }}>
+
+      <Link
+        href="/solar/finance"
+        style={{ fontSize: '18px', display: 'block', textAlign: 'center' }}
+      >
         <img
           src="/images/finance-banners/Generic_Banner.png"
-          alt="We offer finance."
+          // SEO UPGRADE: Keyword-rich alt text
+          alt="Flexible solar panel financing and payment plans in Derbyshire and the East Midlands"
           style={{ width: '100%', marginTop: '10px', maxWidth: '1200px' }}
         />
       </Link>
