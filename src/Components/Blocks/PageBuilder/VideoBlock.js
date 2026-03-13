@@ -37,8 +37,10 @@ export default function VideoBlock({ data }) {
     '@type': 'VideoObject',
     name: title || 'Solar and Electrical Project Video',
     description: subtitle || 'Project walkthrough by Power & Control Ltd',
-    thumbnailUrl: 'https://pac-electrical.co.uk/images/sustain1.webp', // Fallback thumbnail
+    thumbnailUrl: 'https://pac-electrical.co.uk/images/sustain1.webp',
     embedUrl,
+    // THE FIX: Google strictly requires an uploadDate
+    uploadDate: '2025-01-01T08:00:00+00:00',
   };
 
   return (
