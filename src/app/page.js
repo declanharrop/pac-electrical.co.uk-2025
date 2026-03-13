@@ -11,19 +11,22 @@ export default function HomePage() {
   // SEO UPGRADE: Schema now prioritizes Derbyshire as the primary region
   const localBusinessSchema = {
     '@context': 'https://schema.org',
+    // 1. Stick to the official, recognized Schema types
     '@type': ['LocalBusiness', 'Electrician'],
+    // 2. SEO UPGRADE: Tie your entity directly to the concept of Solar
+    additionalType: 'https://en.wikipedia.org/wiki/Solar_panel',
     name: 'Power & Control Ltd',
-    image: 'https://pac-electrical.co.uk/images/sustain1.webp',
+    image: 'https://pac-electrical.co.uk/images/solar/comsolar26.jpg',
     '@id': 'https://pac-electrical.co.uk/',
     url: 'https://pac-electrical.co.uk/',
-    telephone: 'YOUR_PHONE_NUMBER_HERE',
+    telephone: '01332552320',
     priceRange: '$$',
     address: {
       '@type': 'PostalAddress',
-      streetAddress: 'YOUR_STREET_ADDRESS',
+      streetAddress: 'Unit 2, Colemans Yard, Alfreton Road',
       addressLocality: 'Derby',
-      addressRegion: 'Derbyshire', // Explicitly calling out the county
-      postalCode: 'YOUR_POSTCODE',
+      addressRegion: 'Derbyshire',
+      postalCode: 'DE21 4AL',
       addressCountry: 'UK',
     },
     geo: {
@@ -31,7 +34,6 @@ export default function HomePage() {
       latitude: 52.9225,
       longitude: -1.4746,
     },
-    // Derbyshire pushed to the front of the line for local maps
     areaServed: [
       'Derbyshire',
       'Derby',
@@ -39,8 +41,15 @@ export default function HomePage() {
       'Leicester',
       'East Midlands',
     ],
+    // 3. SEO UPGRADE: Explicitly tell Google exactly what you are experts in
+    knowsAbout: [
+      'Commercial Solar PV Installation',
+      'Domestic Solar Panels',
+      'Solar Battery Storage',
+      'Commercial Electrical Contracting',
+      'EV Charger Installation',
+    ],
   };
-
   return (
     <div>
       <script
