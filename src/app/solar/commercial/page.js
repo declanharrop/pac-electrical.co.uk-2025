@@ -2,34 +2,30 @@ import { client } from '@/sanity/client';
 import { PAGE_BUILDER_QUERY } from '@/sanity/queries';
 import PageBuilderFrame from '@/Frames/PageBuilderFrame';
 
-// 1. Revalidation (ISR)
-// Retain 60s for fresh content updates without rebuilds
 export const revalidate = 60;
 
-// 2. Fetch Data Helper
-// Strictly targeting the 'solar/commercial' slug
 async function getPageData() {
   return client.fetch(PAGE_BUILDER_QUERY, { slug: 'solar/commercial' });
 }
 
-// 3. Metadata
 export async function generateMetadata() {
   const page = await getPageData();
 
-  if (!page) return { title: 'Commercial Solar - Power & Control Ltd' };
+  if (!page)
+    return { title: 'Commercial Solar Panel Installers - Power & Control' };
 
   return {
-    title: page.metaTitle || 'Commercial Solar Solutions - Power & Control',
+    // SEO UPGRADE: Professional B2B keywords
+    title: `${page.metaTitle || 'Commercial Solar PV & Battery Storage'} | Power & Control Ltd`,
     description:
       page.metaDescription ||
-      'Expert commercial solar panel installation for businesses.',
+      'Scale your business with sustainable energy. Professional commercial solar installation, O&M, and battery storage for businesses in Derbyshire and the UK.',
     openGraph: {
       images: [page.hero?.imageUrl],
     },
   };
 }
 
-// 4. Page Component
 export default async function CommercialSolarPage() {
   const page = await getPageData();
 
@@ -42,40 +38,47 @@ export default async function CommercialSolarPage() {
           Page Setup Required
         </h1>
         <p style={{ fontFamily: 'var(--font-urbanist)', fontSize: '1.2rem' }}>
-          Please go to Sanity Studio and create a new <strong>Page</strong>{' '}
-          document.
-          <br />
-          Set the slug to: <code>solar/commercial</code>
+          Please go to Sanity Studio and set the slug to:{' '}
+          <code>solar/commercial</code>
         </p>
       </div>
     );
   }
 
+  // SEO UPGRADE: High-Value Commercial Service Schema
+  const commercialSchema = {
+    '@context': 'https://schema.org/',
+    '@type': 'Service',
+    serviceType: 'Commercial Solar PV Installation',
+    provider: {
+      '@type': 'LocalBusiness',
+      name: 'Power & Control Ltd',
+      image: 'https://pac-electrical.co.uk/images/solar/comsolar26.jpg',
+    },
+    areaServed: [
+      { '@type': 'State', name: 'Derbyshire' },
+      { '@type': 'State', name: 'Nottinghamshire' },
+      { '@type': 'State', name: 'Leicestershire' },
+      { '@type': 'Region', name: 'East Midlands' },
+      { '@type': 'Country', name: 'United Kingdom' }, // Commercial work often travels further
+    ],
+    serviceOutput: 'Industrial Grade Solar Energy Systems',
+    // This tells Google the audience is businesses, not homeowners
+    audience: {
+      '@type': 'Audience',
+      audienceType: 'Business and Industrial',
+    },
+  };
+
   return (
     <>
-      {/* isSolar Prop: Ensures the navigation/theme context is set to Solar 
-        (Green accents, specific menu items)
-      */}
+      {/* SEO UPGRADE: Injecting Commercial Specific Schema */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(commercialSchema) }}
+      />
+
       <PageBuilderFrame data={page} isSolar />
-
-      {/* LEAD DEV NOTE: 
-        Finance Banner is typically for Domestic customers. 
-        Uncomment below only if this specific link applies to Commercial.
-      */}
-
-      {/* <a
-        target="_blank"
-        rel="noopener noreferrer"
-        href="https://www.phoenix-fc.co.uk/finance_landing?b=4991BD7B1993423F&t=2A9C018824984F2CB1EEFAFA"
-        style={{ display: 'block', maxWidth: '1200px', margin: '20px auto' }}
-      >
-        <img
-          src="/images/finance-banners/solar_banner.png"
-          alt="We offer finance."
-          style={{ width: '100%', height: 'auto' }}
-        />
-      </a> 
-      */}
     </>
   );
 }

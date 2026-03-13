@@ -38,7 +38,9 @@ const domesticServiceSchema = {
   },
   areaServed: [
     { '@type': 'State', name: 'Derbyshire' },
-    { '@type': 'State', name: 'East Midlands' },
+    { '@type': 'State', name: 'Nottinghamshire' },
+    { '@type': 'State', name: 'Leicestershire' },
+    { '@type': 'Region', name: 'East Midlands' },
   ],
   // Tying it specifically to residential
   audience: {
