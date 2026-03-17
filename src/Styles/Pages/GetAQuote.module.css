@@ -3,11 +3,11 @@
 }
 
 .GetAQuotePage__Container {
-  height: 100%;
   padding: 20px 20px 10px;
   display: grid;
   gap: 20px;
   grid-template-rows: 1fr 1fr 1fr;
+  min-height: 100vh;
 }
 
 .GetAQuotePage__Button {
@@ -37,7 +37,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-
   }
 
   .GetAQuotePage__Container {
@@ -47,7 +46,7 @@
   }
 
   .GetAQuotePage__Button {
-    height: 400px;
+    /* height: 400px; */
   }
 
   .GetAQuotePage__Button_Icon {

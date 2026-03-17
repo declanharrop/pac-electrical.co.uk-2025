@@ -18,7 +18,7 @@ export default function SectorStep({ service }) {
     <div className={Styles.StepContainer}>
       <div className={Styles.StepTitle}>
         {/* Changed to h3 */}
-        <h3>IS THIS FOR DOMESTIC OR COMMERCIAL?</h3>
+        <h3>Choose your sector</h3>
       </div>
 
       <div className={Styles.OptionsGrid}>

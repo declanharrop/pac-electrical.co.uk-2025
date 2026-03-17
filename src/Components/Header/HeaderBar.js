@@ -14,6 +14,9 @@ import GetAQuoteButton from '@/Elements/Buttons/GetAQuoteButton';
 export default function HeaderBar() {
   const { windowWidth } = useContext(HeaderContext);
   const pathname = usePathname();
+  const hiddenRoutes = ['/quote'];
+
+  const isHidden = hiddenRoutes.some((route) => pathname.startsWith(route));
   return (
     <>
       <div className={Styles.HeaderBar}>
@@ -59,7 +62,7 @@ export default function HeaderBar() {
       </div>
       {windowWidth < 1090 && (
         <>
-          {pathname.includes('get-a-quote') ? null : (
+          {isHidden ? null : (
             <div
               style={{
                 position: 'fixed',
@@ -76,7 +79,7 @@ export default function HeaderBar() {
       )}
       {windowWidth > 1090 && (
         <>
-          {pathname.includes('get-a-quote') ? null : (
+          {isHidden ? null : (
             <div
               style={{
                 position: 'fixed',

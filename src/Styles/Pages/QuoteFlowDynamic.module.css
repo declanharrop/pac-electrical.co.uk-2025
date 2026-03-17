@@ -379,3 +379,22 @@
   cursor: not-allowed;
   box-shadow: none !important;
 }
+
+@media (max-width: 600px) {
+  .DynamicPage {
+    padding: 10px;
+  }
+  .DynamicPage__Container {
+    padding: 20px;
+  }
+  .DynamicPage__Header {
+    margin-bottom: 14px;
+  }
+
+  .OptionCard {
+    min-height: auto;
+  }
+  .StepTitle {
+    margin-bottom: 2rem;
+  }
+}

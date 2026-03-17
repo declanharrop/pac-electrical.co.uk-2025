@@ -9,27 +9,10 @@ export default function QuoteStartPage() {
   const { chooseOption } = useQuoteFlow();
   const height = use100vh();
 
-  const containerHeight = height ? `calc(${height}px - 180px)` : '80vh';
+  // const containerHeight = height ? `calc(${height}px - 180px)` : '80vh';
 
   return (
-    <div className={Styles.QuotePage} style={{ height: containerHeight }}>
-      <h1
-        className="sr-only"
-        style={{
-          position: 'absolute',
-          width: '1px',
-          height: '1px',
-          padding: '0',
-          margin: '-1px',
-          overflow: 'hidden',
-          clip: 'rect(0, 0, 0, 0)',
-          whiteSpace: 'nowrap',
-          border: '0',
-        }}
-      >
-        Get a Free Quote for Solar, Electrical, or EV Charging
-      </h1>
-
+    <div className={Styles.QuotePage}>
       <div className={Styles.QuotePage__Container}>
         {/* SOLAR OPTION */}
         <Link
@@ -51,8 +34,10 @@ export default function QuoteStartPage() {
                 aria-hidden="true"
               />
             </div>
-            <h5>GET A QUOTE</h5>
-            <h2 className={Styles.QuotePage__Button_Text}>SOLAR</h2>
+            <div className={Styles.QuotePage__Text_Wrapper}>
+              <h5>GET A QUOTE</h5>
+              <h2 className={Styles.QuotePage__Button_Text}>SOLAR</h2>
+            </div>
           </div>
         </Link>
 
@@ -76,8 +61,10 @@ export default function QuoteStartPage() {
                 aria-hidden="true"
               />
             </div>
-            <h5>GET A QUOTE</h5>
-            <h2 className={Styles.QuotePage__Button_Text}>ELECTRICAL</h2>
+            <div className={Styles.QuotePage__Text_Wrapper}>
+              <h5>GET A QUOTE</h5>
+              <h2 className={Styles.QuotePage__Button_Text}>ELECTRICAL</h2>
+            </div>
           </div>
         </Link>
 
@@ -101,8 +88,10 @@ export default function QuoteStartPage() {
                 aria-hidden="true"
               />
             </div>
-            <h5>GET A QUOTE</h5>
-            <h2 className={Styles.QuotePage__Button_Text}>EV Charging</h2>
+            <div className={Styles.QuotePage__Text_Wrapper}>
+              <h5>GET A QUOTE</h5>
+              <h2 className={Styles.QuotePage__Button_Text}>EV Charging</h2>
+            </div>
           </div>
         </Link>
       </div>
