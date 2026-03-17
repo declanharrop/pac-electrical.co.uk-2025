@@ -1,3 +1,4 @@
+import { Suspense } from 'react';
 import { QuoteFlowProvider } from '@/Context/QuoteFlowContext';
 
 // Standardized metadata mapping
@@ -24,7 +25,9 @@ export const metadata = {
 export default function QuoteLayout({ children }) {
   return (
     <div style={{ marginTop: '80px' }}>
-      <QuoteFlowProvider>{children}</QuoteFlowProvider>
+      <Suspense fallback={<div>Loading...</div>}>
+        <QuoteFlowProvider>{children}</QuoteFlowProvider>
+      </Suspense>
     </div>
   );
 }
