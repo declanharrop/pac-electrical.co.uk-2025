@@ -11,33 +11,36 @@ export async function generateMetadata() {
 
   const { page } = data;
 
+  // SEO UPGRADE: Focus on 'Workplace', 'Fleet', and 'Commercial'
   const METADATA = {
     Url: `https://pac-electrical.co.uk/ev/commercial`,
-    SiteName: `${page.metaTitle} - Power & Control Ltd`,
-    Description: `${page.metaDescription}`,
+    SiteName: `${page.metaTitle || 'Commercial EV Charging & Fleet Solutions'} | Power & Control Ltd`,
+    Description: `${page.metaDescription || 'Specialist workplace EV charging installation for businesses. OZEV-approved fleet charging solutions across Derbyshire and the UK.'}`,
   };
+
   return {
     title: METADATA.SiteName,
-    applicationName: METADATA.SiteName,
+    applicationName: 'Power & Control Ltd',
     description: METADATA.Description,
     referrer: 'origin-when-cross-origin',
     url: METADATA.Url,
     openGraph: {
       title: METADATA.SiteName,
-      siteName: METADATA.siteName,
       description: METADATA.Description,
       url: METADATA.Url,
       images: [
         {
-          url: `${page.heroImage.image.url}`,
-          width: 600, // Must be an absolute URL
+          url: `${page.heroImage?.image?.url}`,
+          width: 800,
+          height: 600,
         },
       ],
       locale: 'en_GB',
-      type: 'article',
+      type: 'website',
     },
   };
 }
+
 export default async function CommericalEVPage() {
   const client = getClient();
   const { data } = await client.query({
@@ -49,5 +52,35 @@ export default async function CommericalEVPage() {
 
   const { page } = data;
 
-  return <StandardPageFrame data={page} />;
+  // SEO UPGRADE: B2B/Fleet Specific Service Schema
+  const commercialEVSchema = {
+    '@context': 'https://schema.org/',
+    '@type': 'Service',
+    serviceType: 'Commercial EV Charging Installation',
+    description:
+      'OZEV-approved workplace and fleet EV charging infrastructure. We provide site surveys, load management, and multi-point installation for UK businesses.',
+    provider: {
+      '@type': 'LocalBusiness',
+      name: 'Power & Control Ltd',
+      image: 'https://pac-electrical.co.uk/images/sustain1.webp',
+    },
+    areaServed: [
+      { '@type': 'Country', name: 'United Kingdom' },
+      { '@type': 'Region', name: 'East Midlands' },
+    ],
+    audience: {
+      '@type': 'Audience',
+      audienceType: 'Business and Industrial',
+    },
+  };
+
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(commercialEVSchema) }}
+      />
+      <StandardPageFrame data={page} />
+    </>
+  );
 }

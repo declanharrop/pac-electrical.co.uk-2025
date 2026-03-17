@@ -44,7 +44,7 @@ export default function HomePage() {
     // 3. SEO UPGRADE: Explicitly tell Google exactly what you are experts in
     knowsAbout: [
       'Commercial Solar PV Installation',
-      'Domestic Solar Panels',
+      'Domestic Solar Installation',
       'Solar Battery Storage',
       'Commercial Electrical Contracting',
       'EV Charger Installation',
@@ -84,6 +84,29 @@ export default function HomePage() {
 
       <CaseStudiesBlock />
       <SimpleHeaderTextBlock margin="100px 0 100px 0" />
+
+      <section
+        style={{
+          textAlign: 'center',
+          padding: '0 20px 40px',
+          maxWidth: '800px',
+          margin: '0 auto',
+        }}
+      >
+        <h2 style={{ marginBottom: '10px' }}>
+          Proudly Serving the East Midlands
+        </h2>
+        <p style={{ lineHeight: '1.6' }}>
+          From our headquarters in Derby, Power & Control provides premium
+          commercial electrical, solar PV, and EV charging installations across{' '}
+          <strong>
+            Derbyshire, Nottinghamshire, Leicestershire, and the wider East
+            Midlands
+          </strong>
+          .
+        </p>
+      </section>
+
       <SolarBrandsBlock />
       <EVBrandsBlock margin="-40px 0 0 0" />
     </div>

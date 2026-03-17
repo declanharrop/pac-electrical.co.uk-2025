@@ -6,44 +6,85 @@ import VideoHero from '@/Components/Hero/VideoHero';
 
 const METADATA = {
   Url: 'https://pac-electrical.co.uk/electrical',
-  SiteName: 'Commercial Electrical Experts - Power & Control',
+  // SEO UPGRADE: More descriptive for UK search intent
+  SiteName: 'Commercial Electrical Contractors Derbyshire | Power & Control',
   Description:
-    'Power & Control: Expert commercial electrical services across the Midlands & UK. From installations to maintenance, we deliver reliable solutions for your business. Get a quote',
+    'NICEIC approved commercial electrical contractors in Derby. Providing expert installations, EICR testing, and maintenance services across the Midlands and UK.',
 };
+
 export const metadata = {
   title: METADATA.SiteName,
-  applicationName: METADATA.SiteName,
   description: METADATA.Description,
-  referrer: 'origin-when-cross-origin',
-  url: METADATA.Url,
-  openGraph: {
-    title: METADATA.SiteName,
-    description: METADATA.Description,
-    url: METADATA.Url,
-    images: [
-      {
-        url: `${METADATA.Url}/images/sustain1.webp`, // Must be an absolute URL
-        width: 800,
-        height: 600,
-      },
-    ],
-    locale: 'en_GB',
-    type: 'website',
-  },
+  // ... (keep the rest of your metadata/OG)
 };
 
 export default function ElectricalPage() {
+  // SEO UPGRADE: Schema to link the Hub to your specific services
+  const electricalHubSchema = {
+    '@context': 'https://schema.org/',
+    '@type': 'Service',
+    serviceType: 'Electrical Contracting Services',
+    provider: {
+      '@type': 'Electrician',
+      name: 'Power & Control Ltd',
+      address: {
+        '@type': 'PostalAddress',
+        addressLocality: 'Derby',
+        addressRegion: 'Derbyshire',
+      },
+    },
+    description:
+      'Professional commercial and domestic electrical services including design, installation, and maintenance by NICEIC approved contractors.',
+    hasOfferCatalog: {
+      '@type': 'OfferCatalog',
+      name: 'Electrical Services',
+      itemListElement: [
+        {
+          '@type': 'Offer',
+          itemOffered: {
+            '@type': 'Service',
+            name: 'Commercial Electrical Installations',
+          },
+        },
+        {
+          '@type': 'Offer',
+          itemOffered: {
+            '@type': 'Service',
+            name: 'Domestic Rewiring & Upgrades',
+          },
+        },
+        {
+          '@type': 'Offer',
+          itemOffered: {
+            '@type': 'Service',
+            name: 'EICR Compliance & Testing',
+          },
+        },
+      ],
+    },
+  };
+
   return (
     <div>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(electricalHubSchema),
+        }}
+      />
+
       <VideoHero margin height="70vh">
-        <h1>Electrical</h1>
-        <h3>Energise your success</h3>
+        {/* SEO UPGRADE: Regional H1 for maximum Local SEO impact */}
+        <h1>Commercial & Domestic Electrical Contractors</h1>
+        <h3>Derbyshire’s Trusted Electrical Experts</h3>
       </VideoHero>
+
       <SmoothScrollLogosBlock
         margin="0 auto 100px"
         brands={[
           { brand: 'NICEIC', image: 'accreds/NICEIC.png' },
           { brand: 'Chas', image: 'accreds/CHAS.png' },
+          { brand: 'Constructionline', image: 'accreds/Constructionline.png' },
           { brand: 'HEIS', image: 'accreds/Heis.png' },
           { brand: 'MCS', image: 'accreds/MCS.png' },
           { brand: 'Renewable Energy Hub', image: 'accreds/TREH.png' },
@@ -51,20 +92,24 @@ export default function ElectricalPage() {
           { brand: 'OLEV', image: 'accreds/olev.png' },
           { brand: 'Trust a Trader', image: 'accreds/Trustatrader.png' },
           { brand: 'Solar Nation', image: 'accreds/Solarnation.png' },
-          { brand: 'Contstructionline', image: 'accreds/Constructionline.png' },
         ]}
       />
+
       <ServicesBlock />
+
       <div style={{ marginTop: '100px' }} />
+
       <TextWithImageBlock
         image="/images/electrical/com1.webp"
-        title="Electrical"
+        title="Bespoke Electrical Solutions"
         text={[
-          'At Power & Control, we are experienced in providing electrical installations, maintenance and repair services in commercial and domestic settings. Whether you’re looking for large-scale LED lighting installations or have a fault in your electrical system that needs fixing, we can help.',
-          'From design to installation, we offer a complete turnkey solution for your project, providing everything you need from start to finish.',
+          'At Power & Control, our NICEIC-approved engineers specialise in providing comprehensive electrical installations, maintenance, and repair services for both commercial and domestic clients in Derbyshire and the East Midlands.',
+          'Whether you require large-scale industrial three-phase installations, LED lighting upgrades, or proactive EICR compliance testing, we provide a complete turnkey solution from initial design to final certification.',
         ]}
       />
+
       <div style={{ marginTop: '100px' }} />
+
       <ImageBlock
         data={{ image: { url: '/images/electrical/elec-large.webp' } }}
       />

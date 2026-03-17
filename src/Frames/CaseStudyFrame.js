@@ -1,9 +1,9 @@
 import { PortableText } from '@portabletext/react';
+import Link from 'next/link';
 import ImageHero from '@/Components/Hero/ImageHero';
 import styles from './Styles/CaseStudyFrame.module.css';
 import SliderBlock from '@/Components/Blocks/SliderBlock';
 
-// Custom styles for the Rich Text to match your design
 const ptComponents = {
   block: {
     normal: ({ children }) => <p className={styles.paragraph}>{children}</p>,
@@ -21,10 +21,9 @@ const ptComponents = {
 };
 
 export default function CaseStudyFrame({ study }) {
-  // Data comes directly now (no study.caseStudies[0] needed)
   const data = study;
 
-  // Hydration-safe date formatter
+  // Formatting for the human-readable date
   const formattedDate = data.releaseDate
     ? new Date(data.releaseDate).toLocaleDateString('en-GB', {
         day: 'numeric',
@@ -32,16 +31,47 @@ export default function CaseStudyFrame({ study }) {
         year: 'numeric',
       })
     : '';
+  const richSnippet = {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: data.title,
+    description: data.metaDescription,
+    image: [data.hero.url],
+    datePublished: data.releaseDate || new Date().toISOString(),
+    author: [
+      {
+        '@type': 'Organization',
+        name: 'Power & Control Ltd',
+        url: 'https://pac-electrical.co.uk',
+      },
+    ],
+    publisher: {
+      '@type': 'Organization',
+      name: 'Power & Control Ltd',
+      logo: {
+        '@type': 'ImageObject',
+        url: 'https://pac-electrical.co.uk/logo.png', // Ensure this path is correct
+      },
+    },
+    mainEntityOfPage: {
+      '@type': 'WebPage',
+      '@id': `https://pac-electrical.co.uk/case-studies/study/${data.slug}`,
+    },
+  };
 
-  // Helper to join sectors (e.g., "Commercial, Solar")
   const sectorDisplay = data.studySectors?.join(', ');
 
   return (
     <div style={{ marginTop: '120px' }} className={styles.CaseStudyFrame}>
-      {/* HERO SECTION */}
+      {/* 2. INJECTING THE RICH SNIPPET */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(richSnippet) }}
+      />
+
       <ImageHero
         src={data.hero.url}
-        alt={`${data.title} - Power & Control Ltd`}
+        alt={`${data.title} - Case Study by Power & Control Ltd`}
         height="75vh"
         title={data.title}
       />
@@ -50,80 +80,15 @@ export default function CaseStudyFrame({ study }) {
         <div className={styles.CaseStudyFrame_Container_Content}>
           {/* STATS GRID */}
           <div className={styles.CaseStudyFrame_Container_Content_Stats}>
-            {data.client && (
-              <div
-                className={styles.CaseStudyFrame_Container_Content_Stats_Detail}
-              >
-                <h5>CLIENT</h5>
-                <h6>{data.client}</h6>
-              </div>
-            )}
-            {sectorDisplay && (
-              <div
-                className={styles.CaseStudyFrame_Container_Content_Stats_Detail}
-              >
-                <h5>SECTOR</h5>
-                <h6>{sectorDisplay}</h6>
-              </div>
-            )}
-            {data.technology && (
-              <div
-                className={styles.CaseStudyFrame_Container_Content_Stats_Detail}
-              >
-                <h5>TECHNOLOGY</h5>
-                <h6>{data.technology}</h6>
-              </div>
-            )}
-            {data.systemSize && (
-              <div
-                className={styles.CaseStudyFrame_Container_Content_Stats_Detail}
-              >
-                <h5>SYSTEM SIZE</h5>
-                <h6>{data.systemSize}</h6>
-              </div>
-            )}
-            {data.paybackPeriod && (
-              <div
-                className={styles.CaseStudyFrame_Container_Content_Stats_Detail}
-              >
-                <h5>PAYBACK PERIOD</h5>
-                <h6>{data.paybackPeriod}</h6>
-              </div>
-            )}
-            {data.savings && (
-              <div
-                className={styles.CaseStudyFrame_Container_Content_Stats_Detail}
-              >
-                <h5>25-YEAR SAVINGS</h5>
-                <h6>{data.savings}</h6>
-              </div>
-            )}
-            {data.annualOutput && (
-              <div
-                className={styles.CaseStudyFrame_Container_Content_Stats_Detail}
-              >
-                <h5>ESTIMATED ANNUAL OUTPUT</h5>
-                <h6>{data.annualOutput}</h6>
-              </div>
-            )}
-            {data.co2Savings && (
-              <div
-                className={styles.CaseStudyFrame_Container_Content_Stats_Detail}
-              >
-                <h5>ANNUAL CO2 SAVINGS</h5>
-                <h6>{data.co2Savings}</h6>
-              </div>
-            )}
+            {/* ... keep your existing Stats ... */}
           </div>
-
-          {/* NOTE: 'installed' field removed as it was missing from your Sanity Schema */}
 
           {/* VIDEO SECTION */}
           {data.youtubeVideo && (
             <div className={styles.CaseStudyFrame_Container_Content_Video}>
               <iframe
                 src={data.youtubeVideo}
-                title="Power and Control YouTube video player"
+                title={`${data.title} Video Presentation`}
                 frameBorder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                 allowFullScreen
@@ -134,10 +99,9 @@ export default function CaseStudyFrame({ study }) {
           {/* TEXT CONTENT */}
           <div className={styles.CaseStudyFrame_Container_Content_Text}>
             <p className={styles.CaseStudyFrame_Container_Content_Text_Date}>
-              {formattedDate}
+              Published on: {formattedDate}
             </p>
 
-            {/* Replaced dangerouslySetInnerHTML with PortableText */}
             <div className={styles.richTextContainer}>
               <PortableText value={data.content} components={ptComponents} />
             </div>
@@ -146,11 +110,24 @@ export default function CaseStudyFrame({ study }) {
           {/* SLIDER / GALLERY */}
           {data.gallery && data.gallery.length >= 1 && (
             <>
-              {/* Passed as 'images' to match your SliderBlock prop expectation */}
               <SliderBlock images={data.gallery} />
               <div className="spacer-md" />
             </>
           )}
+
+          {/* CONVERSION SECTION */}
+          <div className={styles.CaseStudy_CTA}>
+            <hr className={styles.divider} />
+            <h3>Are you planning a similar project?</h3>
+            <p>
+              Based in Derby, our expert team provides professional{' '}
+              {data.technology || 'electrical and solar'} installations across
+              the East Midlands. Let’s discuss your requirements.
+            </p>
+            <Link href="/get-a-quote" className={styles.ctaButton}>
+              Request a Site Survey
+            </Link>
+          </div>
         </div>
       </div>
     </div>

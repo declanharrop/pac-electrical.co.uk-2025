@@ -9,21 +9,20 @@ import CaseStudyFrame from '@/Frames/CaseStudyFrame';
 
 export const revalidate = 60;
 
-// Helper: Filter studies by sector string (case insensitive)
+// Helper: Filter studies by sector string (case-insensitive)
 const filterBySector = (studies, sector) =>
   studies.filter((study) =>
     study.studySectors?.some((s) => s.toLowerCase().includes(sector)),
   );
 
 export async function generateMetadata({ params }) {
-  // AWAIT PARAMS HERE (Next.js 15 Fix)
   const resolvedParams = await params;
   const slugPath = resolvedParams.slug;
 
   const type = slugPath[0];
   const identifier = slugPath[1];
 
-  // 1. Single Study Metadata
+  // 1. Single Study Metadata - SEO UPGRADE: Front-load the project and location
   if (type === 'study' && identifier) {
     const page = await client.fetch(SINGLE_CASE_STUDY_QUERY, {
       slug: identifier,
@@ -31,38 +30,45 @@ export async function generateMetadata({ params }) {
     if (!page) return { title: 'Project Not Found' };
 
     return {
-      title: `Power & Control Ltd - ${page.title}`,
-      description: page.metaDescription,
+      title: `${page.title} | Case Study | Power & Control Ltd`,
+      description:
+        page.metaDescription ||
+        `View our recent ${page.title} project. Expert electrical and renewable installations across the East Midlands.`,
       openGraph: {
-        images: [{ url: page.hero.url }],
+        images: [{ url: page.hero?.url }],
       },
     };
   }
 
-  // 2. Category Lists Metadata
+  // 2. Category Lists Metadata - SEO UPGRADE: Add British English & Location
   const metaMap = {
-    all: { title: 'All Case Studies', desc: 'Explore all our projects.' },
+    all: {
+      title: 'Electrical & Solar Case Studies Derbyshire',
+      desc: 'Explore our portfolio of commercial and domestic electrical, solar PV, and EV charging projects across the East Midlands.',
+    },
     electrical: {
-      title: 'Electrical Projects',
-      desc: 'Commercial electrical work.',
+      title: 'Commercial Electrical Projects | Derbyshire & UK',
+      desc: 'View our recent commercial electrical installations, maintenance, and compliance projects.',
     },
     solar: {
-      title: 'Solar Projects',
-      desc: 'Sustainable solar installations.',
+      title: 'Solar PV & Battery Storage Projects | Derbyshire',
+      desc: 'Showcasing our sustainable solar panel and battery storage installations for homes and businesses.',
     },
-    ev: { title: 'EV Charging Projects', desc: 'EV infrastructure projects.' },
+    ev: {
+      title: 'EV Charging Infrastructure Projects | East Midlands',
+      desc: 'Discover our recent electric vehicle charging installations for domestic and commercial clients.',
+    },
   };
 
   const meta = metaMap[type] || metaMap.all;
 
   return {
-    title: `Power & Control - ${meta.title}`,
+    title: `${meta.title} | Power & Control`,
     description: meta.desc,
   };
 }
 
 export default async function CaseStudiesPage({ params }) {
-  // AWAIT PARAMS HERE (Next.js 15 Fix)
   const resolvedParams = await params;
   const slugPath = resolvedParams.slug;
 
@@ -77,14 +83,35 @@ export default async function CaseStudiesPage({ params }) {
 
     if (!studyData) return notFound();
 
+    // SEO UPGRADE: Schema for the specific project
+    const projectSchema = {
+      '@context': 'https://schema.org',
+      '@type': 'CreativeWork',
+      name: studyData.title,
+      description: studyData.metaDescription,
+      image: studyData.hero?.url,
+      author: {
+        '@type': 'Organization',
+        name: 'Power & Control Ltd',
+      },
+      locationCreated: {
+        '@type': 'Place',
+        name: 'Derbyshire, UK',
+      },
+    };
+
     return (
       <div style={{ marginTop: '10px' }}>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(projectSchema) }}
+        />
         <CaseStudyFrame title="All Case Studies" study={studyData} />
       </div>
     );
   }
 
-  // SCENARIO 2: LIST PAGES (/case-studies/all, /case-studies/solar)
+  // SCENARIO 2: LIST PAGES
   const allStudies = await client.fetch(ALL_CASE_STUDIES_QUERY);
 
   let filteredData = allStudies;
@@ -101,5 +128,24 @@ export default async function CaseStudiesPage({ params }) {
     pageTitle = 'EV Charging Case Studies';
   }
 
-  return <CaseStudiesFrame data={filteredData} title={pageTitle} />;
+  // SEO UPGRADE: Collection Schema for list pages
+  const listSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    itemListElement: filteredData.slice(0, 10).map((study, index) => ({
+      '@type': 'ListItem',
+      position: index + 1,
+      url: `https://pac-electrical.co.uk/case-studies/study/${study.slug}`,
+    })),
+  };
+
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(listSchema) }}
+      />
+      <CaseStudiesFrame data={filteredData} title={pageTitle} />
+    </>
+  );
 }

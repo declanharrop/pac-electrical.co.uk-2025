@@ -42,16 +42,19 @@ const urbanist = Urbanist({
 
 const METADATA = {
   Url: 'https://pac-electrical.co.uk/',
-  SiteName: 'Power & Control - Commercial Electrical & Solar Experts',
+  SiteName: 'Power & Control | Solar & Electrical Experts Derbyshire',
   Description:
-    'Trusted electrical and renewable energy contractors, Power & Control, serving the Midlands and beyond. Specialising in solar, EV charging, and Commercial Electrical.',
+    'Trusted commercial electrical and renewable energy contractors serving Derby, Derbyshire, and the East Midlands. Specialising in Solar PV, Battery Storage, and EV charging.',
 };
+
 export const metadata = {
   title: METADATA.SiteName,
-  applicationName: METADATA.SiteName,
+  applicationName: 'Power & Control',
   description: METADATA.Description,
+  alternates: {
+    canonical: METADATA.Url,
+  },
   referrer: 'origin-when-cross-origin',
-  url: METADATA.Url,
   openGraph: {
     title: METADATA.SiteName,
     description: METADATA.Description,
@@ -71,7 +74,10 @@ export const metadata = {
 export default async function RootLayout({ children }) {
   return (
     <>
-      <html lang="en" className={`${urbanist.variable} ${GoodTimes.variable}`}>
+      <html
+        lang="en-GB"
+        className={`${urbanist.variable} ${GoodTimes.variable}`}
+      >
         <head>
           <meta charSet="UTF-8" />
           <Script id="gtm" strategy="beforeInteractive">
