@@ -13,11 +13,10 @@ export default function FinalStep({ data, service }) {
     <div className={Styles.StepContainer}>
       <div className={Styles.StepTitle}>
         <h3>{data.question.toUpperCase()}</h3>
-        <p style={{ marginTop: '15px', lineHeight: '1.5' }}>
-          Thank you for completing our solar quote form. We will be in touch
-          soon with your bespoke quote. If you have any additional details you'd
-          like to share that might help us prepare your quote, please add them
-          in the box below before submitting.
+        <p style={{ marginTop: '15px', color: '#666', lineHeight: '1.5' }}>
+          Thank you for completing our solar quote form. When you click submit,
+          you will receive an email asking for more details. Once you reply, you
+          will receive your fully bespoke quote.
         </p>
       </div>
 
@@ -26,7 +25,6 @@ export default function FinalStep({ data, service }) {
         className={Styles.ContactForm}
         style={{ maxWidth: '500px', margin: '0 auto' }}
       >
-        {/* Optional Comments Box */}
         <div className={Styles.InputGroup}>
           <label
             style={{
@@ -48,13 +46,12 @@ export default function FinalStep({ data, service }) {
               padding: '12px',
               borderRadius: '8px',
               border: '2px solid #ccc',
-              maxWidth: 'none',
+              fontSize: '1rem',
               fontFamily: 'inherit',
             }}
           />
         </div>
 
-        {/* Turnstile Security Widget */}
         <div
           style={{
             display: 'flex',

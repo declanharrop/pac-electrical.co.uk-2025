@@ -5,19 +5,11 @@ export async function POST(request) {
     const body = await request.json();
     const { cf_turnstile_response, sessionId } = body;
 
-    // DEBUG 1: Did the token actually arrive?
     console.log('--- DEBUG: START SUBMISSION ---');
     console.log('Session ID:', sessionId);
     console.log('Turnstile Token Exists:', !!cf_turnstile_response);
 
-    // DEBUG 2: Check if Environment Variable is loaded (logs first 4 chars only for safety)
     const secretKey = process.env.TURNSTILE_SECRET_KEY;
-    console.log(
-      'Secret Key Loaded:',
-      secretKey
-        ? `Yes (starts with ${secretKey.substring(0, 4)})`
-        : 'NO - IT IS UNDEFINED',
-    );
 
     // 1. Verify Turnstile with Cloudflare
     const verifyUrl =
@@ -29,8 +21,6 @@ export async function POST(request) {
     });
 
     const verifyData = await verifyResponse.json();
-
-    // DEBUG 3: What did Cloudflare actually say?
     console.log('Cloudflare Response Data:', JSON.stringify(verifyData));
 
     if (!verifyData.success) {
@@ -42,14 +32,13 @@ export async function POST(request) {
         {
           status: 'error',
           message: 'Security check failed.',
-          debugCodes: verifyData['error-codes'], // Sending this back to the frontend temporarily can help too
+          debugCodes: verifyData['error-codes'],
         },
         { status: 400 },
       );
     }
 
     // 2. Final Zapier Trigger
-    console.log('Verification Success. Sending to Zapier...');
     const zapierResponse = await fetch(process.env.ZAPIER_FINAL_WEBHOOK_URL, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -57,13 +46,18 @@ export async function POST(request) {
     });
 
     if (zapierResponse.ok) {
-      console.log('Zapier Response OK');
       return NextResponse.json({ status: 'success' });
     }
-    console.error('Zapier Response Error:', zapierResponse.status);
-    return NextResponse.json({ status: 'error' }, { status: 500 });
+    console.error('Zapier Response Error Status:', zapierResponse.status);
+    return NextResponse.json(
+      { status: 'error', message: 'Zapier delivery failed.' },
+      { status: 500 },
+    );
   } catch (error) {
     console.error('CRITICAL API ERROR:', error);
-    return NextResponse.json({ status: 'error' }, { status: 500 });
+    return NextResponse.json(
+      { status: 'error', message: 'Internal Server Error' },
+      { status: 500 },
+    );
   }
 }

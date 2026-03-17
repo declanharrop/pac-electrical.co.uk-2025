@@ -11,9 +11,8 @@ export const QuoteFlowProvider = ({ children }) => {
   const searchParams = useSearchParams();
 
   const [sessionId, setSessionId] = useState('');
-  const [turnstileStatus, setTurnstileStatus] = useState();
+  const [turnstileToken, setTurnstileToken] = useState(''); // Stores the actual security token
 
-  // --- UPDATED STATE: Address fields broken down for ClickUp ---
   const [userDetails, setUserDetails] = useState({
     service: '',
     sector: '',
@@ -34,16 +33,13 @@ export const QuoteFlowProvider = ({ children }) => {
     adId: '',
   });
 
-  // Generate UUID
   useEffect(() => {
     setSessionId(crypto.randomUUID());
   }, []);
 
-  // Tracking Logic (URL Params -> Cookies -> State)
   useEffect(() => {
-    if (!searchParams) return; // Guard clause for SSR
+    if (!searchParams) return;
 
-    // Capture 'provider' (mapped to heardFrom)
     const urlProvider = searchParams.get('provider');
     const cookieProvider = Cookies.get('provider');
 
@@ -54,7 +50,6 @@ export const QuoteFlowProvider = ({ children }) => {
       setUserDetails((prev) => ({ ...prev, heardFrom: cookieProvider }));
     }
 
-    // Capture 'adId'
     const urlAdId = searchParams.get('adId');
     const cookieAdId = Cookies.get('adId');
 
@@ -67,7 +62,7 @@ export const QuoteFlowProvider = ({ children }) => {
   }, [searchParams, userDetails.heardFrom, userDetails.adId]);
 
   const handleVerify = (token) => {
-    setTurnstileStatus('success');
+    setTurnstileToken(token); // Captures the token string from Cloudflare
   };
 
   const addUserDetails = (data) => {
@@ -84,9 +79,7 @@ export const QuoteFlowProvider = ({ children }) => {
     if (route) router.push(route);
   };
 
-  // Mid-Way Submission
   const handlePartialSubmit = async (newData = {}, nextRoute) => {
-    // Combine the existing context state with the fresh data they just typed in
     const freshestData = {
       ...userDetails,
       ...newData,
@@ -107,16 +100,20 @@ export const QuoteFlowProvider = ({ children }) => {
     }
   };
 
-  // Final Submission
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (turnstileStatus !== 'success') {
+    if (!turnstileToken) {
       alert('Please complete the security check.');
       return;
     }
 
-    const formData = { ...userDetails, sessionId };
+    // Include the turnstile token in the final POST body
+    const formData = {
+      ...userDetails,
+      sessionId,
+      cf_turnstile_response: turnstileToken,
+    };
 
     try {
       const response = await fetch('/api/quote/complete', {
@@ -127,12 +124,11 @@ export const QuoteFlowProvider = ({ children }) => {
       const result = await response.json();
 
       if (result.status === 'success') {
-        // Redirect to specific thank you page based on service/sector
         const finalService = userDetails.service || 'solar';
         const finalSector = userDetails.sector || 'domestic';
         router.push(`/thank-you/${finalService}/${finalSector}`);
       } else {
-        alert('There was an issue submitting your form. Please try again.');
+        alert(`Submission issue: ${result.message || 'Please try again.'}`);
       }
     } catch (error) {
       console.error('Network error:', error);
