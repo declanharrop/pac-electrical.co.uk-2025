@@ -49,6 +49,10 @@ export default function EVPage() {
         addressLocality: 'Derby',
         addressRegion: 'Derbyshire',
       },
+      logo: {
+        '@type': 'ImageObject',
+        url: 'https://pac-electrical.co.uk/logo/logo-full.png', // Ensure this path is correct
+      },
     },
     areaServed: [
       { '@type': 'State', name: 'Derbyshire' },

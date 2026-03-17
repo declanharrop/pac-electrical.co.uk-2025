@@ -31,6 +31,7 @@ export default function CaseStudyFrame({ study }) {
         year: 'numeric',
       })
     : '';
+
   const richSnippet = {
     '@context': 'https://schema.org',
     '@type': 'Article',

@@ -49,6 +49,10 @@ export default function SolarPage() {
     provider: {
       '@type': 'LocalBusiness',
       name: 'Power & Control Ltd',
+      logo: {
+        '@type': 'ImageObject',
+        url: 'https://pac-electrical.co.uk/logo/logo-full.png', // Ensure this path is correct
+      },
     },
     areaServed: [
       { '@type': 'State', name: 'Derbyshire' },
@@ -89,15 +93,13 @@ export default function SolarPage() {
 
       {/* SEO EMERGENCY FIXED: Adding the H1 back in for Google */}
       <div
-        style={{ marginTop: '140px', textAlign: 'center', padding: '0 20px' }}
+        style={{ marginTop: '170px', textAlign: 'center', padding: '0 20px' }}
       >
         <h1 style={{ marginBottom: '10px' }}>
           Solar Panel Installation in Derbyshire
         </h1>
         <p
           style={{
-            fontSize: '1.6rem',
-            color: '#555',
             maxWidth: '800px',
             margin: '0 auto 40px auto',
           }}

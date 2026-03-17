@@ -35,6 +35,10 @@ const domesticServiceSchema = {
   provider: {
     '@type': 'LocalBusiness',
     name: 'Power & Control Ltd',
+    logo: {
+      '@type': 'ImageObject',
+      url: 'https://pac-electrical.co.uk/logo/logo-full.png', // Ensure this path is correct
+    },
   },
   areaServed: [
     { '@type': 'State', name: 'Derbyshire' },

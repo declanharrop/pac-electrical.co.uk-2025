@@ -53,7 +53,10 @@ export default async function CommercialSolarPage() {
     provider: {
       '@type': 'LocalBusiness',
       name: 'Power & Control Ltd',
-      image: 'https://pac-electrical.co.uk/images/solar/comsolar26.jpg',
+      logo: {
+        '@type': 'ImageObject',
+        url: 'https://pac-electrical.co.uk/logo/logo-full.png', // Ensure this path is correct
+      },
     },
     areaServed: [
       { '@type': 'State', name: 'Derbyshire' },

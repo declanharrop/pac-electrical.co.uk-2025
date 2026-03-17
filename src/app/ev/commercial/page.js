@@ -41,7 +41,7 @@ export async function generateMetadata() {
   };
 }
 
-export default async function CommericalEVPage() {
+export default async function CommercialEVPage() {
   const client = getClient();
   const { data } = await client.query({
     query: STANDARD_PAGE_QUERY,
@@ -62,7 +62,10 @@ export default async function CommericalEVPage() {
     provider: {
       '@type': 'LocalBusiness',
       name: 'Power & Control Ltd',
-      image: 'https://pac-electrical.co.uk/images/sustain1.webp',
+      logo: {
+        '@type': 'ImageObject',
+        url: 'https://pac-electrical.co.uk/logo/logo-full.png', // Ensure this path is correct
+      },
     },
     areaServed: [
       { '@type': 'Country', name: 'United Kingdom' },

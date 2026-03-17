@@ -60,7 +60,10 @@ export default async function DomesticEVPage() {
     provider: {
       '@type': 'LocalBusiness',
       name: 'Power & Control Ltd',
-      image: 'https://pac-electrical.co.uk/images/sustain1.webp',
+      logo: {
+        '@type': 'ImageObject',
+        url: 'https://pac-electrical.co.uk/logo/logo-full.png', // Ensure this path is correct
+      },
     },
     description:
       'Safe and professional home electric vehicle charging point installations. OZEV-approved specialist installers in Derbyshire.',

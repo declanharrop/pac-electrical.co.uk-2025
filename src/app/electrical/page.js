@@ -32,6 +32,10 @@ export default function ElectricalPage() {
         addressLocality: 'Derby',
         addressRegion: 'Derbyshire',
       },
+      logo: {
+        '@type': 'ImageObject',
+        url: 'https://pac-electrical.co.uk/logo/logo-full.png', // Ensure this path is correct
+      },
     },
     description:
       'Professional commercial and domestic electrical services including design, installation, and maintenance by NICEIC approved contractors.',
