@@ -1,0 +1,41 @@
+.scrollerBlock {
+  /* Position: Absolute places it on top of the Hero */
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 160px; /* Explicit height is required for absolute positioning */
+  z-index: 50; /* Must be higher than Hero Image (usually z-index: 1) */
+
+  /* Flex to center the Swiper vertically */
+  display: flex;
+  align-items: center;
+
+  /* The White Gradient Fade */
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(255, 255, 255, 0.9) 40%,
+    rgba(255, 255, 255, 0) 100%
+  );
+}
+/* Ensure Swiper takes the full space */
+.scrollerBlock :global(.swiper) {
+  width: 100%;
+  height: 100%;
+  padding-top: 20px; /* Push logos down slightly */
+}
+
+.scrollerBlock :global(.swiper-wrapper) {
+  transition-timing-function: linear !important;
+  align-items: center;
+}
+
+.brandImage {
+  display: block;
+  width: auto;
+  height: 80px;
+  margin: 0 auto;
+  object-fit: contain;
+  transition: all 0.3s ease;
+}

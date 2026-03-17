@@ -1,0 +1,74 @@
+.section {
+  padding: 100px 20px;
+  background-color: var(--primary);
+  color: #fff;
+  display: flex;
+  justify-content: center;
+}
+
+.container {
+  display: grid;
+  /* Define names for the grid items */
+  grid-template-areas:
+    "image"
+    "content";
+  grid-template-columns: 1fr;
+  gap: 60px;
+  max-width: 1400px;
+  width: 100%;
+  align-items: center;
+}
+
+/* Assign the areas to the specific classes */
+.contentCol {
+  grid-area: content;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.imageWrapper {
+  grid-area: image;
+  position: relative;
+  width: 100%;
+  height: 500px;
+  border-radius: 24px;
+  overflow: hidden;
+}
+
+/* Desktop Up (Tablet Landscape / Laptop) */
+@media (min-width: 900px) {
+  .container {
+    grid-template-columns: 1fr 1fr;
+    gap: 100px;
+    /* Default Desktop Layout: Content Left, Image Right */
+    grid-template-areas: "content image";
+  }
+
+  /* When the 'reversed' class is added (via the prop), swap the areas */
+  .container.reversed {
+    grid-template-areas: "image content";
+  }
+}
+
+/* Typography & Visuals */
+.heading {
+  font-family: var(--font-good-times);
+  font-size: 3rem;
+  margin-bottom: 30px;
+}
+
+.text {
+  font-family: var(--font-urbanist);
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.8);
+  margin-bottom: 20px;
+}
+
+.image {
+  object-fit: contain;
+}
+
+.ctaWrapper {
+  margin-top: 30px;
+}

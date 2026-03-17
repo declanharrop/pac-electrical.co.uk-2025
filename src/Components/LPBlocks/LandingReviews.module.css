@@ -1,0 +1,178 @@
+.section {
+  padding: 10rem 0;
+  background-color: #fff;
+  color: var(--black);
+}
+
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 3rem;
+}
+
+.title {
+  font-family: var(--font-good-times);
+  font-size: 3.6rem;
+  margin: 0;
+  color: var(--black);
+  line-height: 1.1;
+}
+
+/* Navigation Buttons */
+.NavButtons {
+  display: flex;
+  gap: 12px;
+}
+
+.NavBtn {
+  width: 48px;
+  height: 48px;
+  padding: 0;
+  border-radius: 50%;
+  border: 1px solid #e0e0e0;
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  color: var(--black);
+}
+
+.NavBtn:hover {
+  transform: scale(1.1);
+  background: var(--green);
+  color: #fff;
+  border-color: var(--green);
+}
+
+.NavBtn:hover svg {
+  stroke: #fff;
+}
+
+/* --- CAROUSEL STRUCTURE --- */
+.viewport {
+  overflow: hidden;
+  width: 100%;
+  padding: 4rem 0;
+  mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 10%,
+    black 90%,
+    transparent 100%
+  );
+}
+
+.track {
+  display: flex;
+  gap: 0;
+}
+
+.slide {
+  flex: 0 0 85%;
+  min-width: 0;
+  padding: 0 1.5rem;
+
+  transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  opacity: 0.4;
+  transform: scale(0.9);
+}
+
+/* The Active (Center) Slide */
+.activeSlide {
+  opacity: 1;
+  transform: scale(1);
+  z-index: 2;
+}
+
+@media (min-width: 768px) {
+  .slide {
+    flex: 0 0 60%;
+  }
+}
+
+@media (min-width: 1200px) {
+  .slide {
+    flex: 0 0 35%;
+  }
+}
+
+/* CARD STYLING */
+.card {
+  background: #fff;
+  color: var(--black);
+  border-radius: 2.4rem;
+  padding: 4rem 3rem;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.12);
+  border: 1px solid #f0f0f0;
+}
+
+.cardContent {
+  margin-bottom: 3rem;
+}
+
+.stars {
+  color: var(--green);
+  font-size: 2.4rem;
+  margin-bottom: 2rem;
+  letter-spacing: 0.2rem;
+  line-height: 1;
+}
+
+.reviewText {
+  font-family: var(--font-urbanist);
+  font-size: 1.6rem;
+  line-height: 1.6;
+  font-style: italic;
+  color: var(--black);
+}
+
+.cardFooter {
+  margin-top: auto;
+  border-top: 1px solid #eee;
+  padding-top: 2rem;
+}
+
+.author {
+  font-family: var(--font-good-times);
+  font-size: 1.4rem;
+  color: var(--black);
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+}
+
+.location {
+  font-family: var(--font-urbanist);
+  font-size: 1.2rem;
+  color: var(--grey);
+  text-transform: uppercase;
+  letter-spacing: 0.1rem;
+  font-weight: 700;
+}
+
+/* Mobile Adjustments */
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2rem;
+  }
+  .title {
+    font-size: 2.8rem;
+  }
+  .card {
+    padding: 3rem 2rem;
+  }
+}

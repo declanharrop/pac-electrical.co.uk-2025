@@ -1,0 +1,132 @@
+/* SECTION CONTAINER */
+.section {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 100px 20px;
+  background-color: var(--black, #1b1819);
+  color: #fff;
+}
+
+/* --- 1. EXISTING ELEMENTS (Arrow, Logo, Video) --- */
+
+.logoWrapper {
+  margin-bottom: 50px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.logo {
+  max-width: 300px;
+  height: auto;
+}
+
+.title {
+  font-family: var(--font-good-times), sans-serif;
+  font-size: 3.5rem; /* Large Heading */
+  text-align: center;
+  margin-bottom: 60px;
+  color: #fff;
+  text-transform: uppercase;
+}
+
+.videoContainer {
+  width: 100%;
+  max-width: 1000px;
+  margin-bottom: 80px;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+  background: #000;
+}
+
+.videoFrame {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border: none;
+  display: block;
+}
+
+/* --- 2. THE NEW GRID STYLING (Green Circles) --- */
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(300px, 1fr)
+  ); /* Responsive 3-col */
+  gap: 60px; /* Space between items */
+  width: 100%;
+  max-width: 1200px;
+  margin-bottom: 60px;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  position: relative;
+}
+
+/* The Icon Container */
+.iconCircle {
+  position: relative;
+  width: 120px;
+  height: 120px;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* The Green Circle Background */
+.iconCircle::before {
+  content: "";
+  position: absolute;
+  width: 80px;
+  height: 80px;
+  background-color: var(--green, #54af61); /* Your brand green */
+  border-radius: 50%;
+  z-index: 0;
+}
+
+/* Target the Next/Image inside .iconCircle */
+.iconCircle img {
+  position: relative;
+  z-index: 2; /* Sit on top of circle */
+  object-fit: contain;
+  /* FORCE WHITE COLOR: Inverts black icons to white */
+  filter: brightness(0) invert(1);
+  /* Make icons large like screenshot */
+  width: 50px !important;
+  height: 50px !important;
+}
+
+.cardTitle {
+  font-family: var(--font-good-times), sans-serif;
+  font-size: 2rem; /* Large, Uppercase */
+  margin-bottom: 20px;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.cardText {
+  font-family: var(--font-urbanist), sans-serif;
+  font-size: 1.6rem; /* Readable Body Text */
+  line-height: 1.6;
+  max-width: 350px;
+}
+
+/* --- 3. BOTTOM ELEMENTS --- */
+.divider {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  line-height: 0;
+}

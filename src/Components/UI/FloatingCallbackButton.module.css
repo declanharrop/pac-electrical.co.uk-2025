@@ -1,0 +1,47 @@
+.floatingWrapper {
+  position: fixed;
+  bottom: 3rem; /* 30px from bottom */
+  right: 3rem; /* 30px from right */
+  z-index: 9999; /* Ensures it stays on top of everything */
+}
+
+.floatingButton {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background-color: var(--green); /* Dark sleek background */
+  color: #ffffff;
+  padding: 1.4rem 2.4rem;
+  border-radius: 4rem; /* Pill shape */
+  font-size: 1.4rem; /* 14px */
+  font-weight: 600;
+  text-decoration: none;
+  letter-spacing: 0.05rem;
+  box-shadow: 0 0.4rem 1.5rem rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.floatingButton:hover {
+  transform: translateY(-4px); /* Slight lift on hover */
+  box-shadow: 0 0.8rem 2.5rem rgba(0, 0, 0, 0.3);
+  background-color: #333333;
+}
+
+/* Phone Icon SVG Styling */
+.icon {
+  width: 1.8rem;
+  height: 1.8rem;
+  fill: currentColor;
+}
+
+/* Hide text on mobile so it just shows the circle icon to save screen space */
+@media (max-width: 768px) {
+  .floatingButton {
+    padding: 1.5rem;
+    border-radius: 50%;
+  }
+  .text {
+    display: none;
+  }
+}

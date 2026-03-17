@@ -1,0 +1,211 @@
+.section {
+  margin-top: -1px;
+  padding: 8rem 2rem;
+  background-color: var(--black);
+  color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.heading {
+  font-size: 3.6rem;
+  margin-bottom: 4rem;
+  text-align: center;
+}
+
+.faqContainer {
+  width: 100%;
+  max-width: 90rem;
+  margin-bottom: 4rem;
+}
+
+/* --- GRID STYLES --- */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.card {
+  background-color: #2a2a2a;
+  border-radius: 1.2rem;
+  padding: 2.5rem;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  background-color: #333333;
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
+}
+
+.cardHeader {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 1rem;
+}
+
+.cardQuestion {
+  font-size: 1.8rem;
+  line-height: 1.4;
+  margin-bottom: 2rem;
+  font-weight: 600;
+}
+
+.readMore {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #4caf50; /* Green accent */
+  font-size: 1.4rem;
+  font-weight: bold;
+}
+
+/* --- MODAL STYLES --- */
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(5px);
+  z-index: 99999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+}
+
+.modal {
+  background-color: #1a1a1a;
+  width: 100%;
+  max-width: 80rem;
+  max-height: 90vh;
+  border-radius: 1.2rem;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  box-shadow: 0 2rem 5rem rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.modalHeader {
+  display: flex;
+  justify-content: flex-end;
+  padding: 1.5rem 2rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.modalActions {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.iconBtn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.2s;
+}
+
+.iconBtn:hover {
+  opacity: 0.7;
+}
+
+.modalContent {
+  padding: 3rem;
+  overflow-y: auto;
+  color: #eeeeee;
+}
+
+.modalTitle {
+  font-size: 2.8rem;
+  margin-bottom: 2.5rem;
+  line-height: 1.3;
+}
+
+/* Responsive Video Wrapper */
+.videoWrapper {
+  position: relative;
+  width: 100%;
+  padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+  margin-bottom: 3rem;
+  border-radius: 0.8rem;
+  overflow: hidden;
+  background-color: #000;
+}
+
+.iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+.portableText p {
+  font-size: 1.6rem;
+  line-height: 1.7;
+  margin-bottom: 1.5rem;
+}
+
+.portableText ul {
+  margin-left: 2rem;
+  margin-bottom: 1.5rem;
+  font-size: 1.6rem;
+  line-height: 1.7;
+}
+
+.modalFooter {
+  margin-top: 4rem;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  text-align: right;
+}
+
+.directLink {
+  color: #4caf50;
+  text-decoration: none;
+  font-size: 1.4rem;
+  font-weight: bold;
+}
+
+.directLink:hover {
+  text-decoration: underline;
+}
+
+/* MAIN BUTTON STYLES */
+.buttonWrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.faqButton {
+  display: inline-block;
+  padding: 1.8rem 4rem;
+  border-radius: 4rem;
+  background-color: #ffffff;
+  color: #000000;
+  font-size: 1.6rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.faqButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 1rem 2rem rgba(255, 255, 255, 0.1);
+}

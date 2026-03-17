@@ -1,0 +1,14 @@
+.LowerOpaqueWaves {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+}
+
+.UpperOpaqueWaves {
+  transform: rotate(180deg);
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+}

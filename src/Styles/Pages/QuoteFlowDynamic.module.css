@@ -1,0 +1,381 @@
+/* src/Styles/Pages/QuoteFlowDynamic.module.css */
+
+.DynamicPage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  min-height: 60vh;
+  padding: 2rem;
+  box-sizing: border-box;
+}
+
+.DynamicPage__Container {
+  width: 100%;
+  max-width: 800px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 24px;
+  padding: 3rem 2rem;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+}
+
+.DynamicPage__Header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  width: 100%; /* Forces the header to span the whole container */
+  margin-bottom: 4rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  box-sizing: border-box; /* Ensures padding doesn't break the 100% width */
+}
+
+.BackButton {
+  background: transparent;
+  border: none;
+  margin: 0;
+  color: var(--grey);
+  font-family: var(--font-urbanist);
+  font-size: 1.6rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  padding: 0;
+  height: auto;
+  transition: color 0.3s ease;
+}
+
+.BackButton:hover {
+  color: white;
+}
+
+.BackArrow {
+  font-size: 2rem;
+  line-height: 1;
+}
+
+.ProgressBadge {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 0.6rem 1.6rem;
+  border-radius: 20px;
+  font-size: 1.4rem;
+  font-weight: 600;
+  letter-spacing: 0.15rem;
+  text-transform: uppercase;
+  /* Removed the hardcoded color here */
+  transition: color 0.3s ease;
+}
+
+/* --- Dynamic Badge Colors --- */
+.ProgressBadge.solar {
+  color: var(--light-green);
+}
+
+.ProgressBadge.electrical {
+  color: var(--navy);
+}
+
+.ProgressBadge.ev {
+  color: var(--neon);
+}
+
+.StepContent {
+  /* This ensures smooth height transitions if steps are different sizes */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  animation: fadeIn 0.4s ease-out forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* We will use these utilities in our specific step components */
+.StepTitle {
+  margin-bottom: 4rem;
+  text-align: center;
+  width: 100%;
+}
+.StepTitle h3 {
+  margin: 0;
+  line-height: 1.4;
+}
+
+.OptionsGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  width: 100%;
+}
+
+@media (min-width: 600px) {
+  .OptionsGrid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.StepContainer {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.OptionCard {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  padding: 3rem 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  width: 100%;
+  height: auto; /* Overriding your global button height */
+  min-height: 250px;
+}
+
+.IconWrapper {
+  margin-bottom: 2rem;
+  transition: transform 0.3s ease;
+}
+
+.OptionCard h5 {
+  color: white;
+  margin-bottom: 1rem;
+  transition: color 0.3s ease;
+}
+
+.OptionCard_Text {
+  margin: 0;
+  color: white;
+}
+
+/* Base Hover */
+.OptionCard:hover,
+.OptionCard:focus-visible {
+  transform: translateY(-5px);
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.OptionCard:hover .IconWrapper,
+.OptionCard:focus-visible .IconWrapper {
+  transform: scale(1.05);
+}
+
+/* Themed Hovers (Reusing the colors we set up!) */
+.OptionCard.solar:hover,
+.OptionCard.solar:focus-visible {
+  border-color: var(--light-green);
+  box-shadow: 0 10px 30px -10px var(--green-50);
+}
+.OptionCard.solar:hover h5 {
+  color: var(--light-green);
+}
+
+.OptionCard.electrical:hover,
+.OptionCard.electrical:focus-visible {
+  border-color: var(--navy);
+  box-shadow: 0 10px 30px -10px var(--navy-50);
+}
+.OptionCard.electrical:hover h5 {
+  color: var(--navy);
+}
+
+.OptionCard.ev:hover,
+.OptionCard.ev:focus-visible {
+  border-color: var(--neon);
+  box-shadow: 0 10px 30px -10px var(--neon-50);
+}
+.OptionCard.ev:hover h5 {
+  color: var(--neon);
+}
+
+.QuestionGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  width: 100%;
+}
+
+/* On tablets and desktops, make it a 2-column grid */
+@media (min-width: 600px) {
+  .QuestionGrid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* Utility to make a card span both columns (for the 5th odd item) */
+@media (min-width: 600px) {
+  .FullWidthCard {
+    grid-column: 1 / -1;
+  }
+}
+
+.OptionCard_Text_SM {
+  margin: 0;
+  color: white;
+  font-size: 1.8rem; /* Slightly smaller text for these longer labels */
+  line-height: 1.4;
+  text-align: center;
+}
+
+/* src/Styles/Pages/QuoteFlowDynamic.module.css */
+
+/* Add this to handle the SVG masking */
+.IconMask {
+  width: 60px;
+  height: 60px;
+  background-color: white; /* This makes the SVG white! */
+
+  /* The mask properties */
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  -webkit-mask-position: center;
+  mask-position: center;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+
+  /* Smooth transition for hover effects */
+  transition:
+    background-color 0.3s ease,
+    transform 0.3s ease;
+}
+
+/* Optional Bonus: Make the icon match the glow color on hover! */
+.OptionCard.solar:hover .IconMask,
+.OptionCard.solar:focus-visible .IconMask {
+  background-color: var(--light-green);
+}
+
+.OptionCard.electrical:hover .IconMask,
+.OptionCard.electrical:focus-visible .IconMask {
+  background-color: var(--navy);
+}
+
+.OptionCard.ev:hover .IconMask,
+.OptionCard.ev:focus-visible .IconMask {
+  background-color: var(--neon);
+}
+
+/* Add to bottom of src/Styles/Pages/QuoteFlowDynamic.module.css */
+
+.ContactForm {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 500px;
+  gap: 2rem;
+  margin: 0 auto;
+}
+
+.InputGroup {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+}
+
+.InputGroup label {
+  font-size: 1.4rem;
+  font-weight: 600;
+  letter-spacing: 0.15rem;
+  margin-bottom: 0.8rem;
+  margin-left: 1.5rem;
+  text-transform: uppercase;
+  color: var(--grey);
+}
+
+.InputGroup input {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 30px;
+  padding: 1.6rem 2.4rem;
+  color: white;
+  font-size: 1.6rem;
+  font-family: var(--font-urbanist);
+  transition: all 0.3s ease;
+  outline: none;
+  box-sizing: border-box; /* Crucial so padding doesn't stretch it out */
+}
+
+.InputGroup input::placeholder {
+  color: rgba(255, 255, 255, 0.3);
+}
+
+.InputGroup input:focus {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: white;
+}
+
+.InputGroup input.InputError {
+  border-color: #ff4d4d;
+  background: rgba(255, 77, 77, 0.05);
+}
+
+.ErrorMessage {
+  color: #ff4d4d;
+  font-size: 1.3rem;
+  margin-top: 0.8rem;
+  margin-left: 1.5rem;
+}
+
+.SubmitButton {
+  margin-top: 2rem;
+  width: 100%;
+  border-radius: 30px;
+  padding: 1.8rem;
+  font-size: 1.8rem;
+  font-weight: 600;
+  letter-spacing: 0.2rem;
+  background: white;
+  color: var(--black);
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+}
+
+/* Make the button glow matching the service color on hover */
+.SubmitButton.solar:hover,
+.SubmitButton.solar:focus-visible {
+  box-shadow: 0 0 20px var(--light-green);
+  background: var(--light-green);
+  color: var(--primary);
+}
+
+.SubmitButton.electrical:hover,
+.SubmitButton.electrical:focus-visible {
+  box-shadow: 0 0 20px var(--neon); /* Neon blue contrasts better than navy for solid buttons */
+  background: var(--neon);
+  color: var(--primary);
+}
+
+.SubmitButton.ev:hover,
+.SubmitButton.ev:focus-visible {
+  box-shadow: 0 0 20px var(--neon);
+  background: var(--neon);
+  color: var(--primary);
+}
+
+.SubmitButton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  box-shadow: none !important;
+}
