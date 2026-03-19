@@ -28,6 +28,8 @@ export const QuoteFlowProvider = ({ children }) => {
     elecUsage: '',
     solarType: '',
     homeSize: '',
+    ownership: '', // For Commercial
+    chargerDistance: '', // NEW: For EV
     companyName: '',
     heardFrom: '',
     adId: '',
@@ -122,10 +124,12 @@ export const QuoteFlowProvider = ({ children }) => {
         body: JSON.stringify(formData),
       });
       const result = await response.json();
-
       if (result.status === 'success') {
-        const finalService = userDetails.service || 'solar';
-        const finalSector = userDetails.sector || 'domestic';
+        // Save the sessionId to a cookie for 1 day
+        Cookies.set('quoteSessionId', sessionId, { expires: 1 });
+
+        const finalService = userDetails.service.toLowerCase() || 'solar';
+        const finalSector = userDetails.sector.toLowerCase() || 'domestic';
         router.push(`/thank-you/${finalService}/${finalSector}`);
       } else {
         alert(`Submission issue: ${result.message || 'Please try again.'}`);

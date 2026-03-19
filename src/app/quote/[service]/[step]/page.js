@@ -24,17 +24,18 @@ export default function QuoteStepPage() {
   const step = params?.step;
   const urlService = service ? service.toLowerCase() : '';
 
-  // 1. Deep link hydration (If they land here directly, ensure context has the service)
   useEffect(() => {
-    if (
-      service &&
-      userDetails.service.toLowerCase() !== service.toLowerCase()
-    ) {
-      const formattedService =
-        service === 'ev'
-          ? 'EV Charging'
-          : service.charAt(0).toUpperCase() + service.slice(1);
-      addUserDetails({ service: formattedService });
+    if (!service) return;
+
+    // Determine what the formatted string SHOULD be based on the URL
+    const expectedService =
+      service.toLowerCase() === 'ev'
+        ? 'EV Charging'
+        : service.charAt(0).toUpperCase() + service.slice(1);
+
+    // If the Context doesn't match our exact expected string, update it
+    if (userDetails.service !== expectedService) {
+      addUserDetails({ service: expectedService });
     }
   }, [service, userDetails.service, addUserDetails]);
 

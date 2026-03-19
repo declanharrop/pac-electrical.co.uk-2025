@@ -8,6 +8,7 @@
   width: 100%;
   padding: 2rem;
   box-sizing: border-box;
+  min-height: 80vh;
 }
 
 .QuotePage__Container {

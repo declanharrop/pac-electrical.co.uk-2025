@@ -8,7 +8,7 @@ const FinanceSticker = () => {
   const pathname = usePathname();
 
   // Define routes where the sticker should be hidden
-  const hiddenRoutes = ['/quote'];
+  const hiddenRoutes = ['/quote', '/thank-you'];
 
   const isHidden = hiddenRoutes.some((route) => pathname.startsWith(route));
   if (isHidden) {

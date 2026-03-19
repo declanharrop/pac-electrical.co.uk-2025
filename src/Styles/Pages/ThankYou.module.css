@@ -1,0 +1,375 @@
+.Container {
+  max-width: 800px;
+  margin: 80px auto; /* Retained your change */
+  padding: 60px 20px;
+}
+
+/* Header Section */
+.Header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.Title {
+  color: #00d26a; /* PAC Green */
+  font-size: 2.5em;
+  margin-bottom: 15px;
+  text-transform: uppercase;
+}
+
+.Subtitle {
+  line-height: 1.6;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+/* =========================================
+   UPDATED Uploader Widget Styles
+   ========================================= */
+.UploadWidget {
+  background: #fdfdfd;
+  padding: 40px 30px;
+  border-radius: 12px;
+  text-align: center;
+  margin-bottom: 60px;
+  border: 2px solid #e0e0e0; /* Solid border now, dashed inside */
+}
+
+.UploadTitle {
+  margin-bottom: 10px;
+  font-size: 1.5em;
+  color: #111;
+}
+
+.UploadDesc {
+  margin-bottom: 25px;
+  color: #666;
+}
+
+.UploadControls {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  width: 100%;
+}
+
+/* We completely hide the actual ugly HTML input */
+.HiddenInput {
+  display: none !important;
+}
+
+/* The interactive "Plus Sign" area */
+.CustomDropzoneLabel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  max-width: 400px;
+  height: 180px;
+  background: #fbfbfb;
+  border: 2px dashed #00d26a; /* Green dashed border */
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  color: #666;
+}
+
+.CustomDropzoneLabel:hover {
+  background: #f4fff9;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 210, 106, 0.1);
+}
+
+.PlusIcon {
+  font-size: 3em;
+  font-weight: 300;
+  color: #00d26a;
+  line-height: 1;
+}
+
+.DropzoneText {
+  font-weight: 500;
+  color: #333;
+}
+
+.DropzoneSubtext {
+  font-size: 0.85em;
+  color: #999;
+}
+
+/* State: File has been selected, ready to upload */
+.SelectedFileState {
+  background: #fff;
+  border: 1px solid #e0e0e0;
+  padding: 20px;
+  border-radius: 8px;
+  width: 100%;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+}
+
+.FileName {
+  font-weight: 600;
+  color: #111;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.ChangeFileLink {
+  color: #00d26a;
+  background: none;
+  border: none;
+  font-size: 0.9em;
+  text-decoration: underline;
+  cursor: pointer;
+  padding: 0;
+  margin-bottom: 10px;
+}
+
+/* Standard Upload Button styling */
+.UploadBtn {
+  background: #00d26a;
+  color: #fff;
+  padding: 14px 30px;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  font-size: 1em;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  width: 100%;
+}
+
+.UploadBtn:hover:not(:disabled) {
+  background: #00b55b;
+  box-shadow: 0 4px 12px rgba(0, 210, 106, 0.3);
+}
+
+.UploadBtn:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}
+
+/* Status Messages */
+.SuccessMessage {
+  color: #00d26a;
+  font-weight: bold;
+  font-size: 1.2em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  height: 180px;
+  background: #f4fff9;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 400px;
+}
+
+.ErrorMessage {
+  color: #ff4d4d;
+  font-size: 0.9em;
+  margin-top: 10px;
+}
+
+/* =========================================
+   Timeline Steps (Unchanged from your CSS)
+   ========================================= */
+.TimelineTitle {
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 2em;
+  color: #111;
+}
+
+.StepsList {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.StepCard {
+  display: flex;
+  background: #111;
+  color: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease;
+}
+
+.StepCard:hover {
+  transform: translateX(5px);
+}
+
+.StepAccent {
+  background: #00d26a;
+  width: 12px;
+  flex-shrink: 0;
+}
+
+.StepContent {
+  padding: 25px;
+  display: flex;
+  gap: 25px;
+  align-items: flex-start; /* Retained your change */
+  width: 100%;
+}
+
+.StepNumber {
+  font-weight: 900;
+  font-size: 1.2em;
+  color: #00d26a;
+  min-width: 80px;
+  letter-spacing: 1px;
+}
+
+.StepTextWrapper h4 {
+  text-align: left; /* Retained your change */
+  margin: 0 0 8px 0;
+  font-size: 1.25em;
+  color: #fff;
+}
+
+.StepTextWrapper p {
+  text-align: left; /* Retained your change */
+  margin: 0;
+  color: #aaa;
+  line-height: 1.5;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 600px) {
+  .StepContent {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 20px;
+  }
+
+  .StepNumber {
+    font-size: 1.1em;
+    min-width: auto;
+  }
+
+  .Title {
+    font-size: 2em;
+  }
+}
+
+/* --- Desktop to Mobile Handoff --- */
+.MobileHandoff {
+  background: var(--theme-bg, var(--navy-25));
+  border: 1px solid var(--theme-border, var(--neon-50));
+  border-radius: 16px;
+  padding: 3.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4rem;
+  margin-bottom: 4.8rem;
+  text-align: left;
+}
+
+.QrWrapper {
+  background: white;
+  padding: 1.6rem;
+  border-radius: 12px;
+  flex-shrink: 0;
+}
+
+.HandoffText h3 {
+  color: var(--theme-accent, var(--neon));
+  margin-bottom: 0.8rem;
+  font-size: 2.4rem;
+}
+
+.HandoffText p {
+  color: var(--light-grey);
+  margin: 0;
+  line-height: 1.4;
+}
+
+/* --- Multi-Photo Grid --- */
+.PhotoGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 2.4rem;
+  margin-top: 3.2rem;
+  margin-bottom: 4rem;
+}
+
+.PhotoSlot {
+  /* Forcing a dark background so white text is readable against the white container */
+  background: var(--navy);
+  border: 2px dashed var(--theme-border, var(--neon-50));
+  border-radius: 12px;
+  padding: 2.4rem 1.6rem;
+  transition: all 0.2s ease;
+  min-height: 180px;
+
+  /* Flexbox guarantees perfect vertical and horizontal centring */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.PhotoSlot:hover {
+  border-color: var(--theme-accent, var(--neon));
+  background: var(--navy-75);
+}
+
+.PhotoSlot.hasFile {
+  border-style: solid;
+  border-color: var(--theme-accent, var(--neon));
+}
+
+.SlotLabel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+}
+
+.SlotTitle {
+  font-weight: 600;
+  color: white;
+  margin-bottom: 0.8rem;
+  font-size: 1.6rem;
+}
+
+.SlotDesc {
+  font-size: 1.3rem;
+  color: var(--light-grey);
+  line-height: 1.4;
+  font-style: italic;
+}
+
+/* Forcing the plus icon to use the EV Neon theme */
+.SlotPlusIcon {
+  color: var(--theme-accent, var(--neon));
+  font-size: 3.2rem;
+  margin-top: 1.6rem;
+  line-height: 1;
+}
+
+.FileSelectedText {
+  color: var(--theme-accent, var(--neon));
+  font-weight: bold;
+  font-size: 1.5rem;
+  margin-top: 1.6rem;
+}

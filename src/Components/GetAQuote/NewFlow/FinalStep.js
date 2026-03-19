@@ -11,13 +11,8 @@ export default function FinalStep({ data, service }) {
 
   return (
     <div className={Styles.StepContainer}>
-      <div className={Styles.StepTitle}>
+      <div className={Styles.StepTitle} style={{ marginBottom: '0px' }}>
         <h3>{data.question.toUpperCase()}</h3>
-        <p style={{ marginTop: '15px', color: '#666', lineHeight: '1.5' }}>
-          Thank you for completing our solar quote form. When you click submit,
-          you will receive an email asking for more details. Once you reply, you
-          will receive your fully bespoke quote.
-        </p>
       </div>
 
       <form
@@ -26,16 +21,6 @@ export default function FinalStep({ data, service }) {
         style={{ maxWidth: '500px', margin: '0 auto' }}
       >
         <div className={Styles.InputGroup}>
-          <label
-            style={{
-              display: 'block',
-              textAlign: 'left',
-              marginBottom: '8px',
-              fontWeight: 'bold',
-            }}
-          >
-            Additional Comments (Optional)
-          </label>
           <textarea
             value={userDetails.details}
             onChange={(e) => addUserDetails({ details: e.target.value })}
@@ -43,10 +28,10 @@ export default function FinalStep({ data, service }) {
             rows={4}
             style={{
               width: '100%',
+              maxWidth: 'none',
               padding: '12px',
               borderRadius: '8px',
               border: '2px solid #ccc',
-              fontSize: '1rem',
               fontFamily: 'inherit',
             }}
           />

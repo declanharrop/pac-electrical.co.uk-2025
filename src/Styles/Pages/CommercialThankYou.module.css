@@ -1,0 +1,75 @@
+.Container {
+  max-width: 800px;
+  margin: 30px auto;
+  padding: 8rem 2rem;
+}
+
+.Header {
+  margin-bottom: 6.4rem;
+}
+
+.Subtitle {
+  margin-top: 2.4rem;
+  max-width: 600px;
+  margin-inline: auto;
+  color: var(--light-grey);
+}
+
+.ProcessCard {
+  /* It looks for the local theme variable, but defaults to dark grey if none is provided */
+  background: var(--theme-bg, #222);
+  border: 1px solid var(--theme-border, #444);
+  border-radius: 20px;
+  padding: 4rem;
+  text-align: left;
+}
+
+.ProcessCard h3 {
+  text-align: center;
+  margin-bottom: 4rem;
+  color: var(--theme-accent);
+}
+
+.StepList {
+  display: flex;
+  flex-direction: column;
+  gap: 3.2rem;
+}
+
+.Step {
+  display: flex;
+  align-items: flex-start;
+  gap: 2.4rem;
+}
+
+.StepNumber {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background-color: var(--theme-accent);
+  color: var(--black);
+  border-radius: 50%;
+  font-size: 1.8rem;
+  flex-shrink: 0;
+  font-family: var(--font-good-times);
+}
+
+.StepContent {
+  flex: 1;
+}
+
+.StepContent h4 {
+  margin-bottom: 1.2rem;
+  color: white;
+}
+
+.StepContent p {
+  color: var(--light-grey);
+  line-height: 1.4;
+}
+
+.Footer {
+  margin-top: 6.4rem;
+}

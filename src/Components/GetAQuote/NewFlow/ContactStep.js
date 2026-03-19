@@ -85,7 +85,7 @@ export default function ContactStep({ service, currentStep }) {
   return (
     <div className={Styles.StepContainer}>
       <div className={Styles.StepTitle}>
-        <h3>WHERE SHOULD WE SEND YOUR QUOTE?</h3>
+        <h3>YOUR DETAILS</h3>
       </div>
 
       <form onSubmit={onSubmit} className={Styles.ContactForm}>
