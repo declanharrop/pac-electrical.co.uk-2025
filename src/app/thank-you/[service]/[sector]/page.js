@@ -1,6 +1,9 @@
 import SolarDomesticThankYou from '@/Components/ThankYou/SolarDomesticThankYou';
 import SolarCommercialThankYou from '@/Components/ThankYou/SolarCommercialThankYou';
 import EvDomesticThankYou from '@/Components/ThankYou/EvDomesticThankYou';
+import EvCommercialThankYou from '@/Components/ThankYou/EvCommercialThankYou';
+import ElectricalDomesticThankYou from '@/Components/ThankYou/ElectricalDomesticThankYou';
+import ElectricalCommercialThankYou from '@/Components/ThankYou/ElectricalCommercialThankYou';
 
 export default async function ThankYouPage({ params }) {
   const resolvedParams = await params;
@@ -18,6 +21,17 @@ export default async function ThankYouPage({ params }) {
   // EV Routes
   if (service === 'ev%20charging' && sector === 'domestic') {
     return <EvDomesticThankYou />;
+  }
+  if (service === 'ev%20charging' && sector === 'commercial') {
+    return <EvCommercialThankYou />; // NEW ROUTE
+  }
+
+  // --- Electrical Routes ---
+  if (service === 'electrical' && sector === 'domestic') {
+    return <ElectricalDomesticThankYou />;
+  }
+  if (service === 'electrical' && sector === 'commercial') {
+    return <ElectricalCommercialThankYou />;
   }
 
   // Fallback

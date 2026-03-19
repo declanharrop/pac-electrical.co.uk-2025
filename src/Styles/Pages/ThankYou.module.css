@@ -186,8 +186,9 @@
 .TimelineTitle {
   text-align: center;
   margin-bottom: 30px;
+  margin-top: 0;
   font-size: 2em;
-  color: #111;
+  color: #fff;
 }
 
 .StepsList {
