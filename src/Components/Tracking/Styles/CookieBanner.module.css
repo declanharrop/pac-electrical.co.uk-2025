@@ -1,0 +1,51 @@
+.BannerContainer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: var(--primary);
+  border-top: 2px solid var(--neon);
+  padding: 2.4rem 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 9999;
+  box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.5);
+  text-align: left;
+}
+
+.TextContainer {
+  max-width: 800px;
+  margin-bottom: 2.4rem;
+}
+
+.TextContainer h3 {
+  color: var(--neon);
+  margin-bottom: 1.2rem;
+  font-family: var(--font-good-times); /* Tying into your brand typography */
+}
+
+.TextContainer p {
+  color: var(--light-grey);
+  line-height: 1.5;
+  margin: 0;
+}
+
+.ButtonGroup {
+  display: flex;
+  gap: 1.6rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+@media screen and (min-width: 768px) {
+  .BannerContainer {
+    flex-direction: row;
+    padding: 2.4rem 4rem;
+  }
+  .TextContainer {
+    margin-bottom: 0;
+    margin-right: 4rem;
+  }
+}

@@ -2,7 +2,6 @@ import localFont from 'next/font/local';
 import { Urbanist } from 'next/font/google';
 import Script from 'next/script';
 import { Suspense } from 'react';
-import { GoogleTagManager } from '@next/third-parties/google';
 import StyledJsxRegistry from '@/Utils/registry';
 import './globals.css';
 import { ApolloWrapper } from '@/Utils/ApolloWrapper';
@@ -12,9 +11,11 @@ import { HeaderProvider } from '@/Context/HeaderContext';
 import MobileNavDock from '@/Components/Header/MobileNavDock';
 import { CaseStudiesProvider } from '@/Context/CaseStudiesContext';
 import Footer from '@/Components/Footer/Footer';
-import GoogleAnalytics from '@/Utils/GoogleAnalytics';
-import CookieBanner from '@/Utils/CookieBanner';
 import FinanceSticker from '@/Components/FinanceSticker/FinanceSticker';
+
+// --- NEW TRACKING IMPORTS ---
+import GoogleTagManager from '@/Components/Tracking/GoogleTagManager';
+import CookieBanner from '@/Components/Tracking/CookieBanner';
 
 const GoodTimes = localFont({
   src: [
@@ -61,7 +62,7 @@ export const metadata = {
     url: METADATA.Url,
     images: [
       {
-        url: `${METADATA.Url}/images/sustain1.webp`, // Must be an absolute URL
+        url: `${METADATA.Url}/images/sustain1.webp`,
         width: 800,
         height: 600,
       },
@@ -72,6 +73,9 @@ export const metadata = {
 };
 
 export default async function RootLayout({ children }) {
+  // Grab the GTM ID securely from environment variables
+  const GTM_ID = process.env.NEXT_PUBLIC_GTM_ID;
+
   return (
     <>
       <html
@@ -80,18 +84,11 @@ export default async function RootLayout({ children }) {
       >
         <head>
           <meta charSet="UTF-8" />
-          <Script id="gtm" strategy="beforeInteractive">
-            {`(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-          new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-          j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-          'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-          })(window,document,'script','dataLayer','GTM-KG2WZ9N');`}
-          </Script>
         </head>
         <body>
-          <Suspense>
-            <GoogleAnalytics GA_MEASUREMENT_ID="G-07HW5JDB5D" />
-          </Suspense>
+          {/* 1. Inject GTM to set 'denied' default state instantly */}
+          {GTM_ID && <GoogleTagManager gtmId={GTM_ID} />}
+
           <StyledJsxRegistry>
             <HeaderProvider>
               <HeaderBar />
@@ -101,40 +98,23 @@ export default async function RootLayout({ children }) {
                     <FinanceSticker />
                     <main>{children}</main>
                     <Footer />
-                    <CookieBanner />
                   </CaseStudiesProvider>
                 </ProgressBarProviders>
               </ApolloWrapper>
             </HeaderProvider>
           </StyledJsxRegistry>
-          <Script id="" strategy="beforeInteractive">
+
+          {/* 2. Inject the bespoke Cookie Banner at the bottom of the DOM */}
+          <CookieBanner />
+
+          {/* Existing Omnisend Script */}
+          <Script id="omnisend-script" strategy="beforeInteractive">
             {`window.omnisend = window.omnisend || [];
               omnisend.push(["brandID", "651d189f4a7798b9cbd3e927"]);
               omnisend.push(["track", "$pageViewed"]);
               !function(){var e=document.createElement("script");e.type="text/javascript",e.async=!0,e.src="https://omnisnippet1.com/inshop/launcher-v2.js";var t=document.getElementsByTagName("script")[0];t.parentNode.insertBefore(e,t)}();
             `}
           </Script>
-          {/* <Script
-            id="ze-snippet"
-            src="https://static.zdassets.com/ekr/snippet.js?key=fb32376b-4bf4-403c-a4a8-59bd73feb921"
-            strategy="afterInteractive"
-          />
-          <Script id="zendesk-settings" strategy="afterInteractive">
-            {`
-            window.zESettings = {
-              webWidget: {
-                offset: {
-                  horizontal: '200px',
-                  vertical: '20px',
-                  mobile: {
-                    horizontal: '10px',
-                    vertical: '10px'
-                  }
-                }
-              }
-            };
-          `}
-          </Script> */}
         </body>
       </html>
     </>
