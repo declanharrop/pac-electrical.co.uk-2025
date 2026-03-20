@@ -2,7 +2,7 @@ import Link from 'next/link';
 
 export default function GetAQuoteButton() {
   return (
-    <Link href="/get-a-quote">
+    <Link href="/quote">
       <button
         type="button"
         className="button-alt"

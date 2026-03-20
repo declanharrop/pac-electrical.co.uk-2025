@@ -22,14 +22,16 @@
 
 .TextContainer h3 {
   color: var(--neon);
+  font-size: 1.5rem;
   margin-bottom: 1.2rem;
   font-family: var(--font-good-times); /* Tying into your brand typography */
 }
 
 .TextContainer p {
   color: var(--light-grey);
-  line-height: 1.5;
+  line-height: 1.2;
   margin: 0;
+  font-size: 1.2rem;
 }
 
 .ButtonGroup {
@@ -37,6 +39,39 @@
   gap: 1.6rem;
   flex-wrap: wrap;
   justify-content: center;
+}
+
+.MiniButton {
+  padding: 8px 20px;
+  margin: 0;
+  background: var(--black);
+  border: 1px solid var(--grey);
+  color: var(--grey);
+  cursor: pointer;
+  font-size: 1rem;
+
+  transition:
+    background-color 0.3s,
+    border-color 0.3s;
+}
+
+.MiniButton p {
+  font-size: 1.3rem;
+}
+
+.AcceptButton {
+  background: var(--neon);
+  border: 1px solid var(--neon);
+  color: var(--black);
+
+  &:hover {
+    background: var(--neon-light);
+    border-color: var(--neon-light);
+  }
+}
+
+.AcceptButton p {
+  font-size: 1.5rem;
 }
 
 @media screen and (min-width: 768px) {

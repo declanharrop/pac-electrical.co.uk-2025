@@ -56,15 +56,16 @@ export default function CookieBanner() {
       </div>
       <div className={Styles.ButtonGroup}>
         <button
+          type="button"
           onClick={handleDecline}
-          className="button-alt"
-          style={{ margin: 0 }}
+          className={Styles.MiniButton}
         >
           <p>Decline</p>
         </button>
         <button
+          type="button"
           onClick={handleAccept}
-          className="button"
+          className={Styles.AcceptButton}
           style={{ margin: 0, borderColor: 'var(--neon)' }}
         >
           <p>Accept All</p>

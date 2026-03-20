@@ -36,7 +36,7 @@
 .MiniButton {
   padding: 4px 10px;
   height: 30px;
-  font-size: 1.3rem;
+  font-size: 1rem;
   margin: 0 10px 0 0;
   background: var(--grey);
   border: 2px solid var(--grey);
