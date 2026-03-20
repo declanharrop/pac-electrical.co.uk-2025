@@ -6,19 +6,8 @@ import Styles from './Styles/CookieBanner.module.css';
 export default function CookieBanner() {
   const [isVisible, setIsVisible] = useState(false);
 
-  useEffect(() => {
-    // Check if the user has already consented or declined
-    const consent = localStorage.getItem('pac_cookie_consent');
-    if (!consent) {
-      setIsVisible(true);
-    }
-  }, []);
-
-  const handleAccept = () => {
-    localStorage.setItem('pac_cookie_consent', 'granted');
-    setIsVisible(false);
-
-    // Push the 'granted' signal to Google Tag Manager's Consent API
+  // Reusable function to push the 'granted' state to GTM
+  const updateConsentToGranted = () => {
     if (typeof window !== 'undefined' && window.gtag) {
       window.gtag('consent', 'update', {
         ad_storage: 'granted',
@@ -29,10 +18,28 @@ export default function CookieBanner() {
     }
   };
 
+  useEffect(() => {
+    const consent = localStorage.getItem('pac_cookie_consent');
+
+    if (!consent) {
+      // No choice made yet, show the banner
+      setIsVisible(true);
+    } else if (consent === 'granted') {
+      // CRUCIAL FIX: They accepted previously. Tell GTM immediately on page load!
+      updateConsentToGranted();
+    }
+  }, []);
+
+  const handleAccept = () => {
+    localStorage.setItem('pac_cookie_consent', 'granted');
+    setIsVisible(false);
+    updateConsentToGranted();
+  };
+
   const handleDecline = () => {
     localStorage.setItem('pac_cookie_consent', 'denied');
     setIsVisible(false);
-    // GTM is already 'denied' by default via the GoogleTagManager component, so we just hide the banner.
+    // State is already denied by default via GTM script, so we just hide.
   };
 
   if (!isVisible) return null;
