@@ -8,11 +8,15 @@ export default function ContactStep({ service, currentStep }) {
   const { userDetails, addUserDetails, handlePartialSubmit } = useQuoteFlow();
   const urlService = service ? service.toLowerCase() : '';
 
+  // 1. Determine if this is a commercial flow
+  const isCommercial = urlService.includes('commercial');
+
   // Local state for the form inputs and errors
   const [formData, setFormData] = useState({
     name: userDetails.name || '',
     email: userDetails.email || '',
     phone: userDetails.phone || '',
+    businessName: userDetails.businessName || '', // Added businessName
   });
 
   const [errors, setErrors] = useState({});
@@ -25,6 +29,11 @@ export default function ContactStep({ service, currentStep }) {
     // Name Validation
     if (!formData.name.trim()) {
       newErrors.name = 'Please enter your name.';
+    }
+
+    // Business Name Validation (Only required if commercial)
+    if (isCommercial && !formData.businessName.trim()) {
+      newErrors.businessName = 'Please enter your business name.';
     }
 
     // Email Validation (Standard Regex)
@@ -69,6 +78,7 @@ export default function ContactStep({ service, currentStep }) {
       name: formData.name,
       email: formData.email,
       phone: formData.phone,
+      businessName: formData.businessName, // Include in payload
     };
 
     // 1. Save to Context for the rest of the form to use
@@ -105,6 +115,25 @@ export default function ContactStep({ service, currentStep }) {
             <span className={Styles.ErrorMessage}>{errors.name}</span>
           )}
         </div>
+
+        {/* Conditionally Render Business Name Input */}
+        {isCommercial && (
+          <div className={Styles.InputGroup}>
+            <label htmlFor="businessName">Business Name</label>
+            <input
+              type="text"
+              id="businessName"
+              name="businessName"
+              value={formData.businessName}
+              onChange={handleChange}
+              placeholder="Acme Corp"
+              className={errors.businessName ? Styles.InputError : ''}
+            />
+            {errors.businessName && (
+              <span className={Styles.ErrorMessage}>{errors.businessName}</span>
+            )}
+          </div>
+        )}
 
         {/* Email Input */}
         <div className={Styles.InputGroup}>

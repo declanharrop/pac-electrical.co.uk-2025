@@ -3,12 +3,10 @@
 export const quoteQuestions = {
   solar: {
     domestic: {
-      // Step 1 is handled by SectorStep.js (Domestic/Commercial)
-
       // Step 2: What are you looking for today?
       2: {
         question: 'What are you looking for today?',
-        field: 'solarType', // Saves to Context under 'solarType'
+        field: 'solarDomesticType', // Updated
         options: [
           {
             label: 'SOLAR PV',
@@ -34,45 +32,41 @@ export const quoteQuestions = {
             label: 'SOLAR REPAIR & MAINTENANCE',
             value: 'Solar, Repair',
             icon: '/icons/technician.svg',
-            fullWidth: true, // Spans the bottom of the grid
+            fullWidth: true,
           },
         ],
       },
       4: {
         question: 'Do You Know Your Annual Electricity Usage?',
-        field: 'knowsUsage', // Saves "Yes" or "No" to Context
+        field: 'solarDomesticKnowsUsage', // Updated
         options: [
           {
             label: 'YES',
             value: 'Yes',
             icon: '/icons/yes-alt.svg',
-            nextStep: 5, // Routes them to Step 5 to type it in
+            nextStep: 5,
           },
           {
             label: "I'M NOT SURE",
             value: 'No',
             icon: '/icons/no-alt.svg',
-            nextStep: 6, // Skips Step 5 and goes straight to Step 6
+            nextStep: 6,
           },
         ],
       },
       5: {
-        type: 'input', // Tells the router to use the InputStep component
+        type: 'input',
         question: 'Great, enter your Annual Electricity Usage (kWh)',
-        field: 'elecUsage',
+        field: 'solarDomesticElecUsage', // Updated
         placeholder: 'e.g. 4500',
-        inputType: 'number', // Brings up the number keyboard on mobile!
-        nextStep: 6, // After submitting, go to Step 6 to rejoin the flow
+        inputType: 'number',
+        nextStep: 6,
       },
       6: {
         question: 'What is the size of your home?',
-        field: 'homeSize',
+        field: 'solarDomesticHomeSize', // Updated
         options: [
-          {
-            label: '2/3 BED',
-            value: '2/3 Bed',
-            icon: '/icons/home-alt.svg',
-          },
+          { label: '2/3 BED', value: '2/3 Bed', icon: '/icons/home-alt.svg' },
           {
             label: '4 BED DETACHED',
             value: '4 Bed Detached',
@@ -83,17 +77,13 @@ export const quoteQuestions = {
             value: 'Large Detached',
             icon: '/icons/large-home-alt.svg',
           },
-          {
-            label: 'OTHER',
-            value: 'Other',
-            icon: '/icons/other-home-alt.svg',
-          },
+          { label: 'OTHER', value: 'Other', icon: '/icons/other-home-alt.svg' },
         ],
       },
       7: {
         type: 'map',
         question: 'Your Location',
-        field: 'locationDetails', // We will save an object with address, lat, and lng
+        field: 'locationDetails',
       },
       8: {
         type: 'addressConfirm',
@@ -144,26 +134,19 @@ export const quoteQuestions = {
       10: {
         type: 'final',
         question: 'Final Step: Additional Details & Security',
-        field: 'details', // This maps to your 'details' field in Context
+        field: 'details',
         placeholder:
           "Anything else we should know? (e.g. 'I have a flat roof' or 'Call me after 5pm')",
       },
-
-      // Step 6 will be the next multiple choice question
-      // 6: { ... }
     },
 
     commercial: {
       // Step 2: Property Ownership
       2: {
         question: 'Do you own the business premises?',
-        field: 'ownership',
+        field: 'commercialOwnership', // Updated
         options: [
-          {
-            label: 'YES, WE OWN IT',
-            value: 'Own',
-            icon: '/icons/own.svg',
-          },
+          { label: 'YES, WE OWN IT', value: 'Own', icon: '/icons/own.svg' },
           {
             label: 'NO, WE LEASE IT',
             value: 'Lease',
@@ -176,14 +159,13 @@ export const quoteQuestions = {
           },
         ],
       },
-      // Step 3: Initial Contact (Triggers Zapier Lead)
       3: {
         type: 'contact',
       },
       // Step 4: Mounting Requirement
       4: {
         question: 'Where will the panels be mounted?',
-        field: 'solarType',
+        field: 'commercialSolarMounting', // Was 'solarType'
         options: [
           {
             label: 'PITCHED ROOF',
@@ -207,18 +189,15 @@ export const quoteQuestions = {
           },
         ],
       },
-      // Step 5: The Map (Exact Rooftop Location)
       5: {
         type: 'map',
         question: 'Find the business location on the map',
         field: 'locationDetails',
       },
-      // Step 6: Address Confirmation
       6: {
         type: 'addressConfirm',
         question: 'Confirm Business Address',
       },
-      // Step 7: Marketing Attribution
       7: {
         question: 'Where did you hear about us?',
         field: 'heardFrom',
@@ -261,7 +240,6 @@ export const quoteQuestions = {
           },
         ],
       },
-      // Step 8: Final Submission
       8: {
         type: 'final',
         question: 'Final Details & Security',
@@ -274,7 +252,6 @@ export const quoteQuestions = {
 
   electrical: {
     domestic: {
-      // Step 2: Marketing Attribution
       2: {
         question: 'Where did you hear about us?',
         field: 'heardFrom',
@@ -317,28 +294,21 @@ export const quoteQuestions = {
           },
         ],
       },
-      // Step 3: Contact Details (Triggers Zapier Lead)
       3: { type: 'contact' },
-      // Step 4: The Map
       4: {
         type: 'map',
         question: 'Pinpoint the property location',
         field: 'locationDetails',
       },
-      // Step 5: Address Confirmation
       5: { type: 'addressConfirm', question: 'Confirm Address Details' },
-      // Step 6: Final Submission
       6: {
         type: 'final',
         question: 'Final Details & Security',
         field: 'details',
-        placeholder:
-          'Briefly describe the electrical work you need doing (e.g., EICR test, full rewire, fault finding)...',
+        placeholder: 'Briefly describe the electrical work you need doing...',
       },
     },
-
     commercial: {
-      // Step 2: Marketing Attribution
       2: {
         question: 'Where did you hear about us?',
         field: 'heardFrom',
@@ -381,23 +351,18 @@ export const quoteQuestions = {
           },
         ],
       },
-      // Step 3: Contact Details (Triggers Zapier Lead)
       3: { type: 'contact' },
-      // Step 4: The Map
       4: {
         type: 'map',
         question: 'Pinpoint the business location',
         field: 'locationDetails',
       },
-      // Step 5: Address Confirmation
       5: { type: 'addressConfirm', question: 'Confirm Business Address' },
-      // Step 6: Final Submission
       6: {
         type: 'final',
         question: 'Final Details & Security',
         field: 'details',
-        placeholder:
-          'Briefly describe the electrical work you need doing (e.g., LED lighting upgrade, 3-phase installation)...',
+        placeholder: 'Briefly describe the electrical work you need doing...',
       },
     },
   },
@@ -406,7 +371,7 @@ export const quoteQuestions = {
     domestic: {
       2: {
         question: 'Which type of charger do you prefer?',
-        field: 'solarType', // Re-using solarType for Charger Type
+        field: 'evDomesticChargerPreference', // Was 'solarType'
         options: [
           {
             label: 'TETHERED (Cable attached)',
@@ -422,11 +387,9 @@ export const quoteQuestions = {
         ],
       },
       3: { type: 'contact' },
-      // Step 3: Charger Preference
-      // Step 5: Mileage / Usage
       4: {
         question: 'Distance from your meter to the charger?',
-        field: 'Charger Distance', // We can store this in details or a custom field
+        field: 'evDomesticDistance', // Was 'Charger Distance'
         options: [
           {
             label: 'UNDER 5 METRES',
@@ -502,10 +465,9 @@ export const quoteQuestions = {
       },
     },
     commercial: {
-      // Step 2: Use Case
       2: {
         question: 'What is the primary use for the chargers?',
-        field: 'solarType',
+        field: 'evCommercialPrimaryUse', // Was 'solarType'
         options: [
           {
             label: 'WORKPLACE (Employees)',
@@ -524,12 +486,10 @@ export const quoteQuestions = {
           },
         ],
       },
-      // Step 3: Contact
       3: { type: 'contact' },
-      // Step 4: Scale
       4: {
         question: 'How many charge points are required?',
-        field: 'homeSize',
+        field: 'evCommercialChargePoints', // Was 'homeSize'
         options: [
           {
             label: '1 - 4 POINTS',
@@ -541,33 +501,20 @@ export const quoteQuestions = {
             value: '5-10',
             icon: '/icons/ev/tethered.svg',
           },
-          {
-            label: '10+ POINTS',
-            value: '10+',
-            icon: '/icons/ev/tethered.svg',
-          },
+          { label: '10+ POINTS', value: '10+', icon: '/icons/ev/tethered.svg' },
         ],
       },
-      // Step 5: Power Supply
       5: {
         question: 'Does the site have 3-phase power?',
-        field: 'elecUsage',
+        field: 'evCommercialPowerSupply', // Was 'elecUsage'
         options: [
-          {
-            label: 'YES',
-            value: '3-Phase',
-            icon: '/icons/ev/yes.svg',
-          },
+          { label: 'YES', value: '3-Phase', icon: '/icons/ev/yes.svg' },
           {
             label: 'NO (Single Phase)',
             value: 'Single Phase',
             icon: '/icons/ev/no.svg',
           },
-          {
-            label: 'NOT SURE',
-            value: 'Not Sure',
-            icon: '/icons/ev/help.svg',
-          },
+          { label: 'NOT SURE', value: 'Not Sure', icon: '/icons/ev/help.svg' },
         ],
       },
       6: {

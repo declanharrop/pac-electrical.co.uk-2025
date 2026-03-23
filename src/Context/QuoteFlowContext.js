@@ -13,26 +13,44 @@ export const QuoteFlowProvider = ({ children }) => {
   const [sessionId, setSessionId] = useState('');
   const [turnstileToken, setTurnstileToken] = useState(''); // Stores the actual security token
 
+  // ALL possible fields defined so Zapier always sees the full schema
   const [userDetails, setUserDetails] = useState({
+    // Shared / Base Details
     service: '',
     sector: '',
     name: '',
     email: '',
     phone: '',
+    businessName: '', // Added for Commercial Contact Step
+    companyName: '', // Kept from original
     details: '',
     addressLine1: '',
     addressLine2: '',
     county: '',
     postcode: '',
     coordinates: '',
-    elecUsage: '',
-    solarType: '',
-    homeSize: '',
-    ownership: '', // For Commercial
-    chargerDistance: '', // NEW: For EV
-    companyName: '',
+    locationDetails: '',
     heardFrom: '',
     adId: '',
+
+    // Solar - Domestic
+    solarDomesticType: '',
+    solarDomesticKnowsUsage: '',
+    solarDomesticElecUsage: '',
+    solarDomesticHomeSize: '',
+
+    // Solar - Commercial
+    commercialOwnership: '',
+    commercialSolarMounting: '',
+
+    // EV - Domestic
+    evDomesticChargerPreference: '',
+    evDomesticDistance: '',
+
+    // EV - Commercial
+    evCommercialPrimaryUse: '',
+    evCommercialChargePoints: '',
+    evCommercialPowerSupply: '',
   });
 
   useEffect(() => {
