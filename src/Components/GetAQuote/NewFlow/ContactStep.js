@@ -8,15 +8,15 @@ export default function ContactStep({ service, currentStep }) {
   const { userDetails, addUserDetails, handlePartialSubmit } = useQuoteFlow();
   const urlService = service ? service.toLowerCase() : '';
 
-  // 1. Determine if this is a commercial flow
-  const isCommercial = urlService.includes('commercial');
+  // 1. Determine if this is a commercial flow by checking the Context state
+  const isCommercial = userDetails.sector?.toLowerCase() === 'commercial';
 
   // Local state for the form inputs and errors
   const [formData, setFormData] = useState({
     name: userDetails.name || '',
     email: userDetails.email || '',
     phone: userDetails.phone || '',
-    businessName: userDetails.businessName || '', // Added businessName
+    businessName: userDetails.businessName || '',
   });
 
   const [errors, setErrors] = useState({});
@@ -43,10 +43,7 @@ export default function ContactStep({ service, currentStep }) {
     }
 
     // UK Phone Validation:
-    // ^(07|01)\d{9}$ matches 07 or 01 followed by exactly 9 digits (11 total)
-    // ^\+44\d{10}$ matches +44 followed by exactly 10 digits (13 total)
     const phoneRegex = /^((07|01)\d{9}|\+44\d{10})$/;
-    // Remove spaces from the input before testing
     const strippedPhone = formData.phone.replace(/\s+/g, '');
 
     if (!strippedPhone || !phoneRegex.test(strippedPhone)) {
@@ -116,7 +113,7 @@ export default function ContactStep({ service, currentStep }) {
           )}
         </div>
 
-        {/* Conditionally Render Business Name Input */}
+        {/* Conditionally Render Business Name Input based on Sector */}
         {isCommercial && (
           <div className={Styles.InputGroup}>
             <label htmlFor="businessName">Business Name</label>
