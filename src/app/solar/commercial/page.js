@@ -55,24 +55,35 @@ export default async function CommercialSolarPage() {
       name: 'Power & Control Ltd',
       logo: {
         '@type': 'ImageObject',
-        url: 'https://pac-electrical.co.uk/logo/logo-full.png', // Ensure this path is correct
+        url: 'https://pac-electrical.co.uk/logo/logo-full.png',
       },
+      // --- THE FIX: LocalBusiness SEO Boosters added here ---
+      image: 'https://pac-electrical.co.uk/images/comsolar26.jpg', // Add a URL of your team/van on a commercial site
+      telephone: '+44 1332 552320', // Replace with your actual Derby office number
+      priceRange: '££££', // 4 £s signals high-ticket B2B work
+      address: {
+        '@type': 'PostalAddress',
+        streetAddress: 'Unit 2, Colemans Yard, Alfreton Road', // e.g., "Unit 4, Industrial Estate"
+        addressLocality: 'Derby',
+        addressRegion: 'Derbyshire',
+        postalCode: 'DE21 4AL', // Replace with your postcode
+        addressCountry: 'UK',
+      },
+      // -----------------------------------------------------
     },
     areaServed: [
       { '@type': 'State', name: 'Derbyshire' },
       { '@type': 'State', name: 'Nottinghamshire' },
       { '@type': 'State', name: 'Leicestershire' },
       { '@type': 'Region', name: 'East Midlands' },
-      { '@type': 'Country', name: 'United Kingdom' }, // Commercial work often travels further
+      { '@type': 'Country', name: 'United Kingdom' },
     ],
     serviceOutput: 'Industrial Grade Solar Energy Systems',
-    // This tells Google the audience is businesses, not homeowners
     audience: {
       '@type': 'Audience',
       audienceType: 'Business and Industrial',
     },
   };
-
   return (
     <>
       {/* SEO UPGRADE: Injecting Commercial Specific Schema */}

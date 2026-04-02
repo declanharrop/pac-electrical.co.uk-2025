@@ -24,13 +24,13 @@ export async function generateMetadata() {
     url: METADATA.Url,
     openGraph: {
       title: METADATA.SiteName,
-      siteName: METADATA.siteName,
+      siteName: METADATA.SiteName, // Fixed typo: capitalised SiteName to match object
       description: METADATA.Description,
       url: METADATA.Url,
       images: [
         {
           url: `${page.heroImage.image.url}`,
-          width: 600, // Must be an absolute URL
+          width: 600,
         },
       ],
       locale: 'en_GB',
@@ -38,6 +38,7 @@ export async function generateMetadata() {
     },
   };
 }
+
 export default async function BatteryStoragePage() {
   const client = getClient();
   const { data } = await client.query({
@@ -49,9 +50,53 @@ export default async function BatteryStoragePage() {
 
   const { page } = data;
 
+  // The perfectly formatted Battery Schema with your exact NAP data
+  const batterySchema = {
+    '@context': 'https://schema.org/',
+    '@type': 'Service',
+    serviceType: 'Solar Battery Storage Installation',
+    provider: {
+      '@type': 'LocalBusiness',
+      name: 'Power & Control Ltd',
+      logo: {
+        '@type': 'ImageObject',
+        url: 'https://pac-electrical.co.uk/logo/logo-full.png',
+      },
+      image: 'https://pac-electrical.co.uk/images/battery-install.jpg', // Update this if you have a specific battery install image
+      telephone: '+44 1332 552320',
+      priceRange: '£££',
+      address: {
+        '@type': 'PostalAddress',
+        streetAddress: 'Unit 2, Colemans Yard, Alfreton Road',
+        addressLocality: 'Derby',
+        addressRegion: 'Derbyshire',
+        postalCode: 'DE21 4AL',
+        addressCountry: 'UK',
+      },
+    },
+    areaServed: [
+      { '@type': 'State', name: 'Derbyshire' },
+      { '@type': 'State', name: 'Nottinghamshire' },
+      { '@type': 'State', name: 'Leicestershire' },
+      { '@type': 'Region', name: 'East Midlands' },
+    ],
+    serviceOutput: 'AC and DC Coupled Solar Battery Storage Systems',
+    audience: {
+      '@type': 'Audience',
+      audienceType: 'Homeowners and Businesses',
+    },
+  };
+
   return (
     <>
+      {/* Injecting the Schema for Google to parse */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(batterySchema) }}
+      />
+
       <StandardPageFrame data={page} solar />
+
       <a
         target="_blank"
         rel="noopener noreferrer"

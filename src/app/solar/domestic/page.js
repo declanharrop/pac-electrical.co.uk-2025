@@ -28,28 +28,42 @@ export async function generateMetadata() {
   };
 }
 
-const domesticServiceSchema = {
+const domesticSchema = {
   '@context': 'https://schema.org/',
   '@type': 'Service',
-  serviceType: 'Domestic Solar Panel Installation',
+  serviceType: 'Domestic Solar PV & Battery Installation',
   provider: {
     '@type': 'LocalBusiness',
     name: 'Power & Control Ltd',
     logo: {
       '@type': 'ImageObject',
-      url: 'https://pac-electrical.co.uk/logo/logo-full.png', // Ensure this path is correct
+      url: 'https://pac-electrical.co.uk/logo/logo-full.png',
+    },
+    // Keep NAP exactly the same for local consistency
+    image: 'https://pac-electrical.co.uk/images/domsolar26.jpg', // Update this to a photo of a house install
+    telephone: '+44 1332 552320',
+    priceRange: '£££', // Dropped to 3 £s for residential pricing
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: 'Unit 2, Colemans Yard, Alfreton Road',
+      addressLocality: 'Derby',
+      addressRegion: 'Derbyshire',
+      postalCode: 'DE21 4AL',
+      addressCountry: 'UK',
     },
   },
+  // For domestic, it's best to keep the area tighter to your actual driving radius
   areaServed: [
     { '@type': 'State', name: 'Derbyshire' },
     { '@type': 'State', name: 'Nottinghamshire' },
     { '@type': 'State', name: 'Leicestershire' },
     { '@type': 'Region', name: 'East Midlands' },
   ],
-  // Tying it specifically to residential
+  serviceOutput: 'Residential Solar Energy & Battery Storage Systems',
+  // Tells Google this is strictly B2C
   audience: {
     '@type': 'Audience',
-    audienceType: 'Residential',
+    audienceType: 'Homeowners',
   },
 };
 // 4. Page Component

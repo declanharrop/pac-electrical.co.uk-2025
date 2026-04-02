@@ -41,7 +41,7 @@ export const metadata = {
 };
 
 export default function SolarPage() {
-  // SEO UPGRADE: Service Schema defining exactly what you sell
+  // SEO UPGRADE: Service Schema fully loaded with LocalBusiness data
   const serviceSchema = {
     '@context': 'https://schema.org/',
     '@type': 'Service',
@@ -51,14 +51,27 @@ export default function SolarPage() {
       name: 'Power & Control Ltd',
       logo: {
         '@type': 'ImageObject',
-        url: 'https://pac-electrical.co.uk/logo/logo-full.png', // Ensure this path is correct
+        url: 'https://pac-electrical.co.uk/logo/logo-full.png',
       },
+      // --- THE FIX: NAP & Rich Result Boosters ---
+      image: 'https://pac-electrical.co.uk/images/pac-sol-1.webp',
+      telephone: '+44 1332 552320',
+      priceRange: '£££ - ££££', // Covers both domestic and commercial budgets
+      address: {
+        '@type': 'PostalAddress',
+        streetAddress: 'Unit 2, Colemans Yard, Alfreton Road',
+        addressLocality: 'Derby',
+        addressRegion: 'Derbyshire',
+        postalCode: 'DE21 4AL',
+        addressCountry: 'UK',
+      },
+      // -------------------------------------------
     },
     areaServed: [
       { '@type': 'State', name: 'Derbyshire' },
       { '@type': 'State', name: 'Nottinghamshire' },
       { '@type': 'State', name: 'Leicestershire' },
-      { '@type': 'State', name: 'Staffordshire' }, // If applicable
+      { '@type': 'State', name: 'Staffordshire' },
       { '@type': 'Region', name: 'East Midlands' },
     ],
     hasOfferCatalog: {

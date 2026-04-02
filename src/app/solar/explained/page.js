@@ -25,13 +25,13 @@ export async function generateMetadata() {
     url: METADATA.Url,
     openGraph: {
       title: METADATA.SiteName,
-      siteName: METADATA.siteName,
+      siteName: METADATA.SiteName, // Fixed typo: capitalized SiteName
       description: METADATA.Description,
       url: METADATA.Url,
       images: [
         {
           url: `${page.heroImage.image.url}`,
-          width: 600, // Must be an absolute URL
+          width: 600,
         },
       ],
       locale: 'en_GB',
@@ -39,6 +39,7 @@ export async function generateMetadata() {
     },
   };
 }
+
 export default async function SolarExplainedPage() {
   const client = getClient();
   const { data } = await client.query({
@@ -50,9 +51,51 @@ export default async function SolarExplainedPage() {
 
   const { page } = data;
 
+  // Article Schema with LocalBusiness as the Publisher for E-E-A-T authority
+  const articleSchema = {
+    '@context': 'https://schema.org/',
+    '@type': 'Article',
+    headline: page.metaTitle || 'Solar Energy Explained',
+    description: page.metaDescription,
+    image:
+      page.heroImage?.image?.url ||
+      'https://pac-electrical.co.uk/logo/logo-full.png',
+    author: {
+      '@type': 'Organization',
+      name: 'Power & Control Ltd',
+      url: 'https://pac-electrical.co.uk',
+    },
+    publisher: {
+      '@type': 'LocalBusiness',
+      name: 'Power & Control Ltd',
+      logo: {
+        '@type': 'ImageObject',
+        url: 'https://pac-electrical.co.uk/logo/logo-full.png',
+      },
+      // Keep NAP exactly the same for local consistency
+      image: 'https://pac-electrical.co.uk/images/domsolar26.jpg',
+      telephone: '+44 1332 552320',
+      priceRange: '£££',
+      address: {
+        '@type': 'PostalAddress',
+        streetAddress: 'Unit 2, Colemans Yard, Alfreton Road',
+        addressLocality: 'Derby',
+        addressRegion: 'Derbyshire',
+        postalCode: 'DE21 4AL',
+        addressCountry: 'UK',
+      },
+    },
+  };
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
+      />
+
       <StandardPageFrame data={page} solar />
+
       <Link href="/solar/finance" style={{ fontSize: '18px' }}>
         <img
           src="/images/finance-banners/solar_banner.png"
