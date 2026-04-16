@@ -28,7 +28,8 @@ export async function generateMetadata() {
   };
 }
 
-const domesticSchema = {
+// FIX: Renamed from domesticSchema to domesticServiceSchema
+const domesticServiceSchema = {
   '@context': 'https://schema.org/',
   '@type': 'Service',
   serviceType: 'Domestic Solar PV & Battery Installation',
@@ -66,6 +67,7 @@ const domesticSchema = {
     audienceType: 'Homeowners',
   },
 };
+
 // 4. Page Component
 export default async function DomesticSolarPage() {
   const page = await getPageData();
