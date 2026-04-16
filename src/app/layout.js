@@ -16,6 +16,9 @@ import FinanceSticker from '@/Components/FinanceSticker/FinanceSticker';
 // --- NEW TRACKING IMPORTS ---
 import GoogleTagManager from '@/Components/Tracking/GoogleTagManager';
 import CookieBanner from '@/Components/Tracking/CookieBanner';
+import WhatsAppButton from '@/Elements/Buttons/WhatAppButton';
+
+// --- GLOBAL FLOATING ELEMENTS ---
 
 const GoodTimes = localFont({
   src: [
@@ -106,6 +109,9 @@ export default async function RootLayout({ children }) {
 
           {/* 2. Inject the bespoke Cookie Banner at the bottom of the DOM */}
           <CookieBanner />
+
+          {/* 3. Global Floating Action Buttons */}
+          <WhatsAppButton />
 
           {/* Existing Omnisend Script */}
           <Script id="omnisend-script" strategy="beforeInteractive">

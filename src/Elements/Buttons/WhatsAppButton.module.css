@@ -1,0 +1,53 @@
+.whatsappButton {
+  position: fixed;
+  bottom: 30px;
+  left: 30px;
+  width: 48px;
+  height: 48px;
+
+  background-color: var(--green);
+  color: #ffffff;
+  border-radius: 50%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  z-index: 9999;
+  cursor: pointer;
+
+  transition:
+    background-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.whatsappButton:hover {
+  background-color: var(--light-green);
+  box-shadow: 0 15px 40px rgba(84, 175, 97, 0.3);
+}
+
+.icon {
+  width: 24px;
+  height: 24px;
+  display: block;
+}
+
+/* Mobile Adjustments */
+@media (max-width: 1090px) {
+  .whatsappButton {
+    /* Increased from 20px to 90px to clear the Mobile Nav Dock 
+       and align vertically with the 'Get a Quote' button */
+    bottom: 80px;
+    left: 10px;
+
+    /* Kept touch target slightly larger for ease of use on mobile */
+    width: 42px;
+    height: 42px;
+  }
+
+  .icon {
+    width: 24px;
+    height: 24px;
+  }
+}
