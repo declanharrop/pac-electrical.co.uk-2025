@@ -1,0 +1,80 @@
+.Wrapper {
+  background-color: #0a0a0a;
+  padding: 12rem 2rem;
+  color: white;
+  overflow: hidden;
+}
+
+.Container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8rem;
+  align-items: center;
+}
+
+@media (max-width: 900px) {
+  .Container { grid-template-columns: 1fr; gap: 8rem; }
+}
+
+.TextCol {
+  max-width: 500px;
+}
+
+.Title {
+  font-family: var(--font-good-times);
+  font-size: clamp(3rem, 4.5vw, 5rem);
+  line-height: 1.1;
+  margin-bottom: 3rem;
+}
+
+.Title span {
+  color: transparent;
+  -webkit-text-stroke: 1px var(--green);
+}
+
+.Desc {
+  font-family: var(--font-urbanist);
+  font-size: 1.8rem;
+  color: #aaa;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+  font-weight: 300;
+}
+
+.ImageCol {
+  display: flex;
+  gap: 3rem;
+  position: relative;
+}
+
+.PhotoBox {
+  flex: 1;
+  position: relative; /* REQUIRED for next/image "fill" */
+  background: #111;
+  border-radius: 2rem;
+  overflow: hidden;
+  aspect-ratio: 3/4; 
+  border: 1px solid #222;
+}
+
+/* THE IMAGE ITSELF */
+.Image {
+  object-fit: cover;
+  transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.PhotoBox:hover .Image {
+  transform: scale(1.05);
+}
+
+/* STAGGERING EFFECT */
+.PhotoRight {
+  transform: translateY(8rem);
+}
+
+@media (max-width: 600px) {
+  .ImageCol { gap: 2rem; }
+  .PhotoRight { transform: translateY(4rem); }
+}

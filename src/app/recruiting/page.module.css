@@ -1,0 +1,381 @@
+/* --- GLOBALS --- */
+.Main {
+  width: 100%;
+  background-color: #0a0a0a; /* Deep dark background for the whole page */
+  color: white;
+  overflow-x: hidden;
+}
+
+/* --- HERO SECTION --- */
+.Hero {
+  position: relative;
+  width: 100%;
+  min-height: 90vh; /* Takes up almost the whole screen */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 0 2rem;
+  overflow: hidden;
+}
+
+/* This is where you'll add the photo of the team/install */
+.HeroBackground {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-color: #111; 
+  /* Add your background image here later: */
+  /* background-image: url('/path-to-your-image.jpg'); */
+  background-size: cover;
+  background-position: center;
+  z-index: 0;
+}
+
+.HeroOverlay {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.8) 100%);
+  z-index: 1;
+}
+
+.HeroContent {
+  position: relative;
+  z-index: 2;
+  max-width: 900px;
+  margin-top: -10vh; /* Pushes it slightly up to account for the overlap below */
+}
+
+.HeroTitle {
+  font-family: var(--font-good-times);
+  font-size: clamp(4rem, 8vw, 9rem);
+  line-height: 1;
+  color: white;
+  margin-bottom: 2rem;
+  letter-spacing: -0.02em;
+}
+
+.HeroTitle span {
+  color: transparent;
+  -webkit-text-stroke: 2px white; /* That cool hollow text effect */
+}
+
+.HeroSubtitle {
+  font-family: var(--font-urbanist);
+  font-size: clamp(1.6rem, 2vw, 2.2rem);
+  color: #ccc;
+  line-height: 1.5;
+  max-width: 700px;
+  margin: 0 auto;
+  font-weight: 300;
+}
+
+/* --- OVERLAPPING CULTURE SECTION --- */
+.CultureOverlap {
+  position: relative;
+  z-index: 10;
+  background-color: #f5f5f7; /* Light grey off-white like the reference */
+  border-radius: 4rem 4rem 0 0; /* Massive rounded corners at top */
+  margin-top: -15vh; /* This pulls it up OVER the hero section */
+  padding-bottom: 8rem;
+  color: var(--black);
+}
+
+/* TICKER */
+.TickerWrapper {
+  background: var(--green); /* Punchy green bar */
+  color: var(--black);
+  padding: 1.5rem 0;
+  border-radius: 4rem 4rem 0 0; /* Matches the container */
+  overflow: hidden;
+  border-bottom: 1px solid rgba(0,0,0,0.1);
+}
+
+.TickerTrack {
+  display: flex;
+  white-space: nowrap;
+  animation: scrollTicker 20s linear infinite;
+  gap: 4rem;
+}
+
+@keyframes scrollTicker {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-33.33%); }
+}
+
+.TickerItem {
+  font-family: var(--font-good-times);
+  font-size: 1.4rem;
+  display: flex;
+  align-items: center;
+  letter-spacing: 0.1em;
+}
+
+.GreenDot {
+  color: white;
+  font-size: 2rem;
+  margin-right: 1rem;
+}
+
+.CultureContainer {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 8rem 2rem 2rem 2rem;
+}
+
+.CultureHeader {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto 6rem auto;
+}
+
+.SectionTitle {
+  font-family: var(--font-good-times);
+  font-size: clamp(3rem, 4vw, 4.5rem);
+  color: var(--black);
+  margin-bottom: 2rem;
+}
+
+.SectionDesc {
+  font-family: var(--font-urbanist);
+  font-size: 1.8rem;
+  color: #555;
+  line-height: 1.6;
+}
+
+.BenefitsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 3rem;
+}
+
+/* Sleek pill-like cards */
+.BenefitCard {
+  background: white;
+  padding: 4rem;
+  border-radius: 2.4rem;
+  box-shadow: 0 2rem 5rem rgba(0,0,0,0.04);
+  transition: transform 0.3s ease;
+}
+
+.BenefitCard:hover {
+  transform: translateY(-1rem);
+}
+
+.IconWrapper {
+  width: 6rem;
+  height: 6rem;
+  background: rgba(84, 175, 97, 0.1);
+  color: var(--green);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 2.5rem;
+}
+
+.BenefitCard h3 {
+  font-family: var(--font-good-times);
+  font-size: 1.8rem;
+  margin-bottom: 1.5rem;
+  color: var(--black);
+}
+
+.BenefitCard p {
+  font-family: var(--font-urbanist);
+  font-size: 1.6rem;
+  color: #666;
+  line-height: 1.6;
+}
+
+/* --- DARK MODE JOBS GRID --- */
+.JobsSection {
+  background-color: #0a0a0a;
+  padding: 12rem 2rem;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Background gradient blob for that premium tech feel */
+.GlowBlob {
+  position: absolute;
+  top: 10%;
+  right: -10%;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(84, 175, 97, 0.15) 0%, rgba(0,0,0,0) 70%);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.JobsContainer {
+  position: relative;
+  z-index: 1;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.JobsHeader {
+  margin-bottom: 6rem;
+}
+
+.JobsTitle {
+  font-family: var(--font-good-times);
+  font-size: clamp(3.5rem, 5vw, 5rem);
+  color: white;
+  margin-bottom: 1rem;
+}
+
+.JobsTitle span {
+  color: transparent;
+  -webkit-text-stroke: 1px var(--green);
+}
+
+.JobsHeader p {
+  font-family: var(--font-urbanist);
+  font-size: 1.8rem;
+  color: #888;
+}
+
+.JobGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+  gap: 3rem;
+}
+
+/* Premium Dark Cards */
+.JobCard {
+  background: #151515;
+  border: 1px solid #222;
+  border-radius: 2.4rem;
+  padding: 4rem;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.JobCard:hover {
+  background: #1a1a1a;
+  border-color: #333;
+  transform: translateY(-0.5rem);
+  box-shadow: 0 2rem 5rem rgba(0,0,0,0.4);
+}
+
+.LiveBadge {
+  display: inline-flex;
+  align-items: center;
+  background: rgba(84, 175, 97, 0.1);
+  color: var(--green);
+  padding: 0.6rem 1.4rem;
+  border-radius: 3rem;
+  font-family: var(--font-urbanist);
+  font-size: 1.2rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 3rem;
+}
+
+.Pulse {
+  width: 8px;
+  height: 8px;
+  background-color: var(--green);
+  border-radius: 50%;
+  margin-right: 8px;
+  box-shadow: 0 0 10px var(--green);
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% { box-shadow: 0 0 0 0 rgba(84, 175, 97, 0.4); }
+  70% { box-shadow: 0 0 0 10px rgba(84, 175, 97, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(84, 175, 97, 0); }
+}
+
+.JobRole {
+  font-family: var(--font-good-times);
+  font-size: 2.4rem;
+  color: white;
+  margin-bottom: 1.5rem;
+  line-height: 1.2;
+}
+
+.JobSnippet {
+  font-family: var(--font-urbanist);
+  font-size: 1.6rem;
+  color: #888;
+  line-height: 1.6;
+  margin-bottom: 4rem;
+  flex-grow: 1;
+}
+
+.ApplyBtn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  background: white;
+  color: var(--black);
+  padding: 1.6rem 2.4rem;
+  border-radius: 4rem;
+  font-family: var(--font-urbanist);
+  font-weight: 800;
+  font-size: 1.4rem;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.ApplyBtn:hover {
+  background: var(--green);
+  color: white;
+}
+
+/* --- SPECULATIVE SECTION --- */
+.SpeculativeSection {
+  background: #0a0a0a;
+  padding: 4rem 2rem 10rem 2rem;
+  display: flex;
+  justify-content: center;
+}
+
+.SpeculativeCard {
+  background: linear-gradient(135deg, #f5f5f7 0%, #e0e0e0 100%);
+  border-radius: 3rem;
+  padding: 6rem 4rem;
+  text-align: center;
+  max-width: 800px;
+  width: 100%;
+  color: var(--black);
+}
+
+.SpeculativeCard h2 {
+  font-family: var(--font-good-times);
+  font-size: 3rem;
+  margin-bottom: 1.5rem;
+}
+
+.SpeculativeCard p {
+  font-family: var(--font-urbanist);
+  font-size: 1.8rem;
+  color: #555;
+  margin-bottom: 3rem;
+}
+
+.DropCVBtn {
+  background: var(--black);
+  color: white;
+  border: none;
+  padding: 1.8rem 4rem;
+  border-radius: 4rem;
+  font-family: var(--font-urbanist);
+  font-size: 1.6rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.DropCVBtn:hover {
+  background: var(--green);
+}

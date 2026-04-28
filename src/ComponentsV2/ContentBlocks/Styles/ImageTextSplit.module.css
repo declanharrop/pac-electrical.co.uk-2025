@@ -1,0 +1,78 @@
+.Wrapper {
+  background-color: #0a0a0a;
+  padding: 10rem 2rem;
+  color: white;
+}
+
+.Container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6rem;
+  align-items: center;
+}
+
+@media (max-width: 900px) {
+  .Container { grid-template-columns: 1fr; gap: 4rem; }
+}
+
+.ImageSide {
+  width: 100%;
+}
+
+.ImagePlaceholder {
+  width: 100%;
+  aspect-ratio: 4/5;
+  background: #151515;
+  border-radius: 2rem;
+  border: 1px solid #222;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #444;
+  font-family: var(--font-urbanist);
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.TextSide {
+  display: flex;
+  flex-direction: column;
+}
+
+.Title {
+  font-family: var(--font-good-times);
+  font-size: clamp(2.5rem, 4vw, 4rem);
+  line-height: 1.2;
+  margin-bottom: 3rem;
+}
+
+.Title span {
+  color: var(--green);
+}
+
+.Description {
+  font-family: var(--font-urbanist);
+  font-size: 1.8rem;
+  color: #aaa;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+}
+
+.List {
+  list-style: none;
+  padding: 0;
+  margin-top: 2rem;
+}
+
+.List li {
+  font-family: var(--font-urbanist);
+  font-size: 1.6rem;
+  color: white;
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  font-weight: 600;
+}

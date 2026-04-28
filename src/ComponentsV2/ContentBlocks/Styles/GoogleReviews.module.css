@@ -1,0 +1,265 @@
+.Wrapper {
+  background-color: #0a0a0a;
+  padding: 12rem 0;
+  color: white;
+  overflow: hidden;
+}
+
+.Container {
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 0 4rem;
+}
+
+.TopRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 6rem;
+}
+
+.Title {
+  font-family: var(--font-good-times);
+  font-size: clamp(3rem, 6vw, 6.5rem);
+  line-height: 1;
+  margin-bottom: 2rem;
+  letter-spacing: -0.02em;
+}
+
+.Title span {
+  color: transparent;
+  -webkit-text-stroke: 1.5px rgba(255, 255, 255, 0.3); /* Brighter stroke */
+}
+
+.TrustBadge {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.StarsSummary {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.RatingNum {
+  font-family: var(--font-good-times);
+  font-size: 2.2rem;
+  margin-left: 0.8rem;
+  line-height: 1;
+}
+
+.TotalCount {
+  font-family: var(--font-urbanist);
+  color: #666;
+  font-size: 1.3rem;
+  letter-spacing: 0.1em;
+  font-weight: 700;
+}
+
+.SliderControls {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.NavBtn {
+  background: transparent;
+  color: #fff;
+  border: 1px solid #333;
+  width: 6rem;
+  height: 6rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.NavBtn:hover {
+  border-color: var(--green);
+  color: var(--green);
+}
+
+.Slider {
+  display: flex;
+  gap: 3rem;
+  overflow-x: auto;
+  padding: 1rem 0 4rem 0;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+}
+
+.Slider::-webkit-scrollbar { display: none; }
+
+.ReviewCard {
+  flex: 0 0 420px;
+  scroll-snap-align: start;
+  background: #111;
+  border: 1px solid #1a1a1a;
+  border-radius: 3rem;
+  padding: 4.5rem;
+  display: flex;
+  flex-direction: column;
+  min-height: 380px;
+  justify-content: space-between;
+}
+
+@media (max-width: 768px) {
+  .Container { padding: 0 2rem; }
+  .ReviewCard { flex: 0 0 85vw; padding: 3rem; }
+}
+
+.CardHeader {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+
+.Avatar, .AvatarFallback {
+  width: 5.5rem;
+  height: 5.5rem;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.AvatarFallback {
+  background: #222;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-good-times);
+  font-size: 1.8rem;
+  color: var(--green);
+}
+
+.AuthorName {
+  font-family: var(--font-urbanist);
+  font-size: 1.8rem;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+}
+
+.ReviewDate {
+  font-size: 1.1rem;
+  color: #555;
+  text-transform: uppercase;
+  font-weight: 800;
+  margin-top: 0.4rem;
+}
+
+.ReviewText {
+  font-family: var(--font-urbanist);
+  font-size: 1.6rem;
+  line-height: 1.7;
+  color: #999;
+  font-weight: 300;
+  
+  /* CSS Clamping to 4 lines */
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;  
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.CardFooter {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 4rem;
+}
+
+.CardStars {
+  display: flex;
+  gap: 0.4rem;
+}
+
+.GoogleG {
+  font-family: var(--font-good-times);
+  font-size: 2rem;
+  color: #333; /* Subdued Google icon feel */
+}
+
+.SliderWrapper {
+  position: relative;
+  width: 100%;
+  
+  /* THE PRO FIX: This fades the actual content out at the edges 
+     rather than putting a black box on top of it. */
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 10%,
+    black 90%,
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 10%,
+    black 90%,
+    transparent 100%
+  );
+}
+
+/* Remove the ::before and ::after pseudo-elements entirely 
+   since mask-image handles it now! */
+.SliderWrapper::before,
+.SliderWrapper::after {
+  display: none;
+}
+
+.Slider {
+  display: flex;
+  gap: 3rem;
+  overflow-x: auto;
+  
+  /* Standard padding to center the "active" card */
+  padding: 2rem 0 5rem 0;
+  
+  /* This ensures that when you scroll to the end, 
+     the last card doesn't get cut off by the mask */
+  scroll-padding: 0 15%; 
+
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.Slider::-webkit-scrollbar { display: none; }
+
+/* Let's slightly brighten the text and borders 
+   since they looked a bit dim in the screenshot */
+.ReviewCard {
+  flex: 0 0 400px;
+  scroll-snap-align: center; /* Snap to middle for better focus */
+  background: #111;
+  border: 1px solid #222; /* Slightly more visible border */
+  border-radius: 2.5rem;
+  padding: 4rem;
+  display: flex;
+  flex-direction: column;
+  min-height: 350px;
+  justify-content: space-between;
+  transition: border-color 0.3s ease;
+}
+
+.ReviewCard:hover {
+  border-color: #333;
+}
+
+.ReviewText {
+  font-family: var(--font-urbanist);
+  font-size: 1.6rem;
+  line-height: 1.7;
+  color: #bbb; /* Brighter than before */
+  font-weight: 300;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;  
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

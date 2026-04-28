@@ -1,0 +1,47 @@
+.SpeculativeSection {
+  background: #0a0a0a;
+  padding: 4rem 2rem 10rem 2rem;
+  display: flex;
+  justify-content: center;
+}
+
+.SpeculativeCard {
+  background: linear-gradient(135deg, #f5f5f7 0%, #e0e0e0 100%);
+  border-radius: 3rem;
+  padding: 6rem 4rem;
+  text-align: center;
+  max-width: 800px;
+  width: 100%;
+  color: var(--black);
+}
+
+.SpeculativeCard h2 {
+  font-family: var(--font-good-times);
+  font-size: clamp(2.5rem, 4vw, 3.5rem);
+  margin-bottom: 1.5rem;
+}
+
+.SpeculativeCard p {
+  font-family: var(--font-urbanist);
+  font-size: 1.8rem;
+  color: #555;
+  margin-bottom: 3rem;
+}
+
+.DropCVBtn {
+  background: var(--black);
+  color: white;
+  border: none;
+  padding: 1.8rem 4rem;
+  border-radius: 4rem;
+  font-family: var(--font-urbanist);
+  font-size: 1.6rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.DropCVBtn:hover {
+  background: var(--green);
+}
