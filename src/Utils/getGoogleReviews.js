@@ -14,10 +14,10 @@ export async function getGoogleReviews() {
       return {
         reviews: data.result.reviews || [],
         rating: data.result.rating,
-        totalReviews: data.result.user_ratings_total
+        totalReviews: data.result.user_ratings_total,
       };
     }
-    
+
     return null;
   } catch (error) {
     console.error('Error fetching Google Reviews:', error);

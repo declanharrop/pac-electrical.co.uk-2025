@@ -1,5 +1,5 @@
 import { client } from '@/sanity/client';
-import { getGoogleReviews } from '@/utils/getGoogleReviews';
+import { getGoogleReviews } from '@/Utils/getGoogleReviews';
 
 // Static Blocks
 import HeroImmersive from '@/ComponentsV2/ContentBlocks/Static/HeroImmersive';
@@ -31,7 +31,8 @@ async function getActiveJobs() {
 
 export const metadata = {
   title: 'Careers | PAC Electrical',
-  description: 'Join the team at PAC Electrical. We are currently hiring top talent for our Solar, EV, and Commercial divisions.',
+  description:
+    'Join the team at PAC Electrical. We are currently hiring top talent for our Solar, EV, and Commercial divisions.',
 };
 
 export default async function RecruitingPage() {
@@ -40,13 +41,12 @@ export default async function RecruitingPage() {
 
   return (
     <main style={{ backgroundColor: '#0a0a0a', minHeight: '100vh' }}>
-      
       {/* 1. The massive, immersive introduction */}
       <HeroImmersive />
-      
+
       {/* 2. Scrolling ticker of live jobs (Dynamic) */}
       <JobTicker jobs={jobs} />
-      
+
       {/* 3. The overlapping culture cards */}
       <CultureOverlap />
 
@@ -69,7 +69,6 @@ export default async function RecruitingPage() {
 
       {/* 9. Catch-all form CTA */}
       <SpeculativeCTA />
-
     </main>
   );
 }
