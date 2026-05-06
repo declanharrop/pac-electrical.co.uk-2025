@@ -8,10 +8,12 @@ export default async function sitemap() {
   // 1. FETCH DATA FROM MAIN CLIENT (FAQs & Case Studies)
   const faqQuery = `*[_type == "faq"]{ "slug": slug.current, _updatedAt }`;
   const caseStudyQuery = `*[_type == "caseStudy"]{ "slug": slug.current, releaseDate, _updatedAt }`;
+  const landingQuery = `*[_type == "landingPage"]{ "slug": slug.current, releaseDate, _updatedAt }`;
 
-  const [faqsData, caseStudiesData] = await Promise.all([
+  const [faqsData, caseStudiesData, landingData] = await Promise.all([
     client.fetch(faqQuery),
     client.fetch(caseStudyQuery),
+    client.fetch(landingQuery),
   ]);
 
   // 2. FETCH DATA FROM BLOG CLIENT (News Posts)
@@ -20,7 +22,13 @@ export default async function sitemap() {
 
   // --- MAP DATA TO SITEMAP FORMAT ---
 
-  // News (from Blog Dataset)
+  const landing = landingData.map((lp) => ({
+    url: `${URL}/lp/${lp.slug}`,
+    lastModified: lp.releaseDate || lp._updatedAt,
+    priority: 0.9,
+    changeFrequency: 'yearly',
+  }));
+
   const news = newsData.map((post) => ({
     url: `${URL}/news/${post.slug}`,
     lastModified: post.date || post._updatedAt,
@@ -50,10 +58,8 @@ export default async function sitemap() {
     '/electrical',
     '/solar',
     '/ev',
-    '/us',
-    '/case-studies',
-    '/news',
     '/faqs',
+    '/case-studies',
   ].map((route) => ({
     url: `${URL}${route}`,
     lastModified: new Date().toISOString(),
@@ -62,6 +68,8 @@ export default async function sitemap() {
   }));
 
   const subServiceRoutes = [
+    '/news',
+    '/us',
     '/electrical/commercial',
     '/electrical/domestic',
     '/electrical/led',
@@ -89,5 +97,12 @@ export default async function sitemap() {
     priority: 0.8,
   }));
 
-  return [...topLevelRoutes, ...subServiceRoutes, ...news, ...studies, ...faqs];
+  return [
+    ...topLevelRoutes,
+    ...landing,
+    ...subServiceRoutes,
+    ...news,
+    ...studies,
+    ...faqs,
+  ];
 }
