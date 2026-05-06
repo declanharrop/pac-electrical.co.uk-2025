@@ -2,7 +2,19 @@ import { notFound } from 'next/navigation';
 import { client } from '@/sanity/client';
 import LP_PageBuilder from '@/Components/LPBlocks/PageBuilder';
 
-// SEO UPGRADE: Added 'alt' attributes to all image queries to capture organic image search traffic.
+// SEO FIX: Helper function to flatten Sanity Portable Text into a raw string for Schema.org
+function portableTextToString(blocks) {
+  if (!blocks) return '';
+  if (typeof blocks === 'string') return blocks;
+  return blocks
+    .map((block) => {
+      if (block._type !== 'block' || !block.children) return '';
+      return block.children.map((child) => child.text).join('');
+    })
+    .join('\n\n');
+}
+
+// SEO UPGRADE: Added 'alt' attributes to all image queries for organic image search traffic.
 const PAGE_QUERY = `*[_type == "landingPage" && slug.current == $slug][0]{
   title,
   "slug": slug.current,
@@ -49,12 +61,12 @@ export async function generateMetadata(props) {
     page.seo?.metaDescription ||
     'Expert electrical and renewable energy installations across the East Midlands.';
 
-  // Replace 'yourdomain.co.uk' with your actual production URL
+  // Replace with your actual production URL variable
   const baseUrl =
-    process.env.NEXT_PUBLIC_BASE_URL || 'https://www.yourdomain.co.uk';
-  const pageUrl = page.seo?.canonicalUrl || `${baseUrl}/${page.slug}`;
+    process.env.NEXT_PUBLIC_BASE_URL || 'https://www.pac-electrical.co.uk';
+  const pageUrl = page.seo?.canonicalUrl || `${baseUrl}/lp/${page.slug}`;
 
-  // SEO UPGRADE: Complete metadata object with Canonical URLs, Open Graph, and strict Robot directives.
+  // SEO UPGRADE: Complete metadata object
   return {
     title,
     description,
@@ -96,24 +108,22 @@ export default async function DynamicLandingPage(props) {
   const faqs = faqBlock?.fetchedFaqs || [];
 
   const baseUrl =
-    process.env.NEXT_PUBLIC_BASE_URL || 'https://www.yourdomain.co.uk';
+    process.env.NEXT_PUBLIC_BASE_URL || 'https://www.pac-electrical.co.uk';
 
-  // SEO UPGRADE: '@graph' array allows us to declare multiple schema types cleanly on one page.
+  // SEO UPGRADE: Multi-entity Schema using '@graph'
   const schemaGraph = {
     '@context': 'https://schema.org',
     '@graph': [
       {
-        // 1. WebPage Schema: Defines the exact page being viewed
         '@type': 'WebPage',
-        '@id': `${baseUrl}/${page.slug}/#webpage`,
-        url: `${baseUrl}/${page.slug}`,
+        '@id': `${baseUrl}/lp/${page.slug}/#webpage`,
+        url: `${baseUrl}/lp/${page.slug}`,
         name: page.seo?.metaTitle || page.title,
         description: page.seo?.metaDescription,
         isPartOf: { '@id': `${baseUrl}/#website` },
       },
       {
-        // 2. LocalBusiness Schema: Tells Google exactly what you do and where
-        '@type': 'Electrician', // Using a highly specific category is better than generic "Organization"
+        '@type': 'Electrician',
         '@id': `${baseUrl}/#organization`,
         name: 'Power & Control Ltd',
         description: 'Expert electrical and renewable energy installations.',
@@ -123,7 +133,7 @@ export default async function DynamicLandingPage(props) {
     ],
   };
 
-  // 3. FAQ Schema: Only injects if FAQs are present on this specific landing page
+  // Conditionally inject FAQ Schema, actively parsing the Portable Text array to clear GSC errors
   if (faqs.length > 0) {
     schemaGraph['@graph'].push({
       '@type': 'FAQPage',
@@ -132,7 +142,7 @@ export default async function DynamicLandingPage(props) {
         name: faq.question,
         acceptedAnswer: {
           '@type': 'Answer',
-          text: faq.answer, // Note: Ensure your Sanity FAQ 'answer' resolves to plain text or valid HTML string
+          text: portableTextToString(faq.answer),
         },
       })),
     });
