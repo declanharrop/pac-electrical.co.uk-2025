@@ -21,6 +21,8 @@ const nextConfig = {
         hostname: 'cdn.sanity.io',
       },
     ],
+    // SEO & PERFORMANCE FIX: Added image qualities to allow Next.js to optimize your 90-quality images without throwing errors.
+    qualities: [25, 50, 75, 90, 100],
   },
   env: {
     API_ROUTE:
@@ -33,7 +35,7 @@ const nextConfig = {
       {
         source: '/get-a-quote',
         destination: '/quote',
-        permanent: true,
+        permanent: true, // Excellent use of a 301 redirect for SEO!
       },
     ];
   },
