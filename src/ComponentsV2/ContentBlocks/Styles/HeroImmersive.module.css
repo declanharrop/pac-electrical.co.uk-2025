@@ -9,6 +9,7 @@
   padding: 0 2rem;
   overflow: hidden;
   background-color: #000;
+  max-height: 1200px;
 }
 
 .HeroVideo {
@@ -29,8 +30,8 @@
   bottom: 0;
   /* Darkened the overlay slightly to help white text pop against moving video */
   background: linear-gradient(
-    to bottom, 
-    rgba(0, 0, 0, 0.4) 0%, 
+    to bottom,
+    rgba(0, 0, 0, 0.4) 0%,
     rgba(0, 0, 0, 0.7) 100%
   );
   z-index: 1;
@@ -44,7 +45,7 @@
 
 .HeroTitle {
   font-family: var(--font-good-times);
-  font-size: clamp(4rem, 10vw, 11rem);
+  font-size: clamp(4rem, 14vw, 8rem);
   line-height: 0.9;
   color: white;
   margin-bottom: 2.5rem;

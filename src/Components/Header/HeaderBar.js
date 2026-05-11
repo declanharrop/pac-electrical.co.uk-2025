@@ -71,7 +71,7 @@ export default function HeaderBar() {
                 right: '10px',
               }}
             >
-              <GetAQuoteButton />
+              <GetAQuoteButton style={{ height: '44px', width: '155px', fontSize: '1.3rem' }} />
             </div>
           )}
           <MobileNavDock />

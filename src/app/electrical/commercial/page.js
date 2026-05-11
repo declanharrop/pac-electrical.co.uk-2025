@@ -47,7 +47,7 @@ export async function generateMetadata() {
     url: METADATA.Url,
     openGraph: {
       title: METADATA.SiteName,
-      siteName: METADATA.siteName,
+      siteName: METADATA.SiteName,
       description: METADATA.Description,
       url: METADATA.Url,
       images: [
@@ -57,7 +57,7 @@ export async function generateMetadata() {
         },
       ],
       locale: 'en_GB',
-      type: 'article',
+      type: 'website',
     },
   };
 }

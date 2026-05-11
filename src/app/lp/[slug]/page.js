@@ -63,7 +63,7 @@ export async function generateMetadata(props) {
 
   // Replace with your actual production URL variable
   const baseUrl =
-    process.env.NEXT_PUBLIC_BASE_URL || 'https://www.pac-electrical.co.uk';
+    process.env.NEXT_PUBLIC_BASE_URL || 'https://pac-electrical.co.uk';
   const pageUrl = page.seo?.canonicalUrl || `${baseUrl}/lp/${page.slug}`;
 
   // SEO UPGRADE: Complete metadata object
@@ -107,7 +107,7 @@ export default async function DynamicLandingPage(props) {
   const faqs = faqBlock?.fetchedFaqs || [];
 
   const baseUrl =
-    process.env.NEXT_PUBLIC_BASE_URL || 'https://www.pac-electrical.co.uk';
+    process.env.NEXT_PUBLIC_BASE_URL || 'https://pac-electrical.co.uk';
 
   // SEO UPGRADE: Multi-entity Schema using '@graph'
   const schemaGraph = {

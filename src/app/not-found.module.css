@@ -1,0 +1,74 @@
+.Wrapper {
+  background-color: var(--black);
+  min-height: 60vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 12rem 2rem 10rem;
+  text-align: center;
+}
+
+.Code {
+  font-family: var(--font-good-times);
+  font-size: 12rem;
+  color: var(--neon);
+  line-height: 1;
+  margin-bottom: 2rem;
+}
+
+.Title {
+  font-family: var(--font-good-times);
+  font-size: 3rem;
+  color: white;
+  text-transform: uppercase;
+  margin-bottom: 2rem;
+}
+
+.Subtitle {
+  font-family: var(--font-urbanist);
+  font-size: 1.8rem;
+  color: var(--light-grey);
+  max-width: 480px;
+  margin: 0 auto 6rem;
+  line-height: 1.5;
+}
+
+.Links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.6rem;
+  justify-content: center;
+}
+
+.Link {
+  font-family: var(--font-urbanist);
+  font-size: 1.6rem;
+  letter-spacing: 0.1rem;
+  font-weight: 600;
+  color: var(--black);
+  background: var(--neon);
+  padding: 1.2rem 3rem;
+  border-radius: 4px;
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+
+.Link:hover {
+  opacity: 0.85;
+}
+
+@media (max-width: 768px) {
+  .Code {
+    font-size: 8rem;
+  }
+
+  .Title {
+    font-size: 2.2rem;
+  }
+
+  .Links {
+    flex-direction: column;
+    align-items: center;
+  }
+}

@@ -51,6 +51,11 @@ const METADATA = {
     'Trusted commercial electrical and renewable energy contractors serving Derby, Derbyshire, and the East Midlands. Specialising in Solar PV, Battery Storage, and EV charging.',
 };
 
+export const viewport = {
+  width: 'device-width',
+  initialScale: 1,
+};
+
 export const metadata = {
   title: METADATA.SiteName,
   applicationName: 'Power & Control',

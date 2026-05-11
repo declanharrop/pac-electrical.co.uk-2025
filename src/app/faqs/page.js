@@ -2,6 +2,17 @@ import { client } from '@/sanity/client';
 import FAQClientInterface from '@/Components/FAQ/FAQClientInterface';
 import styles from './page.module.css';
 
+function portableTextToString(blocks) {
+  if (!blocks) return '';
+  if (typeof blocks === 'string') return blocks;
+  return blocks
+    .map((block) => {
+      if (block._type !== 'block' || !block.children) return '';
+      return block.children.map((child) => child.text).join('');
+    })
+    .join('\n\n');
+}
+
 export const revalidate = 60;
 // Fetch ALL FAQs
 async function getFAQs() {
@@ -18,7 +29,7 @@ async function getFAQs() {
       "related": related[]->{ question, "slug": slug.current }
     }
   `;
-  return await client.fetch(query, {}, { next: { tags: ['faq'] } });
+  return client.fetch(query, {}, { next: { tags: ['faq'] } });
 }
 
 export const metadata = {
@@ -30,8 +41,25 @@ export const metadata = {
 export default async function FAQPage() {
   const faqs = await getFAQs();
 
+  const faqSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqs.map((faq) => ({
+      '@type': 'Question',
+      name: faq.question,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: portableTextToString(faq.answer),
+      },
+    })),
+  };
+
   return (
     <main className={styles.Main}>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
       <div className={styles.Header}>
         <h1 className={styles.Title}>FREQUENTLY ASKED QUESTIONS</h1>
         <p className={styles.Subtitle}>

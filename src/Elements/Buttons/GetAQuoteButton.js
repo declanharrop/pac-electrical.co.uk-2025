@@ -1,6 +1,6 @@
 import Link from 'next/link';
 
-export default function GetAQuoteButton() {
+export default function GetAQuoteButton({ style }) {
   return (
     <Link href="/quote">
       <button
@@ -17,6 +17,7 @@ export default function GetAQuoteButton() {
           width: '200px',
           fontSize: '1.7rem',
           boxShadow: '0 0 6px 0px var(--light-grey)',
+          ...style,
         }}
       >
         GET A QUOTE <span>→</span>

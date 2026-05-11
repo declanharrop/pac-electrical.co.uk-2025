@@ -20,10 +20,11 @@
 
 .Title {
   font-family: var(--font-good-times);
-  font-size: clamp(3rem, 6vw, 6.5rem);
+  font-size: clamp(3rem, 6vw, 4.5rem);
   line-height: 1;
-  margin-bottom: 2rem;
+  margin-bottom: 2.6rem;
   letter-spacing: -0.02em;
+  text-align: left;
 }
 
 .Title span {
@@ -91,7 +92,9 @@
   scrollbar-width: none;
 }
 
-.Slider::-webkit-scrollbar { display: none; }
+.Slider::-webkit-scrollbar {
+  display: none;
+}
 
 .ReviewCard {
   flex: 0 0 420px;
@@ -107,8 +110,13 @@
 }
 
 @media (max-width: 768px) {
-  .Container { padding: 0 2rem; }
-  .ReviewCard { flex: 0 0 85vw; padding: 3rem; }
+  .Container {
+    padding: 0 2rem;
+  }
+  .ReviewCard {
+    flex: 0 0 85vw;
+    padding: 3rem;
+  }
 }
 
 .CardHeader {
@@ -118,7 +126,8 @@
   margin-bottom: 3rem;
 }
 
-.Avatar, .AvatarFallback {
+.Avatar,
+.AvatarFallback {
   width: 5.5rem;
   height: 5.5rem;
   border-radius: 50%;
@@ -156,11 +165,11 @@
   line-height: 1.7;
   color: #999;
   font-weight: 300;
-  
+
   /* CSS Clamping to 4 lines */
   display: -webkit-box;
   -webkit-line-clamp: 4;
-  -webkit-box-orient: vertical;  
+  -webkit-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis;
 }
@@ -186,7 +195,7 @@
 .SliderWrapper {
   position: relative;
   width: 100%;
-  
+
   /* THE PRO FIX: This fades the actual content out at the edges 
      rather than putting a black box on top of it. */
   -webkit-mask-image: linear-gradient(
@@ -216,20 +225,22 @@
   display: flex;
   gap: 3rem;
   overflow-x: auto;
-  
+
   /* Standard padding to center the "active" card */
   padding: 2rem 0 5rem 0;
-  
+
   /* This ensures that when you scroll to the end, 
      the last card doesn't get cut off by the mask */
-  scroll-padding: 0 15%; 
+  scroll-padding: 0 15%;
 
   scroll-snap-type: x mandatory;
   scrollbar-width: none;
   -ms-overflow-style: none;
 }
 
-.Slider::-webkit-scrollbar { display: none; }
+.Slider::-webkit-scrollbar {
+  display: none;
+}
 
 /* Let's slightly brighten the text and borders 
    since they looked a bit dim in the screenshot */
@@ -259,7 +270,7 @@
   font-weight: 300;
   display: -webkit-box;
   -webkit-line-clamp: 4;
-  -webkit-box-orient: vertical;  
+  -webkit-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis;
 }
