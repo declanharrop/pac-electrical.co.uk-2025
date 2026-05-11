@@ -101,7 +101,6 @@ export default async function DynamicLandingPage(props) {
 
   if (!page) return notFound();
 
-  // Extract FAQs specifically to power the FAQ Schema
   const faqBlock = page.pageBuilder?.find(
     (block) => block._type === 'landingFaqs',
   );
