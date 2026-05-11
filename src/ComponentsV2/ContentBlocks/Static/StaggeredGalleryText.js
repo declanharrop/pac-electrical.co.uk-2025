@@ -7,12 +7,12 @@ export default function StaggeredGalleryText() {
       <div className={styles.Container}>
         
         <div className={styles.TextCol}>
-          <h2 className={styles.Title}>NO RED TAPE.<br/><span>JUST RESULTS.</span></h2>
+          <h2 className={styles.Title}>STRUCTURED WORK.<br/><span>GENUINE REWARDS.</span></h2>
           <p className={styles.Desc}>
-            We operate differently. No unnecessary corporate hierarchies. Just a team of highly skilled engineers pushing the boundaries of what's possible in the electrical and renewable sectors. 
+            Roles at P&C are permanent positions with clearly defined hours, Monday to Friday, with the majority of projects kept close to our Derby base. When overtime is required, it is compensated fairly — with rates that reflect the effort you put in.
           </p>
           <p className={styles.Desc}>
-            When you join us, you get the freedom to do your best work, the tools to do it safely, and the backing of a team that has your back.
+            You&apos;ll be equipped with everything you need to do the job properly — a company van, fuel card, branded workwear, and direct access to management when you need it. We keep things straightforward, because the work speaks for itself.
           </p>
         </div>
 

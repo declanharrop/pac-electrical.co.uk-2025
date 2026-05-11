@@ -6,28 +6,46 @@ export default function CultureOverlap() {
     <section className={styles.CultureOverlap}>
       <div className={styles.CultureContainer}>
         <div className={styles.CultureHeader}>
-          <h2 className={styles.SectionTitle}>THE PAC STANDARD</h2>
+          <h2 className={styles.SectionTitle}>WHAT WE OFFER</h2>
           <p className={styles.SectionDesc}>
-            Forget the standard sparky life. We operate at a different level. 
-            Top-tier equipment, continuous training, and zero red tape.
+            A permanent role with a structured package, real projects, and a
+            company that invests in the people doing the work.
           </p>
         </div>
 
         <div className={styles.BenefitsGrid}>
           <div className={styles.BenefitCard}>
-            <div className={styles.IconWrapper}><Zap size={28} /></div>
-            <h3>Elite Tech & Vans</h3>
-            <p>Fully stocked, modern vehicles and the best tools on the market. You bring the skills, we supply the firepower.</p>
+            <div className={styles.IconWrapper}>
+              <Zap size={28} />
+            </div>
+            <h3>Company Vehicle & Fuel Card</h3>
+            <p>
+              Every engineer is provided with a fully equipped company van and
+              fuel card from day one. If you&apos;re issued an electric vehicle,
+              we&apos;ll install a home EV charger and cover your charging costs.
+            </p>
           </div>
           <div className={styles.BenefitCard}>
-            <div className={styles.IconWrapper}><TrendingUp size={28} /></div>
-            <h3>Aggressive Growth</h3>
-            <p>Solar, EV, Battery Storage. We don't wait for the industry to change; we lead it. Ongoing training is guaranteed.</p>
+            <div className={styles.IconWrapper}>
+              <TrendingUp size={28} />
+            </div>
+            <h3>Training Across All Divisions</h3>
+            <p>
+              We work across commercial electrical, Solar PV, EV charging, and
+              battery storage. Full training is provided as you move into new
+              areas — your development doesn&apos;t stop once you&apos;re through the door.
+            </p>
           </div>
           <div className={styles.BenefitCard}>
-            <div className={styles.IconWrapper}><ShieldCheck size={28} /></div>
-            <h3>Zero BS Culture</h3>
-            <p>No corporate politics. We are a tight-knit squad that works hard, backs each other up, and gets rewarded for it.</p>
+            <div className={styles.IconWrapper}>
+              <ShieldCheck size={28} />
+            </div>
+            <h3>A Competitive Package</h3>
+            <p>
+              Generous holiday allowance, a company pension scheme, competitive
+              overtime rates, and branded workwear — all included from your
+              first day.
+            </p>
           </div>
         </div>
       </div>

@@ -26,7 +26,7 @@ async function getActiveJobs() {
       shortDescription
     }
   `;
-  return await client.fetch(query, {}, { next: { tags: ['job'] } });
+  return client.fetch(query, {}, { next: { tags: ['job'] } });
 }
 
 export const metadata = {
@@ -41,34 +41,25 @@ export default async function RecruitingPage() {
 
   return (
     <main style={{ backgroundColor: '#0a0a0a', minHeight: '100vh' }}>
-      {/* 1. The massive, immersive introduction */}
       <HeroImmersive />
 
-      {/* 2. Scrolling ticker of live jobs (Dynamic) */}
       <JobTicker jobs={jobs} />
 
-      {/* 3. The overlapping culture cards */}
       <CultureOverlap />
 
-      {/* 4. Editorial layout: "No Red Tape" */}
       <StaggeredGalleryText />
 
-      {/* 5. Wide cinematic break: PAC Academy */}
-      <LandscapeFeatureBanner />
+      <ActiveJobsGrid jobs={jobs} />
+      {/* <LandscapeFeatureBanner /> */}
 
-      {/* 6. 50/50 Split: Career progression */}
-      <ImageTextSplit />
+      {/* <ImageTextSplit /> */}
 
-      {/* 7. Division breakdown: Solar, EV, Electrical */}
-      <CareerTracksPills />
+      {/* <CareerTracksPills /> */}
 
       <GoogleReviews reviewsData={reviewsData} />
 
-      {/* 8. The actual Job Board Grid (Dynamic) */}
-      <ActiveJobsGrid jobs={jobs} />
-
       {/* 9. Catch-all form CTA */}
-      <SpeculativeCTA />
+      {/* <SpeculativeCTA /> */}
     </main>
   );
 }

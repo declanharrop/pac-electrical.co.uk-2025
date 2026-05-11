@@ -1,29 +1,35 @@
+/* ── WRAPPER ─────────────────────────────────── */
+
 .Wrapper {
-  padding: 10px 0 40px;
-  max-width: 1400px;
-  margin: 0 auto;
+  background-color: #0a0a0a;
+  padding: 10rem 0;
   overflow: hidden;
 }
 
 .Header {
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  margin-bottom: 40px;
-  padding: 0 20px;
+  align-items: flex-end;
+  margin-bottom: 5rem;
+  padding: 0 2rem;
+  max-width: 1400px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .Title {
-  /* Was 2.2rem -> Now 4rem (40px) */
-  font-size: 4rem;
-  font-weight: 700;
-  text-transform: uppercase;
+  font-family: var(--font-good-times);
+  font-size: clamp(3rem, 5vw, 5.5rem);
+  font-weight: 400;
+  line-height: 1.05;
+  color: white;
 }
 
-/* --- CAROUSEL STRUCTURE --- */
+/* ── CAROUSEL STRUCTURE (do not change — Embla depends on these) ── */
+
 .Viewport {
   overflow: hidden;
-  padding: 10px 20px 40px;
+  padding: 1rem 2rem 4rem;
   cursor: grab;
 }
 
@@ -33,163 +39,191 @@
 
 .Container {
   display: flex;
-  margin-left: -20px;
+  margin-left: -2rem;
 }
 
 .Slide {
   flex: 0 0 33.33%;
   min-width: 0;
-  padding-left: 20px;
-  position: relative;
-  /* Ensure slide stretches to full height of row */
+  padding-left: 2rem;
   display: flex;
   height: auto;
 }
 
-/* --- CARD STYLING --- */
+/* ── CARD ────────────────────────────────────── */
+
 .Card {
   display: flex;
   flex-direction: column;
-  /* vital for equal height content */
-  background: white;
-  border-radius: 16px;
+  background: #111;
+  border-radius: 2rem;
   overflow: hidden;
   text-decoration: none;
-  color: inherit;
+  color: white;
   width: 100%;
-  /* Fill the slide */
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  border: 1px solid #f0f0f0;
+  border: 1px solid #1e1e1e;
+  transition: border-color 0.3s ease;
 }
 
 .Card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+  border-color: #333;
 }
+
+/* ── IMAGE ───────────────────────────────────── */
 
 .ImageContainer {
   position: relative;
-  height: 260px;
-  /* Increased slightly for balance */
+  aspect-ratio: 16/10;
   overflow: hidden;
-  background: #f5f5f5;
+  background: #1a1a1a;
   flex-shrink: 0;
-  /* Prevents image from squishing */
 }
 
 .Image {
   object-fit: cover;
-  transition: transform 0.6s ease;
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .Card:hover .Image {
-  transform: scale(1.05);
+  transform: scale(1.04);
 }
 
+.Placeholder {
+  width: 100%;
+  height: 100%;
+  background: #1a1a1a;
+}
+
+.LabelOverlay {
+  position: absolute;
+  top: 1.5rem;
+  left: 1.5rem;
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* ── CONTENT ─────────────────────────────────── */
+
 .Content {
-  padding: 30px;
-  /* Increased padding */
+  padding: 2.5rem;
   display: flex;
   flex-direction: column;
   flex-grow: 1;
-  /* Pushes content to fill space */
   justify-content: space-between;
+  gap: 1rem;
 }
 
 .Date {
-  /* Was 0.75rem -> Now 1.4rem (14px) */
-  font-size: 1.4rem;
-  color: #888;
+  font-family: var(--font-urbanist);
+  font-size: 1.2rem;
+  font-weight: 800;
   text-transform: uppercase;
-  letter-spacing: 1px;
-  font-weight: 600;
-  margin-bottom: 12px;
+  letter-spacing: 0.1em;
+  color: #555;
 }
 
 .CardTitle {
-  /* Was 1.2rem -> Now 2.4rem (24px) */
-  font-size: 2.4rem;
-  font-weight: 700;
-  margin: 0 0 25px 0;
-  line-height: 1.3;
-  color: #111;
-
+  font-family: var(--font-good-times);
+  font-size: clamp(1.4rem, 1.6vw, 1.8rem);
+  font-weight: 400;
+  line-height: 1.25;
+  color: white;
   display: -webkit-box;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
+  margin: 0;
 }
 
-/* --- AUTHOR & BOTTOM ROW --- */
+.CardSubtitle {
+  font-family: var(--font-urbanist);
+  font-size: 1.4rem;
+  font-weight: 300;
+  color: #888;
+  line-height: 1.6;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* ── BOTTOM ROW ──────────────────────────────── */
+
 .BottomRow {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border-top: 1px solid #eee;
-  padding-top: 20px;
+  border-top: 1px solid #1e1e1e;
+  padding-top: 1.8rem;
   margin-top: auto;
 }
 
 .Author {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 1rem;
 }
 
 .AuthorImageWrapper {
-  width: 40px;
-  /* Increased from 30px */
-  height: 40px;
+  width: 36px;
+  height: 36px;
   border-radius: 50%;
   overflow: hidden;
   position: relative;
-  border: 1px solid #eee;
+  border: 1px solid #333;
+  flex-shrink: 0;
+}
+
+.AuthorImage {
+  object-fit: cover;
 }
 
 .AuthorName {
-  /* Was 0.85rem -> Now 1.5rem (15px) */
-  font-size: 1.5rem;
-  font-weight: 600;
-  color: #555;
+  font-family: var(--font-urbanist);
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #666;
 }
 
 .ReadMore {
-  /* Was 0.85rem -> Now 1.6rem (16px) */
-  font-size: 1.6rem;
-  font-weight: 700;
-  color: var(--green, #28a745);
+  font-family: var(--font-urbanist);
+  font-size: 1.3rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--green);
   white-space: nowrap;
 }
 
-/* --- NAV BUTTONS --- */
+/* ── NAV BUTTONS ─────────────────────────────── */
+
 .NavButtons {
   display: flex;
-  gap: 12px;
+  gap: 1.2rem;
 }
 
 .NavBtn {
-  width: 54px;
-  /* Slightly larger targets */
-  height: 54px;
+  width: 5.5rem;
+  height: 5.5rem;
   border-radius: 50%;
-  border: 1px solid #ddd;
-  background: white;
+  border: 1px solid #333;
+  background: transparent;
+  color: white;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: all 0.2s;
-  color: black;
+  font-size: 1.8rem;
+  transition: border-color 0.25s ease, color 0.25s ease;
 }
 
 .NavBtn:hover {
-  background: black;
-  color: white;
-  border-color: black;
+  border-color: var(--green);
+  color: var(--green);
 }
 
-/* --- RESPONSIVE --- */
+/* ── RESPONSIVE ──────────────────────────────── */
+
 @media screen and (max-width: 1024px) {
   .Slide {
     flex: 0 0 50%;
@@ -204,43 +238,11 @@
   .Header {
     flex-direction: column;
     align-items: flex-start;
-    gap: 20px;
-  }
-
-  .Title {
-    font-size: 3rem;
-    /* 30px mobile title */
+    gap: 2rem;
+    margin-bottom: 3.5rem;
   }
 
   .NavButtons {
     display: none;
   }
-
-  .ImageContainer {
-    height: 220px;
-  }
-
-  .CardTitle {
-    font-size: 2rem;
-    /* 20px mobile card title */
-  }
-}
-
-/* Add this to your existing CSS */
-
-.LabelOverlay {
-  position: absolute;
-  top: 15px;
-  left: 15px;
-  z-index: 2;
-  /* Ensures it sits above the image */
-  pointer-events: none;
-  /* Allows clicks to pass through to the card link */
-}
-
-/* Optional: Ensure the ImageContainer handles absolute positioning */
-.ImageContainer {
-  position: relative;
-  /* This must be present */
-  /* ... existing styles ... */
 }

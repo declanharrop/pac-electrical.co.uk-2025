@@ -1,13 +1,16 @@
 import { Suspense } from 'react';
 import EVBrandsBlock from '@/Components/Blocks/BrandAccredBlocks/EVBrandsBlock';
 import SolarBrandsBlock from '@/Components/Blocks/BrandAccredBlocks/SolarBrandsBlock';
-import CaseStudiesBlock from '@/Components/Blocks/CaseStudiesBlock/CaseStudiesBlock';
+import LatestProjects from '@/ComponentsV2/ContentBlocks/Dynamic/LatestProjects';
 import SimpleHeaderTextBlock from '@/Components/Blocks/SimpleHeaderTextBlock';
 import NewsSection from '@/Components/Blocks/Static/NewsSection';
 import ThreeItemBlock from '@/Components/Blocks/ThreeItemBlock';
 import VideoHero from '@/Components/Hero/VideoHero';
+import RecruitingBanner from '@/ComponentsV2/ContentBlocks/Static/RecruitingBanner';
+import GoogleReviews from '@/ComponentsV2/ContentBlocks/Dynamic/GoogleReviews';
+import { getGoogleReviews } from '@/Utils/getGoogleReviews';
 
-export default function HomePage() {
+export default async function HomePage() {
   // SEO UPGRADE: Schema now prioritizes Derbyshire as the primary region
   const localBusinessSchema = {
     '@context': 'https://schema.org',
@@ -50,6 +53,9 @@ export default function HomePage() {
       'EV Charger Installation',
     ],
   };
+
+  const reviewsData = await getGoogleReviews();
+
   return (
     <div>
       <script
@@ -59,9 +65,9 @@ export default function HomePage() {
         }}
       />
 
-      <VideoHero height="75vh">
+      <VideoHero height="100dvh">
         {/* SEO UPGRADE: Solar-first, Derbyshire-focused H1 */}
-        <h1 style={{ marginBottom: '20px' }}>
+        <h1>
           Solar Panel Installers in Derbyshire | EV & Commercial Electrical
         </h1>
         <h3>
@@ -81,16 +87,19 @@ export default function HomePage() {
       >
         <NewsSection />
       </Suspense>
-
-      <CaseStudiesBlock />
-      <SimpleHeaderTextBlock margin="100px 0 100px 0" />
+      <RecruitingBanner />
+      <LatestProjects />
+      <div style={{ marginBottom: '-80px' }} />
+      <GoogleReviews reviewsData={reviewsData} />
+      {/* <SimpleHeaderTextBlock margin="100px 0 100px 0" /> */}
 
       <section
         style={{
           textAlign: 'center',
-          padding: '0 20px 40px',
+          padding: '50px 20px 50px',
           maxWidth: '800px',
-          margin: '0 auto',
+          margin: '0px auto',
+          zIndex: '500',
         }}
       >
         <h2 style={{ marginBottom: '10px' }}>

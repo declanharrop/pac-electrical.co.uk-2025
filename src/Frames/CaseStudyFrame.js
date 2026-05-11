@@ -1,6 +1,7 @@
+import Image from 'next/image';
 import { PortableText } from '@portabletext/react';
 import Link from 'next/link';
-import ImageHero from '@/Components/Hero/ImageHero';
+import SectorLabel from '@/Utils/SectorLabel';
 import styles from './Styles/CaseStudyFrame.module.css';
 import SliderBlock from '@/Components/Blocks/SliderBlock';
 
@@ -23,7 +24,6 @@ const ptComponents = {
 export default function CaseStudyFrame({ study }) {
   const data = study;
 
-  // Formatting for the human-readable date
   const formattedDate = data.releaseDate
     ? new Date(data.releaseDate).toLocaleDateString('en-GB', {
         day: 'numeric',
@@ -51,7 +51,7 @@ export default function CaseStudyFrame({ study }) {
       name: 'Power & Control Ltd',
       logo: {
         '@type': 'ImageObject',
-        url: 'https://pac-electrical.co.uk/logo.png', // Ensure this path is correct
+        url: 'https://pac-electrical.co.uk/logo.png',
       },
     },
     mainEntityOfPage: {
@@ -60,25 +60,39 @@ export default function CaseStudyFrame({ study }) {
     },
   };
 
-  const sectorDisplay = data.studySectors?.join(', ');
-
   return (
-    <div style={{ marginTop: '120px' }} className={styles.CaseStudyFrame}>
-      {/* 2. INJECTING THE RICH SNIPPET */}
+    <div className={styles.CaseStudyFrame}>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(richSnippet) }}
       />
 
-      <ImageHero
-        src={data.hero.url}
-        alt={`${data.title} - Case Study by Power & Control Ltd`}
-        height="75vh"
-        title={data.title}
-      />
+      {/* ── HERO ──────────────────────────────── */}
+      <div className={styles.Hero}>
+        <Image
+          src={data.hero.url}
+          alt={`${data.title} - Case Study by Power & Control Ltd`}
+          fill
+          priority
+          quality={90}
+          sizes="100vw"
+          className={styles.HeroImage}
+        />
+        <div className={styles.HeroOverlay} />
+        <div className={styles.HeroContent}>
+          <span className={styles.HeroEyebrow}>Case Study</span>
+          <SectorLabel data={data.studySectors} />
+          <h1 className={styles.HeroTitle}>{data.title}</h1>
+          {data.introduction && (
+            <p className={styles.HeroIntro}>{data.introduction}</p>
+          )}
+        </div>
+      </div>
 
+      {/* ── BODY ──────────────────────────────── */}
       <div className={styles.CaseStudyFrame_Container}>
         <div className={styles.CaseStudyFrame_Container_Content}>
+
           {/* STATS GRID */}
           <div className={styles.CaseStudyFrame_Container_Content_Stats}>
             {/* ... keep your existing Stats ... */}
@@ -90,7 +104,6 @@ export default function CaseStudyFrame({ study }) {
               <iframe
                 src={data.youtubeVideo}
                 title={`${data.title} Video Presentation`}
-                frameBorder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                 allowFullScreen
               />
@@ -102,7 +115,6 @@ export default function CaseStudyFrame({ study }) {
             <p className={styles.CaseStudyFrame_Container_Content_Text_Date}>
               Published on: {formattedDate}
             </p>
-
             <div className={styles.richTextContainer}>
               <PortableText value={data.content} components={ptComponents} />
             </div>
@@ -116,14 +128,13 @@ export default function CaseStudyFrame({ study }) {
             </>
           )}
 
-          {/* CONVERSION SECTION */}
+          {/* CTA */}
           <div className={styles.CaseStudy_CTA}>
-            <hr className={styles.divider} />
             <h3>Are you planning a similar project?</h3>
             <p>
               Based in Derby, our expert team provides professional{' '}
               {data.technology || 'electrical and solar'} installations across
-              the East Midlands. Let’s discuss your requirements.
+              the East Midlands. Let&apos;s discuss your requirements.
             </p>
             <Link href="/get-a-quote" className={styles.ctaButton}>
               Request a Site Survey
