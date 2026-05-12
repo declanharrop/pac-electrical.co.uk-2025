@@ -56,17 +56,18 @@ export async function generateMetadata(props) {
 
   if (!page) return {};
 
-  const title = page.seo?.metaTitle || `${page.title} | Power & Control`;
+  // SEO UPGRADE: Aligned fallback title with the new brand
+  const title = page.seo?.metaTitle || `${page.title} | P&C Electrical`;
   const description =
     page.seo?.metaDescription ||
-    'Expert electrical and renewable energy installations across the East Midlands.';
+    'Premium Solar & Electrical Contracting Specialists serving Derby and the East Midlands.';
 
   // Replace with your actual production URL variable
   const baseUrl =
     process.env.NEXT_PUBLIC_BASE_URL || 'https://pac-electrical.co.uk';
   const pageUrl = page.seo?.canonicalUrl || `${baseUrl}/lp/${page.slug}`;
 
-  // SEO UPGRADE: Complete metadata object
+  // SEO UPGRADE: Complete metadata object with updated Open Graph siteName
   return {
     title,
     description,
@@ -77,7 +78,7 @@ export async function generateMetadata(props) {
       title,
       description,
       url: pageUrl,
-      siteName: 'Power & Control Ltd',
+      siteName: 'P&C Electrical',
       locale: 'en_GB',
       type: 'website',
     },
@@ -109,7 +110,7 @@ export default async function DynamicLandingPage(props) {
   const baseUrl =
     process.env.NEXT_PUBLIC_BASE_URL || 'https://pac-electrical.co.uk';
 
-  // SEO UPGRADE: Multi-entity Schema using '@graph'
+  // SEO UPGRADE: Multi-entity Schema using '@graph', completely aligned with Homepage entity
   const schemaGraph = {
     '@context': 'https://schema.org',
     '@graph': [
@@ -122,12 +123,29 @@ export default async function DynamicLandingPage(props) {
         isPartOf: { '@id': `${baseUrl}/#website` },
       },
       {
-        '@type': 'Electrician',
+        // Tied to the exact same organization entity established on the homepage
+        '@type': ['LocalBusiness', 'Electrician'],
         '@id': `${baseUrl}/#organization`,
-        name: 'Power & Control Ltd',
-        description: 'Expert electrical and renewable energy installations.',
+        additionalType: 'https://en.wikipedia.org/wiki/Solar_panel',
+        name: 'P&C Electrical',
+        alternateName: 'Power & Control Ltd',
+        description:
+          'Premium Solar & Electrical Contracting Specialists serving Derby and the East Midlands.',
         url: baseUrl,
-        areaServed: 'East Midlands, UK',
+        areaServed: [
+          'Derbyshire',
+          'Derby',
+          'Nottingham',
+          'Leicester',
+          'East Midlands',
+        ],
+        knowsAbout: [
+          'Commercial Solar PV Installation',
+          'Domestic Solar Installation',
+          'Solar Battery Storage',
+          'Commercial Electrical Contracting',
+          'EV Charger Installation',
+        ],
       },
     ],
   };
