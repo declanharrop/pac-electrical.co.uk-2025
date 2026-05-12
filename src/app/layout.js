@@ -44,9 +44,11 @@ const urbanist = Urbanist({
   display: 'swap',
 });
 
+// SEO UPGRADE: Core Brand Data
 const METADATA = {
-  Url: 'https://pac-electrical.co.uk/',
-  SiteName: 'Power & Control | Solar & Electrical Experts Derbyshire',
+  Url: 'https://pac-electrical.co.uk',
+  SiteName: 'P&C Electrical',
+  Tagline: 'Solar & Electrical Contracting Specialists',
   Description:
     'Trusted commercial electrical and renewable energy contractors serving Derby, Derbyshire, and the East Midlands. Specialising in Solar PV, Battery Storage, and EV charging.',
 };
@@ -57,20 +59,23 @@ export const viewport = {
 };
 
 export const metadata = {
-  title: METADATA.SiteName,
-  applicationName: 'Power & Control',
-  description: METADATA.Description,
-  alternates: {
-    canonical: METADATA.Url,
+  metadataBase: new URL(METADATA.Url),
+  // SEO UPGRADE: Custom Homepage Title vs Subpage Template
+  title: {
+    default: `${METADATA.Tagline} - ${METADATA.SiteName}`,
+    template: `%s | ${METADATA.SiteName}`, // Keeps subpage SERP snippets from truncating
   },
+  applicationName: METADATA.SiteName,
+  description: METADATA.Description,
   referrer: 'origin-when-cross-origin',
   openGraph: {
-    title: METADATA.SiteName,
+    title: `${METADATA.Tagline} - ${METADATA.SiteName}`,
     description: METADATA.Description,
     url: METADATA.Url,
+    siteName: METADATA.SiteName,
     images: [
       {
-        url: `${METADATA.Url}/images/sustain1.webp`,
+        url: '/images/sustain1.webp',
         width: 800,
         height: 600,
       },
@@ -81,7 +86,6 @@ export const metadata = {
 };
 
 export default async function RootLayout({ children }) {
-  // Grab the GTM ID securely from environment variables
   const GTM_ID = process.env.NEXT_PUBLIC_GTM_ID;
 
   return (
@@ -94,7 +98,6 @@ export default async function RootLayout({ children }) {
           <meta charSet="UTF-8" />
         </head>
         <body>
-          {/* 1. Inject GTM to set 'denied' default state instantly */}
           {GTM_ID && <GoogleTagManager gtmId={GTM_ID} />}
 
           <StyledJsxRegistry>
@@ -112,13 +115,9 @@ export default async function RootLayout({ children }) {
             </HeaderProvider>
           </StyledJsxRegistry>
 
-          {/* 2. Inject the bespoke Cookie Banner at the bottom of the DOM */}
           <CookieBanner />
-
-          {/* 3. Global Floating Action Buttons */}
           <WhatsAppButton />
 
-          {/* Existing Omnisend Script */}
           <Script id="omnisend-script" strategy="beforeInteractive">
             {`window.omnisend = window.omnisend || [];
               omnisend.push(["brandID", "651d189f4a7798b9cbd3e927"]);

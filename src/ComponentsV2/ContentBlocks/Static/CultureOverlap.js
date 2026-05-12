@@ -22,7 +22,8 @@ export default function CultureOverlap() {
             <p>
               Every engineer is provided with a fully equipped company van and
               fuel card from day one. If you&apos;re issued an electric vehicle,
-              we&apos;ll install a home EV charger and cover your charging costs.
+              we&apos;ll install a home EV charger and cover your charging
+              costs.
             </p>
           </div>
           <div className={styles.BenefitCard}>
@@ -33,7 +34,8 @@ export default function CultureOverlap() {
             <p>
               We work across commercial electrical, Solar PV, EV charging, and
               battery storage. Full training is provided as you move into new
-              areas — your development doesn&apos;t stop once you&apos;re through the door.
+              areas — your development doesn&apos;t stop once you&apos;re
+              through the door.
             </p>
           </div>
           <div className={styles.BenefitCard}>
