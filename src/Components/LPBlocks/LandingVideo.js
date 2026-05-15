@@ -3,52 +3,59 @@
 import React from 'react';
 import styles from './LandingVideo.module.css';
 
-export default function LandingVideo({ title, subtitle, videoUrl }) {
-  // HELPER: Convert standard YouTube/Vimeo links to Embed URLs
-  const getEmbedUrl = (url) => {
-    if (!url) return null;
+function getYouTubeEmbedUrl(url) {
+  if (!url) return null;
 
-    // Handle standard YouTube links
-    if (url.includes('youtube.com/watch')) {
-      try {
-        const urlParams = new URLSearchParams(new URL(url).search);
-        return `https://www.youtube.com/embed/${urlParams.get('v')}`;
-      } catch (e) {
-        return url; // Fallback if URL parsing fails
-      }
+  try {
+    const parsed = new URL(url);
+
+    // Already an embed URL — use as-is
+    if (
+      parsed.hostname.includes('youtube.com') &&
+      parsed.pathname.startsWith('/embed/')
+    ) {
+      return url;
     }
 
-    // Handle short YouTube links (youtu.be)
-    if (url.includes('youtu.be')) {
-      const id = url.split('/').pop();
+    // youtube.com/watch?v=VIDEO_ID
+    if (
+      parsed.hostname.includes('youtube.com') &&
+      parsed.searchParams.has('v')
+    ) {
+      return `https://www.youtube.com/embed/${parsed.searchParams.get('v')}`;
+    }
+
+    // youtu.be/VIDEO_ID (strip ?si= and other query params)
+    if (parsed.hostname === 'youtu.be') {
+      const id = parsed.pathname.slice(1);
       return `https://www.youtube.com/embed/${id}`;
     }
+  } catch {
+    return null;
+  }
 
-    // Return original if no match (assumes user might have pasted an embed link)
-    return url;
-  };
+  return null;
+}
 
-  const embedUrl = getEmbedUrl(videoUrl);
+export default function LandingVideo({ title, subtitle, videoUrl }) {
+  const embedUrl = getYouTubeEmbedUrl(videoUrl);
 
   if (!embedUrl) return null;
 
   return (
     <section className={styles.section}>
       <div className={styles.container}>
-        {/* Title Section */}
         <div className={styles.header}>
           {title && <h2 className={styles.title}>{title}</h2>}
           {subtitle && <p className={styles.subtitle}>{subtitle}</p>}
         </div>
-
-        {/* Video Wrapper (Maintains Aspect Ratio) */}
         <div className={styles.videoWrapper}>
           <iframe
             src={embedUrl}
-            title={title || 'Video'}
+            title={title || 'YouTube video player'}
             className={styles.iframe}
-            frameBorder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerPolicy="strict-origin-when-cross-origin"
             allowFullScreen
           />
         </div>

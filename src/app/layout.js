@@ -1,14 +1,12 @@
 import localFont from 'next/font/local';
 import { Urbanist } from 'next/font/google';
 import Script from 'next/script';
-import { Suspense } from 'react';
 import StyledJsxRegistry from '@/Utils/registry';
 import './globals.css';
 import { ApolloWrapper } from '@/Utils/ApolloWrapper';
 import ProgressBarProviders from '@/Utils/ProgressBarProvider';
 import HeaderBar from '@/Components/Header/HeaderBar';
 import { HeaderProvider } from '@/Context/HeaderContext';
-import MobileNavDock from '@/Components/Header/MobileNavDock';
 import { CaseStudiesProvider } from '@/Context/CaseStudiesContext';
 import Footer from '@/Components/Footer/Footer';
 import FinanceSticker from '@/Components/FinanceSticker/FinanceSticker';

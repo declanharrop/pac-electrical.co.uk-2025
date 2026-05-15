@@ -8,6 +8,19 @@ import LowerOpaqueWaves from '@/Elements/ShapeDividers/LowerOpaqueWaves';
 // Re-import the button component you wanted
 import GetAQuoteButton from '@/Components/UI/GetAQuoteButton';
 
+function resolveYouTubeId(input) {
+  if (!input) return null;
+  try {
+    const url = new URL(input);
+    if (url.hostname === 'youtu.be') return url.pathname.slice(1).split('?')[0];
+    if (url.hostname.includes('youtube.com')) return url.searchParams.get('v');
+  } catch {
+    // Not a URL — treat as a bare video ID
+    return input;
+  }
+  return input;
+}
+
 export default function LandingFeatures({
   mainHeading,
   features,
@@ -19,6 +32,8 @@ export default function LandingFeatures({
   buttonText,
   buttonLink,
 }) {
+  const resolvedVideoId = resolveYouTubeId(videoId);
+
   return (
     <section className={styles.section}>
       {/* 1. Logo */}
@@ -36,10 +51,10 @@ export default function LandingFeatures({
       <h2 className={styles.title}>{mainHeading}</h2>
 
       {/* 3. Video */}
-      {showVideo && videoId && (
+      {showVideo && resolvedVideoId && (
         <div className={styles.videoContainer}>
           <iframe
-            src={`https://www.youtube.com/embed/${videoId}?rel=0&modestbranding=1`}
+            src={`https://www.youtube.com/embed/${resolvedVideoId}?rel=0&modestbranding=1`}
             className={styles.videoFrame}
             title="Power & Control Video"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
