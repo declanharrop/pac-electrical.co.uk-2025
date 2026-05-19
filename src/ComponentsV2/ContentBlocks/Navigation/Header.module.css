@@ -1,0 +1,412 @@
+/* src/ComponentsV2/ContentBlocks/Navigation/Header.module.css */
+
+.header {
+  position: sticky;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: var(--black, #1b1819);
+  z-index: 50;
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.container {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.logoImage {
+  height: 46px;
+  width: auto;
+}
+
+.rightActions {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.staticIcons {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.socialGroup,
+.contactGroup {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.icon {
+  color: white;
+  text-decoration: none;
+  font-size: 1.2rem;
+  transition:
+    opacity 0.3s ease,
+    color 0.3s ease;
+  display: flex;
+  align-items: center;
+}
+
+.icon:hover {
+  opacity: 0.7;
+}
+
+/* WhatsApp Brand Customisation */
+.whatsappIcon {
+  color: #25d366;
+}
+
+.whatsappIcon:hover {
+  color: #128c7e;
+  opacity: 1;
+}
+
+.divider {
+  width: 1px;
+  height: 20px;
+  background-color: rgba(255, 255, 255, 0.2);
+  margin: 0 0.2rem;
+}
+
+.hamburger {
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 0.5rem;
+  z-index: 998; /* Sits cleanly below overlay (999) and drawer (1000) */
+}
+
+.line {
+  width: 28px;
+  height: 2px;
+  background-color: white;
+  transition: 0.3s ease;
+}
+
+/* Drawer Layout & Animations */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(5px);
+  z-index: 999;
+}
+
+.drawer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 100%;
+  max-width: 450px;
+  height: 100vh;
+  background-color: #ffffff;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  padding: 2rem 2.5rem;
+  box-shadow: -10px 0 30px rgba(0, 0, 0, 0.2);
+  overflow-y: auto;
+}
+
+.drawerHeader {
+  display: flex;
+  justify-content: space-between; /* Pushes logo left, close button right */
+  align-items: center;
+  width: 100%;
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--light-grey, #dddddd);
+}
+
+.drawerLogoImage {
+  height: 34px; /* Slightly scaled down for the drawer context */
+  width: auto;
+}
+.closeBtn {
+  background: none;
+  border: none;
+  margin: 0;
+  font-size: 2rem;
+  cursor: pointer;
+  color: var(--black, #1b1819);
+  transition:
+    transform 0.3s ease,
+    color 0.3s ease;
+}
+
+.closeBtn:hover {
+  transform: rotate(90deg);
+  color: var(--green, #54af61);
+}
+
+/* Nav Tree Architecture */
+.navLinks {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.tier1Container {
+  display: flex;
+  flex-direction: column;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  padding-bottom: 0.5rem;
+}
+
+.navLink,
+.navLinkBtn {
+  font-family: var(--font-urbanist);
+  font-size: 1.6rem;
+  color: var(--black, #1b1819);
+  text-decoration: none;
+  background: none;
+  border: none;
+  text-align: left;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 0;
+  font-weight: 700;
+  transition:
+    color 0.3s ease,
+    transform 0.3s ease;
+  width: 100%;
+}
+
+.navLink:hover,
+.navLinkBtn:hover {
+  color: var(--green, #54af61);
+  transform: translateX(4px);
+}
+
+.activeLink {
+  color: var(--green, #54af61) !important;
+}
+
+/* Level 2 Sub-Menu */
+.tier2Menu {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  padding-left: 1.5rem;
+  overflow: hidden;
+  margin-bottom: 0.5rem;
+}
+
+.tier2Container {
+  display: flex;
+  flex-direction: column;
+}
+
+.subNavLink,
+.subNavBtn {
+  font-family: var(--font-urbanist);
+  font-size: 1.4rem;
+  color: var(--navy, #25466e);
+  text-decoration: none;
+  background: none;
+  border: none;
+  text-align: left;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.8rem 0;
+  font-weight: 600;
+  width: 100%;
+  transition: color 0.3s ease;
+}
+
+.subNavLink:hover,
+.subNavBtn:hover {
+  color: var(--green, #54af61);
+}
+
+/* Level 3 Deep-Menu */
+.tier3Menu {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding-left: 1.5rem;
+  overflow: hidden;
+  border-left: 2px solid var(--light-grey, #dddddd);
+  margin-left: 0.5rem;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.tier3Link {
+  font-family: var(--font-urbanist);
+  font-size: 1.3rem;
+  color: var(--grey, #bababa);
+  text-decoration: none;
+  display: block;
+  padding: 0.6rem 0 0.6rem 1rem;
+  transition:
+    color 0.3s ease,
+    transform 0.3s ease;
+}
+
+.tier3Link:hover {
+  color: var(--green, #54af61);
+  transform: translateX(4px);
+}
+
+/* Drawer Footer Social Layout */
+/* Drawer Footer Layout */
+.drawerFooter {
+  margin-top: auto;
+  padding-top: 2rem;
+  margin-bottom: 1rem;
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+
+/* Drawer CTA Buttons */
+.drawerCTAs {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 100%;
+}
+
+.drawerBtn {
+  font-family: var(--font-urbanist);
+  font-size: 1.4rem;
+  font-weight: 700;
+  text-align: center;
+  padding: 1.2rem;
+  border-radius: 50px; /* Pill shape */
+  text-decoration: none;
+  transition:
+    transform 0.3s ease,
+    opacity 0.3s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  width: 100%;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.drawerBtn:hover {
+  transform: translateY(-2px);
+  opacity: 0.9;
+}
+
+.quoteBtn {
+  background-color: var(--green, #54af61);
+  color: white;
+}
+
+.callbackBtn {
+  background-color: var(--navy, #25466e);
+  color: white;
+}
+
+/* Social Row underneath the buttons */
+.drawerSocials {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  width: 100%;
+}
+
+.drawerSocialIcon {
+  color: var(--navy, #25466e);
+  transition:
+    color 0.3s ease,
+    transform 0.3s ease;
+  display: flex;
+  align-items: center;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.drawerSocialIcon:hover {
+  color: var(--green, #54af61);
+  transform: translateY(-3px);
+}
+/* Direct Element Controls for Focus Cleanup */
+.navLinkBtn,
+.subNavBtn,
+.navLink,
+.subNavLink,
+.tier3Link,
+.hamburger,
+.closeBtn,
+.icon,
+.drawerSocialIcon {
+  -webkit-tap-highlight-color: transparent;
+}
+
+.navLinkBtn:focus,
+.subNavBtn:focus,
+.navLink:focus,
+.subNavLink:focus,
+.tier3Link:focus {
+  outline: none;
+}
+
+/* Icon Control Utilities */
+.chevron,
+.chevronSmall {
+  font-size: 1rem;
+  transition: transform 0.3s ease;
+  color: var(--grey, #bababa);
+}
+
+.chevronSmall {
+  font-size: 0.8rem;
+}
+
+.rotated {
+  transform: rotate(180deg);
+}
+
+.externalIcon {
+  font-size: 0.8em;
+  margin-left: 4px;
+  opacity: 0.6;
+}
+
+/* Responsive Breakpoints */
+@media (max-width: 768px) {
+  .socialGroup {
+    display: none;
+  }
+  .hideMobileDivider {
+    display: none;
+  }
+  .contactGroup {
+    gap: 0.8rem;
+  }
+  .rightActions {
+    gap: 0.8rem;
+  }
+  .drawer {
+    max-width: 85vw;
+  }
+}

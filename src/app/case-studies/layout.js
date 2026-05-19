@@ -17,7 +17,7 @@ export default function CaseStudyLayout({ children }) {
 
   return (
     <div>
-      <LowerHeaderBar
+      {/* <LowerHeaderBar
         color={color}
         title="Our Work"
         // Ensure these links match your route structure
@@ -29,7 +29,7 @@ export default function CaseStudyLayout({ children }) {
         ]}
         // We pass the active value to highlight the correct tab
         selectedValue={pathname.split('/').pop()}
-      />
+      /> */}
       {children}
     </div>
   );

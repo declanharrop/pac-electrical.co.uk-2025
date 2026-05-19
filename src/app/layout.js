@@ -1,3 +1,4 @@
+// src/app/layout.js
 import localFont from 'next/font/local';
 import { Urbanist } from 'next/font/google';
 import Script from 'next/script';
@@ -5,18 +6,22 @@ import StyledJsxRegistry from '@/Utils/registry';
 import './globals.css';
 import { ApolloWrapper } from '@/Utils/ApolloWrapper';
 import ProgressBarProviders from '@/Utils/ProgressBarProvider';
-import HeaderBar from '@/Components/Header/HeaderBar';
+
+// --- LEGACY IMPORTS (Keeping Context to prevent breaks) ---
 import { HeaderProvider } from '@/Context/HeaderContext';
 import { CaseStudiesProvider } from '@/Context/CaseStudiesContext';
 import Footer from '@/Components/Footer/Footer';
 import FinanceSticker from '@/Components/FinanceSticker/FinanceSticker';
 
-// --- NEW TRACKING IMPORTS ---
+// --- NEW V2 IMPORTS ---
+import Header from '@/ComponentsV2/ContentBlocks/Navigation/Header';
+import Breadcrumbs from '@/ComponentsV2/ContentBlocks/Navigation/Breadcrumbs';
+
+// --- TRACKING IMPORTS ---
 import GoogleTagManager from '@/Components/Tracking/GoogleTagManager';
 import CookieBanner from '@/Components/Tracking/CookieBanner';
 import WhatsAppButton from '@/Elements/Buttons/WhatAppButton';
-
-// --- GLOBAL FLOATING ELEMENTS ---
+import FloatingQuote from '@/ComponentsV2/ContentBlocks/Navigation/FloatingQuote';
 
 const GoodTimes = localFont({
   src: [
@@ -58,10 +63,9 @@ export const viewport = {
 
 export const metadata = {
   metadataBase: new URL(METADATA.Url),
-  // SEO UPGRADE: Custom Homepage Title vs Subpage Template
   title: {
     default: `${METADATA.Tagline} - ${METADATA.SiteName}`,
-    template: `%s | ${METADATA.SiteName}`, // Keeps subpage SERP snippets from truncating
+    template: `%s | ${METADATA.SiteName}`,
   },
   applicationName: METADATA.SiteName,
   description: METADATA.Description,
@@ -99,13 +103,20 @@ export default async function RootLayout({ children }) {
           {GTM_ID && <GoogleTagManager gtmId={GTM_ID} />}
 
           <StyledJsxRegistry>
+            {/* Kept HeaderProvider to prevent legacy context crashes */}
             <HeaderProvider>
-              <HeaderBar />
+              {/* V2 Header */}
+              <Header />
+
               <ApolloWrapper>
                 <ProgressBarProviders>
                   <CaseStudiesProvider>
-                    <FinanceSticker />
-                    <main>{children}</main>
+                    {/* <FinanceSticker /> */}
+                    <main>
+                      {/* V2 Breadcrumbs injected right above page content */}
+                      <Breadcrumbs />
+                      {children}
+                    </main>
                     <Footer />
                   </CaseStudiesProvider>
                 </ProgressBarProviders>
@@ -114,7 +125,8 @@ export default async function RootLayout({ children }) {
           </StyledJsxRegistry>
 
           <CookieBanner />
-          <WhatsAppButton />
+          <FloatingQuote />
+          {/* <WhatsAppButton /> */}
 
           <Script id="omnisend-script" strategy="beforeInteractive">
             {`window.omnisend = window.omnisend || [];

@@ -84,7 +84,7 @@ export default function ElectricalPage() {
       </VideoHero>
 
       <SmoothScrollLogosBlock
-        margin="0 auto 100px"
+        margin="0 auto 100pxd"
         brands={[
           { brand: 'NICEIC', image: 'accreds/NICEIC.png' },
           { brand: 'Chas', image: 'accreds/CHAS.png' },

@@ -118,3 +118,29 @@ export const PAGE_BUILDER_QUERY = groq`*[_type == "page" && slug.current == $slu
     // Video and FAQs fields are usually simple strings, so '...' covers them
   }
 }`;
+
+export const navQuery = `
+  *[_type == "mainNavigation"][0] {
+    items[] {
+      _key,
+      title,
+      linkType,
+      slug,
+      externalUrl,
+      subItems[] {
+        _key,
+        title,
+        linkType,
+        slug,
+        externalUrl,
+        subItems[] {
+          _key,
+          title,
+          linkType,
+          slug,
+          externalUrl
+        }
+      }
+    }
+  }
+`;

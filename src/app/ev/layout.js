@@ -3,7 +3,7 @@ import LowerHeaderBar from '@/Components/Header/LowerHeaderBar';
 export default function EVLayout({ children }) {
   return (
     <div>
-      <LowerHeaderBar
+      {/* <LowerHeaderBar
         color="var(--neon)"
         title="EV Charging"
         links={[
@@ -34,7 +34,7 @@ export default function EVLayout({ children }) {
             link: '/ev/commercial',
           },
         ]}
-      />
+      /> */}
       {children}
     </div>
   );

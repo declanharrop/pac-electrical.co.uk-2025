@@ -76,7 +76,7 @@ export default async function NewsPage() {
   }));
 
   return (
-    <div style={{ marginTop: '-40px' }}>
+    <div style={{ marginTop: '-118px' }}>
       <NewsPageFrame data={articles} title="News" />
     </div>
   );

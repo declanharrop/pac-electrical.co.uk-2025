@@ -6,7 +6,7 @@
 
 .Header {
   background-color: var(--black);
-  padding: 12rem 2rem 8rem 2rem; /* Deep padding for hero effect */
+  padding: 0rem 2rem 8rem 2rem; /* Deep padding for hero effect */
   text-align: center;
   margin-bottom: -4rem; /* Pulls the content up slightly */
 }

@@ -7,7 +7,7 @@ export default function VideoHero({
 }) {
   return (
     <>
-      {margin && <div style={{ height: '130px' }} />}
+      {/* {margin && <div style={{ height: '130px' }} />} */}
       <div className={Styles.VideoHero} style={{ height: `${height}` }}>
         <div className={Styles.VideoHero_VideoContainer}>
           <video

@@ -1,0 +1,44 @@
+/* ComponentsV2/ContentBlocks/Navigation/Breadcrumbs.module.css */
+.breadcrumbs {
+  padding: 0.6rem 2rem;
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+.list {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  /* gap: 0.8rem; */
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  font-family: var(--font-urbanist);
+  font-size: 1.4rem;
+}
+
+.link {
+  color: var(--grey, #bababa);
+  text-decoration: none;
+  transition: color 0.3s ease;
+  font-size: 1.3rem;
+}
+
+.link:hover {
+  color: var(--green, #54af61);
+}
+
+.separator {
+  color: var(--light-grey, #dddddd);
+  margin: 0 10px;
+}
+
+.current {
+  color: var(--green, #54af61);
+  font-weight: 400;
+}

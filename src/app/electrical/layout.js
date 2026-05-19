@@ -3,7 +3,7 @@ import LowerHeaderBar from '@/Components/Header/LowerHeaderBar';
 export default function ElectricalLayout({ children }) {
   return (
     <div>
-      <LowerHeaderBar
+      {/* <LowerHeaderBar
         color="var(--navy)"
         title="Electrical"
         links={[
@@ -46,7 +46,7 @@ export default function ElectricalLayout({ children }) {
             link: '/electrical/data',
           },
         ]}
-      />
+      /> */}
       {children}
     </div>
   );
