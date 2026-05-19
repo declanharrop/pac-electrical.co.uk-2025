@@ -241,7 +241,7 @@ export default function NavDrawer({ items }) {
                 {/* Social Icons */}
                 <div className={styles.drawerSocials}>
                   <a
-                    href="#"
+                    href="https://www.instagram.com/pacrenewable"
                     className={styles.drawerSocialIcon}
                     aria-label="Instagram"
                   >
@@ -261,7 +261,7 @@ export default function NavDrawer({ items }) {
                     </svg>
                   </a>
                   <a
-                    href="#"
+                    href="https://www.facebook.com/powerandcontrolltd"
                     className={styles.drawerSocialIcon}
                     aria-label="Facebook"
                   >
@@ -279,7 +279,7 @@ export default function NavDrawer({ items }) {
                     </svg>
                   </a>
                   <a
-                    href="#"
+                    href="https://www.linkedin.com/company/76618968"
                     className={styles.drawerSocialIcon}
                     aria-label="LinkedIn"
                   >
