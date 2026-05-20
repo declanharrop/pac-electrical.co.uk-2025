@@ -1,9 +1,9 @@
 .Wrapper {
   position: fixed;
-  top: 80px;
+  top: 66px;
   left: 0;
   right: 0;
-  z-index: 900;
+  z-index: 10;
   overflow: hidden;
   background: #54af61;
   padding: 1.4rem 0;
