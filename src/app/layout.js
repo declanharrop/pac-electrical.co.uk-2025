@@ -11,7 +11,6 @@ import ProgressBarProviders from '@/Utils/ProgressBarProvider';
 import { HeaderProvider } from '@/Context/HeaderContext';
 import { CaseStudiesProvider } from '@/Context/CaseStudiesContext';
 import Footer from '@/Components/Footer/Footer';
-import FinanceSticker from '@/Components/FinanceSticker/FinanceSticker';
 
 // --- NEW V2 IMPORTS ---
 import Header from '@/ComponentsV2/ContentBlocks/Navigation/Header';
@@ -20,8 +19,8 @@ import Breadcrumbs from '@/ComponentsV2/ContentBlocks/Navigation/Breadcrumbs';
 // --- TRACKING IMPORTS ---
 import GoogleTagManager from '@/Components/Tracking/GoogleTagManager';
 import CookieBanner from '@/Components/Tracking/CookieBanner';
-import WhatsAppButton from '@/Elements/Buttons/WhatAppButton';
 import FloatingQuote from '@/ComponentsV2/ContentBlocks/Navigation/FloatingQuote';
+import GlobalTrackingCapture from '@/Utils/GlobalTrackingCapture';
 
 const GoodTimes = localFont({
   src: [
@@ -101,6 +100,7 @@ export default async function RootLayout({ children }) {
         </head>
         <body>
           {GTM_ID && <GoogleTagManager gtmId={GTM_ID} />}
+          <GlobalTrackingCapture />
 
           <StyledJsxRegistry>
             {/* Kept HeaderProvider to prevent legacy context crashes */}

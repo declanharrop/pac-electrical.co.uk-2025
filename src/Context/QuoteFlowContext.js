@@ -1,3 +1,5 @@
+// app/context/QuoteFlowContext.jsx (or equivalent path)
+
 'use client';
 
 import { useRouter, useSearchParams } from 'next/navigation';
@@ -11,18 +13,16 @@ export const QuoteFlowProvider = ({ children }) => {
   const searchParams = useSearchParams();
 
   const [sessionId, setSessionId] = useState('');
-  const [turnstileToken, setTurnstileToken] = useState(''); // Stores the actual security token
+  const [turnstileToken, setTurnstileToken] = useState('');
 
-  // ALL possible fields defined so Zapier always sees the full schema
   const [userDetails, setUserDetails] = useState({
-    // Shared / Base Details
     service: '',
     sector: '',
     name: '',
     email: '',
     phone: '',
-    businessName: '', // Added for Commercial Contact Step
-    companyName: '', // Kept from original
+    businessName: '',
+    companyName: '',
     details: '',
     addressLine1: '',
     addressLine2: '',
@@ -30,8 +30,12 @@ export const QuoteFlowProvider = ({ children }) => {
     postcode: '',
     coordinates: '',
     locationDetails: '',
+
+    // Tracking Fields
     heardFrom: '',
     adId: '',
+    gclid: '', // Added for future offline conversion mapping
+    fbclid: '', // Added for future Meta CAPI
 
     // Solar - Domestic
     solarDomesticType: '',
@@ -54,65 +58,100 @@ export const QuoteFlowProvider = ({ children }) => {
   });
 
   useEffect(() => {
+    // Generate UUID on the client to prevent hydration errors
     setSessionId(crypto.randomUUID());
   }, []);
 
+  // ---------------------------------------------------------------------------
+  // ATTRIBUTION READ LOGIC & DEBUGGER
+  // ---------------------------------------------------------------------------
   useEffect(() => {
-    if (!searchParams) return;
+    if (typeof window === 'undefined') return; // Guard for server environments
 
-    const urlProvider = searchParams.get('provider');
+    // 1. Read directly from URL (if landing directly on the /quote route)
+    const urlProvider = searchParams?.get('provider');
+    const urlAdId = searchParams?.get('adId');
+    const urlGclid = searchParams?.get('gclid');
+    const urlFbclid = searchParams?.get('fbclid');
+
+    // 2. Read from Global Cookies (if navigated internally from the homepage)
     const cookieProvider = Cookies.get('provider');
-
-    if (urlProvider && userDetails.heardFrom.length < 1) {
-      Cookies.set('provider', urlProvider, { expires: 7 });
-      setUserDetails((prev) => ({ ...prev, heardFrom: urlProvider }));
-    } else if (cookieProvider && userDetails.heardFrom.length < 1) {
-      setUserDetails((prev) => ({ ...prev, heardFrom: cookieProvider }));
-    }
-
-    const urlAdId = searchParams.get('adId');
     const cookieAdId = Cookies.get('adId');
+    const cookieGclid = Cookies.get('gclid');
+    const cookieFbclid = Cookies.get('fbclid');
 
-    if (urlAdId && userDetails.adId.length < 1) {
-      Cookies.set('adId', urlAdId, { expires: 7 });
-      setUserDetails((prev) => ({ ...prev, adId: urlAdId }));
-    } else if (cookieAdId && userDetails.adId.length < 1) {
-      setUserDetails((prev) => ({ ...prev, adId: cookieAdId }));
-    }
-  }, [searchParams, userDetails.heardFrom, userDetails.adId]);
+    // 3. Resolve the final values (Prioritize URL, fallback to Cookie)
+    const finalProvider = urlProvider || cookieProvider || '';
+    const finalAdId = urlAdId || cookieAdId || '';
+    const finalGclid = urlGclid || cookieGclid || '';
+    const finalFbclid = urlFbclid || cookieFbclid || '';
+
+    // --- TRACKING DEBUGGER LOG ---
+    console.group('🔍 Next.js Tracking Architecture Debugger');
+    console.log('1. Raw URL Parameters:', {
+      provider: urlProvider,
+      adId: urlAdId,
+      gclid: urlGclid,
+    });
+    console.log('2. Retrieved Cookies:', {
+      provider: cookieProvider,
+      adId: cookieAdId,
+      gclid: cookieGclid,
+    });
+    console.log('3. Final Resolved State ->', {
+      heardFrom: finalProvider,
+      adId: finalAdId,
+      gclid: finalGclid,
+    });
+    console.groupEnd();
+    // -----------------------------
+
+    // 4. Safely update React state ONCE without triggering infinite loops
+    setUserDetails((prev) => {
+      // Deep check to prevent unnecessary re-renders if state is already correct
+      if (
+        prev.heardFrom !== finalProvider ||
+        prev.adId !== finalAdId ||
+        prev.gclid !== finalGclid ||
+        prev.fbclid !== finalFbclid
+      ) {
+        return {
+          ...prev,
+          heardFrom: finalProvider || prev.heardFrom,
+          adId: finalAdId || prev.adId,
+          gclid: finalGclid || prev.gclid || '',
+          fbclid: finalFbclid || prev.fbclid || '',
+        };
+      }
+      return prev;
+    });
+  }, [searchParams]); // Strictly dependent on URL changes
+
+  // ... [Keep the rest of your functions identical: handleVerify, addUserDetails, chooseOption, etc.]
 
   const handleVerify = (token) => {
-    setTurnstileToken(token); // Captures the token string from Cloudflare
+    setTurnstileToken(token);
   };
-
   const addUserDetails = (data) => {
     setUserDetails((prev) => ({ ...prev, ...data }));
   };
-
   const chooseOption = (data, route) => {
     addUserDetails(data);
     if (route) router.push(route);
   };
-
   const submitOption = (e, route) => {
     if (e) e.preventDefault();
     if (route) router.push(route);
   };
 
   const handlePartialSubmit = async (newData = {}, nextRoute) => {
-    const freshestData = {
-      ...userDetails,
-      ...newData,
-      sessionId,
-    };
-
+    const freshestData = { ...userDetails, ...newData, sessionId };
     try {
       await fetch('/api/quote/partial', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(freshestData),
       });
-
       if (nextRoute) router.push(nextRoute);
     } catch (error) {
       console.error('Partial submission failed:', error);
@@ -128,7 +167,6 @@ export const QuoteFlowProvider = ({ children }) => {
       return;
     }
 
-    // Include the turnstile token in the final POST body
     const formData = {
       ...userDetails,
       sessionId,
@@ -143,9 +181,8 @@ export const QuoteFlowProvider = ({ children }) => {
       });
       const result = await response.json();
       if (result.status === 'success') {
-        // Save the sessionId to a cookie for 1 day
-        Cookies.set('quoteSessionId', sessionId, { expires: 1 });
-
+        // Enforce path '/' on session cookie as well
+        Cookies.set('quoteSessionId', sessionId, { expires: 1, path: '/' });
         const finalService = userDetails.service.toLowerCase() || 'solar';
         const finalSector = userDetails.sector.toLowerCase() || 'domestic';
         router.push(`/thank-you/${finalService}/${finalSector}`);
