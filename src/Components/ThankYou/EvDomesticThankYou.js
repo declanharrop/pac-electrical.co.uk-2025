@@ -80,11 +80,33 @@ export default function EvDomesticThankYou() {
 
     const formData = new FormData();
     formData.append('sessionId', sessionId);
-    formData.append('meter', photos.meter);
-    formData.append('consumerUnit', photos.consumerUnit);
-    formData.append('cable1', photos.cable1);
-    formData.append('cable2', photos.cable2);
-    formData.append('cable3', photos.cable3);
+
+    // THE FIX: Explicitly add the filename and extension as the 3rd parameter
+    formData.append(
+      'meter',
+      photos.meter,
+      photos.meter.name || 'meter-photo.jpg',
+    );
+    formData.append(
+      'consumerUnit',
+      photos.consumerUnit,
+      photos.consumerUnit.name || 'consumer-unit.jpg',
+    );
+    formData.append(
+      'cable1',
+      photos.cable1,
+      photos.cable1.name || 'cable-route-start.jpg',
+    );
+    formData.append(
+      'cable2',
+      photos.cable2,
+      photos.cable2.name || 'cable-route-middle.jpg',
+    );
+    formData.append(
+      'cable3',
+      photos.cable3,
+      photos.cable3.name || 'charger-location.jpg',
+    );
 
     try {
       const response = await fetch('/api/upload-ev-survey', {

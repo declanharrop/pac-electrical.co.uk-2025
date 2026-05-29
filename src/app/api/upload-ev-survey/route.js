@@ -56,13 +56,21 @@ export async function POST(request) {
         );
       }
 
-      // The Fix: Extract raw bytes and reconstruct the file as a pristine Blob
+      // Extract raw bytes and reconstruct the file as a pristine Blob
       // This prevents Next.js from mangling the binary stream in transit
+      // Added a fallback MIME type just in case compression stripped it
       const bytes = await file.arrayBuffer();
-      const pristineBlob = new Blob([bytes], { type: file.type });
+      const pristineBlob = new Blob([bytes], {
+        type: file.type || 'image/jpeg',
+      });
 
-      // Append the clean blob to our Zapier payload using the original filename
-      zapierFormData.append(key, pristineBlob, file.name);
+      // --- THE BULLETPROOF TWEAK ---
+      // If the frontend somehow fails to send a name, force a fallback name with a .jpg extension
+      const safeFileName =
+        file.name && file.name !== 'blob' ? file.name : `${key}-photo.jpg`;
+
+      // Append the clean blob to our Zapier payload using the safe filename
+      zapierFormData.append(key, pristineBlob, safeFileName);
     }
 
     // 5. SEND TO ZAPIER
