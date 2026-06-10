@@ -1,4 +1,4 @@
-// app/context/QuoteFlowContext.jsx (or equivalent path)
+// app/context/QuoteFlowContext.jsx
 
 'use client';
 
@@ -36,6 +36,7 @@ export const QuoteFlowProvider = ({ children }) => {
     adId: '',
     gclid: '', // Added for future offline conversion mapping
     fbclid: '', // Added for future Meta CAPI
+    referral: '', // <-- Added for staff/partner tracking
 
     // Solar - Domestic
     solarDomesticType: '',
@@ -73,18 +74,26 @@ export const QuoteFlowProvider = ({ children }) => {
     const urlAdId = searchParams?.get('adId');
     const urlGclid = searchParams?.get('gclid');
     const urlFbclid = searchParams?.get('fbclid');
+    const urlReferral = searchParams?.get('referral');
 
     // 2. Read from Global Cookies (if navigated internally from the homepage)
     const cookieProvider = Cookies.get('provider');
     const cookieAdId = Cookies.get('adId');
     const cookieGclid = Cookies.get('gclid');
     const cookieFbclid = Cookies.get('fbclid');
+    const cookieReferral = Cookies.get('referral');
 
     // 3. Resolve the final values (Prioritize URL, fallback to Cookie)
     const finalProvider = urlProvider || cookieProvider || '';
     const finalAdId = urlAdId || cookieAdId || '';
     const finalGclid = urlGclid || cookieGclid || '';
     const finalFbclid = urlFbclid || cookieFbclid || '';
+    const finalReferral = urlReferral || cookieReferral || '';
+
+    // 4. Save the referral to a cookie so it persists across sessions (30 days)
+    if (finalReferral) {
+      Cookies.set('referral', finalReferral, { expires: 30, path: '/' });
+    }
 
     // --- TRACKING DEBUGGER LOG ---
     console.group('🔍 Next.js Tracking Architecture Debugger');
@@ -92,28 +101,35 @@ export const QuoteFlowProvider = ({ children }) => {
       provider: urlProvider,
       adId: urlAdId,
       gclid: urlGclid,
+      fbclid: urlFbclid,
+      referral: urlReferral,
     });
     console.log('2. Retrieved Cookies:', {
       provider: cookieProvider,
       adId: cookieAdId,
       gclid: cookieGclid,
+      fbclid: cookieFbclid,
+      referral: cookieReferral,
     });
     console.log('3. Final Resolved State ->', {
       heardFrom: finalProvider,
       adId: finalAdId,
       gclid: finalGclid,
+      fbclid: finalFbclid,
+      referral: finalReferral,
     });
     console.groupEnd();
     // -----------------------------
 
-    // 4. Safely update React state ONCE without triggering infinite loops
+    // 5. Safely update React state ONCE without triggering infinite loops
     setUserDetails((prev) => {
       // Deep check to prevent unnecessary re-renders if state is already correct
       if (
         prev.heardFrom !== finalProvider ||
         prev.adId !== finalAdId ||
         prev.gclid !== finalGclid ||
-        prev.fbclid !== finalFbclid
+        prev.fbclid !== finalFbclid ||
+        prev.referral !== finalReferral
       ) {
         return {
           ...prev,
@@ -121,6 +137,7 @@ export const QuoteFlowProvider = ({ children }) => {
           adId: finalAdId || prev.adId,
           gclid: finalGclid || prev.gclid || '',
           fbclid: finalFbclid || prev.fbclid || '',
+          referral: finalReferral || prev.referral || '',
         };
       }
       return prev;

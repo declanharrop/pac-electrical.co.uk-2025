@@ -1,0 +1,112 @@
+.Wrapper {
+  min-height: 100vh;
+  background-color: #0a0a0a;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  font-family: var(--font-urbanist), sans-serif;
+}
+
+.Card {
+  background: #111;
+  border: 1px solid #222;
+  border-radius: 2rem;
+  padding: 4rem;
+  width: 100%;
+  max-width: 500px;
+  text-align: center;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+}
+
+.Title {
+  font-family: var(--font-good-times), sans-serif;
+  font-size: 2.4rem;
+  margin-bottom: 1rem;
+  letter-spacing: 0.05em;
+}
+
+.Title span {
+  color: var(--green);
+}
+
+.Subtitle {
+  color: #888;
+  font-size: 1.4rem;
+  margin-bottom: 3rem;
+  line-height: 1.5;
+}
+
+.InputGroup {
+  text-align: left;
+  margin-bottom: 2rem;
+}
+
+.Label {
+  display: block;
+  font-size: 1.2rem;
+  color: #aaa;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-weight: 700;
+  margin-bottom: 0.8rem;
+}
+
+.Input {
+  width: 100%;
+  background: #000;
+  border: 1px solid #333;
+  color: white;
+  padding: 1.5rem;
+  border-radius: 1rem;
+  font-size: 1.6rem;
+  outline: none;
+  transition: border-color 0.3s;
+}
+
+.Input:focus {
+  border-color: var(--green);
+}
+
+.Button {
+  width: 100%;
+  background: var(--green);
+  color: black;
+  border: none;
+  padding: 1.5rem;
+  font-size: 1.6rem;
+  font-weight: 800;
+  border-radius: 1rem;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  transition:
+    transform 0.2s,
+    background 0.2s;
+}
+
+.Button:hover {
+  transform: translateY(-2px);
+  background: #fff;
+}
+
+.QrContainer {
+  background: white;
+  padding: 2rem;
+  border-radius: 1.5rem;
+  display: inline-block;
+  margin: 2rem 0;
+}
+
+.UrlPreview {
+  background: #000;
+  padding: 1.5rem;
+  border-radius: 1rem;
+  font-family: monospace;
+  font-size: 1.2rem;
+  color: var(--green);
+  word-break: break-all;
+  margin-bottom: 2rem;
+  border: 1px solid #222;
+}
